@@ -127,6 +127,29 @@ def main():
     except Exception as _e:
         print(f"[render] WARN 目录对账跳过: {_e}")
 
+    # ④d 生态快照块：头行时间戳 / 静态轨行（读仓内最新 mainline-compat）/ 跟踪 PR / 报告链接
+    t_readme = re.sub(r"更新于 [0-9-]+ [0-9:]+ · 每 \d+ 小时刷新[^\n]*",
+                      f"渲染于快照 {snap['run_id']}（{snap['generated_at'][:16]}）· 数据源 data/snapshots/（渲染即对齐）",
+                      t_readme, count=1)
+    # 静态轨：快照携带（Bot A 从远程最新 mainline-compat 读取入快照）
+    st = snap.get("static") or {}
+    if st.get("summary"):
+        t_readme = re.sub(r"^\| 静态综合判定 \|.+$",
+                          f"| 静态综合判定 | {st['summary']}（静态轨 {st.get('date','')} · 经快照入仓） |",
+                          t_readme, count=1, flags=re.M)
+    if dl.get("open_bot_prs") is not None:
+        t_readme = re.sub(r"^\| 正在跟踪的 PR \|.+$",
+                          f"| 正在跟踪的 PR | {dl.get('open_bot_prs')}（快照 deliver 口径） |",
+                          t_readme, count=1, flags=re.M)
+    # 报告链接指向最新日期目录
+    rd = sorted([d.name for d in (ROOT / "reports").iterdir() if d.is_dir() and d.name[:2] == "20"])
+    if rd:
+        d_latest = rd[-1]
+        t_readme = re.sub(r"\[完整索引\]\(reports/[0-9-]+/index\.md\)", f"[完整索引](reports/{d_latest}/index.md)", t_readme)
+        t_readme = re.sub(r"\[静态矩阵\]\(reports/[0-9-]+/mainline-compat\.md\)", f"[静态矩阵](reports/{d_latest}/mainline-compat.md)", t_readme)
+        t_readme = re.sub(r"\[编译实验\]\(reports/[0-9-]+/compile-compat\.md\)", f"[编译实验](reports/{d_latest}/compile-compat.md)", t_readme)
+        t_readme = re.sub(r"\[运行实测\]\(reports/[0-9-]+/[^)]*\.md\)", f"[运行实测](reports/{d_latest}/agent-test.md)", t_readme)
+
     # ⑤ CHANGELOG 运行级条目（快照模式下的唯一写入者；按 run_id 幂等）
     cl = ROOT / "CHANGELOG.md"
     if cl.exists():
