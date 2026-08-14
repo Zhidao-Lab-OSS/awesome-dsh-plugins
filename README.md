@@ -14,7 +14,7 @@
 
 ## 工作原理
 
-> 📌 数据截至快照 `20260814T203350Z`（2026-08-14T20:33:50+00:00 · 分类器 unified-v1）
+> 📌 数据截至快照 `20260814T213619Z`（2026-08-14T21:36:19+00:00 · 分类器 unified-v1）
 
 <!-- AUTO:pipeline:START -->
 ```mermaid
@@ -95,7 +95,7 @@ flowchart TB
 > 按功能领域分类（重分类修正）。点击标题展开，全部条目一次显示。 新收录条目（社区）的兼容性为**运行级跟踪口径**（k8s agent 实测）。 新收录条目（社区）的兼容性为**运行级跟踪口径**（k8s agent 实测）。
 
 <details>
-<summary><h3>🔌 Web UI 增强（18 + 226）</h3></summary>
+<summary><h3>🔌 Web UI 增强（247）</h3></summary>
 
 *界面与交互增强插件：侧边栏、输入框、皮肤主题、面板 dock、消息显示、状态栏与可视化，让 Web 界面更顺手更好看*
 
@@ -345,12 +345,15 @@ flowchart TB
 | [dsh-terminal-panel](https://github.com/wuwuzhige-sudo/dsh-terminal-panel) | 社区 | ❌ 运行级不兼容 | A manual Terminal tab for the DeepSeek Harness (dsh) web UI — run commands on th |
 | [dsh-tui-app](https://github.com/kouyichi/dsh-tui-app) | 社区 | ❌ 运行级不兼容 | DeepSeek Harness terminal UI plugin (Ink/React) |
 | [zat-dsh-engine](https://github.com/mishibeikejie/zat-dsh-engine) | 社区 | ❌ 运行级不兼容 | Visual plugin marketplace for DeepSeek Harness — browse, search and install comm |
+| [dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) | 社区 | 792 | ⏳ 未测 | 解决DSH 官方尚无终端 TUI 痛点的补位之作，献给偏爱cli的各位极客：Claude Code 风格全屏交互终端插件——像素鲸鱼顶栏、实时工作状态行、思考流 |
+| [dsh-sidechain](https://github.com/omdsh-dev/dsh-sidechain) | 社区 | 4 | ❌ 运行级不兼容 | DSH 侧会话插件：/side 持续性侧会话（Codex 风格）与 /btw 一次性侧问（Claude 风格）——在临时 fork 中运行、不写入主会话历史；W |
+| [dsh-Solarized](https://github.com/zhijun-dai/dsh-Solarized) | 社区 | 0 | ⚠️ 待定 | Solarized + Selenized themes for DeepSeek Harness (dsh): four faithful palettes  |
 </details>
 
 *界面与交互增强插件：侧边栏、输入框、皮肤主题、面板 dock、消息显示、状态栏与可视化，让 Web 界面更顺手更好看*
 
 <details>
-<summary><h3>🤖 Agent 能力（26 + 171）</h3></summary>
+<summary><h3>🤖 Agent 能力（200）</h3></summary>
 
 *增强 agent 本身的能力：子代理管理、记忆与上下文、会话控制、规划执行、唤醒/睡眠、提示词与技能注入*
 
@@ -553,12 +556,15 @@ flowchart TB
 | [Liltloom](https://github.com/Adkid-Zephyr/Liltloom) | 社区 | ❌ 运行级不兼容 | 语织：中文优先、用户可控的 AI 写作风格记忆层，让 AI 学会你的表达，需要时再调用 |
 | [mindspace-dsh-session-memory](https://github.com/search?q=mindspace-dsh-session-memory) | 社区 | ❌ 运行级不兼容 | — |
 | [project-blueprint](https://github.com/shuguang1994/project-blueprint) | 社区 | ❌ 运行级不兼容 | Make any project AI-agent-ready in one command |
+| [dsh-review-skills](https://github.com/ben7am1n/dsh-review-skills) | 社区 | 2 | ⏳ 未测 | — |
+| [dsh-gpu](https://github.com/zytsyj/dsh-gpu) | 社区 | 1 | ⚠️ 待定 | GPU-aware execution layer for DeepSeek Harness: gpu_status / gpu_exec / gpu_run_ |
+| [dsh-noema](https://github.com/ZSeven-W/dsh-noema) | 社区 | 0 | ⚠️ 待定 | Noema long-term memory plugin for DSH: durable, inspectable agent memory with re |
 </details>
 
 *增强 agent 本身的能力：子代理管理、记忆与上下文、会话控制、规划执行、唤醒/睡眠、提示词与技能注入*
 
 <details>
-<summary><h3>💻 编码开发（15 + 214）</h3></summary>
+<summary><h3>💻 编码开发（233）</h3></summary>
 
 *面向编程场景的工具：代码操作、git 集成、终端、diff 与编辑器、文档生成、语言支持与构建辅助*
 
@@ -793,12 +799,16 @@ flowchart TB
 | [dsh-web-search-exa](https://github.com/TonyDua/dsh-web-search-exa) | 社区 | ❌ 运行级不兼容 | Zero-config Exa web search provider for DeepSeek Harness (dsh): keyless anonymou |
 | [dsh-win-terminal-inspector](https://github.com/clearkurt/dsh-win-terminal-inspector) | 社区 | ❌ 运行级不兼容 | Windows (win32) terminal inspection for DSH persistent/PTY shells |
 | [dsh4vscode](https://github.com/DoggyHU/dsh4vscode) | 社区 | ❌ 运行级不兼容 | DSH Chat for VS Code — DeepSeek Harness chat windows inside VS Code (OpenCode-st |
+| [billion-context-dsh](https://github.com/Tyan66666/billion-context-dsh) | 社区 | 7 | ✅ 运行级可用 | Model-driven context management (Active Context Pruning / ACP) for the DeepSeek  |
+| [dsh-web-search-firecrawl](https://github.com/yangzhe1003/dsh-web-search-firecrawl) | 社区 | 2 | ❌ 运行级不兼容 | Firecrawl-backed search provider plugin for the DeepSeek Harness web capability  |
+| [dsh-session-tree](https://github.com/ZhengQingJing/dsh-session-tree) | 社区 | 2 | ⚠️ 待定 | Git-like immutable session branching for DeepSeek Harness |
+| [dsh-task-planner](https://github.com/ztl34245881-commits/dsh-task-planner) | 社区 | 1 | ⚠️ 待定 | Task planning with experience muscle-memory for DeepSeek Harness: condition-refl |
 </details>
 
 *面向编程场景的工具：代码操作、git 集成、终端、diff 与编辑器、文档生成、语言支持与构建辅助*
 
 <details>
-<summary><h3>📡 消息通讯（6 + 72）</h3></summary>
+<summary><h3>📡 消息通讯（78）</h3></summary>
 
 *把 dsh 接入各类沟通渠道：微信/QQ/Telegram/飞书机器人、桌面通知、消息分享与跨端回复*
 
@@ -887,7 +897,7 @@ flowchart TB
 *把 dsh 接入各类沟通渠道：微信/QQ/Telegram/飞书机器人、桌面通知、消息分享与跨端回复*
 
 <details>
-<summary><h3>🗂 文件数据（25 + 43）</h3></summary>
+<summary><h3>🗂 文件数据（68）</h3></summary>
 
 *文件与数据处理：读写与格式转换、爬取抓取、数据库、编码识别、文档解析与知识库*
 
@@ -966,7 +976,7 @@ flowchart TB
 *文件与数据处理：读写与格式转换、爬取抓取、数据库、编码识别、文档解析与知识库*
 
 <details>
-<summary><h3>🎮 娱乐生活（7 + 27）</h3></summary>
+<summary><h3>🎮 娱乐生活（34）</h3></summary>
 
 *摸鱼与趣味：小游戏、桌面宠物、表情包、音乐、股票行情与旅行*
 
@@ -1011,7 +1021,7 @@ flowchart TB
 *摸鱼与趣味：小游戏、桌面宠物、表情包、音乐、股票行情与旅行*
 
 <details>
-<summary><h3>🛠 基建部署（23 + 43）</h3></summary>
+<summary><h3>🛠 基建部署（67）</h3></summary>
 
 *运行环境与分发：桌面/移动客户端、远程主机、浏览器桥、沙箱隔离、插件管理、更新与监控*
 
@@ -1083,12 +1093,13 @@ flowchart TB
 | [deepseek-harness-shell](https://github.com/1816586742-stack/deepseek-harness-shell) | 社区 | ❌ 运行级不兼容 | Community desktop shell for DeepSeek Harness — Electron, cross-platform, tray, a |
 | [desktop](https://github.com/search?q=desktop) | 社区 | ❌ 运行级不兼容 | — |
 | [dsh-kimi-browser](https://github.com/search?q=dsh-kimi-browser) | 社区 | ❌ 运行级不兼容 | — |
+| [dsh-plugin-ssh-remotes](https://github.com/zsmx233/dsh-plugin-ssh-remotes) | 社区 | 0 | ⚠️ 待定 | — |
 </details>
 
 *运行环境与分发：桌面/移动客户端、远程主机、浏览器桥、沙箱隔离、插件管理、更新与监控*
 
 <details>
-<summary><h3>📚 学习研究（8 + 1）</h3></summary>
+<summary><h3>📚 学习研究（9）</h3></summary>
 
 *学习与探索：技能包、插件开发指南、文档导航、评测基准与社区 onboarding*
 
@@ -1108,7 +1119,7 @@ flowchart TB
 *学习与探索：技能包、插件开发指南、文档导航、评测基准与社区 onboarding*
 
 <details>
-<summary><h3>❓ 其他（3 + 335）</h3></summary>
+<summary><h3>❓ 其他（343）</h3></summary>
 
 *描述缺失或暂未归类的仓库，补充信息后将细分*
 
@@ -1452,6 +1463,11 @@ flowchart TB
 | [localharness](https://github.com/search?q=localharness) | 社区 | ❌ 运行级不兼容 | — |
 | [logicprobe](https://github.com/search?q=logicprobe) | 社区 | ❌ 运行级不兼容 | — |
 | [mimo-vision](https://github.com/search?q=mimo-vision) | 社区 | ❌ 运行级不兼容 | — |
+| [dsh-balance](https://github.com/crazywoola/dsh-balance) | 社区 | 5 | ✅ 运行级可用 | DeepSeek Harness balance plugin for the Settings page |
+| [dsh-security-scan](https://github.com/search?q=dsh-security-scan) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-oauth-mcp-client](https://github.com/springbrand-lab/dsh-oauth-mcp-client) | 社区 | 6 | ⏳ 未测 | OAuth 2.1 Streamable HTTP MCP client plugin for DeepSeek Harness. |
+| [falsify-dsh](https://github.com/shi275773124/falsify-dsh) | 社区 | 1 | ⏳ 未测 | DeepSeek Harness adapter for the public Falsify CLI |
+| [TokenLedger](https://github.com/zh667/TokenLedger) | 社区 | 1 | ⚠️ 待定 | Token usage accounting for DeepSeek Harness, reconciled against New API and Sub2 |
 </details>
 
 *描述缺失或暂未归类的仓库，补充信息后将细分*
