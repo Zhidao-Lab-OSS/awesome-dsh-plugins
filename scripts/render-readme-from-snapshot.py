@@ -113,7 +113,7 @@ def main():
     if c.get("plugins"):
         t_readme = re.sub(r"(收录 )\d+( 个)", rf"\g<1>{c['plugins']}\g<2>", t_readme, count=1)
         t_readme = re.sub(r"(索引到)\d+( ?个? ?repos)", rf"\g<1>{cand_n}\g<2>", t_readme, count=1)
-        t_readme = re.sub(r"^\| 自动收录 \d+ 个仓库 \|$", f"| 自动收录 {c['plugins']} 个仓库 |",
+        t_readme = re.sub(r"^\| 自动收录 \| \d+ 个仓库 \|$", f"| 自动收录 | {c['plugins']} 个仓库 |",
                           t_readme, count=1, flags=re.M)
     dh = topo.get("discover_hours", 6)
     t_readme = re.sub(r"badge/scan-every_\d+h", f"badge/scan-every_{dh}h", t_readme, count=1)
