@@ -32,7 +32,7 @@ flowchart TB
     C1 --> D1{"判定 · 总 814"}
     D1 -->|"✅ 628 / ❌ 130"| E1["聚合 + README 分类统计"]
     D1 -->|"⚠️ 56 环境类重试"| C1
-    E1 --> E2["cadence 交付<br/>本周期增量 —/100<br/>双仓 bot PR（幂等 supersede）"]
+    E1 --> E2["cadence 交付<br/>本周期增量 23/100<br/>双仓 bot PR（幂等 supersede）"]
     S["⚖️ 静态四维轨（每日 02:00）"] -.-> E1
     M["🛡 radar-probe */15 自愈<br/>7 指标流 × 60s · 完成累计 1126"] -.-> A1
     M -.-> C1
@@ -1612,18 +1612,18 @@ DSH 插件生态交流群（微信群）：插件作者、维护者与使用者�
 ## 当前生态快照
 
 <!-- AUTO:ecosystem:START -->
-> 更新于 2026-08-14 16:29 · 每 8 小时刷新 · mainline `7b9644f`
+> 渲染于快照 20260814T213619Z（2026-08-14T21:36）· 数据源 data/snapshots/（渲染即对齐）
 
 | 证据层 | 当前结果 |
 |---|---:|
 | 自动收录 | 1253 个仓库 |
-| 静态综合判定 | 11 兼容 · 15 关注 · 4 需适配 |
+| 静态综合判定 | 277 / 286 兼容，9 需适配（静态轨 2026-08-13 · 经快照入仓） |
 | 证据不足 | 94 待调研 |
 | 其他 | 0 占位 · 0 不适用 · 0 已删除 |
 | 运行级实测 | ✅628 可用 · 130 不兼容 · 56 待定（共 814 个，k8s agent 口径）|
-| 正在跟踪的 PR | 0 |
+| 正在跟踪的 PR | 2（快照 deliver 口径） |
 
-[完整索引](reports/2026-08-13/index.md) · [静态矩阵](reports/2026-08-13/mainline-compat.md) · [编译实验](reports/2026-08-13/compile-compat.md) · [运行实测](reports/2026-08-13/runtime-test.md)
+[完整索引](reports/2026-08-15/index.md) · [静态矩阵](reports/2026-08-15/mainline-compat.md) · [编译实验](reports/2026-08-15/compile-compat.md) · [运行实测](reports/2026-08-15/agent-test.md)
 
 <details><summary>插件状态明细（按判定分群 · 与上方分类目录互补 · 默认折叠）</summary>
 
