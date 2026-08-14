@@ -104,6 +104,20 @@ def main():
     t_readme = re.sub(r"> 📌 数据截至快照 `[^\n]*\n+", "", t_readme)
     t_readme = re.sub(r"(## 工作原理\n)\n+", "\\1\\n" + anchor_line.replace("\\", "\\\\") + "\\n\\n", t_readme, count=1)
 
+    # ④b 开头数字面（保留人工措辞，仅替换数字）：
+    #    口号候选数（2500+ 样式，向下取整百）/ 导语收录数与索引数 / 证据层自动收录行 / scan 徽章节奏
+    cand_n = d.get("candidates") or 0
+    slogan_n = (int(cand_n) // 100) * 100 if cand_n else None
+    if slogan_n:
+        t_readme = re.sub(r"(自动发现 )\d+\+?( 候选)", rf"\g<1>{slogan_n}+\g<2>", t_readme, count=1)
+    if c.get("plugins"):
+        t_readme = re.sub(r"(收录 )\d+( 个)", rf"\g<1>{c['plugins']}\g<2>", t_readme, count=1)
+        t_readme = re.sub(r"(索引到)\d+( ?个? ?repos)", rf"\g<1>{cand_n}\g<2>", t_readme, count=1)
+        t_readme = re.sub(r"^\| 自动收录 \d+ 个仓库 \|$", f"| 自动收录 {c['plugins']} 个仓库 |",
+                          t_readme, count=1, flags=re.M)
+    dh = topo.get("discover_hours", 6)
+    t_readme = re.sub(r"badge/scan-every_\d+h", f"badge/scan-every_{dh}h", t_readme, count=1)
+
     # ⑤ CHANGELOG 运行级条目（快照模式下的唯一写入者；按 run_id 幂等）
     cl = ROOT / "CHANGELOG.md"
     if cl.exists():
