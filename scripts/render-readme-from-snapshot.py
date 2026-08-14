@@ -54,7 +54,7 @@ def fmt(x):
 
 def main():
     snap = latest_snapshot()
-    if not snap or snap.get("schema") != "radar-snapshot/1":
+    if not snap or not str(snap.get("schema", "")).startswith("radar-snapshot/"):
         print("[render] 无有效快照（radar-snapshot/1）— 保持 README 现状（安全停旧）")
         return 0
 
@@ -117,6 +117,15 @@ def main():
                           t_readme, count=1, flags=re.M)
     dh = topo.get("discover_hours", 6)
     t_readme = re.sub(r"badge/scan-every_\d+h", f"badge/scan-every_{dh}h", t_readme, count=1)
+
+    # ④c 目录对账：快照携带全量条目 → 补缺行 + 坍缩计数单值
+    try:
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from reconcile_catalog import reconcile_catalog
+        t_readme = reconcile_catalog(t_readme, snap.get("catalog_entries") or [])
+    except Exception as _e:
+        print(f"[render] WARN 目录对账跳过: {_e}")
 
     # ⑤ CHANGELOG 运行级条目（快照模式下的唯一写入者；按 run_id 幂等）
     cl = ROOT / "CHANGELOG.md"
