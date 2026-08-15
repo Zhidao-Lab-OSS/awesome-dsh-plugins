@@ -24,12 +24,12 @@
 
 ## 工作原理
 
-> 📌 数据截至快照 `20260814T213619Z`（2026-08-14T21:36:19+00:00 · 分类器 unified-v1）
+> 📌 数据截至快照 `20260815T060038Z`（2026-08-15T06:00:38+00:00 · 分类器 unified-v1）
 
 <!-- AUTO:pipeline:START -->
 ```mermaid
 flowchart TB
-    subgraph Discovery["🔍 发现（每 6 小时 · probe 每 15 分钟巡检触发）"]
+    subgraph Discovery["🔍 发现（每 6 小时 · probe */15 巡检触发）"]
         A1["GitHub Search<br/>topic ×2 + keyword ×5<br/>候选 2513 · 龄 366m"]
         A2["本地库补全 · 去重 repo id"]
         A3["🚫 私有 org 仓排除<br/>35s 错峰 · 403 退避 · dshow 黑名单"]
@@ -40,11 +40,11 @@ flowchart TB
     B1 -->|"插件 1253"| C1["k8s 运行级测试<br/>一插件一 pod · 并发 10<br/>dsh agent + Qwen（de-stream）"]
     B1 -->|"非插件（累计删 1064）"| B3["❌ 即删省空间"]
     C1 --> D1{"判定 · 总 814"}
-    D1 -->|"✅ 628 / ❌ 130"| E1["聚合 + README 分类统计"]
+    D1 -->|"✅ 629 / ❌ 129"| E1["聚合 + README 分类统计"]
     D1 -->|"⚠️ 56 环境类重试"| C1
-    E1 --> E2["cadence 交付<br/>本周期增量 23/100<br/>双仓 bot PR（幂等 supersede）"]
+    E1 --> E2["cadence 交付<br/>本周期增量 —/100<br/>双仓 bot PR（幂等 supersede）"]
     S["⚖️ 静态四维轨（每日 02:00）"] -.-> E1
-    M["🛡 radar-probe 每 15 分钟自愈<br/>7 指标流 × 60s · 完成累计 1126"] -.-> A1
+    M["🛡 radar-probe */15 自愈<br/>7 指标流 × 60s · 完成累计 1126"] -.-> A1
     M -.-> C1
 ```
 <!-- AUTO:pipeline:END -->
@@ -105,7 +105,7 @@ flowchart TB
 > 按功能领域分类（重分类修正）。点击标题展开，全部条目一次显示。 新收录条目（社区）的兼容性为**运行级跟踪口径**（k8s agent 实测）。 新收录条目（社区）的兼容性为**运行级跟踪口径**（k8s agent 实测）。
 
 <details>
-<summary><h3>🔌 Web UI 增强（247）</h3></summary>
+<summary><h3>🔌 Web UI 增强（254）</h3></summary>
 
 *界面与交互增强插件：侧边栏、输入框、皮肤主题、面板 dock、消息显示、状态栏与可视化，让 Web 界面更顺手更好看*
 
@@ -358,12 +358,19 @@ flowchart TB
 | [dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) | 社区 | 792 | ⏳ 未测 | 解决DSH 官方尚无终端 TUI 痛点的补位之作，献给偏爱cli的各位极客：Claude Code 风格全屏交互终端插件——像素鲸鱼顶栏、实时工作状态行、思考流 |
 | [dsh-sidechain](https://github.com/omdsh-dev/dsh-sidechain) | 社区 | 4 | ❌ 运行级不兼容 | DSH 侧会话插件：/side 持续性侧会话（Codex 风格）与 /btw 一次性侧问（Claude 风格）——在临时 fork 中运行、不写入主会话历史；W |
 | [dsh-Solarized](https://github.com/zhijun-dai/dsh-Solarized) | 社区 | 0 | ⚠️ 待定 | Solarized + Selenized themes for DeepSeek Harness (dsh): four faithful palettes  |
+| [dsh-codex-subscription](https://github.com/yequ172672/dsh-codex-subscription) | 社区 | 7 | ✅ 运行级可用 | DSH 插件:直接复用 Codex CLI 本地登录订阅凭证,在 DeepSeek Harness 中使用 ChatGPT 订阅模型,无需 API Key \|  |
+| [dsh-multimodal](https://github.com/MC5lan/dsh-multimodal) | 社区 | 3 | ✅ 运行级可用 | 给 DeepSeek 安装一双眼睛和一支画笔:会话里直接贴截图/图片,GLM 视觉模型先精确转写图片内容(报错信息、代码、界面逐字保留),然后 DeepSeek |
+| [dsh-session-manager](https://github.com/Vim0x3c/dsh-session-manager) | 社区 | 4 | ✅ 运行级可用 | DeepSeek Harness 会话管理设置面板：列出本机全部会话（运行中/空闲/已归档），支持继续会话、预览大纲、删除会话 \| Session manage |
+| [dsh-vision-proxy](https://github.com/Flyvhidbwo/dsh-vision-proxy) | 社区 | 7 | ✅ 运行级可用 | DeepSeek Harness 插件：DeepSeek 大脑 + 自动识图 |
+| [dsh-wallpaper](https://github.com/Gao-Yee/dsh-wallpaper) | 社区 | 3 | ✅ 运行级可用 | Custom wallpaper background for the dsh web GUI (light theme only): fixed cover  |
+| [dsh-virtual-workspace](https://github.com/KevinWen7415/dsh-virtual-workspace) | 社区 | 2 | ⏳ 未测 | Virtual Workspaces for DeepSeek Harness: a dynamic Cordis Plugin that groups mul |
+| [dsh-vision-bridge](https://github.com/x-Xin23/dsh-vision-bridge) | 社区 | 2 | ⏳ 未测 | 给 DeepSeek Harness 纯文本模型装上原生视觉（Windows）：粘贴即看图——预注入描述，模型首轮就看见，不用选模型、不用调工具；see_ima |
 </details>
 
 *界面与交互增强插件：侧边栏、输入框、皮肤主题、面板 dock、消息显示、状态栏与可视化，让 Web 界面更顺手更好看*
 
 <details>
-<summary><h3>🤖 Agent 能力（200）</h3></summary>
+<summary><h3>🤖 Agent 能力（211）</h3></summary>
 
 *增强 agent 本身的能力：子代理管理、记忆与上下文、会话控制、规划执行、唤醒/睡眠、提示词与技能注入*
 
@@ -569,12 +576,23 @@ flowchart TB
 | [dsh-review-skills](https://github.com/ben7am1n/dsh-review-skills) | 社区 | 2 | ⏳ 未测 | — |
 | [dsh-gpu](https://github.com/zytsyj/dsh-gpu) | 社区 | 1 | ⚠️ 待定 | GPU-aware execution layer for DeepSeek Harness: gpu_status / gpu_exec / gpu_run_ |
 | [dsh-noema](https://github.com/ZSeven-W/dsh-noema) | 社区 | 0 | ⚠️ 待定 | Noema long-term memory plugin for DSH: durable, inspectable agent memory with re |
+| [dsh-agent-sdk](https://github.com/search?q=dsh-agent-sdk) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-auto-approve](https://github.com/Jiao-XXX/dsh-auto-approve) | 社区 | 3 | ✅ 运行级可用 | 为 DeepSeek Harness 增加介于 Workspace Write 与 Full access 之间的自动批准权限档，危险或不确定操作仍转人工审批 |
+| [dsh-plugin-session-outline](https://github.com/search?q=dsh-plugin-session-outline) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-prompt-polish](https://github.com/search?q=dsh-prompt-polish) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-vqa-agent](https://github.com/search?q=dsh-vqa-agent) | 社区 | 0 | ✅ 运行级可用 | — |
+| [weshop-dsh-plugin](https://github.com/weshopai/weshop-dsh-plugin) | 社区 | 6 | ✅ 运行级可用 | Native WeShop Cordis plugin for DeepSeek Harness |
+| [deepseek-harness-evolver](https://github.com/shinjiyu/deepseek-harness-evolver) | 社区 | 1 | ⏳ 未测 | Complement to DSH Creator mode: stage, score, and solidify in-memory plugin tria |
+| [dsh-calendar](https://github.com/STARDUSTLC666/dsh-calendar) | 社区 | 3 | ⏳ 未测 | DeepSeek Harness 日历插件：calendar_list/create/update/delete/search 五工具，CalDAV 协议支持  |
+| [dsh-eval-harness](https://github.com/BiBoyang/dsh-eval-harness) | 社区 | 4 | ⏳ 未测 | DSH 插件评测工具：YAML 用例驱动真实 agent 回归评测 + baseline 对比 PASS/WARN/FAIL 门禁｜Regression eva |
+| [dsh-plugin-skill-panel](https://github.com/search?q=dsh-plugin-skill-panel) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-session-memory](https://github.com/search?q=dsh-session-memory) | 社区 | 0 | ❌ 运行级不兼容 | — |
 </details>
 
 *增强 agent 本身的能力：子代理管理、记忆与上下文、会话控制、规划执行、唤醒/睡眠、提示词与技能注入*
 
 <details>
-<summary><h3>💻 编码开发（233）</h3></summary>
+<summary><h3>💻 编码开发（247）</h3></summary>
 
 *面向编程场景的工具：代码操作、git 集成、终端、diff 与编辑器、文档生成、语言支持与构建辅助*
 
@@ -813,12 +831,26 @@ flowchart TB
 | [dsh-web-search-firecrawl](https://github.com/yangzhe1003/dsh-web-search-firecrawl) | 社区 | 2 | ❌ 运行级不兼容 | Firecrawl-backed search provider plugin for the DeepSeek Harness web capability  |
 | [dsh-session-tree](https://github.com/ZhengQingJing/dsh-session-tree) | 社区 | 2 | ⚠️ 待定 | Git-like immutable session branching for DeepSeek Harness |
 | [dsh-task-planner](https://github.com/ztl34245881-commits/dsh-task-planner) | 社区 | 1 | ⚠️ 待定 | Task planning with experience muscle-memory for DeepSeek Harness: condition-refl |
+| [dsh-codex-agent-bridge](https://github.com/search?q=dsh-codex-agent-bridge) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-codex-subs-plugin](https://github.com/search?q=dsh-codex-subs-plugin) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-failure-capsule](https://github.com/YiHarvest/dsh-failure-capsule) | 社区 | 2 | ✅ 运行级可用 | Local-first failure evidence capsules for DeepSeek Harness sessions |
+| [dsh-plugin-provider-quota](https://github.com/search?q=dsh-plugin-provider-quota) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-plugin-terminal](https://github.com/mervyn-teo/dsh-plugin-terminal) | 社区 | 2 | ✅ 运行级可用 | DeepSeek Harness Web plugin: a real PTY terminal in a VS Code-style collapsible  |
+| [dsh-qwen-mm](https://github.com/RRRosmontis/dsh-qwen-mm) | 社区 | 2 | ✅ 运行级可用 | Qwen-MM-Plugins integration bundle for DeepSeek Harness (dsh) — multimodal MCP t |
+| [dsh-token-usage](https://github.com/LeemanCheung/dsh-token-usage) | 社区 | 5 | ✅ 运行级可用 | Persistent token usage records and dashboard for DeepSeek Harness |
+| [dsh-update-checker](https://github.com/duntansen/dsh-update-checker) | 社区 | 2 | ✅ 运行级可用 | DSH web plugin: check DeepSeek Harness updates from Settings (dsh --version vs n |
+| [DeepSeek-Harness-VSCode-Extension](https://github.com/search?q=DeepSeek-Harness-VSCode-Extension) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-checkpoint-rewind](https://github.com/PerryLink/dsh-checkpoint-rewind) | 社区 | 3 | ⏳ 未测 | Claude Code /rewind for DeepSeek Harness — git-first workspace snapshots before  |
+| [dsh-guardian](https://github.com/akira399/dsh-guardian) | 社区 | 2 | ⏳ 未测 | DeepSeek Harness task-protection plugin: preflight scanner (catches missing inje |
+| [dsh-output-styles](https://github.com/PerryLink/dsh-output-styles) | 社区 | 3 | ⏳ 未测 | Claude Code outputStyles for DeepSeek Harness - session-scoped, durable, runtime |
+| [sidesight](https://github.com/search?q=sidesight) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-git-branch-switcher](https://github.com/search?q=dsh-git-branch-switcher) | 社区 | 0 | ❌ 运行级不兼容 | — |
 </details>
 
 *面向编程场景的工具：代码操作、git 集成、终端、diff 与编辑器、文档生成、语言支持与构建辅助*
 
 <details>
-<summary><h3>📡 消息通讯（78）</h3></summary>
+<summary><h3>📡 消息通讯（83）</h3></summary>
 
 *把 dsh 接入各类沟通渠道：微信/QQ/Telegram/飞书机器人、桌面通知、消息分享与跨端回复*
 
@@ -902,12 +934,17 @@ flowchart TB
 | [dsh-feishu-bridge](https://github.com/wz-heng/dsh-feishu-bridge) | 社区 | ❌ 运行级不兼容 | Feishu (Lark) channel bridge for DeepSeek Harness (dsh) — message a Feishu bot,  |
 | [dsh-feishu-gateway](https://github.com/kriskwok/dsh-feishu-gateway) | 社区 | ❌ 运行级不兼容 | DeepSeek Harness Feishu gateway plugin: chat with your DSH agent from Feishu (pe |
 | [dsh-suggested-replies](https://github.com/Anionex/dsh-suggested-replies) | 社区 | ❌ 运行级不兼容 | DSH Web 预测回复插件：AI 回复后在输入框上方生成可点击填入草稿的下一步消息候选 |
+| [dsh-bottom-stats](https://github.com/search?q=dsh-bottom-stats) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-plugin-web-notify](https://github.com/search?q=dsh-plugin-web-notify) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-task-notify](https://github.com/ltao0829/dsh-task-notify) | 社区 | 4 | ✅ 运行级可用 | DeepSeek Harness task-completion reminder plugin |
+| [dsh-voice](https://github.com/3274375092/dsh-voice) | 社区 | 3 | ✅ 运行级可用 | DeepSeek Harness 的语音输入插件:网页里点 🎤(或按Ctrl+空格)说话,识别文本作为普通消息提交进会话 |
+| [dsh-slack](https://github.com/STARDUSTLC666/dsh-slack) | 社区 | 4 | ⏳ 未测 | DeepSeek Harness Slack 插件：slack_notify/channels/inbox/reply 四工具，Socket Mode 免公网回 |
 </details>
 
 *把 dsh 接入各类沟通渠道：微信/QQ/Telegram/飞书机器人、桌面通知、消息分享与跨端回复*
 
 <details>
-<summary><h3>🗂 文件数据（68）</h3></summary>
+<summary><h3>🗂 文件数据（70）</h3></summary>
 
 *文件与数据处理：读写与格式转换、爬取抓取、数据库、编码识别、文档解析与知识库*
 
@@ -981,12 +1018,14 @@ flowchart TB
 | [dsh-archived-conversations](https://github.com/hxyz486/dsh-archived-conversations) | 社区 | ❌ 运行级不兼容 | 归档对话查看 (archived-conversation-viewer)：在 DSH 设置页查看、恢复与删除归档会话的 Cordis 插件 |
 | [dsh-vision-fix](https://github.com/zhouwumu2-lab/dsh-vision-fix) | 社区 | ❌ 运行级不兼容 | Temporary fork for PR: fix dsh.plugin.json in files |
 | [dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit) | 社区 | ❌ 运行级不兼容 | 让纯文本模型更好地做视觉任务的DeepSeek Harness插件：带意图的图片问答、长截图 OCR、UI 还原等｜DeepSeek Harness-nativ |
+| [dsh-PaddleOCR-Skills](https://github.com/search?q=dsh-PaddleOCR-Skills) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-usage-stats](https://github.com/lanlandeli/dsh-usage-stats) | 社区 | 5 | ⏳ 未测 | DeepSeek Harness 使用统计插件｜Token 总量与构成、7/30 天趋势、年度活跃热力图、模型占比、工作区/任务筛选、CSV/JSON 导出 |
 </details>
 
 *文件与数据处理：读写与格式转换、爬取抓取、数据库、编码识别、文档解析与知识库*
 
 <details>
-<summary><h3>🎮 娱乐生活（34）</h3></summary>
+<summary><h3>🎮 娱乐生活（36）</h3></summary>
 
 *摸鱼与趣味：小游戏、桌面宠物、表情包、音乐、股票行情与旅行*
 
@@ -1026,12 +1065,14 @@ flowchart TB
 | [harness-pet](https://github.com/cakeni/harness-pet) | 社区 | ⏳ 未测 | Harness Pet — an unofficial community pet for DeepSeek Harness |
 | [remielle-dsh-plugin](https://github.com/jackuh105/remielle-dsh-plugin) | 社区 | ⏳ 未测 | Remielle desktop pet for DeepSeek Harness — session events drive the pet's anima |
 | [dsh-plugin-text-translation](https://github.com/1738348785/dsh-plugin-text-translation) | 社区 | ❌ 运行级不兼容 | DSH plugin: text & document localization with tag-protected extraction, batch sl |
+| [dsh-pet-zhuangfangyi](https://github.com/search?q=dsh-pet-zhuangfangyi) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-whale-pet](https://github.com/lglglglgy/dsh-whale-pet) | 社区 | 3 | ✅ 运行级可用 | dsh-whale-pet |
 </details>
 
 *摸鱼与趣味：小游戏、桌面宠物、表情包、音乐、股票行情与旅行*
 
 <details>
-<summary><h3>🛠 基建部署（67）</h3></summary>
+<summary><h3>🛠 基建部署（72）</h3></summary>
 
 *运行环境与分发：桌面/移动客户端、远程主机、浏览器桥、沙箱隔离、插件管理、更新与监控*
 
@@ -1104,12 +1145,17 @@ flowchart TB
 | [desktop](https://github.com/search?q=desktop) | 社区 | ❌ 运行级不兼容 | — |
 | [dsh-kimi-browser](https://github.com/search?q=dsh-kimi-browser) | 社区 | ❌ 运行级不兼容 | — |
 | [dsh-plugin-ssh-remotes](https://github.com/zsmx233/dsh-plugin-ssh-remotes) | 社区 | 0 | ⚠️ 待定 | — |
+| [dsh-desk](https://github.com/majiayu000/dsh-desk) | 社区 | 5 | ✅ 运行级可用 | Installable Tauri desktop distribution for DeepSeek Harness with a bundled runti |
+| [dsh-update-radar](https://github.com/search?q=dsh-update-radar) | 社区 | 0 | ✅ 运行级可用 | — |
+| [upstream-radar](https://github.com/MicroMilo/upstream-radar) | 社区 | 3 | ✅ 运行级可用 | Always-on vulnerability and breaking-change impact monitoring for DeepSeek Harne |
+| [DSH-Desktop](https://github.com/JustGenius-s/DSH-Desktop) | 社区 | 20 | ⏳ 未测 | DSH-Desktop |
+| [dsh-desktop-window](https://github.com/search?q=dsh-desktop-window) | 社区 | 0 | ⏳ 未测 | — |
 </details>
 
 *运行环境与分发：桌面/移动客户端、远程主机、浏览器桥、沙箱隔离、插件管理、更新与监控*
 
 <details>
-<summary><h3>📚 学习研究（9）</h3></summary>
+<summary><h3>📚 学习研究（10）</h3></summary>
 
 *学习与探索：技能包、插件开发指南、文档导航、评测基准与社区 onboarding*
 
@@ -1124,12 +1170,13 @@ flowchart TB
 | [zotero-harvest](https://github.com/dsh-external/zotero-harvest) | 插件 | 待调研 | Zotero 文献采集入库插件（DSH external plugin）：多源检索（OpenAlex/arXiv/Crossref/Europe PMC/Sem |
 | [dsh-review-skills](https://github.com/ben7am1n/dsh-review-skills) | 插件 | 待调研 | 代码评审技能集 |
 | [dsh-scholar](https://github.com/202411130091-coder/dsh-scholar) | 社区 | ✅ 运行级可用 | Research tools for DeepSeek Harness: arXiv search, HTML/PDF text extraction with |
+| [dsh-plugin-auto-docs](https://github.com/search?q=dsh-plugin-auto-docs) | 社区 | 0 | ⏳ 未测 | — |
 </details>
 
 *学习与探索：技能包、插件开发指南、文档导航、评测基准与社区 onboarding*
 
 <details>
-<summary><h3>❓ 其他（343）</h3></summary>
+<summary><h3>❓ 其他（466）</h3></summary>
 
 *描述缺失或暂未归类的仓库，补充信息后将细分*
 
@@ -1478,6 +1525,129 @@ flowchart TB
 | [dsh-oauth-mcp-client](https://github.com/springbrand-lab/dsh-oauth-mcp-client) | 社区 | 6 | ⏳ 未测 | OAuth 2.1 Streamable HTTP MCP client plugin for DeepSeek Harness. |
 | [falsify-dsh](https://github.com/shi275773124/falsify-dsh) | 社区 | 1 | ⏳ 未测 | DeepSeek Harness adapter for the public Falsify CLI |
 | [TokenLedger](https://github.com/zh667/TokenLedger) | 社区 | 1 | ⚠️ 待定 | Token usage accounting for DeepSeek Harness, reconciled against New API and Sub2 |
+| [computer-use-plus](https://github.com/search?q=computer-use-plus) | 社区 | 0 | ✅ 运行级可用 | — |
+| [deepseek-harness-dsh-plugin-hub](https://github.com/search?q=deepseek-harness-dsh-plugin-hub) | 社区 | 0 | ✅ 运行级可用 | — |
+| [deepseek-harness-plugin-from-scratch](https://github.com/search?q=deepseek-harness-plugin-from-scratch) | 社区 | 0 | ✅ 运行级可用 | — |
+| [DeepSeekHarnessThirdModelThinkMgr](https://github.com/search?q=DeepSeekHarnessThirdModelThinkMgr) | 社区 | 0 | ✅ 运行级可用 | — |
+| [ds-vision-plugin](https://github.com/search?q=ds-vision-plugin) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-all-search](https://github.com/search?q=dsh-all-search) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-angry](https://github.com/search?q=dsh-angry) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-auto-review](https://github.com/search?q=dsh-auto-review) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-bg-image](https://github.com/search?q=dsh-bg-image) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-bg-wallpaper](https://github.com/search?q=dsh-bg-wallpaper) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-bisect-debug](https://github.com/search?q=dsh-bisect-debug) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-blue-whale-maid](https://github.com/yuxino/dsh-blue-whale-maid) | 社区 | 3 | ✅ 运行级可用 | 运行在 deepseek harness 上的女仆酱 |
+| [dsh-cache-stabilizer](https://github.com/search?q=dsh-cache-stabilizer) | 社区 | 0 | ✅ 运行级可用 | — |
+| [DSH-Chrome-devtools](https://github.com/search?q=DSH-Chrome-devtools) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-composer-enter](https://github.com/search?q=dsh-composer-enter) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-crosstalk](https://github.com/search?q=dsh-crosstalk) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-deepseek-price-timer](https://github.com/search?q=dsh-deepseek-price-timer) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-deepseek-usage-dashboard](https://github.com/search?q=dsh-deepseek-usage-dashboard) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-douyin](https://github.com/search?q=dsh-douyin) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-figma-to-lottie](https://github.com/search?q=dsh-figma-to-lottie) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-file-changes](https://github.com/search?q=dsh-file-changes) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-fleet-audit](https://github.com/search?q=dsh-fleet-audit) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-governance](https://github.com/search?q=dsh-governance) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-history](https://github.com/search?q=dsh-history) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-host-web-compat](https://github.com/search?q=dsh-host-web-compat) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-hotswap](https://github.com/search?q=dsh-hotswap) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-im-gateway](https://github.com/search?q=dsh-im-gateway) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-im-hub](https://github.com/search?q=dsh-im-hub) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-landscape](https://github.com/search?q=dsh-landscape) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-llm-proxy](https://github.com/search?q=dsh-llm-proxy) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-local-filetree](https://github.com/search?q=dsh-local-filetree) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-marketplace-entry](https://github.com/search?q=dsh-marketplace-entry) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-mcpguard](https://github.com/search?q=dsh-mcpguard) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-message-navigator](https://github.com/search?q=dsh-message-navigator) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-metaplugin](https://github.com/search?q=dsh-metaplugin) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-mic-input](https://github.com/search?q=dsh-mic-input) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-nanobananapro](https://github.com/search?q=dsh-nanobananapro) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-oauth-api](https://github.com/search?q=dsh-oauth-api) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-observer](https://github.com/search?q=dsh-observer) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-ops-kit-legacy](https://github.com/search?q=dsh-ops-kit-legacy) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-patchouli](https://github.com/search?q=dsh-patchouli) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-playwright-native](https://github.com/search?q=dsh-playwright-native) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-plugin-connection-banner](https://github.com/search?q=dsh-plugin-connection-banner) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-plugin-shady-relay](https://github.com/search?q=dsh-plugin-shady-relay) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-plugin-task-notification](https://github.com/search?q=dsh-plugin-task-notification) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-plugin-vision-toolkit](https://github.com/search?q=dsh-plugin-vision-toolkit) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-read-history](https://github.com/search?q=dsh-read-history) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-safe-web-fetch](https://github.com/search?q=dsh-safe-web-fetch) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-seedance2](https://github.com/search?q=dsh-seedance2) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-system-control](https://github.com/search?q=dsh-system-control) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-task-relay](https://github.com/search?q=dsh-task-relay) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-turn-index](https://github.com/search?q=dsh-turn-index) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-upstream-watch](https://github.com/search?q=dsh-upstream-watch) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-vision-android](https://github.com/search?q=dsh-vision-android) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-vlm-bridge](https://github.com/search?q=dsh-vlm-bridge) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-web-search-brave](https://github.com/search?q=dsh-web-search-brave) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dsh-worktrees](https://github.com/search?q=dsh-worktrees) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dshbase-catalog](https://github.com/search?q=dshbase-catalog) | 社区 | 0 | ✅ 运行级可用 | — |
+| [harnessproof](https://github.com/search?q=harnessproof) | 社区 | 0 | ✅ 运行级可用 | — |
+| [jina-web-search-dsh-plugin](https://github.com/search?q=jina-web-search-dsh-plugin) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dash](https://github.com/search?q=dash) | 社区 | 0 | ⏳ 未测 | — |
+| [deep-flow](https://github.com/search?q=deep-flow) | 社区 | 0 | ⏳ 未测 | — |
+| [deepseek-channel-octo](https://github.com/search?q=deepseek-channel-octo) | 社区 | 0 | ⏳ 未测 | — |
+| [deepseekex](https://github.com/search?q=deepseekex) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-academic-research](https://github.com/search?q=dsh-academic-research) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-audio-dub](https://github.com/search?q=dsh-audio-dub) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-auth](https://github.com/search?q=dsh-auth) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-byok](https://github.com/search?q=dsh-byok) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-catnap-studio](https://github.com/search?q=dsh-catnap-studio) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-client-plugin-approve-for-me](https://github.com/search?q=dsh-client-plugin-approve-for-me) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-deepseek-balance](https://github.com/search?q=dsh-deepseek-balance) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-deeptutor](https://github.com/search?q=dsh-deeptutor) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-document-parser](https://github.com/search?q=dsh-document-parser) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-ergonomics](https://github.com/search?q=dsh-ergonomics) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-file-mentions](https://github.com/search?q=dsh-file-mentions) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-fork](https://github.com/search?q=dsh-fork) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-fusion](https://github.com/search?q=dsh-fusion) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-goal-mode-enhance](https://github.com/search?q=dsh-goal-mode-enhance) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-LAN](https://github.com/search?q=dsh-LAN) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-mac-vision](https://github.com/search?q=dsh-mac-vision) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-memsearch](https://github.com/search?q=dsh-memsearch) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-model-router](https://github.com/superboy911/dsh-model-router) | 社区 | 2 | ⏳ 未测 | DSH model-routing plugin for keyword routing and isolated image generation / DSH |
+| [dsh-native-playbook](https://github.com/search?q=dsh-native-playbook) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-np-ppt](https://github.com/search?q=dsh-np-ppt) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-oai-oauth](https://github.com/search?q=dsh-oai-oauth) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-omnibridge](https://github.com/search?q=dsh-omnibridge) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-onlyne](https://github.com/search?q=dsh-onlyne) | 社区 | 0 | ⏳ 未测 | — |
+| [DSH-plugin](https://github.com/Euan-Zhang/DSH-plugin) | 社区 | 0 | ⏳ 未测 | 存放deepseek harness的相关插件 |
+| [dsh-plugin-balance](https://github.com/lmmzss-jk/dsh-plugin-balance) | 社区 | 2 | ⏳ 未测 | dsh-plugin-balance |
+| [dsh-plugin-balance-panel](https://github.com/search?q=dsh-plugin-balance-panel) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-plugin-file-manager](https://github.com/search?q=dsh-plugin-file-manager) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-plugin-vision](https://github.com/MoneShadow/dsh-plugin-vision) | 社区 | 0 | ⏳ 未测 | 一个可以让没有视觉的大模型拥有视觉能力的插件（当然，是通过外挂视觉模型实现的） |
+| [dsh-plugin-workspace-rules](https://github.com/search?q=dsh-plugin-workspace-rules) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-polling](https://github.com/search?q=dsh-polling) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-projects](https://github.com/search?q=dsh-projects) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-question-anchors](https://github.com/search?q=dsh-question-anchors) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-repro](https://github.com/search?q=dsh-repro) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-seismicx](https://github.com/search?q=dsh-seismicx) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-tailscale-console](https://github.com/search?q=dsh-tailscale-console) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-tavily-search](https://github.com/search?q=dsh-tavily-search) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-tavily-web-search](https://github.com/search?q=dsh-tavily-web-search) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-tiered-approval](https://github.com/search?q=dsh-tiered-approval) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-tmuxctl](https://github.com/search?q=dsh-tmuxctl) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-token-viewer](https://github.com/search?q=dsh-token-viewer) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-tool-hackernews](https://github.com/search?q=dsh-tool-hackernews) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-toolbelt](https://github.com/search?q=dsh-toolbelt) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-web-auto-open](https://github.com/search?q=dsh-web-auto-open) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-zen-proxy](https://github.com/search?q=dsh-zen-proxy) | 社区 | 0 | ⏳ 未测 | — |
+| [governed-workflow-for-dsh](https://github.com/search?q=governed-workflow-for-dsh) | 社区 | 0 | ⏳ 未测 | — |
+| [matlab-modelsim-vivado-plugin](https://github.com/search?q=matlab-modelsim-vivado-plugin) | 社区 | 0 | ⏳ 未测 | — |
+| [trae-dsh-plugin](https://github.com/search?q=trae-dsh-plugin) | 社区 | 0 | ⏳ 未测 | — |
+| [dsh-apple-mode](https://github.com/search?q=dsh-apple-mode) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [dsh-ark-quota](https://github.com/search?q=dsh-ark-quota) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [dsh-review-loop](https://github.com/search?q=dsh-review-loop) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [dsh-web-search-exa](https://github.com/search?q=dsh-web-search-exa) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [dsh-gpu](https://github.com/search?q=dsh-gpu) | 社区 | 0 | ⚠️ 待定 | — |
+| [dsh-rich-file-reader](https://github.com/search?q=dsh-rich-file-reader) | 社区 | 0 | ⚠️ 待定 | — |
+| [dsh-show-image](https://github.com/search?q=dsh-show-image) | 社区 | 0 | ⚠️ 待定 | — |
+| [dsh-Solarized](https://github.com/search?q=dsh-Solarized) | 社区 | 0 | ⚠️ 待定 | — |
+| [dsh-token-dashboard](https://github.com/search?q=dsh-token-dashboard) | 社区 | 0 | ⚠️ 待定 | — |
+| [dsh-wanghong-handwritten-ppt](https://github.com/search?q=dsh-wanghong-handwritten-ppt) | 社区 | 0 | ⚠️ 待定 | — |
+| [dsh-workspace-enhance](https://github.com/search?q=dsh-workspace-enhance) | 社区 | 0 | ⚠️ 待定 | — |
+| [silk-background](https://github.com/search?q=silk-background) | 社区 | 0 | ⚠️ 待定 | — |
 </details>
 
 *描述缺失或暂未归类的仓库，补充信息后将细分*
@@ -1630,7 +1800,7 @@ DSH 插件社区讨论群（微信群）：插件作者、维护者与使用者�
 | 静态综合判定 | 277 / 286 兼容，9 需适配（静态轨 2026-08-13 · 经快照入仓） |
 | 证据不足 | 94 待调研 |
 | 其他 | 0 占位 · 0 不适用 · 0 已删除 |
-| 运行级实测 | ✅628 可用 · 130 不兼容 · 56 待定（共 814 个，k8s agent 口径）|
+| 运行级实测 | ✅629 可用 · 129 不兼容 · 56 待定（共 814 个，k8s agent 口径）|
 | 正在跟踪的 PR | 2（快照 deliver 口径） |
 
 [完整索引](reports/2026-08-15/index.md) · [静态矩阵](reports/2026-08-15/mainline-compat.md) · [编译实验](reports/2026-08-15/compile-compat.md) · [运行实测](reports/2026-08-15/agent-test.md)
