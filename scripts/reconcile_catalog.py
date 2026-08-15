@@ -65,20 +65,35 @@ def reconcile_catalog(readme_text: str, entries: list) -> str:
     # ②b 已有行刷新：star 数值化更新 + 判定仅更新「运行级口径」单元格（兼容/关注/需适配等策展标签不动）
     ent = {e["name"]: e for e in entries}
     for i in range(i_start, i_end):
-        m = re.match(r"\|\s*\[([^\]]+)\]\(([^)]*)\)\s*\|\s*([^|]+)\|\s*([^|]*)\|\s*([^|]*)\|\s*(.*?)\|\s*$", lines[i].rstrip("\n"))
+        # 兼容 4 列（插件|类型|兼容性|说明）与 5 列（+⭐）两种行格式
+        raw = lines[i].rstrip("\n")
+        m5 = re.match(r"\|\s*\[([^\]]+)\]\(([^)]*)\)\s*\|\s*([^|]+)\|\s*([^|]*)\|\s*([^|]*)\|\s*(.*?)\|\s*$", raw)
+        m4 = re.match(r"\|\s*\[([^\]]+)\]\(([^)]*)\)\s*\|\s*([^|]+)\|\s*([^|]*)\|\s*(.*?)\|\s*$", raw)
+        m = m5 or m4
         if not m:
             continue
         name = m.group(1).strip()
         if name not in ent:
             continue
         e = ent[name]
-        typ, star, verdict, desc = m.group(3).strip(), m.group(4).strip(), m.group(5).strip(), m.group(6)
-        new_star = str(e["star"]) if str(e["star"]) != "None" and star != "—" else star
-        cur = ent_cur = verdict
-        new_verdict = verdict
-        if verdict and verdict[0] in "✅❌⚠️⏳" or verdict == "待调研":
+        if m5:
+            typ, star, verdict, desc = m.group(3).strip(), m.group(4).strip(), m.group(5).strip(), m.group(6)
+        else:
+            typ, verdict, desc = m.group(3).strip(), m.group(4).strip(), m.group(5)
+            star = None
+        new_star = str(e.get("star", "—")) if star is not None else None
+        new_verdict, new_url = verdict, m.group(2)
+        was_pending = verdict == "待调研"
+        if (verdict and verdict[0] in "✅❌⚠️⏳") or was_pending:
             new_verdict = e["verdict"]
-        if new_star != star or new_verdict != verdict:
-            lines[i] = f"| [{name}]({m.group(2)}) | {typ} | {new_star} | {new_verdict} | {desc} |\n"
+            if was_pending and e.get("url"):
+                new_url = e["url"]  # 待调研策展行获得实测证据时，指向被测公有仓
+        changed = (new_verdict != verdict) or (new_star is not None and star is not None and new_star != star) or new_url != m.group(2)
+        if changed:
+            star_cell = new_star if star is not None else ""
+            sep = " | " if star is not None else " | "
+            lines[i] = (f"| [{name}]({new_url}) | {typ} |" +
+                        (f" {new_star} |" if star is not None else "") +
+                        f" {new_verdict} | {desc} |\n")
 
     return "".join(lines)
