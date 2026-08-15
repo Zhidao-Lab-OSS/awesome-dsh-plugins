@@ -128,9 +128,11 @@ def main():
         print(f"[render] WARN 目录对账跳过: {_e}")
 
     # ④d 生态快照块：头行时间戳 / 静态轨行（读仓内最新 mainline-compat）/ 跟踪 PR / 报告链接
-    t_readme = re.sub(r"更新于 [0-9-]+ [0-9:]+ · 每 \d+ 小时刷新[^\n]*",
-                      f"渲染于快照 {snap['run_id']}（{snap['generated_at'][:16]}）· 数据源 data/snapshots/（渲染即对齐）",
-                      t_readme, count=1)
+    # 幂等头行：同时匹配原始「更新于…」与本渲染器产出的「渲染于快照…」两种形态
+    t_readme = re.sub(
+        r"(更新于 [0-9-]+ [0-9:]+ · 每 \d+ 小时刷新[^\n]*|渲染于快照 [^（（]*（[^）]*）· 数据源 [^\n]*)",
+        f"渲染于快照 {snap['run_id']}（{snap['generated_at'][:16]}）· 数据源 data/snapshots/（渲染即对齐）",
+        t_readme, count=1)
     # 静态轨：快照携带（Bot A 从远程最新 mainline-compat 读取入快照）
     st = snap.get("static") or {}
     if st.get("summary"):
