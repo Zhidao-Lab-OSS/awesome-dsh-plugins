@@ -57,7 +57,7 @@ flowchart TB
 |---|---|
 | 看热门插件 | [🔥 Star Top 20](#-热门插件star-top-20) |
 | 按用途找一个插件 | [📋 分类目录](#分类目录) · [PLUGINS.md](PLUGINS.md) — 9 大功能领域 + 兼容性状态 |
-| 浏览自动发现的全部仓库 | [📊 当前生态快照](#当前生态快照) — 日期化兼容矩阵 |
+| 浏览自动发现的全部仓库 | [📊 当前生态快照](#当前生态快照) — 日期化兼容矩阵 · [全量清单](PLUGINS-ALL.md)（非表格版 · 统一四档口径） |
 | 了解最近发生了什么 | [📝 CHANGELOG](CHANGELOG.md) |
 | 登记或提交插件 | [🔧 给插件开发者](#给插件开发者) · 加 `dsh-plugin` topic → 8h 自动收录 · [PR 模板](.github/PULL_REQUEST_TEMPLATE.md) |
 | 维护本雷达 | [⚙️ 自动化 SOP](docs/SOP.md) |
