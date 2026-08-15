@@ -1,21 +1,24 @@
 # 全量插件清单（统一四档口径）
 
-> 数据源：radar 快照双轮合并——基底 `20260814T213619Z`（2026-08-15 05:36 UTC+8 · 全量 1253 含未测）⊕ 增量轮 `20260815T151237Z`（2026-08-15 23:12 UTC+8 · 548 个新增候选，全部已判定）。
-> 呈现方式：分组列表（状态 · 名称 ⭐ · 一句话说明），不使用大表格（避免 GitHub 渲染压缩）。
+> 数据源：radar 快照双轮并集（基底 `20260814T213619Z` 2026-08-15 05:36 UTC+8 ⊕ 增量 `20260815T151237Z` 2026-08-15 23:12 UTC+8）+ GitHub 定位复核（2026-08-16）。
+> 呈现：分组列表（状态 · 名称 ⭐ · 一句话说明），不使用大表格。
 
 ## 统一度量衡
 
-单一**运行级四档口径**（k8s 容器实测：一插件一 pod · 并发 10 · 3 次重试全败判不兼容）：
+**判定维度**（运行级四档，仅已定位条目 1709 个进入统计）：
 
-- ✅ **运行级可用**（995）— 真实加载并完成验证
-- ❌ **运行级不兼容**（282）— 依赖/沙箱/内部包硬失败
-- ⚠️ **待定**（70）— 环境故障未完成判定（不是部分兼容）
-- · **未测**（454）— 尚未派发
+- ✅ **运行级可用**（945）/ ❌ **运行级不兼容**（266）/ ⚠️ **待定**（61）/ · **未测**（437）
+
+**定位维度**（与判定正交；监测中条目不显示对错判定）：
+
+- 👁 **空仓监测中**（51）— GitHub 复核无此仓库（可能已删/转私有/从未公开），本体仅存于 radar 本地验证池；待其重现后恢复判定显示
+- 👁 **定位歧义监测中**（41）— GitHub 存在多个同名仓库，无法锁定被测本体；判定结果保留在快照层，锁定前不展示
+- 定位复核修复 643 个占位 URL → 真实仓库地址
 
 > **测试版本**：dsh（容器内 agent）+ Qwen3.6-35B（de-stream 代理）· k8s 5 分片 · 轮次以快照 run_id 锚定。
 > 〔PR〕= 经已合并 PR 正式登记；收录 ≠ 兼容 ≠ 运行可用 ≠ 安全审计。
 
-## 汇总：1801 条（基底 1253 ⊕ 增量 548）· 已合并 PR 登记 101 个
+## 汇总：1801 条（已定位 1709 · 监测中 92）· PR 登记 101 个
 
 ## 🔌 Web UI 增强（292）
 
@@ -195,22 +198,22 @@
 - ⚠️ [silk-background](https://github.com/z21for99/silk-background) ⭐1 — DSH Web GUI 客户端插件：WebGL Silk 丝绸动态背景 + 全站玻璃化皮肤（官方主题 token 覆盖，零依赖） \| WebGL silk sh
 - · [deep-flow](https://github.com/hunterxxn/deep-flow) ⭐0 — deepseek-harness tui
 - · [deepseek-harness-auth](https://github.com/Reyeraz/deepseek-harness-auth) ⭐0 — Sign-in / sign-up window plugin for DeepSeek Harness Web UI, with a built-in dem
-- · **deepseekharness-claude-theme** ⭐0 — —（URL 占位）
+- · [deepseekharness-claude-theme](https://github.com/luckbug0817/deepseekharness-claude-theme) ⭐0 — —
 - ❌ [deepseek-harness-flow](https://github.com/alison-xx/deepseek-harness-flow) ⭐0 — Visual workflows and multi-model evaluation for DeepSeek Harness
 - ✅ [DeepSeekHarnessThirdModelThinkMgr](https://github.com/Lenonss/DeepSeekHarnessThirdModelThinkMgr) ⭐0 — 支持DeepSeekHarness上配置第三方模型的思考选择项，在对话界面实时选择
 - ✅ [deepseek_harness_ui_schema_fix](https://github.com/sixsixla/deepseek_harness_ui_schema_fix) ⭐0 — —
 - ✅ [deepseek-harness-vscode](https://github.com/urwff/deepseek-harness-vscode) ⭐0 — Run DeepSeek Harness in the VS Code sidebar, Claude Code for VS Code style
 - · [DeepSeek-Harness-VSCode-Extension](https://github.com/jotarozaku-jpg/DeepSeek-Harness-VSCode-Extension) ⭐0 — Unofficial source-only Visual Studio Code client for DeepSeek Harness over ACP.
 - ✅ [dsh-agent-sdk](https://github.com/salathleizhang/dsh-agent-sdk) ⭐0 — Embeddable, plugin-based coding-agent runtime built on DeepSeek Harness
-- ✅ **dsh-aigc-canvas** ⭐0 — —（URL 占位）
-- ✅ **dsh-anti-ads** ⭐0 — —（URL 占位）
-- ✅ **dsh-atuin** ⭐0 — —（URL 占位）
+- 👁 **dsh-aigc-canvas** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- 👁 **dsh-anti-ads** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [dsh-atuin](https://github.com/RealAlexandreAI/dsh-atuin) ⭐0 — —
 - · [dsh-auth](https://github.com/cestbon0309/dsh-auth) ⭐0 — A plugin that allows you to configure access password for dsh webui, and access
 - ✅ [dsh-bg-image](https://github.com/lyh9712/dsh-bg-image) ⭐0 — DSH (DeepSeek Harness) Web 背景图插件：自定义网页背景壁纸，侧边栏/聊天区半透明磨砂，带设置界面
 - ✅ [dsh-bg-wallpaper](https://github.com/roseplanetb613/dsh-bg-wallpaper) ⭐0 — DeepSeek Harness Web GUI wallpaper plugin bundle: serve a local image as the pag
 - ✅ [dsh-bottom-stats](https://github.com/318197375/dsh-bottom-stats) ⭐0 — DSH plugin: full-width conversation stats line (no truncation) + context occupan
 - · [dsh-client-ui-side-chat](https://github.com/Rookiecom/dsh-client-ui-side-chat) ⭐0 — Side Chat branching client plugin for DeepSeek Harness
-- ❌ **dsh-custom-css** ⭐0 — —（URL 占位）
+- ❌ [dsh-custom-css](https://github.com/AnacondaKC/dsh-custom-css) ⭐0 — —
 - · [dsh-deepseek-balance](https://github.com/wangxiang0605qvq/dsh-deepseek-balance) ⭐0 — DeepSeek 余额插件：模型工具 + 侧边栏余额胶囊 \| DeepSeek balance plugin for DSH: model tool + sid
 - · [dsh-desktop-window](https://github.com/hxwi1/dsh-desktop-window) ⭐0 — Desktop window for the DeepSeek Harness WebUI (Cordis plugin)
 - · [dsh-download-monitor](https://github.com/keepermttl/dsh-download-monitor) ⭐0 — DSH Web GUI download monitor plugin
@@ -226,17 +229,17 @@
 - ✅ [dsh-plugin-provider-quota](https://github.com/jasper-zsh/dsh-plugin-provider-quota) ⭐0 — DeepSeek Harness（DSH） 的 Web 插件：在对话输入框底部展示模型 Provider 的订阅额度与限流窗口，点击徽标即可查看详情
 - · [dsh-plugin-skill-panel](https://github.com/jasper-zsh/dsh-plugin-skill-panel) ⭐0 — DeepSeek Harness（DSH）的只读技能清单插件，在 Web GUI 中展示全局技能和当前会话可见的技能，并从会话日志推导技能加载状态
 - · [dsh-randomuuid-polyfill](https://github.com/Lehmaning/dsh-randomuuid-polyfill) ⭐0 — dsh client plugin that installs crypto.randomUUID on insecure origins (plain HTT
-- ❌ **dsh-remote-web-ui** ⭐0 — —（URL 占位）
+- 👁 **dsh-remote-web-ui** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
 - ✅ [dsh-system-control](https://github.com/FrankZhangIronly/dsh-system-control) ⭐0 — DSH web plugin: System menu (Restart / Shutdown) in the sidebar footer
 - · [dsh-tailscale-console](https://github.com/evanfang0054/dsh-tailscale-console) ⭐0 — 为 DeepSeek Harness 提供基于 Tailscale 的安全远程访问运营面板：一键健康检查、HTTPS 入口开关、macOS 代理绕过、中继服务器
-- ✅ **dsh-theme-ti** ⭐0 — —（URL 占位）
+- ✅ [dsh-theme-ti](https://github.com/longyu065/dsh-theme-ti) ⭐0 — —
 - · [dsh-token-viewer](https://github.com/qwert702/dsh-token-viewer) ⭐0 — DSH web GUI plugin: live token consumption surfaces (composer dock strip + sideb
 - · [dshtui-by-woodwhite](https://github.com/woodwhite0ets/dshtui-by-woodwhite) ⭐0 — deepseek harness tui by woodwhite
 - ✅ [dsh-ui-background](https://github.com/Junt184/dsh-ui-background) ⭐0 — DSH Web GUI 外观插件：背景图片 / 透明背景 / 背景不透明度（DeepSeek Harness plugin）
-- · **Dsh-UI-Enhance** ⭐0 — —（URL 占位）
-- ✅ **dsh-web-ui-approval-notify** ⭐0 — —（URL 占位）
-- ✅ **uiopt** ⭐0 — —（URL 占位）
-- ✅ **ya-workspace-sidebar** ⭐0 — —（URL 占位）
+- · [Dsh-UI-Enhance](https://github.com/xjackzenvey/Dsh-UI-Enhance) ⭐0 — —
+- 👁 **dsh-web-ui-approval-notify** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [uiopt](https://github.com/treeworl/uiopt) ⭐0 — —
+- ✅ [ya-workspace-sidebar](https://github.com/HuanLinOTO/dsh-plugin-ya-workspace-sidebar) ⭐0 — —
 - ✅ [DeepSeekHarness-DesktopUI](https://github.com/Adnnnnai/DeepSeekHarness-DesktopUI) ⭐0 — —
 - ✅ [dsh-angry](https://github.com/01Virex/dsh-angry) ⭐0 — Turns the DeepSeek Harness web UI red and shaky the longer a turn runs — the "re
 - ✅ [dsh-plugin-ui-turnav](https://github.com/AuraxM/dsh-plugin-ui-turnav) ⭐0 — —
@@ -265,52 +268,52 @@
 - ⚠️ [dsh-SkillsManagePlugins](https://github.com/z-col/dsh-SkillsManagePlugins) ⭐0 — DSH Skills 可视化管理器：在 DSH Web 界面可视化查看、编辑、创建、删除 Skills（用户级 ~/.dsh/skills 与项目级 .dsh/
 - ⚠️ [dsh-zotero](https://github.com/yuzh2001/dsh-zotero) ⭐0 — 在 DeepSeek Harness 中浏览、搜索并引用你的 Zotero 文献库（侧边栏文件树 + & 与 /zotero 快速引用）
 - ⚠️ [dsh-Solarized](https://github.com/zhijun-dai/dsh-Solarized) ⭐0 — Solarized + Selenized themes for DeepSeek Harness (dsh): four faithful palettes
-- ✅ **147228-dsh-xiaoyao-skins** ⭐0 — —（URL 占位）
-- ✅ **1m01m0-dsh-chat-skin** ⭐0 — —（URL 占位）
-- ❌ **384961890-ui-pawin-brain-deepseek-harness** ⭐0 — —（URL 占位）
-- ❌ **alingalingling-ui-status-label** ⭐0 — —（URL 占位）
-- ✅ **andy294753951-dsh-plugin-gouden-leeuw-theme** ⭐0 — —（URL 占位）
-- ✅ **andyahui-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ❌ **anweat-dsh-plugin-dev-guide** ⭐0 — —（URL 占位）
-- ✅ **auran-lu-dsh-client-ui-monitor** ⭐0 — —（URL 占位）
-- ✅ **auraxm-dsh-plugin-ui-turnav** ⭐0 — —（URL 占位）
-- ✅ **bilbillm-deepseek-harness-angelina-themes** ⭐0 — —（URL 占位）
-- ✅ **bill9109-dsh-web-ui-notify** ⭐0 — —（URL 占位）
-- ✅ **blaczz-dsh-deck-builder** ⭐0 — —（URL 占位）
-- ✅ **boxeryao-deepseek-harness-tui** ⭐0 — —（URL 占位）
-- ✅ **carpon39038-dsh-image-theme** ⭐0 — —（URL 占位）
-- ✅ **caxson-dsh-gui** ⭐0 — —（URL 占位）
-- ✅ **ccch1mneyyy-dsh-tui** ⭐0 — —（URL 占位）
-- ❌ **chajiuqqq-dsh-claude-theme** ⭐0 — —（URL 占位）
-- ✅ **chen-001-dsh-chat-width** ⭐0 — —（URL 占位）
-- ❌ **chen-001-dsh-grok-tui** ⭐0 — —（URL 占位）
-- ⚠️ **citrusli2026-dsh-mobile-ui** ⭐0 — —（URL 占位）
-- ✅ **cocowwy-dsh-plugin-eyecare-theme** ⭐0 — —（URL 占位）
-- ✅ **cogine-ai-dsh-claude-tui** ⭐0 — —（URL 占位）
-- ✅ **condathinker-dsh-left-sidebar-collapse** ⭐0 — —（URL 占位）
-- ✅ **crtnt-dsh-plugin-suite** ⭐0 — —（URL 占位）
-- ✅ **dancingmemory-dskin** ⭐0 — —（URL 占位）
-- ❌ **danielou1208-deepseek-harness-tui** ⭐0 — —（URL 占位）
-- ✅ **dqsjqian-agent-guild** ⭐0 — —（URL 占位）
-- ❌ **drfccv-dsh-theme-neko** ⭐0 — —（URL 占位）
-- ❌ **dsh-tui-dsh-tui** ⭐0 — —（URL 占位）
-- ❌ **dujunxi1993-dsh-swiftui** ⭐0 — —（URL 占位）
-- ❌ **dycode7-deepseek-harness-tui** ⭐0 — —（URL 占位）
-- ✅ **edwardyang0011-dsh-ui-skins** ⭐0 — —（URL 占位）
-- ❌ **equinox7379-dsh-config-watch** ⭐0 — —（URL 占位）
-- ✅ **equinox7379-dsh-update-radar** ⭐0 — —（URL 占位）
-- ✅ **fengzhiyushui-dsh-desktop-window** ⭐0 — —（URL 占位）
-- ❌ **fishquito7-dsh-skill-viewer** ⭐0 — —（URL 占位）
-- ✅ **frostgao-dsh-theme-blackgold** ⭐0 — —（URL 占位）
-- ❌ **ginuim-multi-screen-wireframe** ⭐0 — —（URL 占位）
-- ✅ **goodpostidea-tech-deepseek-harness-skin** ⭐0 — —（URL 占位）
-- ✅ **gxinxing-deepseek-harness-tui** ⭐0 — —（URL 占位）
-- ✅ **h2o-mero-deepseek-harness-gui** ⭐0 — —（URL 占位）
-- ✅ **harcochen-dsh-plugin-guide** ⭐0 — —（URL 占位）
-- ✅ **havingautism-dsh-ultra-ui** ⭐0 — —（URL 占位）
-- ❌ **heigeai-deepseek-harness-skin** ⭐0 — —（URL 占位）
-- ✅ **hilbert-beinghappy-deepseek-tui** ⭐0 — —（URL 占位）
-- ✅ **hotsteel2901-dsh-client-ui-mobile-adapt** ⭐0 — —（URL 占位）
+- ✅ [147228-dsh-xiaoyao-skins](https://github.com/147228/dsh-xiaoyao-skins) ⭐0 — —
+- ✅ [1m01m0-dsh-chat-skin](https://github.com/1m01m0/dsh-chat-skin) ⭐0 — —
+- ❌ [384961890-ui-pawin-brain-deepseek-harness](https://github.com/384961890-ui/pawin-brain-deepseek-harness) ⭐0 — —
+- ❌ [alingalingling-ui-status-label](https://github.com/alingalingling/ui-status-label) ⭐0 — —
+- ✅ [andy294753951-dsh-plugin-gouden-leeuw-theme](https://github.com/Andy294753951/dsh-plugin-gouden-leeuw-theme) ⭐0 — —
+- ✅ [andyahui-deepseek-harness-desktop](https://github.com/Andyahui/deepseek-harness-desktop) ⭐0 — —
+- ❌ [anweat-dsh-plugin-dev-guide](https://github.com/anweat/dsh-plugin-dev-guide) ⭐0 — —
+- ✅ [auran-lu-dsh-client-ui-monitor](https://github.com/Auran-Lu/dsh-client-ui-monitor) ⭐0 — —
+- ✅ [auraxm-dsh-plugin-ui-turnav](https://github.com/AuraxM/dsh-plugin-ui-turnav) ⭐0 — —
+- ✅ [bilbillm-deepseek-harness-angelina-themes](https://github.com/bilbillm/deepseek-harness-angelina-themes) ⭐0 — —
+- ✅ [bill9109-dsh-web-ui-notify](https://github.com/bill9109/dsh-web-ui-notify) ⭐0 — —
+- ✅ [blaczz-dsh-deck-builder](https://github.com/Blaczz/dsh-deck-builder) ⭐0 — —
+- 👁 **boxeryao-deepseek-harness-tui** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [carpon39038-dsh-image-theme](https://github.com/Carpon39038/dsh-image-theme) ⭐0 — —
+- ✅ [caxson-dsh-gui](https://github.com/Caxson/dsh-gui) ⭐0 — —
+- ✅ [ccch1mneyyy-dsh-tui](https://github.com/ccch1mneyyy/dsh-TUI) ⭐0 — —
+- ❌ [chajiuqqq-dsh-claude-theme](https://github.com/chajiuqqq/dsh-claude-theme) ⭐0 — —
+- ✅ [chen-001-dsh-chat-width](https://github.com/chen-001/dsh-chat-width) ⭐0 — —
+- ❌ [chen-001-dsh-grok-tui](https://github.com/chen-001/dsh-grok-tui) ⭐0 — —
+- 👁 **citrusli2026-dsh-mobile-ui** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [cocowwy-dsh-plugin-eyecare-theme](https://github.com/Cocowwy/dsh-plugin-eyecare-theme) ⭐0 — —
+- ✅ [cogine-ai-dsh-claude-tui](https://github.com/cogine-ai/dsh-claude-tui) ⭐0 — —
+- ✅ [condathinker-dsh-left-sidebar-collapse](https://github.com/condaThinker/dsh-left-sidebar-collapse) ⭐0 — —
+- ✅ [crtnt-dsh-plugin-suite](https://github.com/crTnT/dsh-plugin-suite) ⭐0 — —
+- ✅ [dancingmemory-dskin](https://github.com/dancingmemory/dskin) ⭐0 — —
+- ❌ [danielou1208-deepseek-harness-tui](https://github.com/DanielOu1208/deepseek-harness-tui) ⭐0 — —
+- ✅ [dqsjqian-agent-guild](https://github.com/dqsjqian/agent-guild) ⭐0 — —
+- ❌ [drfccv-dsh-theme-neko](https://github.com/drfccv/dsh-theme-neko) ⭐0 — —
+- ❌ [dsh-tui-dsh-tui](https://github.com/dsh-tui/dsh-tui) ⭐0 — —
+- ❌ [dujunxi1993-dsh-swiftui](https://github.com/DuJunxi1993/dsh-swiftUI) ⭐0 — —
+- ❌ [dycode7-deepseek-harness-tui](https://github.com/Dycode7/deepseek-harness-TUI-) ⭐0 — —
+- ✅ [edwardyang0011-dsh-ui-skins](https://github.com/edwardyang0011/dsh-ui-skins) ⭐0 — —
+- ❌ [equinox7379-dsh-config-watch](https://github.com/Equinox7379/dsh-config-watch) ⭐0 — —
+- ✅ [equinox7379-dsh-update-radar](https://github.com/Equinox7379/dsh-update-radar) ⭐0 — —
+- ✅ [fengzhiyushui-dsh-desktop-window](https://github.com/fengzhiyushui/dsh-desktop-window) ⭐0 — —
+- ❌ [fishquito7-dsh-skill-viewer](https://github.com/Fishquito7/dsh-skill-viewer) ⭐0 — —
+- ✅ [frostgao-dsh-theme-blackgold](https://github.com/frostgao/dsh-theme-blackgold) ⭐0 — —
+- ❌ [ginuim-multi-screen-wireframe](https://github.com/ginuim/multi-screen-wireframe) ⭐0 — —
+- ✅ [goodpostidea-tech-deepseek-harness-skin](https://github.com/goodpostidea-tech/deepseek-harness-skin) ⭐0 — —
+- ✅ [gxinxing-deepseek-harness-tui](https://github.com/gxinxing/deepseek-harness-tui) ⭐0 — —
+- ✅ [h2o-mero-deepseek-harness-gui](https://github.com/H2O-MERO/DeepSeek-Harness-GUI) ⭐0 — —
+- ✅ [harcochen-dsh-plugin-guide](https://github.com/HarcoChen/dsh-plugin-guide) ⭐0 — —
+- ✅ [havingautism-dsh-ultra-ui](https://github.com/havingautism/dsh-ultra-ui) ⭐0 — —
+- ❌ [heigeai-deepseek-harness-skin](https://github.com/HeiGeAi/deepseek-harness-skin) ⭐0 — —
+- 👁 **hilbert-beinghappy-deepseek-tui** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [hotsteel2901-dsh-client-ui-mobile-adapt](https://github.com/Hotsteel2901/dsh-client-ui-mobile-adapt) ⭐0 — —
 
 ## 🤖 Agent 能力（242）
 
@@ -451,50 +454,50 @@
 - ⚠️ [dsh-youmind-plugin](https://github.com/seamas0825-lab/dsh-youmind-plugin) ⭐1 — YouMind OpenAPI tools and skill bundle for DeepSeek Harness
 - · [dsh-plugin-audiolib](https://github.com/yangyue1974/dsh-plugin-audiolib) ⭐1 — Ambient soundtrack for DeepSeek Harness, driven by agent state
 - ⚠️ [dsh-gpu](https://github.com/zytsyj/dsh-gpu) ⭐1 — GPU-aware execution layer for DeepSeek Harness: gpu_status / gpu_exec / gpu_run_
-- · **agent-jit** ⭐0 — —（URL 占位）
-- · **agent-plaza** ⭐0 — —（URL 占位）
-- · **agentvest** ⭐0 — —（URL 占位）
+- · [agent-jit](https://github.com/sybolization/agent-jit) ⭐0 — —
+- 👁 **agent-plaza** — 定位歧义监测中（同名多仓，判定暂不展示）
+- 👁 **agentvest** — 定位歧义监测中（同名多仓，判定暂不展示）
 - · [deepseek-channel-octo](https://github.com/quanming1/deepseek-channel-octo) ⭐0 — Bridge DeepSeek Harness (dsh) agents into Octo IM
-- ❌ **dsh-adaptive-subagent-report** ⭐0 — —（URL 占位）
-- ✅ **dsh-agent-arcade** ⭐0 — —（URL 占位）
+- ❌ [dsh-adaptive-subagent-report](https://github.com/zhangzujian/dsh-adaptive-subagent-report) ⭐0 — —
+- ✅ [dsh-agent-arcade](https://github.com/fff122/dsh-agent-arcade) ⭐0 — —
 - · [dsh-fork](https://github.com/cestbon0309/dsh-fork) ⭐0 — A plugin that allows you to fork your session in DSH (Deepseek Harness).
 - ✅ [dsh-mattpocock-skills](https://github.com/xiaoxiaosrm/dsh-mattpocock-skills) ⭐0 — Unofficial DSH port of mattpocock/skills — Engineering (18) + Productivity (7) s
 - ✅ [dsh-mcp-adapter](https://github.com/NexusAgentX/dsh-mcp-adapter) ⭐0 — MCP adapter for DeepSeek Harness — one proxy tool instead of dumping every MCP s 〔PR〕
-- ✅ **dsh-media-skills** ⭐0 — —（URL 占位）
+- ✅ [dsh-media-skills](https://github.com/akqwpeter-prog/dsh-media-skills) ⭐0 — —
 - · [dsh-memory-director](https://github.com/ljsysfurryACE/dsh-memory-director) ⭐0 — MemoryDirector plugin for DeepSeek Harness: LLM-driven remember/forget (official
 - · [dsh-memsearch](https://github.com/clouwer/dsh-memsearch) ⭐0 — Automatic semantic memory plugin for DeepSeek Harness (DSH) via memsearch
-- · **dsh-mimo-agent-tools** ⭐0 — —（URL 占位）
+- · [dsh-mimo-agent-tools](https://github.com/ch1bug/dsh-mimo-agent-tools) ⭐0 — —
 - ✅ [dsh-patchouli](https://github.com/memorax-agent/dsh-patchouli) ⭐0 — Agent knowledge hub and deepseek-harness plugin
 - · [DSH-plugin](https://github.com/kbtime/DSH-plugin) ⭐0 — DeepSeek Harness 插件：用量统计、费用计算（含峰谷计价）、缓存命中与上下文监控
 - · [dsh-plugin-asmemory](https://github.com/Xplore-LAB/dsh-plugin-asmemory) ⭐0 — Action-State Memory Engine: typed time-series memory (states + actions) with tre
 - ✅ [dsh-plugins-plan-usage](https://github.com/chendefine/dsh-plugins-plan-usage) ⭐0 — deepseek harness plugins plan-usage
 - ✅ [dsh-prompt-optimizer](https://github.com/jetheaven/dsh-prompt-optimizer) ⭐0 — DeepSeek Harness plugin
-- · **dsh-prompt-presets** ⭐0 — —（URL 占位）
+- · [dsh-prompt-presets](https://github.com/fff122/dsh-prompt-presets) ⭐0 — —
 - ✅ [dsh-recall](https://github.com/fengshenx/dsh-recall) ⭐0 — DSH 插件：recall 工具——模型可搜索并读取自己会话的完整事件日志，包括被压缩（compaction）遮蔽的内容；dsh plugin add 一条命令
-- ❌ **dsh-rewind** ⭐0 — —（URL 占位）
+- 👁 **dsh-rewind** — 定位歧义监测中（同名多仓，判定暂不展示）
 - ✅ [dsh-scout](https://github.com/MaxHou-infinity/dsh-scout) ⭐0 — Evidence-driven company and job intelligence plugin for DeepSeek Harness.
-- ✅ **dsh-session-html-export** ⭐0 — —（URL 占位）
-- ✅ **dsh-session-index** ⭐0 — —（URL 占位）
+- ✅ [dsh-session-html-export](https://github.com/DeltaFROST141/dsh-session-html-export) ⭐0 — —
+- ✅ [dsh-session-index](https://github.com/longyu065/dsh-session-index) ⭐0 — —
 - · [dsh-session-supervisor](https://github.com/acosmi/dsh-session-supervisor) ⭐0 — Durable, bounded lifecycle supervisor with scheduled evaluation for live DeepSee
 - · [dsh-skill-importer](https://github.com/saitamahang/dsh-skill-importer) ⭐0 — deepSeek Harness plugin: import and manage skills from files or URLs, with a com
-- ✅ **dsh-skill-lord-serf** ⭐0 — —（URL 占位）
-- ✅ **dsh-skillport** ⭐0 — —（URL 占位）
-- ✅ **dsh-sleep** ⭐0 — —（URL 占位）
-- ✅ **dsh-slice-agent-loop** ⭐0 — —（URL 占位）
-- · **dsh-subagent-status** ⭐0 — —（URL 占位）
+- ✅ [dsh-skill-lord-serf](https://github.com/ttxl314/dsh-skill-lord-serf) ⭐0 — —
+- ✅ [dsh-skillport](https://github.com/Jesse-njx/dsh-skillport) ⭐0 — —
+- 👁 **dsh-sleep** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [dsh-slice-agent-loop](https://github.com/TT-Wang/dsh-slice-agent-loop) ⭐0 — —
+- · [dsh-subagent-status](https://github.com/zzy2210/dsh-subagent-status) ⭐0 — —
 - · [dsh-tmuxctl](https://github.com/Jesse-njx/dsh-tmuxctl) ⭐0 — dsh-tmuxctl — the control plane for tmux: list, drive, capture, split, swap, run
 - · [dsh-tool-memory](https://github.com/sikwoxy/dsh-tool-memory) ⭐0 — DeepSeek Harness 插件：跨会话持久记忆（Hermes 式）
-- ✅ **dsh-tool-user-memory** ⭐0 — —（URL 占位）
+- ✅ [dsh-tool-user-memory](https://github.com/IAMLieutenant/dsh-tool-user-memory) ⭐0 — —
 - · [dsh-vision-bridge](https://github.com/GXX182/dsh-vision-bridge) ⭐0 — DeepSeek Harness plugin that bridges session images to pluggable vision APIs whi
 - ✅ [dsh-voice](https://github.com/Jesse-njx/dsh-voice) ⭐0 — Voice notes in, spoken answers out — dictate audio that becomes user messages (t 〔PR〕
-- · **evo-memory** ⭐0 — —（URL 占位）
-- ❌ **mindspace-dsh-session-memory** ⭐0 — —（URL 占位）
-- ✅ **moon-lovers-skill** ⭐0 — —（URL 占位）
-- ❌ **mstar-workflow** ⭐0 — —（URL 占位）
-- ✅ **prompt-polish** ⭐0 — —（URL 占位）
-- ✅ **timem-dsh-memory** ⭐0 — —（URL 占位）
-- ✅ **timemspace-dsh-memory** ⭐0 — —（URL 占位）
-- ⚠️ **yet-another-subagent** ⭐0 — —（URL 占位）
+- 👁 **evo-memory** — 定位歧义监测中（同名多仓，判定暂不展示）
+- ❌ [mindspace-dsh-session-memory](https://github.com/Spirtxiaoqi7/mindspace-dsh-session-memory) ⭐0 — —
+- ✅ [moon-lovers-skill](https://github.com/phoenixlucky/moon-lovers-skill) ⭐0 — —
+- ❌ [mstar-workflow](https://github.com/btspoony/mstar-workflow) ⭐0 — —
+- 👁 **prompt-polish** — 定位歧义监测中（同名多仓，判定暂不展示）
+- ✅ [timem-dsh-memory](https://github.com/aimaoge/timem-dsh-memory) ⭐0 — —
+- ✅ [timemspace-dsh-memory](https://github.com/aimaoge/timemspace-dsh-memory) ⭐0 — —
+- ⚠️ [yet-another-subagent](https://github.com/HuanLinOTO/dsh-plugin-yet-another-subagent) ⭐0 — —
 - · [deepseek-harness-evolving-memory](https://github.com/Aloneswork/deepseek-harness-evolving-memory) ⭐0 — DeepSeek Harness 本地语义演化式长期记忆插件｜Local semantic evolving memory for DSH
 - · [dsh-plugin-balance-panel](https://github.com/alonelypigeon/dsh-plugin-balance-panel) ⭐0 — DeepSeek Harness cordis plugin: API balance + Coding Plan usage panel (/balance
 - ✅ [dsh-plugin-ptc-context](https://github.com/FanetheDivine/dsh-plugin-ptc-context) ⭐0 — DSH插件，增强PTC模式的上下文管理
@@ -510,52 +513,52 @@
 - ❌ [dsh-plugin-token-billing](https://github.com/yzgwowcn/dsh-plugin-token-billing) ⭐0 — DeepSeek Harness Token 计费插件：会话/全账户 token 用量与费用、账户余额、右侧用量仪表盘（时段消费、模型花费、热力图、余额曲线）
 - ✅ [dsh-session-report](https://github.com/yangyongzhen/dsh-session-report) ⭐0 — Session cost/usage report cards for DeepSeek Harness: tokens, cache-hit rate, pe
 - ⚠️ [dsh-noema](https://github.com/ZSeven-W/dsh-noema) ⭐0 — Noema long-term memory plugin for DSH: durable, inspectable agent memory with re
-- ✅ **030611-dsh-context-provenance** ⭐0 — —（URL 占位）
-- ✅ **1while1-dsh-whale-subagent** ⭐0 — —（URL 占位）
-- ✅ **2303572348-deepseek-harness-memory** ⭐0 — —（URL 占位）
-- ❌ **acosmi-dsh-session-supervisor** ⭐0 — —（URL 占位）
-- ✅ **agentic-control-plane-dsh-acp-plugin** ⭐0 — —（URL 占位）
-- ✅ **aik358-dsh-auto-memory** ⭐0 — —（URL 占位）
-- ✅ **airrcat-dsh-yuzuha-prompts-manager** ⭐0 — —（URL 占位）
-- ✅ **akira399-dsh-godot-skill** ⭐0 — —（URL 占位）
-- ✅ **alooshxl-dsh-session-pins** ⭐0 — —（URL 占位）
-- ❌ **amengclass-dsh-memory** ⭐0 — —（URL 占位）
-- ❌ **anionex-agent-vision-toolkit** ⭐0 — —（URL 占位）
-- ✅ **artificialnotimbecile-dsh-context-taxonomy** ⭐0 — —（URL 占位）
-- ✅ **asaiuta-dsh-session-hub** ⭐0 — —（URL 占位）
-- ✅ **asd176916847-dsh-plan-first-dev** ⭐0 — —（URL 占位）
-- ✅ **astral-0619-dsh-session-memory** ⭐0 — —（URL 占位）
-- ❌ **atlascloudai-atlas-cloud-skills** ⭐0 — —（URL 占位）
-- ❌ **ben7am1n-dsh-review-skills** ⭐0 — —（URL 占位）
-- ✅ **bowenliang123-dsh-context** ⭐0 — —（URL 占位）
-- ❌ **bramblexu-dsh-prompt-profile** ⭐0 — —（URL 占位）
-- ✅ **bwndlct-dsh-session-audit** ⭐0 — —（URL 占位）
-- ✅ **bwndlct-dsh-session-export** ⭐0 — —（URL 占位）
-- ✅ **chang-tong-dsh-import-agents** ⭐0 — —（URL 占位）
-- ✅ **chendefine-dsh-plugins-plan-usage** ⭐0 — —（URL 占位）
-- ✅ **chengche106-dsh-session-cost** ⭐0 — —（URL 占位）
-- ✅ **cokiscarazo-rgb-dsh-session-management** ⭐0 — —（URL 占位）
-- ✅ **creght-dev-skills** ⭐0 — —（URL 占位）
-- ✅ **csyangwen-dsh-memory-evolve** ⭐0 — —（URL 占位）
-- ✅ **culeot-dsh-memory** ⭐0 — —（URL 占位）
-- ❌ **dddfxyqiming-agent-extensions** ⭐0 — —（URL 占位）
-- ✅ **dhicoc-dsh-reverse-skill** ⭐0 — —（URL 占位）
-- ✅ **dingyi222666-dsh-session-notification** ⭐0 — —（URL 占位）
-- ✅ **djasdh-interest-memory** ⭐0 — —（URL 占位）
-- ✅ **drowned-fish1-deepseek-harness-skillx** ⭐0 — —（URL 占位）
-- ❌ **elementor-i-dsh-agentmemory** ⭐0 — —（URL 占位）
-- ✅ **foryourhealth111-pixel-vibe-skills** ⭐0 — —（URL 占位）
-- ✅ **gengdapeng-dsh-agent-message** ⭐0 — —（URL 占位）
-- ✅ **gooodwei-context-vista** ⭐0 — —（URL 占位）
-- ✅ **gordonlu-dsh-context-lens** ⭐0 — —（URL 占位）
-- ✅ **greatwhitesharklab-dsh-plugin-subagent-manage** ⭐0 — —（URL 占位）
-- ✅ **green-dalii-dsh-plugin-dev-skill** ⭐0 — —（URL 占位）
-- ⚠️ **haoyuan-sjtu-deepseek-harness-governed-memory** ⭐0 — —（URL 占位）
-- ❌ **happyren-dsh-agent-messaging** ⭐0 — —（URL 占位）
-- ✅ **hellosky983-dsh-skillradar** ⭐0 — —（URL 占位）
-- ✅ **hellowind777-helloagents** ⭐0 — —（URL 占位）
-- ✅ **hexbee-dsh-skill-panel** ⭐0 — —（URL 占位）
-- ✅ **hootandy321-dsh-agentlink** ⭐0 — —（URL 占位）
+- ✅ [030611-dsh-context-provenance](https://github.com/030611/dsh-context-provenance) ⭐0 — —
+- ✅ [1while1-dsh-whale-subagent](https://github.com/1while1/dsh-whale-subagent) ⭐0 — —
+- ✅ [2303572348-deepseek-harness-memory](https://github.com/2303572348/deepseek-harness-memory) ⭐0 — —
+- ❌ [acosmi-dsh-session-supervisor](https://github.com/acosmi/dsh-session-supervisor) ⭐0 — —
+- ✅ [agentic-control-plane-dsh-acp-plugin](https://github.com/agentic-control-plane/dsh-acp-plugin) ⭐0 — —
+- ✅ [aik358-dsh-auto-memory](https://github.com/Aik358/dsh-auto-memory) ⭐0 — —
+- ✅ [airrcat-dsh-yuzuha-prompts-manager](https://github.com/Airrcat/dsh-yuzuha-prompts-manager) ⭐0 — —
+- ✅ [akira399-dsh-godot-skill](https://github.com/akira399/dsh-godot-skill) ⭐0 — —
+- ✅ [alooshxl-dsh-session-pins](https://github.com/alooshxl/dsh-session-pins) ⭐0 — —
+- ❌ [amengclass-dsh-memory](https://github.com/Amengclass/dsh-memory) ⭐0 — —
+- ❌ [anionex-agent-vision-toolkit](https://github.com/Anionex/agent-vision-toolkit) ⭐0 — —
+- ✅ [artificialnotimbecile-dsh-context-taxonomy](https://github.com/ArtificialNotImbecile/dsh-context-taxonomy) ⭐0 — —
+- ✅ [asaiuta-dsh-session-hub](https://github.com/Asaiuta/dsh-session-hub) ⭐0 — —
+- ✅ [asd176916847-dsh-plan-first-dev](https://github.com/asd176916847/dsh-plan-first-dev) ⭐0 — —
+- ✅ [astral-0619-dsh-session-memory](https://github.com/astral-0619/dsh-session-memory) ⭐0 — —
+- ❌ [atlascloudai-atlas-cloud-skills](https://github.com/AtlasCloudAI/atlas-cloud-skills) ⭐0 — —
+- ❌ [ben7am1n-dsh-review-skills](https://github.com/ben7am1n/dsh-review-skills) ⭐0 — —
+- ✅ [bowenliang123-dsh-context](https://github.com/bowenliang123/dsh-context) ⭐0 — —
+- ❌ [bramblexu-dsh-prompt-profile](https://github.com/BrambleXu/dsh-prompt-profile) ⭐0 — —
+- ✅ [bwndlct-dsh-session-audit](https://github.com/bwndlct/dsh-session-audit) ⭐0 — —
+- ✅ [bwndlct-dsh-session-export](https://github.com/bwndlct/dsh-session-export) ⭐0 — —
+- ✅ [chang-tong-dsh-import-agents](https://github.com/Chang-Tong/dsh-import-agents) ⭐0 — —
+- ✅ [chendefine-dsh-plugins-plan-usage](https://github.com/chendefine/dsh-plugins-plan-usage) ⭐0 — —
+- ✅ [chengche106-dsh-session-cost](https://github.com/ChengChe106/dsh-session-cost) ⭐0 — —
+- ✅ [cokiscarazo-rgb-dsh-session-management](https://github.com/cokiscarazo-rgb/dsh-session-management) ⭐0 — —
+- ✅ [creght-dev-skills](https://github.com/creght-dev/skills) ⭐0 — —
+- ✅ [csyangwen-dsh-memory-evolve](https://github.com/csyangwen/dsh-memory-evolve) ⭐0 — —
+- 👁 **culeot-dsh-memory** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ❌ [dddfxyqiming-agent-extensions](https://github.com/DDDFXYqiming/Agent_Extensions) ⭐0 — —
+- ✅ [dhicoc-dsh-reverse-skill](https://github.com/dhicoc/dsh-reverse-skill) ⭐0 — —
+- ✅ [dingyi222666-dsh-session-notification](https://github.com/dingyi222666/dsh-session-notification) ⭐0 — —
+- ✅ [djasdh-interest-memory](https://github.com/djasdh/interest-memory) ⭐0 — —
+- ✅ [drowned-fish1-deepseek-harness-skillx](https://github.com/drowned-fish1/deepseek-harness-skillx) ⭐0 — —
+- ❌ [elementor-i-dsh-agentmemory](https://github.com/elementor-i/dsh-agentmemory) ⭐0 — —
+- ✅ [foryourhealth111-pixel-vibe-skills](https://github.com/foryourhealth111-pixel/Vibe-Skills) ⭐0 — —
+- ✅ [gengdapeng-dsh-agent-message](https://github.com/GengDaPeng/dsh-agent-message) ⭐0 — —
+- ✅ [gooodwei-context-vista](https://github.com/GooodWei/context-vista) ⭐0 — —
+- ✅ [gordonlu-dsh-context-lens](https://github.com/gordonlu/dsh-context-lens) ⭐0 — —
+- 👁 **greatwhitesharklab-dsh-plugin-subagent-manage** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [green-dalii-dsh-plugin-dev-skill](https://github.com/green-dalii/dsh-plugin-dev-skill) ⭐0 — —
+- 👁 **haoyuan-sjtu-deepseek-harness-governed-memory** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ❌ [happyren-dsh-agent-messaging](https://github.com/happyren/dsh-agent-messaging) ⭐0 — —
+- ✅ [hellosky983-dsh-skillradar](https://github.com/hellosky983/dsh-skillradar) ⭐0 — —
+- ✅ [hellowind777-helloagents](https://github.com/hellowind777/helloagents) ⭐0 — —
+- ✅ [hexbee-dsh-skill-panel](https://github.com/hexbee/dsh-skill-panel) ⭐0 — —
+- ✅ [hootandy321-dsh-agentlink](https://github.com/hootandy321/dsh-Agentlink) ⭐0 — —
 
 ## 💻 编码开发（270）
 
@@ -720,38 +723,38 @@
 - · [dsh-np-ppt](https://github.com/z953218350/dsh-np-ppt) ⭐1 — 原生 DSH (DeepSeek Harness) 插件：PPT 演示文稿专家，内置 PPTD DSL 引擎、55173 所见即所得可视化编辑器、Python-
 - ⚠️ [dsh-provider-billing](https://github.com/ZeroingIn/dsh-provider-billing) ⭐1 — DeepSeek Harness plugin: provider account balance inside each Models settings ro
 - ⚠️ [dsh-task-planner](https://github.com/ztl34245881-commits/dsh-task-planner) ⭐1 — Task planning with experience muscle-memory for DeepSeek Harness: condition-refl
-- ❌ **DCode** ⭐0 — —（URL 占位）
+- 👁 **DCode** — 定位歧义监测中（同名多仓，判定暂不展示）
 - ✅ [deepseek-harness.dsh-agent-vscode](https://github.com/091635Aa/deepseek-harness.dsh-agent-vscode) ⭐0 — deepseek-harness.dsh-agent-vscode
 - · [DeepSeek-Harness-VSCode-Plugin](https://github.com/TheLibraryMasyaf/DeepSeek-Harness-VSCode-Plugin) ⭐0 — —
 - · [delivery-review-dsh-plugin](https://github.com/xiaoxiao-svg/delivery-review-dsh-plugin) ⭐0 — delivery-review-plugin（Claude Code 双 Agent 交付协作工作流插件）的 DeepSeek Harness 移植版
-- ✅ **Digital-Sweet-Heart** ⭐0 — —（URL 占位）
+- ✅ [Digital-Sweet-Heart](https://github.com/dalintian/Digital-Sweet-Heart) ⭐0 — —
 - · [dsh-academic-research](https://github.com/userInner/dsh-academic-research) ⭐0 — Evidence-grounded bilingual academic research plugin for DeepSeek Harness and On
-- ✅ **dsh-auto-blame** ⭐0 — —（URL 占位）
-- ✅ **dsh-better-sidebar-plugin-office** ⭐0 — —（URL 占位）
+- 👁 **dsh-auto-blame** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- 👁 **dsh-better-sidebar-plugin-office** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
 - · [dsh-byok](https://github.com/raccoonBK/dsh-byok) ⭐0 — DeepSeek Harness plugin: use any OpenAI-compatible provider with your own key, p
-- · **dsh-code-impact** ⭐0 — —（URL 占位）
-- · **dsh-code-intel** ⭐0 — —（URL 占位）
+- · [dsh-code-impact](https://github.com/baidd1011/dsh-code-impact) ⭐0 — —
+- · [dsh-code-intel](https://github.com/lonelymoon87/dsh-code-intel) ⭐0 — —
 - · [dsh-code-server](https://github.com/IceSparrow1/dsh-code-server) ⭐0 — deepseek-harness code-server plugin
 - · [dsh-codetime](https://github.com/codetime-dev/dsh-codetime) ⭐0 — CodeTime for DeepSeek Harness
 - ✅ [dsh-codex-canvas](https://github.com/mindcarver/dsh-codex-canvas) ⭐0 — DeepSeek Harness plugin: image_gen tool backed by Codex CLI (gpt-image-2)
-- ✅ **dsh-codex-import** ⭐0 — —（URL 占位）
-- ✅ **dsh-codex-provider** ⭐0 — —（URL 占位）
+- ✅ [dsh-codex-import](https://github.com/918154429/dsh-codex-import) ⭐0 — —
+- ✅ [dsh-codex-provider](https://github.com/Hu9956/dsh-codex-provider) ⭐0 — —
 - ✅ [dsh-composer-enter](https://github.com/FrankZhangIronly/dsh-composer-enter) ⭐0 — DSH web plugin: remap how Enter behaves in the chat composer (send / newline / i
 - ✅ [dsh-continual-evolve](https://github.com/ZK-Andy/dsh-continual-evolve) ⭐0 — Continual self-evolution plugin for DeepSeek Harness: versioned, auditable, roll
-- ✅ **dsh-desktop-codex** ⭐0 — —（URL 占位）
+- ✅ [dsh-desktop-codex](https://github.com/Mengshiming2110/dsh-desktop-codex) ⭐0 — —
 - ✅ [dsh-file-changes](https://github.com/mixin-ai/dsh-file-changes) ⭐0 — DeepSeek Harness web plugin: per-turn file-change panel with diff viewing and fi
 - · [dsh-file-mentions](https://github.com/a903067276-rgb/dsh-file-mentions) ⭐0 — Clickable file paths in DSH replies: Codex-style inline open, 📂 reveal in file m
-- ✅ **dsh-gateway-provider** ⭐0 — —（URL 占位）
-- · **dsh-git** ⭐0 — —（URL 占位）
+- ✅ [dsh-gateway-provider](https://github.com/Luck9Star/dsh-gateway-provider) ⭐0 — —
+- · [dsh-git](https://github.com/walavave/dsh-git) ⭐0 — —
 - ✅ [dsh-git-status](https://github.com/weiyuou-chowbus/dsh-git-status) ⭐0 — DeepSeek Harness (DSH) web plugin — live git branch indicator with branch switch
 - ✅ [dsh-hud](https://github.com/a903067276-rgb/dsh-hud) ⭐0 — HUD status panel plugin for DeepSeek Harness (dsh) web: git status, MCP servers,
-- ✅ **dsh-interpreters** ⭐0 — —（URL 占位）
+- 👁 **dsh-interpreters** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
 - · [dsh-llm-oauth](https://github.com/ziyou979/dsh-llm-oauth) ⭐0 — DeepSeek Harness plugin: OAuth / subscription-plan LLM providers (Grok, GitHub C
 - ✅ [dsh-mcpguard](https://github.com/ChenLaoshiYF/dsh-mcpguard) ⭐0 — ?? for DeepSeek Harness: first security plugin for dsh
-- ✅ **dsh-openai-codex** ⭐0 — —（URL 占位）
+- ✅ [dsh-openai-codex](https://github.com/devteapot/dsh-openai-codex) ⭐0 — —
 - ✅ [dsh-opencode-go-usage](https://github.com/LTctfer/dsh-opencode-go-usage) ⭐0 — DSH plugin: OpenCode Go plan usage quota query (opencode_usage tool + web side p
-- · **dsh-opencodex-vision-bridge** ⭐0 — —（URL 占位）
-- · **dsh-opencodex-vision-toolkit** ⭐0 — —（URL 占位）
+- · [dsh-opencodex-vision-bridge](https://github.com/motongv/dsh-opencodex-vision-bridge) ⭐0 — —
+- · [dsh-opencodex-vision-toolkit](https://github.com/motongv/dsh-opencodex-vision-toolkit) ⭐0 — —
 - ✅ [dsh-plugin-codex-import](https://github.com/Gordonynh/dsh-plugin-codex-import) ⭐0 — DeepSeek Harness plugin: import OpenAI Codex conversation history into DSH sessi
 - · [dsh-plugin-commandcode-provider](https://github.com/mitian233/dsh-plugin-commandcode-provider) ⭐0 — —
 - · [dsh-plugin-manager](https://github.com/Jesse-njx/dsh-plugin-manager) ⭐0 — dsh pm — discover, install, update, and manage dsh plugins from the CLI: multi-s
@@ -760,20 +763,20 @@
 - ✅ [dsh-plugin-model-provider-readout](https://github.com/jxdang/dsh-plugin-model-provider-readout) ⭐0 — dsh provider 显示插件
 - · [dsh-plugin-workspace-rules](https://github.com/youjiaqi421/dsh-plugin-workspace-rules) ⭐0 — Load Cursor, Gemini CLI, and GitHub Copilot workspace instructions into DeepSeek
 - · [dsh-projects](https://github.com/Alexis-fish/dsh-projects) ⭐0 — Codex-style projects for DeepSeek Harness
-- · **dsh-revdiff** ⭐0 — —（URL 占位）
+- · [dsh-revdiff](https://github.com/BrambleXu/dsh-revdiff) ⭐0 — —
 - ✅ [dsh-safe-web-fetch](https://github.com/MostlyHarmlessxyz/dsh-safe-web-fetch) ⭐0 — SSRF-resistant public-only HTTP(S) WebFetchProvider plugin for DeepSeek Harness
 - · [dsh-sidechat](https://github.com/Mintcolour/dsh-sidechat) ⭐0 — A DeepSeek Harness Web plugin that adds a Codex-style split-screen side chat wit
 - · [dsh-tavily-search](https://github.com/ouones/dsh-tavily-search) ⭐0 — Tavily-backed search provider plugin for DeepSeek Harness (DSH) web seam - direc
 - · [dsh-tavily-web-search](https://github.com/paul-yangmy/dsh-tavily-web-search) ⭐0 — Tavily-backed web search provider plugin (bundle) for DeepSeek Harness (dsh)
-- · **dsh-tool-git** ⭐0 — —（URL 占位）
+- 👁 **dsh-tool-git** — 定位歧义监测中（同名多仓，判定暂不展示）
 - ✅ [dsh-update-radar](https://github.com/Equinox7379/dsh-update-radar) ⭐0 — Update radar for DSH: checks installed plugins against git upstreams.
 - ✅ [dsh-web-search-brave](https://github.com/LTctfer/dsh-web-search-brave) ⭐0 — Brave Search API web search provider plugin for DeepSeek Harness (ctx.web seam)
-- ✅ **dsh-web-terminal** ⭐0 — —（URL 占位）
+- 👁 **dsh-web-terminal** — 定位歧义监测中（同名多仓，判定暂不展示）
 - · [dsh-worktree](https://github.com/Eleven-is-cool/dsh-worktree) ⭐0 — Git worktree plugin for DeepSeek Harness web: browse/create worktrees from the w
 - · [dsh-zen-proxy](https://github.com/Yee-h/dsh-zen-proxy) ⭐0 — dsh plugin: in-process proxy that injects official OpenCode Zen client headers,
-- ✅ **harness-code** ⭐0 — —（URL 占位）
+- 👁 **harness-code** — 定位歧义监测中（同名多仓，判定暂不展示）
 - ✅ [harnessproof](https://github.com/fieldnote-ops/harnessproof) ⭐0 — Independent clean-profile boot evidence for DeepSeek Harness plugins.
-- · **mini-code-agent** ⭐0 — —（URL 占位）
+- 👁 **mini-code-agent** — 定位歧义监测中（同名多仓，判定暂不展示）
 - · [trae-dsh-plugin](https://github.com/DaoFaZiran2010/trae-dsh-plugin) ⭐0 — TRAE IDE插件，集成DeepSeek Harness Agent框架
 - ✅ [dsh-plugin-session-outline](https://github.com/alonelypigeon/dsh-plugin-session-outline) ⭐0 — DeepSeek Harness cordis plugin: session outline navigator in the right-side over
 - ✅ [dsh-pi-adapter](https://github.com/cyzlmh/dsh-pi-adapter) ⭐0 — Run pi coding-agent extensions (ExtensionAPI) inside DeepSeek Harness via a cord
@@ -790,45 +793,45 @@
 - ✅ [dsh-seedance2](https://github.com/synmindai/dsh-seedance2) ⭐0 — DeepSeek Harness plugin for Seedance 2 image and video generation
 - ✅ [dsh-upstream-watch](https://github.com/t479842598/dsh-upstream-watch) ⭐0 — DSH plugin: watch GitHub upstream repos for new commits on default branch, live
 - ✅ [dshbase-catalog](https://github.com/ylwl1997/dshbase-catalog) ⭐0 — Search the dshbase plugin directory from inside DeepSeek Harness
-- ✅ **030611-qiushi-dsh-evidence-audit** ⭐0 — —（URL 占位）
-- ❌ **091635aa-deepseek-harness-dsh-agent-vscode** ⭐0 — —（URL 占位）
-- ✅ **1001willsstudio-auroracoder** ⭐0 — —（URL 占位）
-- ✅ **121103qwq-dsh-vision-sidecar** ⭐0 — —（URL 占位）
-- ✅ **1841220388zzzcccxxx-star-dsh-git-graph** ⭐0 — —（URL 占位）
-- ✅ **2031814001yuyue-tech-dsh-side-chat** ⭐0 — —（URL 占位）
-- ✅ **a179-sanae-dsh-code-check** ⭐0 — —（URL 占位）
-- ✅ **aidenwu0209-dsh-paddleocr-skills** ⭐0 — —（URL 占位）
-- ✅ **aloneswork-deepseek-harness-codex-bridge** ⭐0 — —（URL 占位）
-- ✅ **amatsumeakira-opencode-usage** ⭐0 — —（URL 占位）
-- ✅ **angeloszou-graphlint** ⭐0 — —（URL 占位）
-- ✅ **axiaohungry-dsh-llm-codebuddy** ⭐0 — —（URL 占位）
-- ✅ **babulubobo-dsh-codex-oauth** ⭐0 — —（URL 占位）
-- ✅ **bingchengle-deepseek-harness-vscode** ⭐0 — —（URL 占位）
-- ✅ **bradegithub-dsh-plugins-marketplace** ⭐0 — —（URL 占位）
-- ✅ **bruzwj-liang-saint-slider** ⭐0 — —（URL 占位）
-- ✅ **ccq1-dsh-side-panel** ⭐0 — —（URL 占位）
-- ✅ **civitasv-dsh-plugin-diff-review** ⭐0 — —（URL 占位）
-- ❌ **civitasv-dsh-plugin-open-editor** ⭐0 — —（URL 占位）
-- ❌ **clearkurt-dsh-win-terminal-inspector** ⭐0 — —（URL 占位）
-- ✅ **codeanqiang-ma-dsh-superpowers** ⭐0 — —（URL 占位）
-- ✅ **coderperseus-dsh-hub** ⭐0 — —（URL 占位）
-- ✅ **codetime-dev-dsh-codetime** ⭐0 — —（URL 占位）
-- ❌ **creativedswork-dscode** ⭐0 — —（URL 占位）
-- ❌ **criscolthecoder-dsh-plugin-browser** ⭐0 — —（URL 占位）
-- ✅ **damonbao-dsh-codex-provider-plugin** ⭐0 — —（URL 占位）
-- ❌ **deklan-deng-dcode** ⭐0 — —（URL 占位）
-- ✅ **doggyhu-dsh4vscode** ⭐0 — —（URL 占位）
-- ✅ **dongsheng123132-dsh-terminal** ⭐0 — —（URL 占位）
-- ❌ **dsh-plugin-dsh-plugin-github-io** ⭐0 — —（URL 占位）
-- ✅ **easy19613-dsh-opencode-go-quota** ⭐0 — —（URL 占位）
-- ✅ **edynasty-dsh-opencode-go-provider** ⭐0 — —（URL 占位）
-- ✅ **fernandalumin-dsh-codex-subs-plugin** ⭐0 — —（URL 占位）
-- ✅ **fishxcode-dsh-plugin-deepseek-balance** ⭐0 — —（URL 占位）
-- ❌ **franksong2702-dsh-codex-connect** ⭐0 — —（URL 占位）
-- ✅ **gordonynh-dsh-plugin-codex-import** ⭐0 — —（URL 占位）
-- ✅ **haiyoucuv-dsh-model-provider-label** ⭐0 — —（URL 占位）
-- ✅ **hellosky983-dsh-qrcode** ⭐0 — —（URL 占位）
-- ❌ **hongfeiyucode-deepseek-harness-desktop** ⭐0 — —（URL 占位）
+- ✅ [030611-qiushi-dsh-evidence-audit](https://github.com/030611/qiushi-dsh-evidence-audit) ⭐0 — —
+- ❌ [091635aa-deepseek-harness-dsh-agent-vscode](https://github.com/091635Aa/deepseek-harness.dsh-agent-vscode) ⭐0 — —
+- ✅ [1001willsstudio-auroracoder](https://github.com/1001WillsStudio/AuroraCoder) ⭐0 — —
+- ✅ [121103qwq-dsh-vision-sidecar](https://github.com/121103qwq/dsh-vision-sidecar) ⭐0 — —
+- ✅ [1841220388zzzcccxxx-star-dsh-git-graph](https://github.com/1841220388zzzcccxxx-star/dsh-git-graph) ⭐0 — —
+- ✅ [2031814001yuyue-tech-dsh-side-chat](https://github.com/2031814001yuyue-tech/dsh-side-chat) ⭐0 — —
+- ✅ [a179-sanae-dsh-code-check](https://github.com/a179-sanae/dsh-code-check) ⭐0 — —
+- ✅ [aidenwu0209-dsh-paddleocr-skills](https://github.com/Aidenwu0209/dsh-PaddleOCR-Skills) ⭐0 — —
+- ✅ [aloneswork-deepseek-harness-codex-bridge](https://github.com/Aloneswork/deepseek-harness-codex-bridge) ⭐0 — —
+- ✅ [amatsumeakira-opencode-usage](https://github.com/AmaTsumeAkira/opencode-usage) ⭐0 — —
+- ✅ [angeloszou-graphlint](https://github.com/AngelosZou/graphlint) ⭐0 — —
+- ✅ [axiaohungry-dsh-llm-codebuddy](https://github.com/Axiaohungry/dsh-llm-codebuddy) ⭐0 — —
+- ✅ [babulubobo-dsh-codex-oauth](https://github.com/Babulubobo/dsh-codex-oauth) ⭐0 — —
+- ✅ [bingchengle-deepseek-harness-vscode](https://github.com/bingchengle/deepseek-harness-vscode) ⭐0 — —
+- ✅ [bradegithub-dsh-plugins-marketplace](https://github.com/bradeGithub/DSH-Plugins-Marketplace) ⭐0 — —
+- ✅ [bruzwj-liang-saint-slider](https://github.com/BruzWJ/Liang-Saint-Slider) ⭐0 — —
+- ✅ [ccq1-dsh-side-panel](https://github.com/ccq1/dsh-side-panel) ⭐0 — —
+- ✅ [civitasv-dsh-plugin-diff-review](https://github.com/Civitasv/dsh-plugin-diff-review) ⭐0 — —
+- ❌ [civitasv-dsh-plugin-open-editor](https://github.com/Civitasv/dsh-plugin-open-editor) ⭐0 — —
+- ❌ [clearkurt-dsh-win-terminal-inspector](https://github.com/clearkurt/dsh-win-terminal-inspector) ⭐0 — —
+- ✅ [codeanqiang-ma-dsh-superpowers](https://github.com/codeAnqiang-ma/dsh-superpowers) ⭐0 — —
+- ✅ [coderperseus-dsh-hub](https://github.com/coderPerseus/dsh-hub) ⭐0 — —
+- ✅ [codetime-dev-dsh-codetime](https://github.com/codetime-dev/dsh-codetime) ⭐0 — —
+- ❌ [creativedswork-dscode](https://github.com/creativedswork/dscode) ⭐0 — —
+- 👁 **criscolthecoder-dsh-plugin-browser** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [damonbao-dsh-codex-provider-plugin](https://github.com/DamonBao/dsh-codex-provider-plugin) ⭐0 — —
+- ❌ [deklan-deng-dcode](https://github.com/Deklan-Deng/Dcode) ⭐0 — —
+- ✅ [doggyhu-dsh4vscode](https://github.com/DoggyHU/dsh4vscode) ⭐0 — —
+- ✅ [dongsheng123132-dsh-terminal](https://github.com/dongsheng123132/dsh-terminal) ⭐0 — —
+- ❌ [dsh-plugin-dsh-plugin-github-io](https://github.com/dsh-plugin/dsh-plugin.github.io) ⭐0 — —
+- ✅ [easy19613-dsh-opencode-go-quota](https://github.com/Easy19613/dsh-opencode-go-quota) ⭐0 — —
+- ✅ [edynasty-dsh-opencode-go-provider](https://github.com/edynasty/dsh-opencode-go-provider) ⭐0 — —
+- ✅ [fernandalumin-dsh-codex-subs-plugin](https://github.com/FernanDAlumin/dsh-codex-subs-plugin) ⭐0 — —
+- ✅ [fishxcode-dsh-plugin-deepseek-balance](https://github.com/fishxcode/dsh-plugin-deepseek-balance) ⭐0 — —
+- ❌ [franksong2702-dsh-codex-connect](https://github.com/franksong2702/dsh-codex-connect) ⭐0 — —
+- ✅ [gordonynh-dsh-plugin-codex-import](https://github.com/Gordonynh/dsh-plugin-codex-import) ⭐0 — —
+- ✅ [haiyoucuv-dsh-model-provider-label](https://github.com/haiyoucuv/dsh-model-provider-label) ⭐0 — —
+- ✅ [hellosky983-dsh-qrcode](https://github.com/hellosky983/dsh-qrcode) ⭐0 — —
+- ❌ [hongfeiyucode-deepseek-harness-desktop](https://github.com/hongfeiyucode/deepseek-harness-desktop) ⭐0 — —
 
 ## 📡 消息通讯（94）
 
@@ -889,8 +892,8 @@
 - ✅ [dsh-im-hub](https://github.com/ThreeBody6666/dsh-im-hub) ⭐1 — Multi-platform IM gateway for DeepSeek Harness: Feishu (Lark), WeCom (WeChat Wor
 - ✅ [dsh-llm-proxy](https://github.com/Ye-Yu-Mo/dsh-llm-proxy) ⭐1 — DeepSeek Harness (dsh) 全局 HTTP 代理插件：undici setGlobalDispatcher + EnvHttpProxyAge
 - · [dsh-notify-sound](https://github.com/xxxxxxxyu/dsh-notify-sound) ⭐1 — DSH (DeepSeek Harness) web plugin: plays a sound when the agent finishes replyin
-- ✅ **ContextGate** ⭐0 — —（URL 占位）
-- ✅ **dsh-chatnode-wechat** ⭐0 — —（URL 占位）
+- 👁 **ContextGate** — 定位歧义监测中（同名多仓，判定暂不展示）
+- ✅ [dsh-chatnode-wechat](https://github.com/Jesse-njx/dsh-chatnode-wechat) ⭐0 — —
 - ✅ [dsh-codex-auth](https://github.com/nzfern/dsh-codex-auth) ⭐0 — DeepSeek Harness plugin: run models on your ChatGPT (Codex) quota — one-click Ch
 - ✅ [dsh-codex-subs-plugin](https://github.com/FernanDAlumin/dsh-codex-subs-plugin) ⭐0 — An experimental DeepSeek Harness adapter that uses ChatGPT OAuth to access a Cod
 - ✅ [dsh-feishu-plugin](https://github.com/yangzhaofeng496/dsh-feishu-plugin) ⭐0 — Feishu bot bridge plugin for DeepSeek Harness
@@ -900,32 +903,32 @@
 - ✅ [dsh-plugin-browser-notify](https://github.com/Caxson/dsh-plugin-browser-notify) ⭐0 — deepseek harness web notify plugin
 - ✅ [dsh-plugin-llm-codex](https://github.com/jasper-zsh/dsh-plugin-llm-codex) ⭐0 — 让 DeepSeek Harness（DSH） 通过 ChatGPT/Codex 订阅调用 openai-codex 模型，无需配置 OpenAI API Ke
 - · [dsh-qq-bot](https://github.com/sindo-s/dsh-qq-bot) ⭐0 — DeepSeek Harness plugin bridging QQ official Bot API to dsh agents (no third-par
-- ✅ **dsh-qq-brige** ⭐0 — —（URL 占位）
-- · **dsh-telegram** ⭐0 — —（URL 占位）
+- 👁 **dsh-qq-brige** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- 👁 **dsh-telegram** — 定位歧义监测中（同名多仓，判定暂不展示）
 - · [dsh-tool-notify](https://github.com/rizkirmdhnnn/dsh-tool-notify) ⭐0 — DSH plugin: model-facing notify tool for DeepSeek Harness — send notifications t
-- ✅ **feishu-local-agent-bridge-windows** ⭐0 — —（URL 占位）
+- ✅ [feishu-local-agent-bridge-windows](https://github.com/ZenHatesCoding/feishu-local-agent-bridge-windows) ⭐0 — —
 - ✅ [dsh-plugin-approval-alert](https://github.com/doncelee229-cmyk/dsh-plugin-approval-alert) ⭐0 — DeepSeek Harness 审批/选择方案系统级通知提醒，显示工作区名、点击跳转、多语言
 - ❌ [dsh-feishu-gateway](https://github.com/kriskwok/dsh-feishu-gateway) ⭐0 — DeepSeek Harness Feishu gateway plugin: chat with your DSH agent from Feishu (pe
 - · [dsh-plugin-notify-sound](https://github.com/ldchaowin/dsh-plugin-notify-sound) ⭐0 — notify sound for DeepSeek harness
 - ✅ [dsh-notify-plugin](https://github.com/orange1926/dsh-notify-plugin) ⭐0 — —
 - ✅ [dsh-turn-done-notify](https://github.com/Roject-CN/dsh-turn-done-notify) ⭐0 — DeepSeek Harness plugin: Windows tray-balloon + sound notification when a conver
 - ⚠️ [dsh-plugin-qqbot](https://github.com/Yunqingqingxi/dsh-plugin-qqbot) ⭐0 — QQ Bot transport adapter for DeepSeek Harness: drive agents from QQ chat, stream
-- ✅ **1514100951-dsh-notify-plugins** ⭐0 — —（URL 占位）
-- ✅ **318197375-dsh-bottom-stats** ⭐0 — —（URL 占位）
-- ❌ **amlyczz-dsh-lark-link** ⭐0 — —（URL 占位）
-- ✅ **banana770-dsh-qq-bridge** ⭐0 — —（URL 占位）
-- ✅ **bujue600-arch-dsh-testgen** ⭐0 — —（URL 占位）
-- ✅ **c-ling-dsh-plugin-notify** ⭐0 — —（URL 占位）
-- ✅ **caxson-dsh-plugin-browser-notify** ⭐0 — —（URL 占位）
-- ✅ **congchuanling-dot-dsh-telegram-relay** ⭐0 — —（URL 占位）
-- ❌ **dingkaihu63-dsh-robotic-harness** ⭐0 — —（URL 占位）
-- ❌ **fireguo1145-dsh-plugin-adapter-qq** ⭐0 — —（URL 占位）
-- ✅ **giantgkl-dsh-cost** ⭐0 — —（URL 占位）
-- ✅ **gnulife-dsh-plugin-wechat** ⭐0 — —（URL 占位）
-- ✅ **gtaifu-dsh-wechat-bridge** ⭐0 — —（URL 占位）
-- ❌ **gusibi-molibot** ⭐0 — —（URL 占位）
-- ✅ **haytham818-dsh-notify** ⭐0 — —（URL 占位）
-- ❌ **hi-wenw-dsh-telegram-channel** ⭐0 — —（URL 占位）
+- ✅ [1514100951-dsh-notify-plugins](https://github.com/1514100951/dsh-notify-plugins) ⭐0 — —
+- ✅ [318197375-dsh-bottom-stats](https://github.com/318197375/dsh-bottom-stats) ⭐0 — —
+- ❌ [amlyczz-dsh-lark-link](https://github.com/amlyczz/dsh-lark-link) ⭐0 — —
+- ✅ [banana770-dsh-qq-bridge](https://github.com/banana770/dsh-qq-bridge) ⭐0 — —
+- ✅ [bujue600-arch-dsh-testgen](https://github.com/bujue600-arch/dsh-testgen) ⭐0 — —
+- ✅ [c-ling-dsh-plugin-notify](https://github.com/c-ling/dsh-plugin-notify) ⭐0 — —
+- ✅ [caxson-dsh-plugin-browser-notify](https://github.com/Caxson/dsh-plugin-browser-notify) ⭐0 — —
+- ✅ [congchuanling-dot-dsh-telegram-relay](https://github.com/congchuanling-dot/DSH-Telegram-Relay) ⭐0 — —
+- ❌ [dingkaihu63-dsh-robotic-harness](https://github.com/dingkaihu63/dsh-robotic-harness) ⭐0 — —
+- ❌ [fireguo1145-dsh-plugin-adapter-qq](https://github.com/FireGuo1145/dsh-plugin-adapter-qq) ⭐0 — —
+- ✅ [giantgkl-dsh-cost](https://github.com/GiantGKL/dsh-cost) ⭐0 — —
+- ✅ [gnulife-dsh-plugin-wechat](https://github.com/gnulife/dsh-plugin-wechat) ⭐0 — —
+- ✅ [gtaifu-dsh-wechat-bridge](https://github.com/gtaifu/dsh-wechat-bridge) ⭐0 — —
+- ❌ [gusibi-molibot](https://github.com/gusibi/molibot) ⭐0 — —
+- ✅ [haytham818-dsh-notify](https://github.com/haytham818/dsh-notify) ⭐0 — —
+- ❌ [hi-wenw-dsh-telegram-channel](https://github.com/hi-wenw/dsh-telegram-channel) ⭐0 — —
 
 ## 🗂 文件数据（71）
 
@@ -976,16 +979,16 @@
 - ✅ [noatmark-dsh-plugin](https://github.com/ylwl1997/noatmark-dsh-plugin) ⭐1 — NoAtMark text hygiene as a DeepSeek Harness (dsh) plugin — sanitize untrusted te
 - ⚠️ [dsh-surface-contract-proof](https://github.com/dongsheng123132/dsh-surface-contract-proof) ⭐1 — Content-addressed conformance proof across recorded DSH ToolRuntime, MCP JSON-RP
 - · [dsh-mediacrawler](https://github.com/xwh-01/dsh-mediacrawler) ⭐1 — Installable DeepSeek Harness profile bundle and bounded MCP adapter for MediaCra
-- ❌ **context-doctor** ⭐0 — —（URL 占位）
+- 👁 **context-doctor** — 定位歧义监测中（同名多仓，判定暂不展示）
 - · [deepseek-harness-file-upload-ocr-plugin](https://github.com/BYYY-eng/deepseek-harness-file-upload-ocr-plugin) ⭐0 — DeepSeek Harness 文件上传与本地 OCR 插件 \| File upload and local OCR plugin for PDF, Word
-- ✅ **dsh-artifact** ⭐0 — — 〔PR〕（URL 占位）
+- 👁 **dsh-artifact** — 定位歧义监测中（同名多仓，判定暂不展示） 〔PR〕
 - ✅ [dsh-files](https://github.com/taxueseek/dsh-files) ⭐0 — DeepSeek Harness dual-face plugin: session-isolated file upload with colorful co
 - · [dsh-mac-vision](https://github.com/Kevoyuan/dsh-mac-vision) ⭐0 — On-device macOS OCR and Apple Vision for DeepSeek Harness — one native plugin wi
-- ✅ **dsh-mineru** ⭐0 — —（URL 占位）
+- 👁 **dsh-mineru** — 定位歧义监测中（同名多仓，判定暂不展示）
 - ✅ [dsh-plugin-dated-folders](https://github.com/Aeanfx/dsh-plugin-dated-folders) ⭐0 — 本插件由 DeepSeek Harness AI 完全制作，人工仅辅助操作（账号/上传/2FA 发布）
 - · [dsh-plugin-vision](https://github.com/tdf1995/dsh-plugin-vision) ⭐0 — Vision for text-only LLMs in DeepSeek Harness (DSH): describe images / OCR / VQA
 - · [dsh-science-plugin](https://github.com/SPYfighting/dsh-science-plugin) ⭐0 — 本地文件化、证据可审查的 DSH 科研工作区插件
-- · **dsh-Unlimited-OCR-Skill** ⭐0 — —（URL 占位）
+- · [dsh-Unlimited-OCR-Skill](https://github.com/Aidenwu0209/dsh-Unlimited-OCR-Skill) ⭐0 — —
 - · [dsh-web-plugin-explain](https://github.com/2710165659/dsh-web-plugin-explain) ⭐0 — dsh Web 插件：在 设置→插件 的「插件列表」里展示每个插件的 package.json 描述，第三方插件带「第三方」标签，支持按描述搜索
 - ✅ [jina-web-search-dsh-plugin](https://github.com/minatoAI/jina-web-search-dsh-plugin) ⭐0 — Jina AI tools for DeepSeek Harness: 12 model tools (web / arXiv / SSRN search, r
 - · [dsh-plugin-archive-recovery](https://github.com/hisaniwo/dsh-plugin-archive-recovery) ⭐0 — DSH (DeepSeek Harness) plugin: restore archived sessions from an icon in the wor
@@ -995,11 +998,11 @@
 - ✅ [dsh-plugin-recall](https://github.com/truelove-dreamer/dsh-plugin-recall) ⭐0 — DeepSeek Harness plugin: cross-session memory for the model
 - ⚠️ [dsh-silly-plugin](https://github.com/xiagaogaozi/dsh-silly-plugin) ⭐0 — DSH 酒馆模式：导入 SillyTavern 角色卡（PNG/JSON），自动拆分世界书/正则/脚本并创建同名工作区（#dsh-plugin）
 - ⚠️ [dsh-workspace-enhance](https://github.com/yuanzehui313/dsh-workspace-enhance) ⭐0 — DeepSeek Harness workspace & session enhancement plugin: recycle bin, cross-work
-- ✅ **bill9109-dsh-drag-and-drop** ⭐0 — —（URL 占位）
-- ❌ **byyy-eng-deepseek-harness-file-upload-ocr-plu** ⭐0 — —（URL 占位）
-- ✅ **fisfzy-zotero-wave-rag** ⭐0 — —（URL 占位）
-- ✅ **hccccc01333-dsh-excel-chat** ⭐0 — —（URL 占位）
-- ⚠️ **hisaniwo-dsh-plugin-archive-recovery** ⭐0 — —（URL 占位）
+- ✅ [bill9109-dsh-drag-and-drop](https://github.com/bill9109/dsh-drag-and-drop) ⭐0 — —
+- 👁 **byyy-eng-deepseek-harness-file-upload-ocr-plu** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [fisfzy-zotero-wave-rag](https://github.com/Fisfzy/zotero-wave-rag) ⭐0 — —
+- ✅ [hccccc01333-dsh-excel-chat](https://github.com/hccccc01333/dsh-excel-chat) ⭐0 — —
+- ⚠️ [hisaniwo-dsh-plugin-archive-recovery](https://github.com/hisaniwo/dsh-plugin-archive-recovery) ⭐0 — —
 
 ## 🎮 娱乐生活（47）
 
@@ -1029,27 +1032,27 @@
 - ✅ [galgame-dsh-plugin](https://github.com/mchenziyi/galgame-dsh-plugin) ⭐1 — A customizable text-based galgame and otome world engine plugin for DeepSeek Har
 - ❌ [dsh-plugin-text-translation](https://github.com/1738348785/dsh-plugin-text-translation) ⭐1 — DSH plugin: text & document localization with tag-protected extraction, batch sl
 - ✅ [dsh-pets](https://github.com/hellosz/dsh-pets) ⭐1 — —
-- ✅ **dsh-d399** ⭐0 — —（URL 占位）
+- 👁 **dsh-d399** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
 - · [dsh-desktop-pet](https://github.com/2002yxy/dsh-desktop-pet) ⭐0 — Unofficial customizable desktop-pet plugin for DeepSeek Harness
-- ✅ **dsh-memento** ⭐0 — — 〔PR〕（URL 占位）
-- ✅ **dsh-pet-web** ⭐0 — —（URL 占位）
+- ✅ [dsh-memento](https://github.com/PerryLink/dsh-memento) ⭐0 — — 〔PR〕
+- 👁 **dsh-pet-web** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
 - ✅ [dsh-plugin-gomoku](https://github.com/Intelligent-GuoXin/dsh-plugin-gomoku) ⭐0 — —
-- ✅ **dsh-sfw** ⭐0 — —（URL 占位）
+- 👁 **dsh-sfw** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
 - ⚠️ [remielle-dsh-plugin](https://github.com/jackuh105/remielle-dsh-plugin) ⭐0 — Remielle desktop pet for DeepSeek Harness — session events drive the pet's anima
-- ❌ **2002yxy-dsh-desktop-pet** ⭐0 — —（URL 占位）
-- ✅ **anacondakc-dsh-stock-market** ⭐0 — —（URL 占位）
-- ✅ **awu12277-dsh-stock-watch** ⭐0 — —（URL 占位）
-- ✅ **c-ling-dsh-plugin-pet** ⭐0 — —（URL 占位）
-- ✅ **cakeni-harness-pet** ⭐0 — —（URL 占位）
-- ✅ **crabossss-dsh-desktop-pet** ⭐0 — —（URL 占位）
-- ✅ **crafter-station-petdex** ⭐0 — —（URL 占位）
-- ✅ **cyanfish-x-dsh-live2d-pets** ⭐0 — —（URL 占位）
-- ❌ **er1c0v0-dsh-whale-pet** ⭐0 — —（URL 占位）
-- ✅ **f0909172434-dsh-deepseek-girl-pet** ⭐0 — —（URL 占位）
-- ✅ **flytomayday80-dsh-pet** ⭐0 — —（URL 占位）
-- ✅ **gameswu-dsh-plugin-background** ⭐0 — —（URL 占位）
-- ❌ **hellodigua-dsh-emoji** ⭐0 — —（URL 占位）
-- ✅ **hellosz-dsh-pets** ⭐0 — —（URL 占位）
+- 👁 **2002yxy-dsh-desktop-pet** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [anacondakc-dsh-stock-market](https://github.com/AnacondaKC/dsh-stock-market) ⭐0 — —
+- ✅ [awu12277-dsh-stock-watch](https://github.com/Awu12277/dsh-stock-watch) ⭐0 — —
+- ✅ [c-ling-dsh-plugin-pet](https://github.com/c-ling/dsh-plugin-pet) ⭐0 — —
+- ✅ [cakeni-harness-pet](https://github.com/cakeni/harness-pet) ⭐0 — —
+- ✅ [crabossss-dsh-desktop-pet](https://github.com/crabossss/dsh-desktop-pet) ⭐0 — —
+- ✅ [crafter-station-petdex](https://github.com/crafter-station/petdex) ⭐0 — —
+- ✅ [cyanfish-x-dsh-live2d-pets](https://github.com/cyanfish-x/dsh-live2d-pets) ⭐0 — —
+- ❌ [er1c0v0-dsh-whale-pet](https://github.com/Er1c0v0/dsh-whale-pet) ⭐0 — —
+- ✅ [f0909172434-dsh-deepseek-girl-pet](https://github.com/f0909172434/dsh-deepseek-girl-pet) ⭐0 — —
+- ✅ [flytomayday80-dsh-pet](https://github.com/FlytoMAYDAY80/dsh-pet) ⭐0 — —
+- ✅ [gameswu-dsh-plugin-background](https://github.com/gameswu/dsh-plugin-background) ⭐0 — —
+- ❌ [hellodigua-dsh-emoji](https://github.com/hellodigua/dsh-emoji) ⭐0 — —
+- ✅ [hellosz-dsh-pets](https://github.com/hellosz/dsh-pets) ⭐0 — —
 
 ## 🛠 基建部署（117）
 
@@ -1092,84 +1095,84 @@
 - · [dsh-LAN](https://github.com/MrMu666/dsh-LAN) ⭐1 — 为DeepSeek  harness开启局域网访问及移动端页面的插件
 - · [deepseek_harness_desktop](https://github.com/zfx2012/deepseek_harness_desktop) ⭐0 — —
 - · [Deepseek-harness-desktop](https://github.com/otakutang/Deepseek-harness-desktop) ⭐0 — Deepseek harness桌面版
-- ✅ **DeepSeek-harness-desktop-plugin** ⭐0 — —（URL 占位）
+- 👁 **DeepSeek-harness-desktop-plugin** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
 - ❌ [deepseek-harness-shell](https://github.com/1816586742-stack/deepseek-harness-shell) ⭐0 — Community desktop shell for DeepSeek Harness — Electron, cross-platform, tray, a
-- ❌ **desktop** ⭐0 — —（URL 占位）
+- 👁 **desktop** — 定位歧义监测中（同名多仓，判定暂不展示）
 - · [dsh-client-plugin-approve-for-me](https://github.com/ZhuRuoLing/dsh-client-plugin-approve-for-me) ⭐0 — Frontend browser plugin that renders approval-review status in DSH conversations
-- ✅ **dsh-cloudflare-browser-run** ⭐0 — —（URL 占位）
-- ❌ **dsh-kimi-browser** ⭐0 — —（URL 占位）
-- · **dsh-mac-desktop** ⭐0 — —（URL 占位）
+- ✅ [dsh-cloudflare-browser-run](https://github.com/RealAlexandreAI/dsh-cloudflare-browser-run) ⭐0 — —
+- 👁 **dsh-kimi-browser** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- · [dsh-mac-desktop](https://github.com/sundusk/dsh-macDesktop-pet) ⭐0 — —
 - · [dsh-open-browser](https://github.com/peach0x33a/dsh-open-browser) ⭐0 — —
 - ✅ [dsh-same-mode-sandbox-noop](https://github.com/zhangzujian/dsh-same-mode-sandbox-noop) ⭐0 — DSH compatibility plugin for redundant same-mode sandbox escalation requests
-- · **dsh-tool-monitor** ⭐0 — —（URL 占位）
+- · [dsh-tool-monitor](https://github.com/yoke233/dsh-tool-monitor) ⭐0 — —
 - ✅ [dsh-update-checker](https://github.com/KeLearns/dsh-update-checker) ⭐0 — DeepSeek Harness official runtime update checker plugin
 - · [dsh-web-auto-open](https://github.com/ChengChe106/dsh-web-auto-open) ⭐0 — DSH plugin: auto-open the default browser when `dsh web` starts — cross-platform
-- ✅ **oh-dsh-desktop** ⭐0 — —（URL 占位）
+- 👁 **oh-dsh-desktop** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
 - · [dsh-plugin-desktop-control](https://github.com/alonelypigeon/dsh-plugin-desktop-control) ⭐0 — DeepSeek Harness cordis plugin: /desktop commands to open and control the deskto
 - · [deepseekex](https://github.com/ianfog/deepseekex) ⭐0 — DeepSeek Harness desktop client (Electron shell)
 - · [dsh-plugin-auditor](https://github.com/HYY-King/dsh-plugin-auditor) ⭐0 — DSH plugin auditor: pre-flight compatibility check for profile plugin combinatio
 - ⚠️ [dsh-plugin-ssh-remotes](https://github.com/zsmx233/dsh-plugin-ssh-remotes) ⭐0 — —
-- ✅ **0reki-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **123wp-a-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **1m01m0-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ❌ **761244815-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **alliottech-deepseek-harness-docker** ⭐0 — —（URL 占位）
-- ✅ **andantel-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ⚠️ **antinomie1-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **anweat-dsh-browser** ⭐0 — —（URL 占位）
-- ❌ **anywhere-labs-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ❌ **ayor1337-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ⚠️ **baiiiii-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ❌ **bailang1218-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **baiyuscc13724-max-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **beex-labs-dsh-desktop-plugin** ⭐0 — —（URL 占位）
-- ✅ **beitongxue-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **bitnxm-deepseek-harness-desktop-macos** ⭐0 — —（URL 占位）
-- ❌ **bobostudio-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ❌ **brooke1220-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ❌ **bruc3van-dsh-desktop** ⭐0 — —（URL 占位）
-- ❌ **caseywon-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **cc1252-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **ccmu04-dshdesktop** ⭐0 — —（URL 占位）
-- ❌ **ch0uhuaz1-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **chenxinj08-lgtm-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **chisaalter-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **chyra-moon-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **clizo1209-dsh-playwright-browser** ⭐0 — —（URL 占位）
-- ✅ **cloud-1104-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **cnskycn-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **crazyshout-dsh-ssh-remote** ⭐0 — —（URL 占位）
-- ❌ **czzzlq-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **dadaozei01-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ❌ **dataelement-dsh-desktop** ⭐0 — —（URL 占位）
-- ❌ **dawnmagnet-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ❌ **diamondfsd-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **dxc-dxc-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **easyhoov-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **echozuo-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **eddie0521-turn-deepseek-into-desktop** ⭐0 — —（URL 占位）
-- ⚠️ **edmok-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **egnmosk-dsh-browser-bridge** ⭐0 — —（URL 占位）
-- ❌ **esy-yse-dsh-desktop** ⭐0 — —（URL 占位）
-- ❌ **evanmormmm-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **eveerme-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **fan969690-dsh-desktop-tools** ⭐0 — —（URL 占位）
-- ✅ **feiyang-dev-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ❌ **fellow99-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ❌ **fisfzy-ego-browser** ⭐0 — —（URL 占位）
-- ❌ **flee42-dsh-desktop** ⭐0 — —（URL 占位）
-- ✅ **flymysql-dsh-remote** ⭐0 — —（URL 占位）
-- ✅ **foolgry-dsh-desktop** ⭐0 — —（URL 占位）
-- ✅ **functy23-dsh-desktop** ⭐0 — —（URL 占位）
-- ✅ **goyacj-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ⚠️ **gtc2080-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **haddenhunter-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **hairyf-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ✅ **hanelalo-browser-bridge** ⭐0 — —（URL 占位）
-- ✅ **haoyueqin-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ❌ **hbhszy-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ❌ **hesheng4-deepseek-harness-desktop** ⭐0 — —（URL 占位）
-- ❌ **hialuoy-deepseek-harness-desktop** ⭐0 — —（URL 占位）
+- ✅ [0reki-deepseek-harness-desktop](https://github.com/0reki/deepseek-harness-desktop) ⭐0 — —
+- ✅ [123wp-a-deepseek-harness-desktop](https://github.com/123WP-a/deepseek-harness-desktop) ⭐0 — —
+- ✅ [1m01m0-deepseek-harness-desktop](https://github.com/1m01m0/deepseek-harness-desktop) ⭐0 — —
+- ❌ [761244815-deepseek-harness-desktop](https://github.com/761244815/deepseek-harness-desktop) ⭐0 — —
+- ✅ [alliottech-deepseek-harness-docker](https://github.com/AlliotTech/deepseek-harness-docker) ⭐0 — —
+- ✅ [andantel-deepseek-harness-desktop](https://github.com/AndanteL/deepseek-harness-desktop) ⭐0 — —
+- 👁 **antinomie1-deepseek-harness-desktop** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [anweat-dsh-browser](https://github.com/anweat/dsh-browser) ⭐0 — —
+- ❌ [anywhere-labs-deepseek-harness-desktop](https://github.com/anywhere-labs/deepseek-harness-desktop) ⭐0 — —
+- ❌ [ayor1337-deepseek-harness-desktop](https://github.com/Ayor1337/deepseek-harness-desktop) ⭐0 — —
+- ⚠️ [baiiiii-deepseek-harness-desktop](https://github.com/baiiiii/deepseek-harness-desktop) ⭐0 — —
+- ❌ [bailang1218-deepseek-harness-desktop](https://github.com/bailang1218/deepseek-harness-desktop) ⭐0 — —
+- ✅ [baiyuscc13724-max-deepseek-harness-desktop](https://github.com/baiyuscc13724-max/deepseek-harness-desktop) ⭐0 — —
+- ✅ [beex-labs-dsh-desktop-plugin](https://github.com/beex-labs/dsh-desktop-plugin) ⭐0 — —
+- ✅ [beitongxue-deepseek-harness-desktop](https://github.com/beitongxue/deepseek-harness-desktop) ⭐0 — —
+- ✅ [bitnxm-deepseek-harness-desktop-macos](https://github.com/BITnxm/deepseek-harness-desktop-macos) ⭐0 — —
+- ❌ [bobostudio-deepseek-harness-desktop](https://github.com/bobostudio/deepseek-harness-desktop) ⭐0 — —
+- ❌ [brooke1220-deepseek-harness-desktop](https://github.com/brooke1220/deepseek-harness-desktop) ⭐0 — —
+- ❌ [bruc3van-dsh-desktop](https://github.com/bruc3van/dsh-desktop) ⭐0 — —
+- ❌ [caseywon-deepseek-harness-desktop](https://github.com/CaseyWon/deepseek-harness-desktop) ⭐0 — —
+- ✅ [cc1252-deepseek-harness-desktop](https://github.com/cc1252/deepseek-harness-desktop) ⭐0 — —
+- ✅ [ccmu04-dshdesktop](https://github.com/CCMu04/DSHDesktop) ⭐0 — —
+- ❌ [ch0uhuaz1-deepseek-harness-desktop](https://github.com/Ch0uHuaZ1/DeepSeek-Harness-Desktop) ⭐0 — —
+- ✅ [chenxinj08-lgtm-deepseek-harness-desktop](https://github.com/chenxinj08-lgtm/deepseek-harness-desktop) ⭐0 — —
+- ✅ [chisaalter-deepseek-harness-desktop](https://github.com/ChisaAlter/Deepseek-Harness-Desktop) ⭐0 — —
+- ✅ [chyra-moon-deepseek-harness-desktop](https://github.com/chyra-moon/deepseek-harness-desktop) ⭐0 — —
+- ✅ [clizo1209-dsh-playwright-browser](https://github.com/Clizo1209/dsh-playwright-browser) ⭐0 — —
+- ✅ [cloud-1104-deepseek-harness-desktop](https://github.com/cloud-1104/deepseek-harness-desktop) ⭐0 — —
+- ✅ [cnskycn-deepseek-harness-desktop](https://github.com/cnskycn/deepseek-harness-desktop) ⭐0 — —
+- ✅ [crazyshout-dsh-ssh-remote](https://github.com/CrazyShout/dsh-ssh-remote) ⭐0 — —
+- ❌ [czzzlq-deepseek-harness-desktop](https://github.com/czzzlq/deepseek-harness-desktop) ⭐0 — —
+- ✅ [dadaozei01-deepseek-harness-desktop](https://github.com/dadaozei01/deepseek-harness-desktop) ⭐0 — —
+- ❌ [dataelement-dsh-desktop](https://github.com/dataelement/dsh-desktop) ⭐0 — —
+- ❌ [dawnmagnet-deepseek-harness-desktop](https://github.com/DawnMagnet/deepseek-harness-desktop) ⭐0 — —
+- ❌ [diamondfsd-deepseek-harness-desktop](https://github.com/diamondfsd/deepseek-harness-desktop) ⭐0 — —
+- ✅ [dxc-dxc-deepseek-harness-desktop](https://github.com/dxc-dxc/deepseek-harness-desktop) ⭐0 — —
+- ✅ [easyhoov-deepseek-harness-desktop](https://github.com/Easyhoov/deepseek-harness-desktop-windows) ⭐0 — —
+- ✅ [echozuo-deepseek-harness-desktop](https://github.com/EchoZuo/deepseek-harness-desktop) ⭐0 — —
+- ✅ [eddie0521-turn-deepseek-into-desktop](https://github.com/Eddie0521/turn-deepseek-into-desktop) ⭐0 — —
+- ⚠️ [edmok-deepseek-harness-desktop](https://github.com/EDMOK/deepseek-harness-desktop) ⭐0 — —
+- ✅ [egnmosk-dsh-browser-bridge](https://github.com/egnmosk/dsh-browser-bridge) ⭐0 — —
+- ❌ [esy-yse-dsh-desktop](https://github.com/Esy-Yse/dsh-desktop) ⭐0 — —
+- ❌ [evanmormmm-deepseek-harness-desktop](https://github.com/evanmormmm/deepseek-harness-desktop) ⭐0 — —
+- ✅ [eveerme-deepseek-harness-desktop](https://github.com/Eveerme/deepseek-harness-desktop) ⭐0 — —
+- ✅ [fan969690-dsh-desktop-tools](https://github.com/fan969690/dsh-desktop-tools) ⭐0 — —
+- ✅ [feiyang-dev-deepseek-harness-desktop](https://github.com/feiyang-dev/DeepSeek-Harness-Desktop) ⭐0 — —
+- ❌ [fellow99-deepseek-harness-desktop](https://github.com/fellow99/deepseek-harness-desktop) ⭐0 — —
+- ❌ [fisfzy-ego-browser](https://github.com/Fisfzy/ego-browser) ⭐0 — —
+- ❌ [flee42-dsh-desktop](https://github.com/flee42/dsh-desktop) ⭐0 — —
+- ✅ [flymysql-dsh-remote](https://github.com/flymysql/dsh-remote) ⭐0 — —
+- ✅ [foolgry-dsh-desktop](https://github.com/foolgry/dsh-desktop) ⭐0 — —
+- ✅ [functy23-dsh-desktop](https://github.com/functy23/DSH-Desktop) ⭐0 — —
+- ✅ [goyacj-deepseek-harness-desktop](https://github.com/GoyacJ/deepseek-harness-desktop) ⭐0 — —
+- 👁 **gtc2080-deepseek-harness-desktop** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [haddenhunter-deepseek-harness-desktop](https://github.com/HaddenHunter/deepseek-harness-desktop) ⭐0 — —
+- ✅ [hairyf-deepseek-harness-desktop](https://github.com/hairyf/deepseek-harness-desktop) ⭐0 — —
+- ✅ [hanelalo-browser-bridge](https://github.com/hanelalo/browser-bridge) ⭐0 — —
+- ✅ [haoyueqin-deepseek-harness-desktop](https://github.com/HaoyueQin/deepseek-harness-desktop) ⭐0 — —
+- ❌ [hbhszy-deepseek-harness-desktop](https://github.com/hbhszy/deepseek-harness-desktop) ⭐0 — —
+- ❌ [hesheng4-deepseek-harness-desktop](https://github.com/hesheng4/deepseek-harness-desktop) ⭐0 — —
+- ❌ [hialuoy-deepseek-harness-desktop](https://github.com/hialuoy/deepseek-harness-desktop) ⭐0 — —
 
 ## 📚 学习研究（10）
 
@@ -1179,10 +1182,10 @@
 - ❌ [dsh-deepresearch](https://github.com/havingautism/dsh-deepresearch) ⭐3 — —
 - ✅ [dsh-humanize](https://github.com/zevorn/dsh-humanize) ⭐3 — —
 - ❌ [dsh-101](https://github.com/bill9109/dsh-101) ⭐2 — DSH 文档阅读模式
-- ✅ **2710165659-dsh-web-plugin-explain** ⭐0 — —（URL 占位）
-- ❌ **bill9109-dsh-101** ⭐0 — —（URL 占位）
-- ✅ **dongsheng123132-dsh-benchmark** ⭐0 — —（URL 占位）
-- ✅ **flowerwater1019-angelina-dsh-plugin** ⭐0 — —（URL 占位）
+- ✅ [2710165659-dsh-web-plugin-explain](https://github.com/2710165659/dsh-web-plugin-explain) ⭐0 — —
+- ❌ [bill9109-dsh-101](https://github.com/bill9109/dsh-101) ⭐0 — —
+- ✅ [dongsheng123132-dsh-benchmark](https://github.com/dongsheng123132/dsh-benchmark) ⭐0 — —
+- ✅ [flowerwater1019-angelina-dsh-plugin](https://github.com/FlowerWater1019/Angelina-dsh-plugin) ⭐0 — —
 
 ## ❓ 其他（658）
 
@@ -1337,90 +1340,90 @@
 - · [dsh-plugin-conversation-outline](https://github.com/XavierMarquis93/dsh-plugin-conversation-outline) ⭐1 — DeepSeek Harness conversation outline plugin (对话目录)
 - ⚠️ [slcatwujian-dsh-vision-plugin](https://github.com/yan5236/slcatwujian-dsh-vision-plugin) ⭐1 — 让不支持图片输入的主模型通过已配置的视觉模型理解图片的 DSH 插件：自动桥接、像素坐标描述、vision_ask 追问工具与设置页
 - ⚠️ [TokenLedger](https://github.com/zh667/TokenLedger) ⭐1 — Token usage accounting for DeepSeek Harness, reconciled against New API and Sub2
-- ❌ **adhd-one** ⭐0 — —（URL 占位）
+- ❌ [adhd-one](https://github.com/xydadada/adhd-one) ⭐0 — —
 - · [A-persona-plugin-for-DeepSeek-Harness](https://github.com/chenjunda0018-sketch/A-persona-plugin-for-DeepSeek-Harness) ⭐0 — switch DSH between a Classical Chinese scholar, a Northeastern buddy, and a talk
-- ✅ **aureways** ⭐0 — —（URL 占位）
-- ✅ **cascade** ⭐0 — —（URL 占位）
-- ✅ **DeepJIT** ⭐0 — —（URL 占位）
+- ✅ [aureways](https://github.com/nullskymc/aureways) ⭐0 — —
+- 👁 **cascade** — 定位歧义监测中（同名多仓，判定暂不展示）
+- 👁 **DeepJIT** — 定位歧义监测中（同名多仓，判定暂不展示）
 - · [DeepSeek-Harness-Breathing-BG](https://github.com/CharserHH/DeepSeek-Harness-Breathing-BG) ⭐0 — 一个DeepSeek背景呼吸灯，随工作状态而改变
 - · [deepseek-harness-evolver](https://github.com/shinjiyu/deepseek-harness-evolver) ⭐0 — —
 - ✅ [deepseek-harness-ppt](https://github.com/zackzhangkai/deepseek-harness-ppt) ⭐0 — —
 - ✅ [deepseek-harness-vision-plugin](https://github.com/edison-land/deepseek-harness-vision-plugin) ⭐0 — Vision input and automatic routing plugin for DeepSeek Harness and OpenAI-compat
-- · **deepseek-work** ⭐0 — —（URL 占位）
-- ✅ **Dive** ⭐0 — —（URL 占位）
-- · **dsh-approval-llm** ⭐0 — —（URL 占位）
-- ❌ **dsh-assembler** ⭐0 — —（URL 占位）
-- ✅ **dsh-auto-compact** ⭐0 — —（URL 占位）
-- · **dsh-backup-sync** ⭐0 — —（URL 占位）
-- ✅ **dsh-change-ledger** ⭐0 — —（URL 占位）
-- · **dsh-chat-link** ⭐0 — —（URL 占位）
-- · **dsh-checkpoint-rewind** ⭐0 — — 〔PR〕（URL 占位）
-- ✅ **dsh-command-opt** ⭐0 — —（URL 占位）
+- 👁 **deepseek-work** — 定位歧义监测中（同名多仓，判定暂不展示）
+- 👁 **Dive** — 定位歧义监测中（同名多仓，判定暂不展示）
+- · [dsh-approval-llm](https://github.com/Letter2025/dsh-approval-llm) ⭐0 — —
+- ❌ [dsh-assembler](https://github.com/TT-Wang/dsh-assembler) ⭐0 — —
+- 👁 **dsh-auto-compact** — 定位歧义监测中（同名多仓，判定暂不展示）
+- · [dsh-backup-sync](https://github.com/csiroqa/dsh-backup-sync) ⭐0 — —
+- 👁 **dsh-change-ledger** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- · [dsh-chat-link](https://github.com/KeFan-J/dsh-chat-link) ⭐0 — —
+- · [dsh-checkpoint-rewind](https://github.com/PerryLink/dsh-checkpoint-rewind) ⭐0 — — 〔PR〕
+- ✅ [dsh-command-opt](https://github.com/csiroqa/dsh-command-opt) ⭐0 — —
 - ❌ [dsh-config-watch](https://github.com/Equinox7379/dsh-config-watch) ⭐0 — Config drift detective for DSH: snapshots profile/plugin state, records changes.
-- ✅ **dsh-conversation-indicator** ⭐0 — —（URL 占位）
-- ❌ **dsh-cost-display** ⭐0 — —（URL 占位）
-- ✅ **dsh-cost-ledger** ⭐0 — —（URL 占位）
-- ❌ **dsh-cost-tracker** ⭐0 — —（URL 占位）
-- ✅ **dsh-credentials-system** ⭐0 — —（URL 占位）
-- · **DSH-Decktop** ⭐0 — —（URL 占位）
-- ✅ **dsh-delayed-task** ⭐0 — —（URL 占位）
-- ❌ **dsh-delegate** ⭐0 — —（URL 占位）
-- ✅ **dsh-desk** ⭐0 — —（URL 占位）
-- · **dsh-dev-actions** ⭐0 — —（URL 占位）
-- · **dsh-doctor-windows** ⭐0 — —（URL 占位）
-- · **dsh-eco-router** ⭐0 — —（URL 占位）
-- ✅ **dsh-effort-config** ⭐0 — —（URL 占位）
+- ✅ [dsh-conversation-indicator](https://github.com/smanx/dsh-conversation-indicator) ⭐0 — —
+- ❌ [dsh-cost-display](https://github.com/misakimiku2/dsh-cost-display) ⭐0 — —
+- ✅ [dsh-cost-ledger](https://github.com/suimi8/dsh-cost-ledger) ⭐0 — —
+- 👁 **dsh-cost-tracker** — 定位歧义监测中（同名多仓，判定暂不展示）
+- ✅ [dsh-credentials-system](https://github.com/khiqwq/dsh-credentials-system) ⭐0 — —
+- 👁 **DSH-Decktop** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [dsh-delayed-task](https://github.com/m-guo-2/dsh-delayed-task) ⭐0 — —
+- ❌ [dsh-delegate](https://github.com/FEOH333/dsh-delegate) ⭐0 — —
+- 👁 **dsh-desk** — 定位歧义监测中（同名多仓，判定暂不展示）
+- · [dsh-dev-actions](https://github.com/skitse/dsh-dev-actions) ⭐0 — —
+- · [dsh-doctor-windows](https://github.com/sublatesublate-design/dsh-doctor-windows) ⭐0 — —
+- · [dsh-eco-router](https://github.com/joyfoxai/dsh-eco-router) ⭐0 — —
+- ✅ [dsh-effort-config](https://github.com/benzhoupo/dsh-effort-config) ⭐0 — —
 - · [DSHelperPlugin](https://github.com/snak10/DSHelperPlugin) ⭐0 — —
 - · [dsh-enter-send](https://github.com/Nalleyer/dsh-enter-send) ⭐0 — dsh plugin: switch the chat composer between Enter-send and Ctrl+Enter-send from
-- · **dsh-eval-harness** ⭐0 — —（URL 占位）
-- · **dsh-eval-regression** ⭐0 — —（URL 占位）
-- · **dsh-event-auditor** ⭐0 — —（URL 占位）
-- · **dsh-everything-oauth** ⭐0 — —（URL 占位）
+- · [dsh-eval-harness](https://github.com/BiBoyang/dsh-eval-harness) ⭐0 — —
+- · [dsh-eval-regression](https://github.com/aryswisnu/dsh-eval-regression) ⭐0 — —
+- · [dsh-event-auditor](https://github.com/qing3a/dsh-event-auditor) ⭐0 — —
+- · [dsh-everything-oauth](https://github.com/kam74515-boop/dsh-everything-oauth) ⭐0 — —
 - · [dsh-experience-plugin](https://github.com/SouleyMoni1/dsh-experience-plugin) ⭐0 — —
-- · **dsh-eye-care** ⭐0 — —（URL 占位）
-- ✅ **dsh-eyecare** ⭐0 — —（URL 占位）
+- · [dsh-eye-care](https://github.com/Anionex/dsh-eye-care) ⭐0 — —
+- ✅ [dsh-eyecare](https://github.com/Yummyxl/dsh-eyecare) ⭐0 — —
 - ✅ [dsh-eyes-upload](https://github.com/ala-Lisa/dsh-eyes-upload) ⭐0 — DSH plugin: invisible image upload for text-only models via deepseek-eyes
-- ✅ **dsh-failure-capsule** ⭐0 — —（URL 占位）
+- ✅ [dsh-failure-capsule](https://github.com/YiHarvest/dsh-failure-capsule) ⭐0 — —
 - · [dsh-file-checksum](https://github.com/yan9651688/dsh-file-checksum) ⭐0 — Raw-file SHA-256 and SHA-512 verification plugin for DeepSeek Harness
-- ✅ **dsh-file-preview** ⭐0 — —（URL 占位）
+- 👁 **dsh-file-preview** — 定位歧义监测中（同名多仓，判定暂不展示）
 - ❌ [dsh-gateway-config](https://github.com/iceprosurface/dsh-gateway-config) ⭐0 — DSH web profile and TapSVC model configuration plugin
-- ✅ **dsh-gateway-presets** ⭐0 — —（URL 占位）
-- · **dsh-guardian** ⭐0 — —（URL 占位）
-- ❌ **dsh-hotkeys** ⭐0 — —（URL 占位）
-- ❌ **dsh-image-to-path** ⭐0 — —（URL 占位）
-- ✅ **dsh-involute** ⭐0 — —（URL 占位）
-- ✅ **dsh-jingle** ⭐0 — —（URL 占位）
-- ❌ **dsh-Kimi-WebBridge** ⭐0 — —（URL 占位）
-- ❌ **dsh-literature** ⭐0 — —（URL 占位）
-- · **dsh-llmwiki** ⭐0 — —（URL 占位）
-- · **dsh-lsp-actions** ⭐0 — — 〔PR〕（URL 占位）
-- · **dsh-luna-vision-bridge** ⭐0 — —（URL 占位）
-- · **dsh-mcp-proxy** ⭐0 — —（URL 占位）
-- · **dsh-mdbox** ⭐0 — —（URL 占位）
-- · **dsh-model-config-sync** ⭐0 — —（URL 占位）
-- ✅ **dsh-model-selector** ⭐0 — —（URL 占位）
+- ✅ [dsh-gateway-presets](https://github.com/Menger-8/dsh-gateway-presets) ⭐0 — —
+- 👁 **dsh-guardian** — 定位歧义监测中（同名多仓，判定暂不展示）
+- ❌ [dsh-hotkeys](https://github.com/csiroqa/dsh-hotkeys) ⭐0 — —
+- ❌ [dsh-image-to-path](https://github.com/cesaryike/dsh-image-to-path) ⭐0 — —
+- 👁 **dsh-involute** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [dsh-jingle](https://github.com/rxh1999/dsh-jingle) ⭐0 — —
+- ❌ [dsh-Kimi-WebBridge](https://github.com/MicroHEROX/dsh-Kimi-WebBridge) ⭐0 — —
+- 👁 **dsh-literature** — 定位歧义监测中（同名多仓，判定暂不展示）
+- 👁 **dsh-llmwiki** — 定位歧义监测中（同名多仓，判定暂不展示）
+- · [dsh-lsp-actions](https://github.com/PerryLink/dsh-lsp-actions) ⭐0 — — 〔PR〕
+- · [dsh-luna-vision-bridge](https://github.com/ycp424c/dsh-luna-vision-bridge) ⭐0 — —
+- · [dsh-mcp-proxy](https://github.com/ben7am1n/dsh-mcp-proxy) ⭐0 — —
+- · [dsh-mdbox](https://github.com/Chi-hong22/dsh-mdbox) ⭐0 — —
+- 👁 **dsh-model-config-sync** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- 👁 **dsh-model-selector** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
 - ✅ [dsh-model-thinking](https://github.com/cyberlieflife/dsh-model-thinking) ⭐0 — DSH (DeepSeek Harness) web plugin: thinking intensity / reasoning effort setting
 - ✅ [dsh-mod-manager](https://github.com/HamSamMike/dsh-mod-manager) ⭐0 — A mod-style plugin manager for DeepSeek Harness web profiles.
-- ✅ **dsh-multimodal** ⭐0 — —（URL 占位）
-- ✅ **dsh-netdoctor** ⭐0 — —（URL 占位）
+- 👁 **dsh-multimodal** — 定位歧义监测中（同名多仓，判定暂不展示）
+- ✅ [dsh-netdoctor](https://github.com/TYEclipse/dsh-netdoctor) ⭐0 — —
 - · [dsh-news-plugin](https://github.com/canghai666x/dsh-news-plugin) ⭐0 — —
 - ✅ [dsh-open-auth-plugin](https://github.com/jianghuife/dsh-open-auth-plugin) ⭐0 — —
-- · **dsh-openclaw-acp** ⭐0 — —（URL 占位）
-- · **dsh-output-styles** ⭐0 — — 〔PR〕（URL 占位）
+- · [dsh-openclaw-acp](https://github.com/BeAChanger/dsh-openclaw-acp) ⭐0 — —
+- · [dsh-output-styles](https://github.com/PerryLink/dsh-output-styles) ⭐0 — — 〔PR〕
 - · [dsh-pain-point-check](https://github.com/ICCuse/dsh-pain-point-check) ⭐0 — Enforced pain-point-check guard plugin for DeepSeek Harness: after two non-conve
-- ✅ **dsh-passwords** ⭐0 — —（URL 占位）
-- · **dsh-payload-capture** ⭐0 — —（URL 占位）
-- · **dsh-phone-control** ⭐0 — —（URL 占位）
+- ✅ [dsh-passwords](https://github.com/slywalker2006/dsh-passwords) ⭐0 — —
+- · [dsh-payload-capture](https://github.com/Moeblack/dsh-payload-capture) ⭐0 — —
+- 👁 **dsh-phone-control** — 定位歧义监测中（同名多仓，判定暂不展示）
 - ✅ [DSH-Plugin-Account-HUD](https://github.com/namesColin/DSH-Plugin-Account-HUD) ⭐0 — 一个deepseek harness的插件，用于实时显示api-key的余额和api服务状态
 - · [dsh-plugin-auto-review](https://github.com/bingps/dsh-plugin-auto-review) ⭐0 — —
 - ✅ [dsh-plugin-confirm-check](https://github.com/AuraxM/dsh-plugin-confirm-check) ⭐0 — —
-- ✅ **dsh-plugin-console** ⭐0 — —（URL 占位）
+- 👁 **dsh-plugin-console** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
 - ✅ [dsh-plugin-cost](https://github.com/yweilai77-dev/dsh-plugin-cost) ⭐0 — —
 - ✅ [dsh-plugin-deepseek-balance](https://github.com/fishxcode/dsh-plugin-deepseek-balance) ⭐0 — DeepSeek Harness Web client plugin that displays real-time DeepSeek API balance.
 - · [dsh-plugin-hello](https://github.com/xu1132/dsh-plugin-hello) ⭐0 — A minimal DeepSeek Harness community plugin that registers a callable hello tool
 - · [dsh-plugin-local-utilities](https://github.com/Hjjj0918/dsh-plugin-local-utilities) ⭐0 — —
 - · [dsh-plugin-medhub](https://github.com/KevinShao1991/dsh-plugin-medhub) ⭐0 — —
-- · **dsh-plugin-pixluna** ⭐0 — —（URL 占位）
+- 👁 **dsh-plugin-pixluna** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
 - · [dsh-plugin-quote-reply](https://github.com/yangYzc/dsh-plugin-quote-reply) ⭐0 — DSH plugin: select text in a conversation, then quote it into the composer or re
 - ✅ [dsh-plugin-scaffold](https://github.com/skyzhao1223/dsh-plugin-scaffold) ⭐0 — Minimal runnable DeepSeek Harness (dsh) plugin scaffold: one model-facing tool v
 - ✅ [dsh-plugin-security-audit](https://github.com/truelove-dreamer/dsh-plugin-security-audit) ⭐0 — DeepSeek Harness plugin: run a live security health check on the deployment
@@ -1429,73 +1432,73 @@
 - · [dsh-plugin-verified-search](https://github.com/f0909172434/dsh-plugin-verified-search) ⭐0 — Verified current-source search workflow for DeepSeek Harness
 - · [dsh-plugin-wallpaper](https://github.com/Tree-Summer/dsh-plugin-wallpaper) ⭐0 — 可以在deepseek harness网页端自定义背景图片的插件
 - · [dsh-plugin-warroom-garak](https://github.com/lukethecat/dsh-plugin-warroom-garak) ⭐0 — —
-- · **dsh-polyglot** ⭐0 — —（URL 占位）
-- · **dsh-premise-guard** ⭐0 — —（URL 占位）
-- ✅ **dsh-product-delivery-workflow** ⭐0 — —（URL 占位）
-- ❌ **dsh-project-wiki** ⭐0 — —（URL 占位）
-- · **dsh-proof** ⭐0 — —（URL 占位）
-- · **dsh-push** ⭐0 — —（URL 占位）
+- · [dsh-polyglot](https://github.com/Jesse-njx/dsh-polyglot) ⭐0 — —
+- · [dsh-premise-guard](https://github.com/ICCuse/dsh-premise-guard) ⭐0 — —
+- ✅ [dsh-product-delivery-workflow](https://github.com/wellorbetter/dsh-product-delivery-workflow) ⭐0 — —
+- ❌ [dsh-project-wiki](https://github.com/yu-xin-c/dsh-project-wiki) ⭐0 — —
+- · [dsh-proof](https://github.com/EvilIrving/dsh-proof) ⭐0 — —
+- · [dsh-push](https://github.com/kiim-wong/dsh-push) ⭐0 — —
 - · [dsh-quant-workspace](https://github.com/AllenCX/dsh-quant-workspace) ⭐0 — DSH plugin bridging a local low-frequent-quant engine: single-ticker signal card
-- ✅ **dsh-qwen-mm** ⭐0 — —（URL 占位）
-- · **dsh-refined** ⭐0 — —（URL 占位）
-- · **dsh-restart-web** ⭐0 — —（URL 占位）
-- ✅ **dsh-routines** ⭐0 — —（URL 占位）
-- ✅ **dsh-search-endpoint-guard** ⭐0 — —（URL 占位）
-- ✅ **dsh-search-free** ⭐0 — —（URL 占位）
-- ✅ **dsh-security-scan** ⭐0 — —（URL 占位）
-- · **dsh-self-evolution** ⭐0 — —（URL 占位）
-- · **dsh-simple-CLI** ⭐0 — —（URL 占位）
-- · **dsh-soundscape** ⭐0 — —（URL 占位）
-- ✅ **dsh-specflow** ⭐0 — —（URL 占位）
-- ✅ **dsh-spur** ⭐0 — —（URL 占位）
+- ✅ [dsh-qwen-mm](https://github.com/RRRosmontis/dsh-qwen-mm) ⭐0 — —
+- · [dsh-refined](https://github.com/djh2203/dsh-refined) ⭐0 — —
+- · [dsh-restart-web](https://github.com/shaoyi1991/dsh-restart-web) ⭐0 — —
+- ✅ [dsh-routines](https://github.com/Jesse-njx/dsh-routines) ⭐0 — —
+- ✅ [dsh-search-endpoint-guard](https://github.com/kanghelyu/dsh-search-endpoint-guard) ⭐0 — —
+- ✅ [dsh-search-free](https://github.com/lmcsh9527/dsh-search-free) ⭐0 — —
+- ✅ [dsh-security-scan](https://github.com/ben7am1n/dsh-security-scan) ⭐0 — —
+- · [dsh-self-evolution](https://github.com/Lhy723/dsh-self-evolution) ⭐0 — —
+- · [dsh-simple-CLI](https://github.com/kit-zeason/dsh-simple-CLI) ⭐0 — —
+- · [dsh-soundscape](https://github.com/Blaczz/dsh-soundscape) ⭐0 — —
+- ✅ [dsh-specflow](https://github.com/lonelymoon87/dsh-specflow) ⭐0 — —
+- 👁 **dsh-spur** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
 - · [dsh-ssh-plugin](https://github.com/YOLO-LZL/dsh-ssh-plugin) ⭐0 — —
 - ✅ [dsh-subprocess-inherit-environment](https://github.com/zhangzujian/dsh-subprocess-inherit-environment) ⭐0 — DSH plugin that forwards the complete Harness environment through ctx.subprocess
-- · **dsh-supervisor** ⭐0 — —（URL 占位）
-- · **dsh-survey** ⭐0 — —（URL 占位）
-- ✅ **dsh-task-board** ⭐0 — —（URL 占位）
-- ✅ **dsh-task-console** ⭐0 — —（URL 占位）
+- · [dsh-supervisor](https://github.com/Singer133/pi-dsh-supervisor) ⭐0 — —
+- · [dsh-survey](https://github.com/jinhuang712/dsh-survey) ⭐0 — —
+- 👁 **dsh-task-board** — 定位歧义监测中（同名多仓，判定暂不展示）
+- ✅ [dsh-task-console](https://github.com/He2way/dsh-task-console) ⭐0 — —
 - ✅ [dsh-think-chinese](https://github.com/lingtima/dsh-think-chinese) ⭐0 — DSH 插件：让模型始终用中文进行内部推理与思考（think in Chinese）
-- · **dsh-tool-approval** ⭐0 — —（URL 占位）
-- · **dsh-tool-chaos** ⭐0 — —（URL 占位）
-- · **dsh-tool-describe-image** ⭐0 — —（URL 占位）
-- · **dsh-tool-stats** ⭐0 — —（URL 占位）
+- · [dsh-tool-approval](https://github.com/ilharp/dsh-tool-approval) ⭐0 — —
+- · [dsh-tool-chaos](https://github.com/cyanseek/dsh-tool-chaos) ⭐0 — —
+- · [dsh-tool-describe-image](https://github.com/sala003/dsh-tool-describe-image) ⭐0 — —
+- 👁 **dsh-tool-stats** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
 - · [dsh-tool-tdd](https://github.com/Xiaooooo434680/dsh-tool-tdd) ⭐0 — TDD test-runner tool plugin for DeepSeek Harness: run test commands, parse struc
-- · **dsh-translator** ⭐0 — —（URL 占位）
+- · [dsh-translator](https://github.com/SiYue-ZO/dsh-translator) ⭐0 — —
 - ✅ [DSH-user-plugin-list](https://github.com/95384/DSH-user-plugin-list) ⭐0 — —
-- · **DshViewModes** ⭐0 — —（URL 占位）
-- · **dsh-virtual-workspace** ⭐0 — —（URL 占位）
+- 👁 **DshViewModes** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- · [dsh-virtual-workspace](https://github.com/KevinWen7415/dsh-virtual-workspace) ⭐0 — —
 - ✅ [dsh-vision-adapter](https://github.com/motongv/dsh-vision-adapter) ⭐0 — ? DeepSeek Harness ?????:???? Kimi????? DeepSeek ? DSH ??
-- ❌ **dsh-visionary** ⭐0 — —（URL 占位）
+- ❌ [dsh-visionary](https://github.com/zhuiyueya/dsh-visionary) ⭐0 — —
 - · [dsh-vision-no-vision](https://github.com/wdwind/dsh-vision-no-vision) ⭐0 — DeepSeek Harness native vision plugin!
 - ✅ [dsh-vision-paste](https://github.com/Hel10o/dsh-vision-paste) ⭐0 — DSH plugin: paste an image into the chat and it becomes a file path the model ha
 - · [dsh-vision-plugin](https://github.com/JasonJin2006/dsh-vision-plugin) ⭐0 — Personal DeepSeek Harness vision plugin
 - · [dsh-vision-relay](https://github.com/Zhishui666/dsh-vision-relay) ⭐0 — Vision relay plugin for DeepSeek Harness text-only models
-- ✅ **dsh-wallpaper** ⭐0 — —（URL 占位）
-- ✅ **dsh-webhook-bridge** ⭐0 — —（URL 占位）
+- 👁 **dsh-wallpaper** — 定位歧义监测中（同名多仓，判定暂不展示）
+- ✅ [dsh-webhook-bridge](https://github.com/ben7am1n/dsh-webhook-bridge) ⭐0 — —
 - · [dsh-web-search-bocha](https://github.com/bocha-ai/dsh-web-search-bocha) ⭐0 — DeepSeek Harness Web Search Plugin
-- ✅ **dsh-whale-girl-tauri** ⭐0 — —（URL 占位）
-- ✅ **dsh-width-tiers** ⭐0 — —（URL 占位）
-- ❌ **dsh-workspace-digest** ⭐0 — —（URL 占位）
-- ✅ **dsh-yali-image-generator** ⭐0 — —（URL 占位）
+- ✅ [dsh-whale-girl-tauri](https://github.com/Howling202524/dsh-whale-girl-tauri) ⭐0 — —
+- ✅ [dsh-width-tiers](https://github.com/aaronlei/dsh-width-tiers) ⭐0 — —
+- ❌ [dsh-workspace-digest](https://github.com/cui-stack/dsh-workspace-digest) ⭐0 — —
+- ✅ [dsh-yali-image-generator](https://github.com/pptt121212/dsh-yali-image-generator) ⭐0 — —
 - · [dsh-zenmux-oauth](https://github.com/ilimei/dsh-zenmux-oauth) ⭐0 — ZenMux OAuth 2.0 PKCE plugin for DeepSeek Harness
-- ✅ **embedded-workbench** ⭐0 — — 〔PR〕（URL 占位）
+- 👁 **embedded-workbench** — 定位歧义监测中（同名多仓，判定暂不展示） 〔PR〕
 - ✅ [flomo-dsh-plugin](https://github.com/Richardcoder849/flomo-dsh-plugin) ⭐0 — 仿 flomo 便签 + 知识图谱 的 DeepSeek Harness (DSH) 动态 Cordis 插件 / flomo-style memo plugi
-- ✅ **focal-dsh** ⭐0 — —（URL 占位）
-- ✅ **function-testing** ⭐0 — —（URL 占位）
-- ✅ **harness-doctor** ⭐0 — —（URL 占位）
-- · **koishi-plugin-adapter-harness** ⭐0 — —（URL 占位）
-- · **LanternDesk** ⭐0 — —（URL 占位）
-- ❌ **localharness** ⭐0 — —（URL 占位）
-- ❌ **logicprobe** ⭐0 — — 〔PR〕（URL 占位）
-- ❌ **mimo-vision** ⭐0 — —（URL 占位）
-- ✅ **omdsh-runtime** ⭐0 — —（URL 占位）
-- · **silly-harness** ⭐0 — —（URL 占位）
+- 👁 **focal-dsh** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- 👁 **function-testing** — 定位歧义监测中（同名多仓，判定暂不展示）
+- 👁 **harness-doctor** — 定位歧义监测中（同名多仓，判定暂不展示）
+- · [koishi-plugin-adapter-harness](https://github.com/nazidada/koishi-plugin-adapter-harness) ⭐0 — —
+- · [LanternDesk](https://github.com/zh667/LanternDesk) ⭐0 — —
+- 👁 **localharness** — 定位歧义监测中（同名多仓，判定暂不展示）
+- 👁 **logicprobe** — 定位歧义监测中（同名多仓，判定暂不展示） 〔PR〕
+- 👁 **mimo-vision** — 定位歧义监测中（同名多仓，判定暂不展示）
+- ✅ [omdsh-runtime](https://github.com/omdsh-dev/omdsh-runtime) ⭐0 — —
+- 👁 **silly-harness** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
 - · [token-statistics](https://github.com/YlLVTECH/token-statistics) ⭐0 — a token statistics plugin for dsh (deepseek-harness)
-- ✅ **trio** ⭐0 — —（URL 占位）
-- ✅ **upstream-radar** ⭐0 — —（URL 占位）
-- ✅ **visionDS** ⭐0 — —（URL 占位）
-- ✅ **VoiceLens** ⭐0 — —（URL 占位）
-- · **vpshub** ⭐0 — —（URL 占位）
+- 👁 **trio** — 定位歧义监测中（同名多仓，判定暂不展示）
+- ✅ [upstream-radar](https://github.com/MicroMilo/upstream-radar) ⭐0 — —
+- 👁 **visionDS** — 定位歧义监测中（同名多仓，判定暂不展示）
+- 👁 **VoiceLens** — 定位歧义监测中（同名多仓，判定暂不展示）
+- 👁 **vpshub** — 定位歧义监测中（同名多仓，判定暂不展示）
 - ✅ [wps-dsh-plugin](https://github.com/CatNebulaaaa/wps-dsh-plugin) ⭐0 — —
 - · [dsh-plugin-doc-present](https://github.com/AuraxM/dsh-plugin-doc-present) ⭐0 — —
 - ✅ [dsh-plugin-usage](https://github.com/bennett-dsh/dsh-plugin-usage) ⭐0 — —
@@ -1527,327 +1530,327 @@
 - · [DSH-Plugin-Doctor](https://github.com/Xrainsmile/DSH-Plugin-Doctor) ⭐0 — Compatibility, security, isolated install, and rollback doctor for DeepSeek Harn
 - ✅ [dsh-plugin-eval](https://github.com/xiaoboren0-hub/dsh-plugin-eval) ⭐0 — dream-plugin bundle: plugin self-healing loop (seek/eval/pair/evolve)
 - ❌ [dsh-whale-diving](https://github.com/ZeroCode321/dsh-whale-diving) ⭐0 — A decorative whale-diving activity icon for the DeepSeek Harness Web chat flow:
-- ✅ **01virex-dsh-status-rotator** ⭐0 — —（URL 占位）
-- ❌ **030611-dsh-telemetry-redactor** ⭐0 — —（URL 占位）
-- ✅ **030611-dsh-verification-receipt** ⭐0 — —（URL 占位）
-- ✅ **0lidaxiang-dsh-plugin-greet** ⭐0 — —（URL 占位）
-- ❌ **0sour-dsh-plugins** ⭐0 — —（URL 占位）
-- ❌ **0xsline-awesome-deepseek-harness** ⭐0 — —（URL 占位）
-- ✅ **0xsline-dsh-spotlight** ⭐0 — —（URL 占位）
-- ✅ **147228-dsh-black-whale** ⭐0 — —（URL 占位）
-- ✅ **1475505-dsh-plugin-miliastra-toolbox** ⭐0 — —（URL 占位）
-- ❌ **1514100951-dsh-usage-footer** ⭐0 — —（URL 占位）
-- ✅ **15828148-dsh-portable-launcher** ⭐0 — —（URL 占位）
-- ✅ **1690834643-dsh-usage-dashboard** ⭐0 — —（URL 占位）
-- ✅ **1738348785-dsh-plugin-text-translation** ⭐0 — —（URL 占位）
-- ❌ **1816586742-stack-deepseek-harness-shell** ⭐0 — —（URL 占位）
-- ✅ **1helloman1-dsh-stats-dashboard** ⭐0 — —（URL 占位）
-- ✅ **1na-ko-dsh-hdc-bridge** ⭐0 — —（URL 占位）
-- ✅ **20450150414-deepseek** ⭐0 — —（URL 占位）
-- ✅ **2bingling-dsh-market** ⭐0 — —（URL 占位）
-- ✅ **4060415-deepseek-harness-routing-layer** ⭐0 — —（URL 占位）
-- ✅ **610la-dsh-notification-center** ⭐0 — —（URL 占位）
-- ✅ **6kongbai-dsh-plugin-market** ⭐0 — —（URL 占位）
-- ✅ **95384-dsh-user-plugin-list** ⭐0 — —（URL 占位）
-- ✅ **a-dawn-a-memorix-deepseek-harness** ⭐0 — —（URL 占位）
-- ✅ **a903067276-rgb-dsh-file-mentions** ⭐0 — —（URL 占位）
-- ✅ **a903067276-rgb-dsh-hud** ⭐0 — —（URL 占位）
-- ✅ **aaasangyu-dsh-unfocus-reminder** ⭐0 — —（URL 占位）
-- ✅ **abyss-seeker-not-deep-diving-dsh-plugin** ⭐0 — —（URL 占位）
-- ❌ **acefun29-dsh-file-mount** ⭐0 — —（URL 占位）
-- ✅ **acidmoon-dizzy-dsh** ⭐0 — —（URL 占位）
-- ❌ **acnlabs-dsh-plugin-acn** ⭐0 — —（URL 占位）
-- ✅ **acosmi-dsh-plugin** ⭐0 — —（URL 占位）
-- ✅ **adamplatin123-awesome-dsh-plugins** ⭐0 — —（URL 占位）
-- ✅ **adamplatin123-dsh-tonghuashun** ⭐0 — —（URL 占位）
-- ❌ **adkid-zephyr-liltloom** ⭐0 — —（URL 占位）
-- ✅ **aeanfx-dsh-plugin-dated-folders** ⭐0 — —（URL 占位）
-- ✅ **akira399-dsh-plugin-publisher** ⭐0 — —（URL 占位）
-- ✅ **ala-lisa-dsh-eyes-upload** ⭐0 — —（URL 占位）
-- ✅ **alaliqing-claude-paper** ⭐0 — —（URL 占位）
-- ❌ **alex-yanggg-awesome-dsh-plugin** ⭐0 — —（URL 占位）
-- ⚠️ **alexis-fish-dsh-projects** ⭐0 — —（URL 占位）
-- ⚠️ **alexis-fish-dsh-worktrees** ⭐0 — —（URL 占位）
-- ❌ **ali-meoo-meoo-cli** ⭐0 — —（URL 占位）
-- ✅ **alison-xx-deepseek-harness-flow** ⭐0 — —（URL 占位）
-- ✅ **allen546-dsh-plugin-genshin-startup** ⭐0 — —（URL 占位）
-- ❌ **allencx-dsh-quant-workspace** ⭐0 — —（URL 占位）
-- ✅ **alyosha28-deep-option** ⭐0 — —（URL 占位）
-- ✅ **anacondakc-dsh-douyin** ⭐0 — —（URL 占位）
-- ✅ **andiven-dsh-messaging** ⭐0 — —（URL 占位）
-- ❌ **andy8647-dsh-auto-approval** ⭐0 — —（URL 占位）
-- ❌ **ang-xwbwz-dsh-approval-ai** ⭐0 — —（URL 占位）
-- ✅ **ang-xwbwz-pwiki** ⭐0 — —（URL 占位）
-- ✅ **anionex-dsh-computer-use** ⭐0 — —（URL 占位）
-- ❌ **anionex-dsh-suggested-replies** ⭐0 — —（URL 占位）
-- ✅ **anionex-dsh-turn-rewind** ⭐0 — —（URL 占位）
-- ❌ **anionex-dsh-vision-toolkit** ⭐0 — —（URL 占位）
-- ✅ **ankocd-dsh-server-deployment** ⭐0 — —（URL 占位）
-- ✅ **anothetloice-dsh-hotplug-engine** ⭐0 — —（URL 占位）
-- ✅ **anweat-dsh-restart** ⭐0 — —（URL 占位）
-- ✅ **anweat-dsh-voice-webspeech** ⭐0 — —（URL 占位）
-- ✅ **anweat-dsh-web-search-pro** ⭐0 — —（URL 占位）
-- ✅ **anysearch-team-anysearch-dsh** ⭐0 — —（URL 占位）
-- ✅ **apodemakeles-dsh-token-dashboard** ⭐0 — —（URL 占位）
-- ✅ **aprilwizard-dsh-multi-cot** ⭐0 — —（URL 占位）
-- ✅ **arcmosin-dsh-wordbox** ⭐0 — —（URL 占位）
-- ✅ **areium-dsh-fail-logger** ⭐0 — —（URL 占位）
-- ❌ **ariestar-sivtr** ⭐0 — —（URL 占位）
-- ✅ **arrow949-dsh-turn-approval** ⭐0 — —（URL 占位）
-- ✅ **aryswisnu-dsh-composition-check** ⭐0 — —（URL 占位）
-- ✅ **asdf17128-dsh-doctor** ⭐0 — —（URL 占位）
-- ✅ **atlascloudai-cli** ⭐0 — —（URL 占位）
-- ✅ **atlascloudai-mcp-server** ⭐0 — —（URL 占位）
-- ✅ **auraxm-dsh-plugin-confirm-check** ⭐0 — —（URL 占位）
-- ✅ **auraxm-dsh-plugin-doc-present** ⭐0 — —（URL 占位）
-- ❌ **awesome-dsh-plugin-awesome-dsh-plugin** ⭐0 — —（URL 占位）
-- ❌ **awesome-dsh-plugin-dsh-find-plugin** ⭐0 — —（URL 占位）
-- ✅ **awesomehou-dsh-plugin-marketplace** ⭐0 — —（URL 占位）
-- ✅ **ayase34-gal-view** ⭐0 — —（URL 占位）
-- ❌ **ayuanwong-deepseek-harness-ux** ⭐0 — —（URL 占位）
-- ✅ **baixinghao-intent-gate** ⭐0 — —（URL 占位）
-- ❌ **baiyun200-dsh-dashboard** ⭐0 — —（URL 占位）
-- ✅ **bald0wang-dsh-imggenerate** ⭐0 — —（URL 占位）
-- ❌ **bandersnatch0x-amber-protocol** ⭐0 — —（URL 占位）
-- ✅ **bandersnatch0x-design-playbook** ⭐0 — —（URL 占位）
-- ❌ **beancookie-awesome-dsh-plugin** ⭐0 — —（URL 占位）
-- ✅ **beancookie-dsh-plugin-anydoc** ⭐0 — —（URL 占位）
-- ✅ **beants-dsh-trellis** ⭐0 — —（URL 占位）
-- ✅ **beijingwahw-dsh-conv-search** ⭐0 — —（URL 占位）
-- ✅ **ben7am1n-dsh-claude-marketplace** ⭐0 — —（URL 占位）
-- ✅ **ben7am1n-dsh-deepseek-usage** ⭐0 — —（URL 占位）
-- ✅ **ben7am1n-dsh-lens-lite** ⭐0 — —（URL 占位）
-- ✅ **bennett-dsh-dsh-plugin-usage** ⭐0 — —（URL 占位）
-- ✅ **benzhoupo-dsh-dardar** ⭐0 — —（URL 占位）
-- ✅ **bernardleex526-oh-my-deepseek-harness** ⭐0 — —（URL 占位）
-- ✅ **bernardxu123-dsh-plugins** ⭐0 — —（URL 占位）
-- ✅ **bertonhan-dsh-plugin-installer-pkg** ⭐0 — —（URL 占位）
-- ❌ **beyondxinxin-deepseek-harness-box** ⭐0 — —（URL 占位）
-- ✅ **biedongbin-dsh-claude-compat** ⭐0 — —（URL 占位）
-- ✅ **bill9109-dsh-conversation-share** ⭐0 — —（URL 占位）
-- ✅ **bill9109-dsh-webbridge** ⭐0 — —（URL 占位）
-- ✅ **billionseniors-dsh-project-file-explorer** ⭐0 — —（URL 占位）
-- ❌ **billliao-awesome-dsh-plugin** ⭐0 — —（URL 占位）
-- ❌ **bin-hy-dsh** ⭐0 — —（URL 占位）
-- ✅ **bingps-dsh-plugin-auto-review** ⭐0 — —（URL 占位）
-- ✅ **biociao-dsh-science** ⭐0 — —（URL 占位）
-- ✅ **birdman1992-dsh-birdman-plugins** ⭐0 — —（URL 占位）
-- ❌ **biuboomc-dsh-plugin-consult** ⭐0 — —（URL 占位）
-- ❌ **blaczz-dsh-achievements** ⭐0 — —（URL 占位）
-- ✅ **bleed00-dsh-claude-mem** ⭐0 — —（URL 占位）
-- ✅ **blockrunai-dsh-clawrouter** ⭐0 — —（URL 占位）
-- ✅ **blue-a11y-dsh-client-shortcuts** ⭐0 — —（URL 占位）
-- ✅ **bluecobaltum-dsh-lan-proxy** ⭐0 — —（URL 占位）
-- ✅ **bobcat848-dsh-calculator** ⭐0 — —（URL 占位）
-- ✅ **bobleer-deepseek-harness-plugin-mcp** ⭐0 — —（URL 占位）
-- ❌ **bobleer-dsh-acp-for-bitfun** ⭐0 — —（URL 占位）
-- ❌ **bocha-ai-dsh-web-search-bocha** ⭐0 — —（URL 占位）
-- ✅ **bonexy226-dsh-cost-chip** ⭐0 — —（URL 占位）
-- ⚠️ **boxiaolanya2008-dsh-plugin** ⭐0 — —（URL 占位）
-- ✅ **bpc-oss-dsh-web-billing** ⭐0 — —（URL 占位）
-- ❌ **bramblexu-dsh-annotate** ⭐0 — —（URL 占位）
-- ✅ **brittanistrehlowll-oss-dsh-quota-panel** ⭐0 — —（URL 占位）
-- ✅ **bruc3van-awesome-dsh-plugin** ⭐0 — —（URL 占位）
-- ❌ **brucewu1126-dsh-web-background** ⭐0 — —（URL 占位）
-- ❌ **btspoony-mstar-harness** ⭐0 — —（URL 占位）
-- ✅ **bugmaker2-dsh-plugin-template** ⭐0 — —（URL 占位）
-- ✅ **buguoshixc-deepseek-harness-external-migratio** ⭐0 — —（URL 占位）
-- ✅ **bxfjjb-deepseek-harness-plug** ⭐0 — —（URL 占位）
-- ✅ **c-ling-dsh-plugin-peak-pricing** ⭐0 — —（URL 占位）
-- ✅ **c3ll256-dsh-toy** ⭐0 — —（URL 占位）
-- ✅ **canghai666x-dsh-news-plugin** ⭐0 — —（URL 占位）
-- ❌ **canglongcl-dsh-web-review** ⭐0 — —（URL 占位）
-- ❌ **caopu16-dsh-llm-kiro** ⭐0 — —（URL 占位）
-- ✅ **catnebulaaaa-wps-dsh-plugin** ⭐0 — —（URL 占位）
-- ✅ **cccakeee-awesome-dsh-plugins** ⭐0 — —（URL 占位）
-- ✅ **ccch1mneyyy-dsh-working-activity** ⭐0 — —（URL 占位）
-- ❌ **cclank-dsh-plugin-hub** ⭐0 — —（URL 占位）
-- ❌ **ceelog-dsh-plugins** ⭐0 — —（URL 占位）
-- ❌ **cendaifeng-dsh-learn-everything** ⭐0 — —（URL 占位）
-- ✅ **cestbon0309-dsh-auth** ⭐0 — —（URL 占位）
-- ❌ **cestbon0309-dsh-fork** ⭐0 — —（URL 占位）
-- ✅ **ch4acko3-dsh-harmony** ⭐0 — —（URL 占位）
-- ✅ **chaos-03x-dsh-agy** ⭐0 — —（URL 占位）
-- ❌ **charserhh-deepseek-harness-breathing-bg** ⭐0 — —（URL 占位）
-- ❌ **chasepassion-dsh-plugin-marketplace** ⭐0 — —（URL 占位）
-- ✅ **chengche106-dsh-web-auto-open** ⭐0 — —（URL 占位）
-- ✅ **chenhaolove89-dsh-ccswitch-import-lite** ⭐0 — —（URL 占位）
-- ❌ **chenjunda0018-sketch-a-persona-plugin-for-dee** ⭐0 — —（URL 占位）
-- ✅ **chenlaoshiyf-dsh-mcpguard** ⭐0 — —（URL 占位）
-- ✅ **chenluyao680-dsh-plugin-control** ⭐0 — —（URL 占位）
-- ✅ **chenw2759-wq-dsh-easyssh** ⭐0 — —（URL 占位）
-- ✅ **chenw2759-wq-dsh-mindmap** ⭐0 — —（URL 占位）
-- ✅ **chenw2759-wq-dsh-plugin-healthcheck** ⭐0 — —（URL 占位）
-- ✅ **cheshirejcat-blender** ⭐0 — —（URL 占位）
-- ❌ **chinesezjc-dsh-interconnect** ⭐0 — —（URL 占位）
-- ✅ **chinesezjc-dsh-tool-todo-tree** ⭐0 — —（URL 占位）
-- ✅ **chnjames-dsh-plugin-market** ⭐0 — —（URL 占位）
-- ❌ **chushixixin-dsh-harness-mcp-server** ⭐0 — —（URL 占位）
-- ✅ **civitasv-dsh-plugin-colorscheme** ⭐0 — —（URL 占位）
-- ❌ **cking000bigdemon-dsh-toolbelt** ⭐0 — —（URL 占位）
-- ❌ **clouwer-dsh-memsearch** ⭐0 — —（URL 占位）
-- ✅ **cnyac-dsh-polling** ⭐0 — —（URL 占位）
-- ✅ **cnzgray-dsh-plugins** ⭐0 — —（URL 占位）
-- ✅ **cofy-x-axern** ⭐0 — —（URL 占位）
-- ✅ **compforge-baton** ⭐0 — —（URL 占位）
-- ✅ **cooljser-dsh-plugin-portal** ⭐0 — —（URL 占位）
-- ✅ **coppynight-dsh-doctor** ⭐0 — —（URL 占位）
-- ✅ **cpj-dev-dsh-plugin-cc** ⭐0 — —（URL 占位）
-- ✅ **cpp285-dsh-plugin-center** ⭐0 — —（URL 占位）
-- ✅ **crayonlu-dsh-web-search-tavily** ⭐0 — —（URL 占位）
-- ✅ **crazywoola-dsh-balance** ⭐0 — —（URL 占位）
-- ❌ **csiroqa-dsh-plugin-usage-report** ⭐0 — —（URL 占位）
-- ❌ **csiroqa-dsh-schedule** ⭐0 — —（URL 占位）
-- ❌ **cute-baobao-dsh-usage-meter** ⭐0 — —（URL 占位）
-- ✅ **cyanseek-dsh-landscape** ⭐0 — —（URL 占位）
-- ❌ **cyanseek-dsh-native-playbook** ⭐0 — —（URL 占位）
-- ❌ **cyber-moshen-dsh-plugin-market** ⭐0 — —（URL 占位）
-- ❌ **cyberlieflife-dsh-model-thinking** ⭐0 — —（URL 占位）
-- ✅ **cyijun-surfing-plugin** ⭐0 — —（URL 占位）
-- ✅ **cyzlmh-dsh-pi-adapter** ⭐0 — —（URL 占位）
-- ✅ **czm15053-dsh-peer-link** ⭐0 — —（URL 占位）
-- ✅ **czx2244-dsh-bilibili** ⭐0 — —（URL 占位）
-- ✅ **czzzlq-deepseek-harness-background** ⭐0 — —（URL 占位）
-- ❌ **d-ouyang-dsh-plugin-md-outline** ⭐0 — —（URL 占位）
-- ✅ **dacs2019-dsh-deepseek-price-timer** ⭐0 — —（URL 占位）
-- ✅ **danilky666-dsh-vision** ⭐0 — —（URL 占位）
-- ✅ **danystea-dsh-plugin-marketplace** ⭐0 — —（URL 占位）
-- ⚠️ **daofaziran2010-trae-dsh-plugin** ⭐0 — —（URL 占位）
-- ✅ **darker2016-dsh-filexplore** ⭐0 — —（URL 占位）
-- ✅ **dasooul03-dsh-plugin-deepseek-pricing** ⭐0 — —（URL 占位）
-- ✅ **dbi-eshuh-dsh-thinking-status-customizer** ⭐0 — —（URL 占位）
-- ✅ **dbydd-dsh-onlyne** ⭐0 — —（URL 占位）
-- ✅ **deep-ios-dsh-humanizer** ⭐0 — —（URL 占位）
-- ✅ **deepseek-ai-deepseek-harness** ⭐0 — —（URL 占位）
-- ❌ **deeptrial-dsh-bash-rtk** ⭐0 — —（URL 占位）
-- ❌ **degurechaff57-dsh-openapi** ⭐0 — —（URL 占位）
-- ✅ **degurechaff57-dsh-switch** ⭐0 — —（URL 占位）
-- ✅ **demogorgon314-dsh-resume-plugin** ⭐0 — —（URL 占位）
-- ✅ **detpecca-dsh-llm-wiki** ⭐0 — —（URL 占位）
-- ❌ **detpecca-dsh-wiki** ⭐0 — —（URL 占位）
-- ⚠️ **devin-axis-ipollowork** ⭐0 — —（URL 占位）
-- ✅ **dfsyjian-dsh-snapshot** ⭐0 — —（URL 占位）
-- ✅ **dgpisces-deepseek-harness-openai-oauth** ⭐0 — —（URL 占位）
-- ✅ **dietcokewithsugar-dsh-user-experience** ⭐0 — —（URL 占位）
-- ✅ **dingge001-dsh-redact** ⭐0 — —（URL 占位）
-- ❌ **dingyi222666-dsh-focus-chat** ⭐0 — —（URL 占位）
-- ✅ **dino6021-dsh-usage-cost** ⭐0 — —（URL 占位）
-- ❌ **dominic789654-awesome-deepseek-harness** ⭐0 — —（URL 占位）
-- ❌ **doncelee229-cmyk-dsh-plugin-approval-alert** ⭐0 — —（URL 占位）
-- ✅ **dongsheng123132-awesome-dsh-plugins** ⭐0 — —（URL 占位）
-- ❌ **dongsheng123132-dsh-2origin** ⭐0 — —（URL 占位）
-- ✅ **dongsheng123132-dsh-action-parity** ⭐0 — —（URL 占位）
-- ❌ **dongsheng123132-dsh-audit-bundle** ⭐0 — —（URL 占位）
-- ✅ **dongsheng123132-dsh-cache-stabilizer** ⭐0 — —（URL 占位）
-- ❌ **dongsheng123132-dsh-cad-review** ⭐0 — —（URL 占位）
-- ✅ **dongsheng123132-dsh-capability-receipt** ⭐0 — —（URL 占位）
-- ✅ **dongsheng123132-dsh-cost** ⭐0 — —（URL 占位）
-- ❌ **dongsheng123132-dsh-lineage** ⭐0 — —（URL 占位）
-- ✅ **dongsheng123132-dsh-narrative-ledger** ⭐0 — —（URL 占位）
-- ✅ **dongsheng123132-dsh-policy-drift-proof** ⭐0 — —（URL 占位）
-- ❌ **dongsheng123132-dsh-recovery-proof** ⭐0 — —（URL 占位）
-- ❌ **dongsheng123132-dsh-release-proof** ⭐0 — —（URL 占位）
-- ✅ **dongsheng123132-dsh-surface-contract-proof** ⭐0 — —（URL 占位）
-- ❌ **dongsheng123132-dsh-switch** ⭐0 — —（URL 占位）
-- ✅ **dongsheng123132-dsh-windows-readiness-proof** ⭐0 — —（URL 占位）
-- ❌ **dongsheng123132-dsh-xiapan-media** ⭐0 — —（URL 占位）
-- ✅ **dongsheng123132-dshx** ⭐0 — —（URL 占位）
-- ❌ **dongsheng123132-task-passport** ⭐0 — —（URL 占位）
-- ✅ **dpskh-dsh-a2a** ⭐0 — —（URL 占位）
-- ✅ **dpskh-dsh-checkpoint** ⭐0 — —（URL 占位）
-- ✅ **dqsjqian-aria** ⭐0 — —（URL 占位）
-- ✅ **drewnekota-cetus** ⭐0 — —（URL 占位）
-- ✅ **drifter-yh-dsh-tool-policy** ⭐0 — —（URL 占位）
-- ✅ **dsh-market-dsh-market** ⭐0 — —（URL 占位）
-- ✅ **dsh-pub-dsh-pub** ⭐0 — —（URL 占位）
-- ❌ **dtsfo-dsh-conversation-rewind** ⭐0 — —（URL 占位）
-- ❌ **dtsfo-dsh-model-modes** ⭐0 — —（URL 占位）
-- ✅ **dylan121322-llm-adaptive** ⭐0 — —（URL 占位）
-- ✅ **echo-xianyu-dsh-better-chat-history** ⭐0 — —（URL 占位）
-- ✅ **echo-xianyu-dsh-go-rotator** ⭐0 — —（URL 占位）
-- ✅ **echo804-dsh-billing-balance** ⭐0 — —（URL 占位）
-- ✅ **edison-land-deepseek-harness-vision-plugin** ⭐0 — —（URL 占位）
-- ✅ **elaina-real-dsh-tiered-approval** ⭐0 — —（URL 占位）
-- ❌ **electricitysheep-dsh-handbook** ⭐0 — —（URL 占位）
-- ✅ **electricitysheep-dsh-tool-turbo** ⭐0 — —（URL 占位）
-- ❌ **eleven-is-cool-dsh-worktree** ⭐0 — —（URL 占位）
-- ✅ **elohia-dsh-plugin-mm-vision** ⭐0 — —（URL 占位）
-- ❌ **elohia-pi-mm-vision** ⭐0 — —（URL 占位）
-- ✅ **emredeveloper-deepseek-harness-huggingface** ⭐0 — —（URL 占位）
-- ❌ **entireyu-dsh-launcher** ⭐0 — —（URL 占位）
-- ❌ **erduotong-dsh-plugin-graph** ⭐0 — —（URL 占位）
-- ✅ **ericwong5021-deepseek-plugin-store** ⭐0 — —（URL 占位）
-- ✅ **ericwong5021-dsh-kanban** ⭐0 — —（URL 占位）
-- ✅ **ethanout-computer-use-plus** ⭐0 — —（URL 占位）
-- ✅ **ethanweave-glm4v-vision-mcp** ⭐0 — —（URL 占位）
-- ✅ **evanfang0054-dsh-tailscale-console** ⭐0 — —（URL 占位）
-- ❌ **evilirving-dsh-repro** ⭐0 — —（URL 占位）
-- ❌ **f0909172434-dsh-plugin-verified-search** ⭐0 — —（URL 占位）
-- ❌ **fakechris-dsh-harness-ops** ⭐0 — —（URL 占位）
-- ❌ **fakechris-dsh-track** ⭐0 — —（URL 占位）
-- ✅ **fantasystarry-dsh-token-stats** ⭐0 — —（URL 占位）
-- ✅ **favio8-dsh-plugin-deepeye** ⭐0 — —（URL 占位）
-- ❌ **feibi-mochi-deepseek-harness-wallet** ⭐0 — —（URL 占位）
-- ✅ **feng-orz-dsh-metaplugin** ⭐0 — —（URL 占位）
-- ✅ **fengshenx-dsh-recall** ⭐0 — —（URL 占位）
-- ✅ **fff122-dsh-research-notes** ⭐0 — —（URL 占位）
-- ✅ **fff122-dsh-task-checklist** ⭐0 — —（URL 占位）
-- ✅ **fflow2023-dsh-usage-cost** ⭐0 — —（URL 占位）
-- ✅ **fieldnote-ops-harnessproof** ⭐0 — —（URL 占位）
-- ✅ **fisfzy-math-lean** ⭐0 — —（URL 占位）
-- ❌ **fisfzy-zotero-harvest** ⭐0 — —（URL 占位）
-- ✅ **flashingchen-dsh-worktree** ⭐0 — —（URL 占位）
-- ✅ **fly233338-dsh-overleaf** ⭐0 — —（URL 占位）
-- ✅ **flyvhidbwo-dsh-vision-proxy** ⭐0 — —（URL 占位）
-- ✅ **forrestahha-dsh-voice-input** ⭐0 — —（URL 占位）
-- ✅ **frankq007-dsh-plugin-devecocli** ⭐0 — —（URL 占位）
-- ❌ **frankzhangironly-dsh-composer-enter** ⭐0 — —（URL 占位）
-- ✅ **frankzhangironly-dsh-system-control** ⭐0 — —（URL 占位）
-- ✅ **freehul-sgme** ⭐0 — —（URL 占位）
-- ✅ **fryghost-deepseek-eyes** ⭐0 — —（URL 占位）
-- ❌ **fuhefei-dsh-sentinel** ⭐0 — —（URL 占位）
-- ✅ **fujackgao-dsh-collab** ⭐0 — —（URL 占位）
-- ✅ **gandufu-dsh-plugin** ⭐0 — —（URL 占位）
-- ✅ **ganfne123-dsh-plugin-envtime** ⭐0 — —（URL 占位）
-- ✅ **gemone-dsh-chrome** ⭐0 — —（URL 占位）
-- ✅ **gezi-wen-sage-mem** ⭐0 — —（URL 占位）
-- ❌ **ghost011118-dsh-balance-meter** ⭐0 — —（URL 占位）
-- ❌ **goalfyai-goalfydata** ⭐0 — —（URL 占位）
-- ✅ **golitter-dsh-deepseek-billing** ⭐0 — —（URL 占位）
-- ✅ **greatwhitesharklab-dsh-plugin-worktree-manage** ⭐0 — —（URL 占位）
-- ✅ **guomonth-dsh-multi-tenant** ⭐0 — —（URL 占位）
-- ❌ **gxpppp-dsh-search-mcp** ⭐0 — —（URL 占位）
-- ❌ **gxx182-dsh-vision-bridge** ⭐0 — —（URL 占位）
-- ✅ **h1a3x-dsh-token-stats** ⭐0 — —（URL 占位）
-- ❌ **hacksing-dsh-plugins** ⭐0 — —（URL 占位）
-- ✅ **hahaha-taotao-dsh-oauth-api** ⭐0 — —（URL 占位）
-- ✅ **hamsammike-dsh-mod-manager** ⭐0 — —（URL 占位）
-- ✅ **han-1413141-dsh-cost-meter** ⭐0 — —（URL 占位）
-- ✅ **han-1413141-dsh-sticky-disclosure** ⭐0 — —（URL 占位）
-- ✅ **hanihahaha-deepseek-harness-plugins** ⭐0 — —（URL 占位）
-- ❌ **harcochen-dsh-vsc-integration** ⭐0 — —（URL 占位）
-- ✅ **hashdiana-dsh-token-usage** ⭐0 — —（URL 占位）
-- ✅ **havingautism-dsh-deepresearch** ⭐0 — —（URL 占位）
-- ❌ **havingautism-dsh-notebooks** ⭐0 — —（URL 占位）
-- ⚠️ **hccccc01333-dsh-report-html** ⭐0 — —（URL 占位）
-- ✅ **hel10o-dsh-vision-paste** ⭐0 — —（URL 占位）
-- ✅ **hellodigua-dsh-share** ⭐0 — —（URL 占位）
-- ❌ **hellosky983-dsh-mc-launcher** ⭐0 — —（URL 占位）
-- ✅ **heyflyingpig-long-draft-input** ⭐0 — —（URL 占位）
-- ⚠️ **hezi2020-dsh-plugin-wiki** ⭐0 — —（URL 占位）
-- ❌ **hikariming-dshfind** ⭐0 — —（URL 占位）
-- ✅ **hisaniwo-dsh-ergonomics** ⭐0 — —（URL 占位）
-- ✅ **hjjj0918-dsh-plugin-local-utilities** ⭐0 — —（URL 占位）
-- ✅ **hnmrxz-dsh-plugin-deepseek-balance** ⭐0 — —（URL 占位）
-- ✅ **hnmrxz-dsh-plugin-sysmon** ⭐0 — —（URL 占位）
-- ✅ **hnmrxz-dsh-plugin-usage-dashboard** ⭐0 — —（URL 占位）
-- ❌ **hologramsteve-deepseek-harness-js** ⭐0 — —（URL 占位）
-- ✅ **honghudavy-star-dsh-plugins-4u** ⭐0 — —（URL 占位）
-- ✅ **hongzhongl-dsh-hotswap** ⭐0 — —（URL 占位）
+- ✅ [01virex-dsh-status-rotator](https://github.com/01Virex/dsh-status-rotator) ⭐0 — —
+- ❌ [030611-dsh-telemetry-redactor](https://github.com/030611/dsh-telemetry-redactor) ⭐0 — —
+- ✅ [030611-dsh-verification-receipt](https://github.com/030611/dsh-verification-receipt) ⭐0 — —
+- ✅ [0lidaxiang-dsh-plugin-greet](https://github.com/0lidaxiang/dsh-plugin-greet) ⭐0 — —
+- ❌ [0sour-dsh-plugins](https://github.com/0sour/dsh-plugins) ⭐0 — —
+- ❌ [0xsline-awesome-deepseek-harness](https://github.com/0xsline/awesome-deepseek-harness) ⭐0 — —
+- ✅ [0xsline-dsh-spotlight](https://github.com/0xsline/dsh-spotlight) ⭐0 — —
+- ✅ [147228-dsh-black-whale](https://github.com/147228/dsh-black-whale) ⭐0 — —
+- ✅ [1475505-dsh-plugin-miliastra-toolbox](https://github.com/1475505/dsh-plugin-miliastra-toolbox) ⭐0 — —
+- ❌ [1514100951-dsh-usage-footer](https://github.com/1514100951/dsh-usage-footer) ⭐0 — —
+- ✅ [15828148-dsh-portable-launcher](https://github.com/15828148/dsh-portable-launcher) ⭐0 — —
+- ✅ [1690834643-dsh-usage-dashboard](https://github.com/1690834643/dsh-usage-dashboard) ⭐0 — —
+- ✅ [1738348785-dsh-plugin-text-translation](https://github.com/1738348785/dsh-plugin-text-translation) ⭐0 — —
+- ❌ [1816586742-stack-deepseek-harness-shell](https://github.com/1816586742-stack/deepseek-harness-shell) ⭐0 — —
+- ✅ [1helloman1-dsh-stats-dashboard](https://github.com/1HelloMan1/dsh-stats-dashboard) ⭐0 — —
+- ✅ [1na-ko-dsh-hdc-bridge](https://github.com/1na-ko/dsh-hdc-bridge) ⭐0 — —
+- ✅ [20450150414-deepseek](https://github.com/20450150414/deepseek-) ⭐0 — —
+- ✅ [2bingling-dsh-market](https://github.com/2BingLing/dsh-market) ⭐0 — —
+- ✅ [4060415-deepseek-harness-routing-layer](https://github.com/4060415/Deepseek-harness-routing-layer-) ⭐0 — —
+- ✅ [610la-dsh-notification-center](https://github.com/610la/dsh-notification-center) ⭐0 — —
+- ✅ [6kongbai-dsh-plugin-market](https://github.com/6kongbai/dsh-plugin-market) ⭐0 — —
+- ✅ [95384-dsh-user-plugin-list](https://github.com/95384/DSH-user-plugin-list) ⭐0 — —
+- ✅ [a-dawn-a-memorix-deepseek-harness](https://github.com/A-Dawn/A_memorix-deepseek-harness) ⭐0 — —
+- ✅ [a903067276-rgb-dsh-file-mentions](https://github.com/a903067276-rgb/dsh-file-mentions) ⭐0 — —
+- ✅ [a903067276-rgb-dsh-hud](https://github.com/a903067276-rgb/dsh-hud) ⭐0 — —
+- ✅ [aaasangyu-dsh-unfocus-reminder](https://github.com/AAAsangyu/dsh-unfocus-reminder) ⭐0 — —
+- 👁 **abyss-seeker-not-deep-diving-dsh-plugin** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ❌ [acefun29-dsh-file-mount](https://github.com/acefun29/dsh-file-mount) ⭐0 — —
+- ✅ [acidmoon-dizzy-dsh](https://github.com/Acidmoon/DIzzy-DSH) ⭐0 — —
+- ❌ [acnlabs-dsh-plugin-acn](https://github.com/acnlabs/dsh-plugin-acn) ⭐0 — —
+- ✅ [acosmi-dsh-plugin](https://github.com/acosmi/dsh-plugin) ⭐0 — —
+- ✅ [adamplatin123-awesome-dsh-plugins](https://github.com/AdamPlatin123/awesome-dsh-plugins) ⭐0 — —
+- ✅ [adamplatin123-dsh-tonghuashun](https://github.com/AdamPlatin123/dsh-tonghuashun) ⭐0 — —
+- ❌ [adkid-zephyr-liltloom](https://github.com/Adkid-Zephyr/Liltloom) ⭐0 — —
+- ✅ [aeanfx-dsh-plugin-dated-folders](https://github.com/Aeanfx/dsh-plugin-dated-folders) ⭐0 — —
+- ✅ [akira399-dsh-plugin-publisher](https://github.com/akira399/dsh-plugin-publisher) ⭐0 — —
+- ✅ [ala-lisa-dsh-eyes-upload](https://github.com/ala-Lisa/dsh-eyes-upload) ⭐0 — —
+- ✅ [alaliqing-claude-paper](https://github.com/alaliqing/claude-paper) ⭐0 — —
+- ❌ [alex-yanggg-awesome-dsh-plugin](https://github.com/Alex-Yanggg/awesome-DSH-plugin) ⭐0 — —
+- 👁 **alexis-fish-dsh-projects** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- 👁 **alexis-fish-dsh-worktrees** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ❌ [ali-meoo-meoo-cli](https://github.com/ali-meoo/meoo-cli) ⭐0 — —
+- ✅ [alison-xx-deepseek-harness-flow](https://github.com/alison-xx/deepseek-harness-flow) ⭐0 — —
+- ✅ [allen546-dsh-plugin-genshin-startup](https://github.com/allen546/dsh-plugin-genshin-startup) ⭐0 — —
+- ❌ [allencx-dsh-quant-workspace](https://github.com/AllenCX/dsh-quant-workspace) ⭐0 — —
+- ✅ [alyosha28-deep-option](https://github.com/Alyosha28/deep_option) ⭐0 — —
+- ✅ [anacondakc-dsh-douyin](https://github.com/AnacondaKC/dsh-douyin) ⭐0 — —
+- ✅ [andiven-dsh-messaging](https://github.com/andiven/dsh-messaging) ⭐0 — —
+- ❌ [andy8647-dsh-auto-approval](https://github.com/Andy8647/dsh-auto-approval) ⭐0 — —
+- ❌ [ang-xwbwz-dsh-approval-ai](https://github.com/ang-XWBWZ/dsh-approval-ai) ⭐0 — —
+- ✅ [ang-xwbwz-pwiki](https://github.com/ang-XWBWZ/Pwiki) ⭐0 — —
+- ✅ [anionex-dsh-computer-use](https://github.com/Anionex/dsh-computer-use) ⭐0 — —
+- ❌ [anionex-dsh-suggested-replies](https://github.com/Anionex/dsh-suggested-replies) ⭐0 — —
+- ✅ [anionex-dsh-turn-rewind](https://github.com/Anionex/dsh-turn-rewind) ⭐0 — —
+- ❌ [anionex-dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit) ⭐0 — —
+- ✅ [ankocd-dsh-server-deployment](https://github.com/AnkoCD/dsh-server-deployment) ⭐0 — —
+- ✅ [anothetloice-dsh-hotplug-engine](https://github.com/AnothetLoice/dsh-hotplug-engine) ⭐0 — —
+- ✅ [anweat-dsh-restart](https://github.com/anweat/dsh-restart) ⭐0 — —
+- ✅ [anweat-dsh-voice-webspeech](https://github.com/anweat/dsh-voice-webspeech) ⭐0 — —
+- ✅ [anweat-dsh-web-search-pro](https://github.com/anweat/dsh-web-search-pro) ⭐0 — —
+- ✅ [anysearch-team-anysearch-dsh](https://github.com/anysearch-team/anysearch-dsh) ⭐0 — —
+- ✅ [apodemakeles-dsh-token-dashboard](https://github.com/apodemakeles/dsh-token-dashboard) ⭐0 — —
+- ✅ [aprilwizard-dsh-multi-cot](https://github.com/AprilWizard/dsh-multi-cot) ⭐0 — —
+- ✅ [arcmosin-dsh-wordbox](https://github.com/arcmosin/dsh-wordbox) ⭐0 — —
+- ✅ [areium-dsh-fail-logger](https://github.com/Areium/dsh-fail-logger) ⭐0 — —
+- ❌ [ariestar-sivtr](https://github.com/Ariestar/sivtr) ⭐0 — —
+- ✅ [arrow949-dsh-turn-approval](https://github.com/arrow949/dsh-turn-approval) ⭐0 — —
+- ✅ [aryswisnu-dsh-composition-check](https://github.com/aryswisnu/dsh-composition-check) ⭐0 — —
+- ✅ [asdf17128-dsh-doctor](https://github.com/asdf17128/dsh-doctor) ⭐0 — —
+- ✅ [atlascloudai-cli](https://github.com/AtlasCloudAI/cli) ⭐0 — —
+- ✅ [atlascloudai-mcp-server](https://github.com/AtlasCloudAI/mcp-server) ⭐0 — —
+- ✅ [auraxm-dsh-plugin-confirm-check](https://github.com/AuraxM/dsh-plugin-confirm-check) ⭐0 — —
+- ✅ [auraxm-dsh-plugin-doc-present](https://github.com/AuraxM/dsh-plugin-doc-present) ⭐0 — —
+- ❌ [awesome-dsh-plugin-awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) ⭐0 — —
+- ❌ [awesome-dsh-plugin-dsh-find-plugin](https://github.com/awesome-dsh-plugin/dsh-find-plugin) ⭐0 — —
+- ✅ [awesomehou-dsh-plugin-marketplace](https://github.com/AwesomeHou/dsh-plugin-marketplace) ⭐0 — —
+- ✅ [ayase34-gal-view](https://github.com/Ayase34/gal-view) ⭐0 — —
+- ❌ [ayuanwong-deepseek-harness-ux](https://github.com/ayuanwong/deepseek-harness-ux) ⭐0 — —
+- ✅ [baixinghao-intent-gate](https://github.com/baixinghao/intent-gate) ⭐0 — —
+- ❌ [baiyun200-dsh-dashboard](https://github.com/baiyun200/dsh-dashboard) ⭐0 — —
+- ✅ [bald0wang-dsh-imggenerate](https://github.com/Bald0Wang/dsh-imggenerate) ⭐0 — —
+- ❌ [bandersnatch0x-amber-protocol](https://github.com/Bandersnatch0x/amber-protocol) ⭐0 — —
+- ✅ [bandersnatch0x-design-playbook](https://github.com/Bandersnatch0x/design-playbook) ⭐0 — —
+- ❌ [beancookie-awesome-dsh-plugin](https://github.com/beancookie/awesome-dsh-plugin) ⭐0 — —
+- ✅ [beancookie-dsh-plugin-anydoc](https://github.com/beancookie/dsh-plugin-anydoc) ⭐0 — —
+- ✅ [beants-dsh-trellis](https://github.com/Beants/dsh-trellis) ⭐0 — —
+- ✅ [beijingwahw-dsh-conv-search](https://github.com/beijingwahw/dsh-conv-search) ⭐0 — —
+- ✅ [ben7am1n-dsh-claude-marketplace](https://github.com/ben7am1n/dsh-claude-marketplace) ⭐0 — —
+- ✅ [ben7am1n-dsh-deepseek-usage](https://github.com/ben7am1n/dsh-deepseek-usage) ⭐0 — —
+- ✅ [ben7am1n-dsh-lens-lite](https://github.com/ben7am1n/dsh-lens-lite) ⭐0 — —
+- ✅ [bennett-dsh-dsh-plugin-usage](https://github.com/bennett-dsh/dsh-plugin-usage) ⭐0 — —
+- ✅ [benzhoupo-dsh-dardar](https://github.com/benzhoupo/dsh-dardar) ⭐0 — —
+- ✅ [bernardleex526-oh-my-deepseek-harness](https://github.com/bernardleex526/oh_my_deepseek_harness) ⭐0 — —
+- ✅ [bernardxu123-dsh-plugins](https://github.com/Bernardxu123/dsh-plugins) ⭐0 — —
+- ✅ [bertonhan-dsh-plugin-installer-pkg](https://github.com/bertonhan/dsh-plugin-installer-pkg) ⭐0 — —
+- ❌ [beyondxinxin-deepseek-harness-box](https://github.com/BeyondXinXin/deepseek-harness-box) ⭐0 — —
+- ✅ [biedongbin-dsh-claude-compat](https://github.com/biedongbin/dsh-claude-compat) ⭐0 — —
+- ✅ [bill9109-dsh-conversation-share](https://github.com/bill9109/dsh-conversation-share) ⭐0 — —
+- ✅ [bill9109-dsh-webbridge](https://github.com/bill9109/dsh-webbridge) ⭐0 — —
+- ✅ [billionseniors-dsh-project-file-explorer](https://github.com/BillionSeniors/dsh-project-file-explorer) ⭐0 — —
+- ❌ [billliao-awesome-dsh-plugin](https://github.com/billLiao/awesome-dsh-plugin) ⭐0 — —
+- ❌ [bin-hy-dsh](https://github.com/Bin-hy/dsh) ⭐0 — —
+- ✅ [bingps-dsh-plugin-auto-review](https://github.com/bingps/dsh-plugin-auto-review) ⭐0 — —
+- ✅ [biociao-dsh-science](https://github.com/biociao/dsh-science) ⭐0 — —
+- ✅ [birdman1992-dsh-birdman-plugins](https://github.com/birdman1992/dsh-birdman-plugins) ⭐0 — —
+- ❌ [biuboomc-dsh-plugin-consult](https://github.com/biuboomc/dsh-plugin-consult) ⭐0 — —
+- ❌ [blaczz-dsh-achievements](https://github.com/Blaczz/dsh-achievements) ⭐0 — —
+- ✅ [bleed00-dsh-claude-mem](https://github.com/Bleed00/dsh-claude-mem) ⭐0 — —
+- ✅ [blockrunai-dsh-clawrouter](https://github.com/BlockRunAI/dsh-clawrouter) ⭐0 — —
+- ✅ [blue-a11y-dsh-client-shortcuts](https://github.com/blue-a11y/dsh-client-shortcuts) ⭐0 — —
+- ✅ [bluecobaltum-dsh-lan-proxy](https://github.com/bluecobaltum/dsh-lan-proxy) ⭐0 — —
+- ✅ [bobcat848-dsh-calculator](https://github.com/bobcat848/dsh-calculator) ⭐0 — —
+- ✅ [bobleer-deepseek-harness-plugin-mcp](https://github.com/bobleer/deepseek-harness-plugin-mcp) ⭐0 — —
+- ❌ [bobleer-dsh-acp-for-bitfun](https://github.com/bobleer/dsh-acp-for-bitfun) ⭐0 — —
+- ❌ [bocha-ai-dsh-web-search-bocha](https://github.com/bocha-ai/dsh-web-search-bocha) ⭐0 — —
+- ✅ [bonexy226-dsh-cost-chip](https://github.com/boNeXY226/dsh-cost-chip) ⭐0 — —
+- 👁 **boxiaolanya2008-dsh-plugin** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [bpc-oss-dsh-web-billing](https://github.com/bpc-oss/dsh-web-billing) ⭐0 — —
+- ❌ [bramblexu-dsh-annotate](https://github.com/BrambleXu/dsh-annotate) ⭐0 — —
+- ✅ [brittanistrehlowll-oss-dsh-quota-panel](https://github.com/brittanistrehlowll-oss/dsh-quota-panel) ⭐0 — —
+- ✅ [bruc3van-awesome-dsh-plugin](https://github.com/bruc3van/awesome-dsh-plugin) ⭐0 — —
+- ❌ [brucewu1126-dsh-web-background](https://github.com/BruceWu1126/dsh-web-background) ⭐0 — —
+- ❌ [btspoony-mstar-harness](https://github.com/btspoony/mstar-harness) ⭐0 — —
+- ✅ [bugmaker2-dsh-plugin-template](https://github.com/bugmaker2/dsh-plugin-template) ⭐0 — —
+- 👁 **buguoshixc-deepseek-harness-external-migratio** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [bxfjjb-deepseek-harness-plug](https://github.com/Bxfjjb/Deepseek-Harness-plug) ⭐0 — —
+- ✅ [c-ling-dsh-plugin-peak-pricing](https://github.com/c-ling/dsh-plugin-peak-pricing) ⭐0 — —
+- ✅ [c3ll256-dsh-toy](https://github.com/c3ll256/dsh-toy) ⭐0 — —
+- ✅ [canghai666x-dsh-news-plugin](https://github.com/canghai666x/dsh-news-plugin) ⭐0 — —
+- ❌ [canglongcl-dsh-web-review](https://github.com/CanglongCl/dsh-web-review) ⭐0 — —
+- ❌ [caopu16-dsh-llm-kiro](https://github.com/caopu16/dsh-llm-kiro) ⭐0 — —
+- ✅ [catnebulaaaa-wps-dsh-plugin](https://github.com/CatNebulaaaa/wps-dsh-plugin) ⭐0 — —
+- ✅ [cccakeee-awesome-dsh-plugins](https://github.com/cccakeee/awesome-dsh-plugins) ⭐0 — —
+- ✅ [ccch1mneyyy-dsh-working-activity](https://github.com/ccch1mneyyy/dsh-working-activity) ⭐0 — —
+- ❌ [cclank-dsh-plugin-hub](https://github.com/cclank/dsh-plugin-hub) ⭐0 — —
+- ❌ [ceelog-dsh-plugins](https://github.com/Ceelog/dsh-plugins) ⭐0 — —
+- ❌ [cendaifeng-dsh-learn-everything](https://github.com/cendaifeng/dsh-learn-everything) ⭐0 — —
+- ✅ [cestbon0309-dsh-auth](https://github.com/cestbon0309/dsh-auth) ⭐0 — —
+- ❌ [cestbon0309-dsh-fork](https://github.com/cestbon0309/dsh-fork) ⭐0 — —
+- ✅ [ch4acko3-dsh-harmony](https://github.com/CH4ACKO3/dsh-harmony) ⭐0 — —
+- ✅ [chaos-03x-dsh-agy](https://github.com/chaos-03x/dsh-agy) ⭐0 — —
+- ❌ [charserhh-deepseek-harness-breathing-bg](https://github.com/CharserHH/DeepSeek-Harness-Breathing-BG) ⭐0 — —
+- ❌ [chasepassion-dsh-plugin-marketplace](https://github.com/ChasePassion/dsh-plugin-marketplace) ⭐0 — —
+- ✅ [chengche106-dsh-web-auto-open](https://github.com/ChengChe106/dsh-web-auto-open) ⭐0 — —
+- ✅ [chenhaolove89-dsh-ccswitch-import-lite](https://github.com/chenhaolove89/dsh-ccswitch-import-lite) ⭐0 — —
+- 👁 **chenjunda0018-sketch-a-persona-plugin-for-dee** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [chenlaoshiyf-dsh-mcpguard](https://github.com/ChenLaoshiYF/dsh-mcpguard) ⭐0 — —
+- ✅ [chenluyao680-dsh-plugin-control](https://github.com/chenluyao680/dsh-plugin-control) ⭐0 — —
+- 👁 **chenw2759-wq-dsh-easyssh** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [chenw2759-wq-dsh-mindmap](https://github.com/chenw2759-wq/dsh-mindmap) ⭐0 — —
+- ✅ [chenw2759-wq-dsh-plugin-healthcheck](https://github.com/chenw2759-wq/dsh-plugin-healthcheck) ⭐0 — —
+- ✅ [cheshirejcat-blender](https://github.com/CheshireJCat/blender) ⭐0 — —
+- ❌ [chinesezjc-dsh-interconnect](https://github.com/Chinesezjc/dsh-interconnect) ⭐0 — —
+- ✅ [chinesezjc-dsh-tool-todo-tree](https://github.com/Chinesezjc/dsh-tool-todo-tree) ⭐0 — —
+- ✅ [chnjames-dsh-plugin-market](https://github.com/chnjames/dsh-plugin-market) ⭐0 — —
+- ❌ [chushixixin-dsh-harness-mcp-server](https://github.com/chushixixin/dsh-harness-mcp-server) ⭐0 — —
+- ✅ [civitasv-dsh-plugin-colorscheme](https://github.com/Civitasv/dsh-plugin-colorscheme) ⭐0 — —
+- ❌ [cking000bigdemon-dsh-toolbelt](https://github.com/cking000bigdemon/dsh-toolbelt) ⭐0 — —
+- ❌ [clouwer-dsh-memsearch](https://github.com/clouwer/dsh-memsearch) ⭐0 — —
+- ✅ [cnyac-dsh-polling](https://github.com/cnyac/dsh-polling) ⭐0 — —
+- ✅ [cnzgray-dsh-plugins](https://github.com/cnzgray/dsh-plugins) ⭐0 — —
+- ✅ [cofy-x-axern](https://github.com/cofy-x/axern) ⭐0 — —
+- ✅ [compforge-baton](https://github.com/compforge/baton) ⭐0 — —
+- ✅ [cooljser-dsh-plugin-portal](https://github.com/cooljser/dsh-plugin-portal) ⭐0 — —
+- ✅ [coppynight-dsh-doctor](https://github.com/coppynight/dsh-doctor) ⭐0 — —
+- ✅ [cpj-dev-dsh-plugin-cc](https://github.com/cpj-dev/dsh-plugin-cc) ⭐0 — —
+- ✅ [cpp285-dsh-plugin-center](https://github.com/cpp285/dsh-plugin-center) ⭐0 — —
+- ✅ [crayonlu-dsh-web-search-tavily](https://github.com/crayonlu/dsh-web-search-tavily) ⭐0 — —
+- ✅ [crazywoola-dsh-balance](https://github.com/crazywoola/dsh-balance) ⭐0 — —
+- ❌ [csiroqa-dsh-plugin-usage-report](https://github.com/csiroqa/dsh-plugin-usage-report) ⭐0 — —
+- ❌ [csiroqa-dsh-schedule](https://github.com/csiroqa/dsh-schedule) ⭐0 — —
+- ❌ [cute-baobao-dsh-usage-meter](https://github.com/cute-baobao/dsh-usage-meter) ⭐0 — —
+- ✅ [cyanseek-dsh-landscape](https://github.com/cyanseek/dsh-landscape) ⭐0 — —
+- ❌ [cyanseek-dsh-native-playbook](https://github.com/cyanseek/dsh-native-playbook) ⭐0 — —
+- ❌ [cyber-moshen-dsh-plugin-market](https://github.com/cyber-moshen/dsh-plugin-market) ⭐0 — —
+- ❌ [cyberlieflife-dsh-model-thinking](https://github.com/cyberlieflife/dsh-model-thinking) ⭐0 — —
+- 👁 **cyijun-surfing-plugin** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [cyzlmh-dsh-pi-adapter](https://github.com/cyzlmh/dsh-pi-adapter) ⭐0 — —
+- ✅ [czm15053-dsh-peer-link](https://github.com/czm15053/dsh-peer-link) ⭐0 — —
+- ✅ [czx2244-dsh-bilibili](https://github.com/CZX2244/dsh-bilibili) ⭐0 — —
+- ✅ [czzzlq-deepseek-harness-background](https://github.com/czzzlq/deepseek-harness-background) ⭐0 — —
+- ❌ [d-ouyang-dsh-plugin-md-outline](https://github.com/d-ouyang/dsh-plugin-md-outline) ⭐0 — —
+- ✅ [dacs2019-dsh-deepseek-price-timer](https://github.com/dacs2019/dsh-deepseek-price-timer) ⭐0 — —
+- ✅ [danilky666-dsh-vision](https://github.com/Danilky666/dsh-vision) ⭐0 — —
+- ✅ [danystea-dsh-plugin-marketplace](https://github.com/Danystea/dsh-plugin-marketplace) ⭐0 — —
+- 👁 **daofaziran2010-trae-dsh-plugin** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [darker2016-dsh-filexplore](https://github.com/darker2016/dsh-filexplore) ⭐0 — —
+- ✅ [dasooul03-dsh-plugin-deepseek-pricing](https://github.com/Dasooul03/dsh-plugin-deepseek-pricing) ⭐0 — —
+- ✅ [dbi-eshuh-dsh-thinking-status-customizer](https://github.com/Dbi-Eshuh/dsh-thinking-status-customizer) ⭐0 — —
+- ✅ [dbydd-dsh-onlyne](https://github.com/dbydd/dsh-onlyne) ⭐0 — —
+- ✅ [deep-ios-dsh-humanizer](https://github.com/DEEP-IOS/dsh-humanizer) ⭐0 — —
+- ✅ [deepseek-ai-deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) ⭐0 — —
+- ❌ [deeptrial-dsh-bash-rtk](https://github.com/DeepTrial/dsh-bash-rtk) ⭐0 — —
+- ❌ [degurechaff57-dsh-openapi](https://github.com/Degurechaff57/dsh-openapi) ⭐0 — —
+- ✅ [degurechaff57-dsh-switch](https://github.com/Degurechaff57/dsh-switch) ⭐0 — —
+- ✅ [demogorgon314-dsh-resume-plugin](https://github.com/Demogorgon314/dsh-resume-plugin) ⭐0 — —
+- ✅ [detpecca-dsh-llm-wiki](https://github.com/detpecca/dsh-llm-wiki) ⭐0 — —
+- ❌ [detpecca-dsh-wiki](https://github.com/detpecca/DSH-Wiki) ⭐0 — —
+- ⚠️ [devin-axis-ipollowork](https://github.com/Devin-AXIS/iPolloWork) ⭐0 — —
+- ✅ [dfsyjian-dsh-snapshot](https://github.com/DfsyJian/dsh-snapshot) ⭐0 — —
+- 👁 **dgpisces-deepseek-harness-openai-oauth** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [dietcokewithsugar-dsh-user-experience](https://github.com/DietCokewithSugar/dsh-user-experience) ⭐0 — —
+- ✅ [dingge001-dsh-redact](https://github.com/dingge001/dsh-redact) ⭐0 — —
+- ❌ [dingyi222666-dsh-focus-chat](https://github.com/dingyi222666/dsh-focus-chat) ⭐0 — —
+- ✅ [dino6021-dsh-usage-cost](https://github.com/Dino6021/dsh-usage-cost) ⭐0 — —
+- ❌ [dominic789654-awesome-deepseek-harness](https://github.com/Dominic789654/awesome-deepseek-harness) ⭐0 — —
+- ❌ [doncelee229-cmyk-dsh-plugin-approval-alert](https://github.com/doncelee229-cmyk/dsh-plugin-approval-alert) ⭐0 — —
+- ✅ [dongsheng123132-awesome-dsh-plugins](https://github.com/dongsheng123132/awesome-dsh-plugins) ⭐0 — —
+- ❌ [dongsheng123132-dsh-2origin](https://github.com/dongsheng123132/dsh-2origin) ⭐0 — —
+- ✅ [dongsheng123132-dsh-action-parity](https://github.com/dongsheng123132/dsh-action-parity) ⭐0 — —
+- ❌ [dongsheng123132-dsh-audit-bundle](https://github.com/dongsheng123132/dsh-audit-bundle) ⭐0 — —
+- ✅ [dongsheng123132-dsh-cache-stabilizer](https://github.com/dongsheng123132/dsh-cache-stabilizer) ⭐0 — —
+- ❌ [dongsheng123132-dsh-cad-review](https://github.com/dongsheng123132/dsh-cad-review) ⭐0 — —
+- ✅ [dongsheng123132-dsh-capability-receipt](https://github.com/dongsheng123132/dsh-capability-receipt) ⭐0 — —
+- ✅ [dongsheng123132-dsh-cost](https://github.com/dongsheng123132/dsh-cost) ⭐0 — —
+- ❌ [dongsheng123132-dsh-lineage](https://github.com/dongsheng123132/dsh-lineage) ⭐0 — —
+- ✅ [dongsheng123132-dsh-narrative-ledger](https://github.com/dongsheng123132/dsh-narrative-ledger) ⭐0 — —
+- ✅ [dongsheng123132-dsh-policy-drift-proof](https://github.com/dongsheng123132/dsh-policy-drift-proof) ⭐0 — —
+- ❌ [dongsheng123132-dsh-recovery-proof](https://github.com/dongsheng123132/dsh-recovery-proof) ⭐0 — —
+- ❌ [dongsheng123132-dsh-release-proof](https://github.com/dongsheng123132/dsh-release-proof) ⭐0 — —
+- ✅ [dongsheng123132-dsh-surface-contract-proof](https://github.com/dongsheng123132/dsh-surface-contract-proof) ⭐0 — —
+- ❌ [dongsheng123132-dsh-switch](https://github.com/dongsheng123132/dsh-switch) ⭐0 — —
+- ✅ [dongsheng123132-dsh-windows-readiness-proof](https://github.com/dongsheng123132/dsh-windows-readiness-proof) ⭐0 — —
+- ❌ [dongsheng123132-dsh-xiapan-media](https://github.com/dongsheng123132/dsh-xiapan-media) ⭐0 — —
+- ✅ [dongsheng123132-dshx](https://github.com/dongsheng123132/dshx) ⭐0 — —
+- ❌ [dongsheng123132-task-passport](https://github.com/dongsheng123132/task-passport) ⭐0 — —
+- ✅ [dpskh-dsh-a2a](https://github.com/dpskh/dsh-a2a) ⭐0 — —
+- ✅ [dpskh-dsh-checkpoint](https://github.com/dpskh/dsh-checkpoint) ⭐0 — —
+- ✅ [dqsjqian-aria](https://github.com/dqsjqian/Aria) ⭐0 — —
+- ✅ [drewnekota-cetus](https://github.com/drewnekota/cetus) ⭐0 — —
+- ✅ [drifter-yh-dsh-tool-policy](https://github.com/Drifter-yh/dsh-tool-policy) ⭐0 — —
+- ✅ [dsh-market-dsh-market](https://github.com/dsh-market/dsh-market) ⭐0 — —
+- ✅ [dsh-pub-dsh-pub](https://github.com/dsh-pub/dsh-pub) ⭐0 — —
+- ❌ [dtsfo-dsh-conversation-rewind](https://github.com/DTSFO/dsh-conversation-rewind) ⭐0 — —
+- ❌ [dtsfo-dsh-model-modes](https://github.com/DTSFO/dsh-model-modes) ⭐0 — —
+- ✅ [dylan121322-llm-adaptive](https://github.com/dylan121322/llm-adaptive) ⭐0 — —
+- ✅ [echo-xianyu-dsh-better-chat-history](https://github.com/echo-xianyu/dsh-better-chat-history) ⭐0 — —
+- ✅ [echo-xianyu-dsh-go-rotator](https://github.com/echo-xianyu/dsh-go-rotator) ⭐0 — —
+- ✅ [echo804-dsh-billing-balance](https://github.com/echo804/dsh-billing-balance) ⭐0 — —
+- ✅ [edison-land-deepseek-harness-vision-plugin](https://github.com/edison-land/deepseek-harness-vision-plugin) ⭐0 — —
+- ✅ [elaina-real-dsh-tiered-approval](https://github.com/Elaina-real/dsh-tiered-approval) ⭐0 — —
+- ❌ [electricitysheep-dsh-handbook](https://github.com/Electricitysheep/dsh-handbook) ⭐0 — —
+- ✅ [electricitysheep-dsh-tool-turbo](https://github.com/Electricitysheep/dsh-tool-turbo) ⭐0 — —
+- ❌ [eleven-is-cool-dsh-worktree](https://github.com/Eleven-is-cool/dsh-worktree) ⭐0 — —
+- ✅ [elohia-dsh-plugin-mm-vision](https://github.com/Elohia/dsh-plugin-mm-vision) ⭐0 — —
+- ❌ [elohia-pi-mm-vision](https://github.com/Elohia/pi-mm-vision) ⭐0 — —
+- ✅ [emredeveloper-deepseek-harness-huggingface](https://github.com/emredeveloper/deepseek-harness-huggingface) ⭐0 — —
+- 👁 **entireyu-dsh-launcher** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ❌ [erduotong-dsh-plugin-graph](https://github.com/erduotong/dsh-plugin-graph) ⭐0 — —
+- ✅ [ericwong5021-deepseek-plugin-store](https://github.com/Ericwong5021/deepseek-plugin-store) ⭐0 — —
+- ✅ [ericwong5021-dsh-kanban](https://github.com/Ericwong5021/dsh-kanban) ⭐0 — —
+- ✅ [ethanout-computer-use-plus](https://github.com/Ethanout/computer-use-plus) ⭐0 — —
+- ✅ [ethanweave-glm4v-vision-mcp](https://github.com/ethanweave/glm4v-vision-mcp) ⭐0 — —
+- ✅ [evanfang0054-dsh-tailscale-console](https://github.com/evanfang0054/dsh-tailscale-console) ⭐0 — —
+- ❌ [evilirving-dsh-repro](https://github.com/EvilIrving/dsh-repro) ⭐0 — —
+- ❌ [f0909172434-dsh-plugin-verified-search](https://github.com/f0909172434/dsh-plugin-verified-search) ⭐0 — —
+- ❌ [fakechris-dsh-harness-ops](https://github.com/fakechris/dsh-harness-ops) ⭐0 — —
+- ❌ [fakechris-dsh-track](https://github.com/fakechris/dsh-track) ⭐0 — —
+- ✅ [fantasystarry-dsh-token-stats](https://github.com/FantasyStarry/dsh-token-stats) ⭐0 — —
+- ✅ [favio8-dsh-plugin-deepeye](https://github.com/Favio8/dsh-plugin-deepeye) ⭐0 — —
+- ❌ [feibi-mochi-deepseek-harness-wallet](https://github.com/feibi-mochi/deepseek-harness-wallet) ⭐0 — —
+- ✅ [feng-orz-dsh-metaplugin](https://github.com/Feng-orz/dsh-metaplugin) ⭐0 — —
+- ✅ [fengshenx-dsh-recall](https://github.com/fengshenx/dsh-recall) ⭐0 — —
+- ✅ [fff122-dsh-research-notes](https://github.com/fff122/dsh-research-notes) ⭐0 — —
+- ✅ [fff122-dsh-task-checklist](https://github.com/fff122/dsh-task-checklist) ⭐0 — —
+- ✅ [fflow2023-dsh-usage-cost](https://github.com/fflow2023/dsh-usage-cost) ⭐0 — —
+- ✅ [fieldnote-ops-harnessproof](https://github.com/fieldnote-ops/harnessproof) ⭐0 — —
+- ✅ [fisfzy-math-lean](https://github.com/Fisfzy/math-lean) ⭐0 — —
+- ❌ [fisfzy-zotero-harvest](https://github.com/Fisfzy/zotero-harvest) ⭐0 — —
+- ✅ [flashingchen-dsh-worktree](https://github.com/FlashingChen/dsh-worktree) ⭐0 — —
+- ✅ [fly233338-dsh-overleaf](https://github.com/fly233338/dsh-overleaf) ⭐0 — —
+- ✅ [flyvhidbwo-dsh-vision-proxy](https://github.com/Flyvhidbwo/dsh-vision-proxy) ⭐0 — —
+- ✅ [forrestahha-dsh-voice-input](https://github.com/forrestahha/dsh-voice-input) ⭐0 — —
+- ✅ [frankq007-dsh-plugin-devecocli](https://github.com/frankq007/dsh-plugin-devecocli) ⭐0 — —
+- ❌ [frankzhangironly-dsh-composer-enter](https://github.com/FrankZhangIronly/dsh-composer-enter) ⭐0 — —
+- ✅ [frankzhangironly-dsh-system-control](https://github.com/FrankZhangIronly/dsh-system-control) ⭐0 — —
+- ✅ [freehul-sgme](https://github.com/freehul/sgme) ⭐0 — —
+- ✅ [fryghost-deepseek-eyes](https://github.com/fryghost/deepseek-eyes) ⭐0 — —
+- ❌ [fuhefei-dsh-sentinel](https://github.com/fuhefei/dsh-sentinel) ⭐0 — —
+- ✅ [fujackgao-dsh-collab](https://github.com/FuJackGao/dsh-collab) ⭐0 — —
+- ✅ [gandufu-dsh-plugin](https://github.com/Gandufu/dsh-plugin) ⭐0 — —
+- ✅ [ganfne123-dsh-plugin-envtime](https://github.com/ganfne123/dsh-plugin-envtime) ⭐0 — —
+- ✅ [gemone-dsh-chrome](https://github.com/gemone/dsh-chrome) ⭐0 — —
+- ✅ [gezi-wen-sage-mem](https://github.com/gezi-wen/sage-mem) ⭐0 — —
+- ❌ [ghost011118-dsh-balance-meter](https://github.com/Ghost011118/dsh-balance-meter) ⭐0 — —
+- ❌ [goalfyai-goalfydata](https://github.com/GoalfyAI/goalfydata) ⭐0 — —
+- ✅ [golitter-dsh-deepseek-billing](https://github.com/golitter/dsh-deepseek-billing) ⭐0 — —
+- 👁 **greatwhitesharklab-dsh-plugin-worktree-manage** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [guomonth-dsh-multi-tenant](https://github.com/GuoMonth/dsh-multi-tenant) ⭐0 — —
+- ❌ [gxpppp-dsh-search-mcp](https://github.com/gxpppp/dsh-search-mcp) ⭐0 — —
+- ❌ [gxx182-dsh-vision-bridge](https://github.com/GXX182/dsh-vision-bridge) ⭐0 — —
+- ✅ [h1a3x-dsh-token-stats](https://github.com/H1a3x/dsh-token-stats) ⭐0 — —
+- ❌ [hacksing-dsh-plugins](https://github.com/HackSing/dsh-plugins) ⭐0 — —
+- ✅ [hahaha-taotao-dsh-oauth-api](https://github.com/hahaha-taotao/dsh-oauth-api) ⭐0 — —
+- ✅ [hamsammike-dsh-mod-manager](https://github.com/HamSamMike/dsh-mod-manager) ⭐0 — —
+- ✅ [han-1413141-dsh-cost-meter](https://github.com/Han-1413141/dsh-cost-meter) ⭐0 — —
+- ✅ [han-1413141-dsh-sticky-disclosure](https://github.com/Han-1413141/dsh-sticky-disclosure) ⭐0 — —
+- ✅ [hanihahaha-deepseek-harness-plugins](https://github.com/Hanihahaha/deepseek-harness-plugins) ⭐0 — —
+- ❌ [harcochen-dsh-vsc-integration](https://github.com/HarcoChen/dsh-vsc-integration) ⭐0 — —
+- ✅ [hashdiana-dsh-token-usage](https://github.com/hashdiana/dsh-token-usage) ⭐0 — —
+- ✅ [havingautism-dsh-deepresearch](https://github.com/havingautism/dsh-deepresearch) ⭐0 — —
+- ❌ [havingautism-dsh-notebooks](https://github.com/havingautism/dsh-notebooks) ⭐0 — —
+- 👁 **hccccc01333-dsh-report-html** — 空仓监测中（GitHub 无此仓库，判定暂不展示）
+- ✅ [hel10o-dsh-vision-paste](https://github.com/Hel10o/dsh-vision-paste) ⭐0 — —
+- ✅ [hellodigua-dsh-share](https://github.com/hellodigua/dsh-share) ⭐0 — —
+- ❌ [hellosky983-dsh-mc-launcher](https://github.com/hellosky983/dsh-mc-launcher) ⭐0 — —
+- ✅ [heyflyingpig-long-draft-input](https://github.com/Heyflyingpig/long-draft-input) ⭐0 — —
+- ⚠️ [hezi2020-dsh-plugin-wiki](https://github.com/hezi2020/dsh-plugin-wiki) ⭐0 — —
+- ❌ [hikariming-dshfind](https://github.com/hikariming/dshfind) ⭐0 — —
+- ✅ [hisaniwo-dsh-ergonomics](https://github.com/hisaniwo/dsh-ergonomics) ⭐0 — —
+- ✅ [hjjj0918-dsh-plugin-local-utilities](https://github.com/Hjjj0918/dsh-plugin-local-utilities) ⭐0 — —
+- ✅ [hnmrxz-dsh-plugin-deepseek-balance](https://github.com/hnmrxz/dsh-plugin-deepseek-balance) ⭐0 — —
+- ✅ [hnmrxz-dsh-plugin-sysmon](https://github.com/hnmrxz/dsh-plugin-sysmon) ⭐0 — —
+- ✅ [hnmrxz-dsh-plugin-usage-dashboard](https://github.com/hnmrxz/dsh-plugin-usage-dashboard) ⭐0 — —
+- ❌ [hologramsteve-deepseek-harness-js](https://github.com/HologramSteve/deepseek-harness.js) ⭐0 — —
+- ✅ [honghudavy-star-dsh-plugins-4u](https://github.com/honghudavy-star/DSH_plugins_4U) ⭐0 — —
+- ✅ [hongzhongl-dsh-hotswap](https://github.com/HongzhongL/dsh-hotswap) ⭐0 — —
 
 ## 附录
 
-- 双轮并集口径：基底轮 1253（含未测 454）⊕ 增量轮 548（全部已判定，零交集已验证）；未测条目保留待后续轮次消化。
-- 同名覆盖与 URL 占位问题同快照原生限制，主键以 GitHub repo id 为准。
-- 最新轮单轮统计：✅379 / ❌155 / ⚠️14（共 548）。
+- 判定与定位正交：监测中条目的原始判定保留于快照数据（data/snapshots/），定位成功后自动恢复展示。
+- 占位 URL 由 clone 库通道产生（discover P3，github:unknown 键）；本次复核修复 643 个，其余进入监测态。
+- 最新增量轮单轮统计：✅379 / ❌155 / ⚠️14（共 548）。
 
