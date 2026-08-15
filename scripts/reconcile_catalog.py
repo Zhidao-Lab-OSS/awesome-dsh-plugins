@@ -88,12 +88,14 @@ def reconcile_catalog(readme_text: str, entries: list) -> str:
             new_verdict = e["verdict"]
             if was_pending and e.get("url"):
                 new_url = e["url"]  # 待调研策展行获得实测证据时，指向被测公有仓
-        changed = (new_verdict != verdict) or (new_star is not None and star is not None and new_star != star) or new_url != m.group(2)
+        new_desc = desc
+        e_desc = (e.get("desc") or "").strip()
+        if e_desc and e_desc != "—" and typ == "社区":
+            new_desc = e_desc  # 社区行描述随快照同步（GitHub 仓库描述变更）
+        changed = (new_verdict != verdict) or (new_star is not None and star is not None and new_star != star) or new_url != m.group(2) or new_desc != desc
         if changed:
-            star_cell = new_star if star is not None else ""
-            sep = " | " if star is not None else " | "
             lines[i] = (f"| [{name}]({new_url}) | {typ} |" +
                         (f" {new_star} |" if star is not None else "") +
-                        f" {new_verdict} | {desc} |\n")
+                        f" {new_verdict} | {new_desc} |\n")
 
     return "".join(lines)
