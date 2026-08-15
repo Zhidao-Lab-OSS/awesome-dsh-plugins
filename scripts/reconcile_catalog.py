@@ -62,4 +62,23 @@ def reconcile_catalog(readme_text: str, entries: list) -> str:
             lines[i] = h3pat.sub(f"<summary><h3>{title}（{cnt}）</h3></summary>", lines[i])
             break
 
+    # ②b 已有行刷新：star 数值化更新 + 判定仅更新「运行级口径」单元格（兼容/关注/需适配等策展标签不动）
+    ent = {e["name"]: e for e in entries}
+    for i in range(i_start, i_end):
+        m = re.match(r"\|\s*\[([^\]]+)\]\(([^)]*)\)\s*\|\s*([^|]+)\|\s*([^|]*)\|\s*([^|]*)\|\s*(.*?)\|\s*$", lines[i].rstrip("\n"))
+        if not m:
+            continue
+        name = m.group(1).strip()
+        if name not in ent:
+            continue
+        e = ent[name]
+        typ, star, verdict, desc = m.group(3).strip(), m.group(4).strip(), m.group(5).strip(), m.group(6)
+        new_star = str(e["star"]) if str(e["star"]) != "None" and star != "—" else star
+        cur = ent_cur = verdict
+        new_verdict = verdict
+        if verdict and verdict[0] in "✅❌⚠️⏳" or verdict == "待调研":
+            new_verdict = e["verdict"]
+        if new_star != star or new_verdict != verdict:
+            lines[i] = f"| [{name}]({m.group(2)}) | {typ} | {new_star} | {new_verdict} | {desc} |\n"
+
     return "".join(lines)
