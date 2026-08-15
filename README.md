@@ -14,25 +14,25 @@
 
 安装前就知道哪个能用，不用自己踩坑。
 
-[![confirmed](https://img.shields.io/badge/confirmed-1253-blue)](#-热门插件star-top-20) [![scan](https://img.shields.io/badge/scan-every_6h-green)](#当前生态快照) [![tested](https://img.shields.io/badge/tested-814-orange)](#本仓库如何判定) [![dshfind](https://dshfind.com/api/badge/AdamPlatin123/awesome-dsh-plugins?lang=zh)](https://dshfind.com/zh/plugins/AdamPlatin123/awesome-dsh-plugins?ref=badge) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![confirmed](https://img.shields.io/badge/confirmed-1253-blue)](#-热门插件star-top-20) [![scan](https://img.shields.io/badge/scan-every_6h-green)](#当前生态快照) [![tested](https://img.shields.io/badge/tested-614-orange)](#本仓库如何判定) [![dshfind](https://dshfind.com/api/badge/AdamPlatin123/awesome-dsh-plugins?lang=zh)](https://dshfind.com/zh/plugins/AdamPlatin123/awesome-dsh-plugins?ref=badge) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-[![✅ 运行级可用](https://img.shields.io/badge/✅_运行级可用-616-brightgreen)](#2-看懂状态统一四档口径) [![❌ 运行级不兼容](https://img.shields.io/badge/❌_运行级不兼容-127-red)](#2-看懂状态统一四档口径) [![⚠️ 待定](https://img.shields.io/badge/⚠️_待定-56-yellow)](#2-看懂状态统一四档口径) [![未测](https://img.shields.io/badge/·_未测-454-lightgrey)](#2-看懂状态统一四档口径)
+[![✅ 运行级可用](https://img.shields.io/badge/✅_运行级可用-419-brightgreen)](#2-看懂状态统一四档口径) [![❌ 运行级不兼容](https://img.shields.io/badge/❌_运行级不兼容-182-red)](#2-看懂状态统一四档口径) [![⚠️ 待定](https://img.shields.io/badge/⚠️_待定-13-yellow)](#2-看懂状态统一四档口径) [![未测](https://img.shields.io/badge/·_未测-0-lightgrey)](#2-看懂状态统一四档口径)
 
 简体中文 | [English](README.en-US.md)
 
 ---
 
-> 收录 1253 个 DSH 插件仓库（索引到2823个repos ，正由专用K8s集群，动态在DSH最新版本下验证可用性，目前高速迭代中）。
+> 收录 1253 个 DSH 插件仓库（索引到2845个repos ，正由专用K8s集群，动态在DSH最新版本下验证可用性，目前高速迭代中）。
 
 ## 工作原理
 
-> 📌 数据截至快照 `20260815T125358Z`（2026-08-15 20:53:58 UTC+8 · 分类器 unified-v2-bridge）
+> 📌 数据截至快照 `20260815T181741Z`（2026-08-16 02:17:41 UTC+8 · 分类器 unified-v2-bridge）
 
 <!-- AUTO:pipeline:START -->
 ```mermaid
 flowchart TB
     subgraph Discovery["🔍 发现（每 6 小时 · probe 每 15 分钟 巡检触发）"]
-        A1["GitHub Search<br/>topic ×2 + keyword ×3<br/>候选 2823 · 龄 69m"]
+        A1["GitHub Search<br/>topic ×2 + keyword ×3<br/>候选 2845 · 龄 33m"]
         A2["本地库补全 · 去重 repo id"]
         A3["🚫 私有 org 仓排除<br/>35s 错峰 · 403 退避 · dshow 黑名单"]
     end
@@ -41,9 +41,9 @@ flowchart TB
     end
     B1 -->|"插件 1253"| C1["k8s 运行级测试<br/>一插件一 pod · 并发 10<br/>dsh agent + Qwen（de-stream）"]
     B1 -->|"非插件（累计删 1064）"| B3["❌ 即删省空间"]
-    C1 --> D1{"判定 · 总 468"}
-    D1 -->|"✅ 324 / ❌ 134"| E1["聚合 + README 分类统计"]
-    D1 -->|"⚠️ 10 环境类重试"| C1
+    C1 --> D1{"判定 · 总 614"}
+    D1 -->|"✅ 419 / ❌ 182"| E1["聚合 + README 分类统计"]
+    D1 -->|"⚠️ 13 环境类重试"| C1
     E1 --> E2["cadence 交付<br/>本周期增量 —/100<br/>双仓 bot PR（幂等 supersede）"]
     S["⚖️ 静态四维轨（每日 02:00）"] -.-> E1
     M["🛡 radar-probe 每 15 分钟 自愈<br/>7 指标流 × 60s · 完成累计 0"] -.-> A1
@@ -107,7 +107,7 @@ flowchart TB
 > 按功能领域分类（重分类修正）。点击标题展开，全部条目一次显示。 新收录条目（社区）的兼容性为**运行级跟踪口径**（k8s agent 实测）。 新收录条目（社区）的兼容性为**运行级跟踪口径**（k8s agent 实测）。
 
 <details>
-<summary><h3>🔌 Web UI 增强（284）</h3></summary>
+<summary><h3>🔌 Web UI 增强（299）</h3></summary>
 
 *界面与交互增强插件：侧边栏、输入框、皮肤主题、面板 dock、消息显示、状态栏与可视化，让 Web 界面更顺手更好看*
 
@@ -361,12 +361,63 @@ flowchart TB
 | [dsh-sidechain](https://github.com/omdsh-dev/dsh-sidechain) | 社区 | 4 | ❌ 运行级不兼容 | DSH 侧会话插件：/side 持续性侧会话（Codex 风格）与 /btw 一次性侧问（Claude 风格）——在临时 fork 中运行、不写入主会话历史；W |
 | [dsh-Solarized](https://github.com/zhijun-dai/dsh-Solarized) | 社区 | 0 | ⚠️ 待定 | Solarized + Selenized themes for DeepSeek Harness (dsh): four faithful palettes  |
 | [dsh-lark-link](https://github.com/amlyczz/dsh-lark-link) | 社区 | 3 | ✅ 运行级可用 | High-reliability Feishu/Lark bridge for DeepSeek Harness — QR one-click auth, mu |
+| [147228-dsh-xiaoyao-skins](https://github.com/search?q=147228-dsh-xiaoyao-skins) | 社区 | 0 | ✅ 运行级可用 | — |
+| [1m01m0-dsh-chat-skin](https://github.com/search?q=1m01m0-dsh-chat-skin) | 社区 | 0 | ✅ 运行级可用 | — |
+| [andy294753951-dsh-plugin-gouden-leeuw-theme](https://github.com/search?q=andy294753951-dsh-plugin-gouden-leeuw-theme) | 社区 | 0 | ✅ 运行级可用 | — |
+| [andyahui-deepseek-harness-desktop](https://github.com/search?q=andyahui-deepseek-harness-desktop) | 社区 | 0 | ✅ 运行级可用 | — |
+| [auran-lu-dsh-client-ui-monitor](https://github.com/search?q=auran-lu-dsh-client-ui-monitor) | 社区 | 0 | ✅ 运行级可用 | — |
+| [auraxm-dsh-plugin-ui-turnav](https://github.com/search?q=auraxm-dsh-plugin-ui-turnav) | 社区 | 0 | ✅ 运行级可用 | — |
+| [bilbillm-deepseek-harness-angelina-themes](https://github.com/search?q=bilbillm-deepseek-harness-angelina-themes) | 社区 | 0 | ✅ 运行级可用 | — |
+| [bill9109-dsh-web-ui-notify](https://github.com/search?q=bill9109-dsh-web-ui-notify) | 社区 | 0 | ✅ 运行级可用 | — |
+| [blaczz-dsh-deck-builder](https://github.com/search?q=blaczz-dsh-deck-builder) | 社区 | 0 | ✅ 运行级可用 | — |
+| [boxeryao-deepseek-harness-tui](https://github.com/search?q=boxeryao-deepseek-harness-tui) | 社区 | 0 | ✅ 运行级可用 | — |
+| [carpon39038-dsh-image-theme](https://github.com/search?q=carpon39038-dsh-image-theme) | 社区 | 0 | ✅ 运行级可用 | — |
+| [caxson-dsh-gui](https://github.com/search?q=caxson-dsh-gui) | 社区 | 0 | ✅ 运行级可用 | — |
+| [ccch1mneyyy-dsh-tui](https://github.com/search?q=ccch1mneyyy-dsh-tui) | 社区 | 0 | ✅ 运行级可用 | — |
+| [chen-001-dsh-chat-width](https://github.com/search?q=chen-001-dsh-chat-width) | 社区 | 0 | ✅ 运行级可用 | — |
+| [cocowwy-dsh-plugin-eyecare-theme](https://github.com/search?q=cocowwy-dsh-plugin-eyecare-theme) | 社区 | 0 | ✅ 运行级可用 | — |
+| [cogine-ai-dsh-claude-tui](https://github.com/search?q=cogine-ai-dsh-claude-tui) | 社区 | 0 | ✅ 运行级可用 | — |
+| [condathinker-dsh-left-sidebar-collapse](https://github.com/search?q=condathinker-dsh-left-sidebar-collapse) | 社区 | 0 | ✅ 运行级可用 | — |
+| [crtnt-dsh-plugin-suite](https://github.com/search?q=crtnt-dsh-plugin-suite) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dancingmemory-dskin](https://github.com/search?q=dancingmemory-dskin) | 社区 | 0 | ✅ 运行级可用 | — |
+| [dqsjqian-agent-guild](https://github.com/search?q=dqsjqian-agent-guild) | 社区 | 0 | ✅ 运行级可用 | — |
+| [edwardyang0011-dsh-ui-skins](https://github.com/search?q=edwardyang0011-dsh-ui-skins) | 社区 | 0 | ✅ 运行级可用 | — |
+| [equinox7379-dsh-update-radar](https://github.com/search?q=equinox7379-dsh-update-radar) | 社区 | 0 | ✅ 运行级可用 | — |
+| [fengzhiyushui-dsh-desktop-window](https://github.com/search?q=fengzhiyushui-dsh-desktop-window) | 社区 | 0 | ✅ 运行级可用 | — |
+| [frostgao-dsh-theme-blackgold](https://github.com/search?q=frostgao-dsh-theme-blackgold) | 社区 | 0 | ✅ 运行级可用 | — |
+| [goodpostidea-tech-deepseek-harness-skin](https://github.com/search?q=goodpostidea-tech-deepseek-harness-skin) | 社区 | 0 | ✅ 运行级可用 | — |
+| [gxinxing-deepseek-harness-tui](https://github.com/search?q=gxinxing-deepseek-harness-tui) | 社区 | 0 | ✅ 运行级可用 | — |
+| [h2o-mero-deepseek-harness-gui](https://github.com/search?q=h2o-mero-deepseek-harness-gui) | 社区 | 0 | ✅ 运行级可用 | — |
+| [harcochen-dsh-plugin-guide](https://github.com/search?q=harcochen-dsh-plugin-guide) | 社区 | 0 | ✅ 运行级可用 | — |
+| [havingautism-dsh-ultra-ui](https://github.com/search?q=havingautism-dsh-ultra-ui) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hilbert-beinghappy-deepseek-tui](https://github.com/search?q=hilbert-beinghappy-deepseek-tui) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hotsteel2901-dsh-client-ui-mobile-adapt](https://github.com/search?q=hotsteel2901-dsh-client-ui-mobile-adapt) | 社区 | 0 | ✅ 运行级可用 | — |
+| [huanlinoto-dsh-plugin-better-sidebar-plugin-o](https://github.com/search?q=huanlinoto-dsh-plugin-better-sidebar-plugin-o) | 社区 | 0 | ✅ 运行级可用 | — |
+| [huanlinoto-dsh-plugin-ya-workspace-sidebar](https://github.com/search?q=huanlinoto-dsh-plugin-ya-workspace-sidebar) | 社区 | 0 | ✅ 运行级可用 | — |
+| [huiliyi37-dsh-tianshu-build](https://github.com/search?q=huiliyi37-dsh-tianshu-build) | 社区 | 0 | ✅ 运行级可用 | — |
+| [iuikj-dsh-desktop](https://github.com/search?q=iuikj-dsh-desktop) | 社区 | 0 | ✅ 运行级可用 | — |
+| [384961890-ui-pawin-brain-deepseek-harness](https://github.com/search?q=384961890-ui-pawin-brain-deepseek-harness) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [alingalingling-ui-status-label](https://github.com/search?q=alingalingling-ui-status-label) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [anweat-dsh-plugin-dev-guide](https://github.com/search?q=anweat-dsh-plugin-dev-guide) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [chajiuqqq-dsh-claude-theme](https://github.com/search?q=chajiuqqq-dsh-claude-theme) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [chen-001-dsh-grok-tui](https://github.com/search?q=chen-001-dsh-grok-tui) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [danielou1208-deepseek-harness-tui](https://github.com/search?q=danielou1208-deepseek-harness-tui) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [drfccv-dsh-theme-neko](https://github.com/search?q=drfccv-dsh-theme-neko) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [dsh-tui-dsh-tui](https://github.com/search?q=dsh-tui-dsh-tui) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [dujunxi1993-dsh-swiftui](https://github.com/search?q=dujunxi1993-dsh-swiftui) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [dycode7-deepseek-harness-tui](https://github.com/search?q=dycode7-deepseek-harness-tui) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [equinox7379-dsh-config-watch](https://github.com/search?q=equinox7379-dsh-config-watch) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [fishquito7-dsh-skill-viewer](https://github.com/search?q=fishquito7-dsh-skill-viewer) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [ginuim-multi-screen-wireframe](https://github.com/search?q=ginuim-multi-screen-wireframe) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [heigeai-deepseek-harness-skin](https://github.com/search?q=heigeai-deepseek-harness-skin) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [huiliyi37-dsh-tianshu-tui](https://github.com/search?q=huiliyi37-dsh-tianshu-tui) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [citrusli2026-dsh-mobile-ui](https://github.com/search?q=citrusli2026-dsh-mobile-ui) | 社区 | 0 | ⚠️ 待定 | — |
 </details>
 
 *界面与交互增强插件：侧边栏、输入框、皮肤主题、面板 dock、消息显示、状态栏与可视化，让 Web 界面更顺手更好看*
 
 <details>
-<summary><h3>🤖 Agent 能力（235）</h3></summary>
+<summary><h3>🤖 Agent 能力（250）</h3></summary>
 
 *增强 agent 本身的能力：子代理管理、记忆与上下文、会话控制、规划执行、唤醒/睡眠、提示词与技能注入*
 
@@ -607,12 +658,27 @@ flowchart TB
 | [bramblexu-dsh-prompt-profile](https://github.com/search?q=bramblexu-dsh-prompt-profile) | 社区 | 0 | ❌ 运行级不兼容 | — |
 | [dddfxyqiming-agent-extensions](https://github.com/search?q=dddfxyqiming-agent-extensions) | 社区 | 0 | ❌ 运行级不兼容 | — |
 | [elementor-i-dsh-agentmemory](https://github.com/search?q=elementor-i-dsh-agentmemory) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [gengdapeng-dsh-agent-message](https://github.com/search?q=gengdapeng-dsh-agent-message) | 社区 | 0 | ✅ 运行级可用 | — |
+| [gooodwei-context-vista](https://github.com/search?q=gooodwei-context-vista) | 社区 | 0 | ✅ 运行级可用 | — |
+| [gordonlu-dsh-context-lens](https://github.com/search?q=gordonlu-dsh-context-lens) | 社区 | 0 | ✅ 运行级可用 | — |
+| [greatwhitesharklab-dsh-plugin-subagent-manage](https://github.com/search?q=greatwhitesharklab-dsh-plugin-subagent-manage) | 社区 | 0 | ✅ 运行级可用 | — |
+| [green-dalii-dsh-plugin-dev-skill](https://github.com/search?q=green-dalii-dsh-plugin-dev-skill) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hellosky983-dsh-skillradar](https://github.com/search?q=hellosky983-dsh-skillradar) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hellowind777-helloagents](https://github.com/search?q=hellowind777-helloagents) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hexbee-dsh-skill-panel](https://github.com/search?q=hexbee-dsh-skill-panel) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hootandy321-dsh-agentlink](https://github.com/search?q=hootandy321-dsh-agentlink) | 社区 | 0 | ✅ 运行级可用 | — |
+| [huguangyu666-dsh-plugin-session-import](https://github.com/search?q=huguangyu666-dsh-plugin-session-import) | 社区 | 0 | ✅ 运行级可用 | — |
+| [itmoqing-deepseek-harness-skill](https://github.com/search?q=itmoqing-deepseek-harness-skill) | 社区 | 0 | ✅ 运行级可用 | — |
+| [happyren-dsh-agent-messaging](https://github.com/search?q=happyren-dsh-agent-messaging) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [huanlinoto-dsh-plugin-yet-another-subagent](https://github.com/search?q=huanlinoto-dsh-plugin-yet-another-subagent) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [huawolf-news-agent](https://github.com/search?q=huawolf-news-agent) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [haoyuan-sjtu-deepseek-harness-governed-memory](https://github.com/search?q=haoyuan-sjtu-deepseek-harness-governed-memory) | 社区 | 0 | ⚠️ 待定 | — |
 </details>
 
 *增强 agent 本身的能力：子代理管理、记忆与上下文、会话控制、规划执行、唤醒/睡眠、提示词与技能注入*
 
 <details>
-<summary><h3>💻 编码开发（268）</h3></summary>
+<summary><h3>💻 编码开发（278）</h3></summary>
 
 *面向编程场景的工具：代码操作、git 集成、终端、diff 与编辑器、文档生成、语言支持与构建辅助*
 
@@ -886,12 +952,22 @@ flowchart TB
 | [deklan-deng-dcode](https://github.com/search?q=deklan-deng-dcode) | 社区 | 0 | ❌ 运行级不兼容 | — |
 | [dsh-plugin-dsh-plugin-github-io](https://github.com/search?q=dsh-plugin-dsh-plugin-github-io) | 社区 | 0 | ❌ 运行级不兼容 | — |
 | [franksong2702-dsh-codex-connect](https://github.com/search?q=franksong2702-dsh-codex-connect) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [gordonynh-dsh-plugin-codex-import](https://github.com/search?q=gordonynh-dsh-plugin-codex-import) | 社区 | 0 | ✅ 运行级可用 | — |
+| [haiyoucuv-dsh-model-provider-label](https://github.com/search?q=haiyoucuv-dsh-model-provider-label) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hellosky983-dsh-qrcode](https://github.com/search?q=hellosky983-dsh-qrcode) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hrhgit-deepseek-harness-plugin-manager](https://github.com/search?q=hrhgit-deepseek-harness-plugin-manager) | 社区 | 0 | ✅ 运行级可用 | — |
+| [icesparrow1-dsh-code-server](https://github.com/search?q=icesparrow1-dsh-code-server) | 社区 | 0 | ✅ 运行级可用 | — |
+| [immiq-dsh-code-server](https://github.com/search?q=immiq-dsh-code-server) | 社区 | 0 | ✅ 运行级可用 | — |
+| [inmny-dsh-git-bash](https://github.com/search?q=inmny-dsh-git-bash) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hongfeiyucode-deepseek-harness-desktop](https://github.com/search?q=hongfeiyucode-deepseek-harness-desktop) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [huanyulv-dsh-balance-tide](https://github.com/search?q=huanyulv-dsh-balance-tide) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [icodesign-orbis](https://github.com/search?q=icodesign-orbis) | 社区 | 0 | ❌ 运行级不兼容 | — |
 </details>
 
 *面向编程场景的工具：代码操作、git 集成、终端、diff 与编辑器、文档生成、语言支持与构建辅助*
 
 <details>
-<summary><h3>📡 消息通讯（79）</h3></summary>
+<summary><h3>📡 消息通讯（97）</h3></summary>
 
 *把 dsh 接入各类沟通渠道：微信/QQ/Telegram/飞书机器人、桌面通知、消息分享与跨端回复*
 
@@ -985,12 +1061,21 @@ flowchart TB
 | [amlyczz-dsh-lark-link](https://github.com/search?q=amlyczz-dsh-lark-link) | 社区 | 0 | ❌ 运行级不兼容 | — |
 | [dingkaihu63-dsh-robotic-harness](https://github.com/search?q=dingkaihu63-dsh-robotic-harness) | 社区 | 0 | ❌ 运行级不兼容 | — |
 | [fireguo1145-dsh-plugin-adapter-qq](https://github.com/search?q=fireguo1145-dsh-plugin-adapter-qq) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [giantgkl-dsh-cost](https://github.com/search?q=giantgkl-dsh-cost) | 社区 | 0 | ✅ 运行级可用 | — |
+| [gnulife-dsh-plugin-wechat](https://github.com/search?q=gnulife-dsh-plugin-wechat) | 社区 | 0 | ✅ 运行级可用 | — |
+| [gtaifu-dsh-wechat-bridge](https://github.com/search?q=gtaifu-dsh-wechat-bridge) | 社区 | 0 | ✅ 运行级可用 | — |
+| [haytham818-dsh-notify](https://github.com/search?q=haytham818-dsh-notify) | 社区 | 0 | ✅ 运行级可用 | — |
+| [huguangyu666-dsh-plugin-notify](https://github.com/search?q=huguangyu666-dsh-plugin-notify) | 社区 | 0 | ✅ 运行级可用 | — |
+| [itr-del-dsh-feishu](https://github.com/search?q=itr-del-dsh-feishu) | 社区 | 0 | ✅ 运行级可用 | — |
+| [gusibi-molibot](https://github.com/search?q=gusibi-molibot) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [hi-wenw-dsh-telegram-channel](https://github.com/search?q=hi-wenw-dsh-telegram-channel) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [imetn-dsh-lark-bridge](https://github.com/search?q=imetn-dsh-lark-bridge) | 社区 | 0 | ❌ 运行级不兼容 | — |
 </details>
 
 *把 dsh 接入各类沟通渠道：微信/QQ/Telegram/飞书机器人、桌面通知、消息分享与跨端回复*
 
 <details>
-<summary><h3>🗂 文件数据（71）</h3></summary>
+<summary><h3>🗂 文件数据（76）</h3></summary>
 
 *文件与数据处理：读写与格式转换、爬取抓取、数据库、编码识别、文档解析与知识库*
 
@@ -1067,12 +1152,17 @@ flowchart TB
 | [bill9109-dsh-drag-and-drop](https://github.com/search?q=bill9109-dsh-drag-and-drop) | 社区 | 0 | ✅ 运行级可用 | — |
 | [fisfzy-zotero-wave-rag](https://github.com/search?q=fisfzy-zotero-wave-rag) | 社区 | 0 | ✅ 运行级可用 | — |
 | [byyy-eng-deepseek-harness-file-upload-ocr-plu](https://github.com/search?q=byyy-eng-deepseek-harness-file-upload-ocr-plu) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [hccccc01333-dsh-excel-chat](https://github.com/search?q=hccccc01333-dsh-excel-chat) | 社区 | 0 | ✅ 运行级可用 | — |
+| [huahai0202-dsh-better-archive](https://github.com/search?q=huahai0202-dsh-better-archive) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hxyz486-dsh-archived-conversations](https://github.com/search?q=hxyz486-dsh-archived-conversations) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hisaniwo-dsh-plugin-archive-recovery](https://github.com/search?q=hisaniwo-dsh-plugin-archive-recovery) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [huanlinoto-dsh-plugin-mineru](https://github.com/search?q=huanlinoto-dsh-plugin-mineru) | 社区 | 0 | ❌ 运行级不兼容 | — |
 </details>
 
 *文件与数据处理：读写与格式转换、爬取抓取、数据库、编码识别、文档解析与知识库*
 
 <details>
-<summary><h3>🎮 娱乐生活（46）</h3></summary>
+<summary><h3>🎮 娱乐生活（50）</h3></summary>
 
 *摸鱼与趣味：小游戏、桌面宠物、表情包、音乐、股票行情与旅行*
 
@@ -1124,12 +1214,16 @@ flowchart TB
 | [gameswu-dsh-plugin-background](https://github.com/search?q=gameswu-dsh-plugin-background) | 社区 | 0 | ✅ 运行级可用 | — |
 | [2002yxy-dsh-desktop-pet](https://github.com/search?q=2002yxy-dsh-desktop-pet) | 社区 | 0 | ❌ 运行级不兼容 | — |
 | [er1c0v0-dsh-whale-pet](https://github.com/search?q=er1c0v0-dsh-whale-pet) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [hellosz-dsh-pets](https://github.com/search?q=hellosz-dsh-pets) | 社区 | 0 | ✅ 运行级可用 | — |
+| [intelligent-guoxin-dsh-plugin-gomoku](https://github.com/search?q=intelligent-guoxin-dsh-plugin-gomoku) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hellodigua-dsh-emoji](https://github.com/search?q=hellodigua-dsh-emoji) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [huanlinoto-dsh-plugin-pet-rs](https://github.com/search?q=huanlinoto-dsh-plugin-pet-rs) | 社区 | 0 | ❌ 运行级不兼容 | — |
 </details>
 
 *摸鱼与趣味：小游戏、桌面宠物、表情包、音乐、股票行情与旅行*
 
 <details>
-<summary><h3>🛠 基建部署（119）</h3></summary>
+<summary><h3>🛠 基建部署（135）</h3></summary>
 
 *运行环境与分发：桌面/移动客户端、远程主机、浏览器桥、沙箱隔离、插件管理、更新与监控*
 
@@ -1252,8 +1346,24 @@ flowchart TB
 | [flee42-dsh-desktop](https://github.com/search?q=flee42-dsh-desktop) | 社区 | 0 | ❌ 运行级不兼容 | — |
 | [antinomie1-deepseek-harness-desktop](https://github.com/search?q=antinomie1-deepseek-harness-desktop) | 社区 | 0 | ⚠️ 待定 | — |
 | [baiiiii-deepseek-harness-desktop](https://github.com/search?q=baiiiii-deepseek-harness-desktop) | 社区 | 0 | ⚠️ 待定 | — |
-| [edmok-deepseek-harness-desktop](https://github.com/search?q=edmok-deepseek-harness-desktop) | 社区 | 0 | ⚠️ 待定 | — |
-| [evanmormmm-deepseek-harness-desktop](https://github.com/search?q=evanmormmm-deepseek-harness-desktop) | 社区 | 0 | ⚠️ 待定 | — |
+| [edmok-deepseek-harness-desktop](https://github.com/search?q=edmok-deepseek-harness-desktop) | 社区 | 0 | ❌ 运行级不兼容 | —  |
+| [evanmormmm-deepseek-harness-desktop](https://github.com/search?q=evanmormmm-deepseek-harness-desktop) | 社区 | 0 | ❌ 运行级不兼容 | —  |
+| [goyacj-deepseek-harness-desktop](https://github.com/search?q=goyacj-deepseek-harness-desktop) | 社区 | 0 | ✅ 运行级可用 | — |
+| [haddenhunter-deepseek-harness-desktop](https://github.com/search?q=haddenhunter-deepseek-harness-desktop) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hairyf-deepseek-harness-desktop](https://github.com/search?q=hairyf-deepseek-harness-desktop) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hanelalo-browser-bridge](https://github.com/search?q=hanelalo-browser-bridge) | 社区 | 0 | ✅ 运行级可用 | — |
+| [haoyueqin-deepseek-harness-desktop](https://github.com/search?q=haoyueqin-deepseek-harness-desktop) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hx876298682-tech-deepseek-harness-desktop](https://github.com/search?q=hx876298682-tech-deepseek-harness-desktop) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hzhe0083-source-deepseek-harness-desktop](https://github.com/search?q=hzhe0083-source-deepseek-harness-desktop) | 社区 | 0 | ✅ 运行级可用 | — |
+| [ilimei-dsh-desktop](https://github.com/search?q=ilimei-dsh-desktop) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hbhszy-deepseek-harness-desktop](https://github.com/search?q=hbhszy-deepseek-harness-desktop) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [hesheng4-deepseek-harness-desktop](https://github.com/search?q=hesheng4-deepseek-harness-desktop) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [hialuoy-deepseek-harness-desktop](https://github.com/search?q=hialuoy-deepseek-harness-desktop) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [huangj17-deepseek-harness-desktop](https://github.com/search?q=huangj17-deepseek-harness-desktop) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [hxwi1-dsh-desktop-window](https://github.com/search?q=hxwi1-dsh-desktop-window) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [imengichao-deepseek-harness-desktop](https://github.com/search?q=imengichao-deepseek-harness-desktop) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [gtc2080-deepseek-harness-desktop](https://github.com/search?q=gtc2080-deepseek-harness-desktop) | 社区 | 0 | ⚠️ 待定 | — |
+| [holmes-2011-deepseek-harness-desktop](https://github.com/search?q=holmes-2011-deepseek-harness-desktop) | 社区 | 0 | ⚠️ 待定 | — |
 </details>
 
 *运行环境与分发：桌面/移动客户端、远程主机、浏览器桥、沙箱隔离、插件管理、更新与监控*
@@ -1283,7 +1393,7 @@ flowchart TB
 *学习与探索：技能包、插件开发指南、文档导航、评测基准与社区 onboarding*
 
 <details>
-<summary><h3>❓ 其他（623）</h3></summary>
+<summary><h3>❓ 其他（696）</h3></summary>
 
 *描述缺失或暂未归类的仓库，补充信息后将细分*
 
@@ -1911,7 +2021,80 @@ flowchart TB
 | [alexis-fish-dsh-worktrees](https://github.com/search?q=alexis-fish-dsh-worktrees) | 社区 | 0 | ⚠️ 待定 | — |
 | [boxiaolanya2008-dsh-plugin](https://github.com/search?q=boxiaolanya2008-dsh-plugin) | 社区 | 0 | ⚠️ 待定 | — |
 | [daofaziran2010-trae-dsh-plugin](https://github.com/search?q=daofaziran2010-trae-dsh-plugin) | 社区 | 0 | ⚠️ 待定 | — |
-| [devin-axis-ipollowork](https://github.com/search?q=devin-axis-ipollowork) | 社区 | 0 | ⚠️ 待定 | — |
+| [devin-axis-ipollowork](https://github.com/search?q=devin-axis-ipollowork) | 社区 | 0 | ✅ 运行级可用 | —  |
+| [freehul-sgme](https://github.com/search?q=freehul-sgme) | 社区 | 0 | ✅ 运行级可用 | — |
+| [ganfne123-dsh-plugin-envtime](https://github.com/search?q=ganfne123-dsh-plugin-envtime) | 社区 | 0 | ✅ 运行级可用 | — |
+| [gemone-dsh-chrome](https://github.com/search?q=gemone-dsh-chrome) | 社区 | 0 | ✅ 运行级可用 | — |
+| [gezi-wen-sage-mem](https://github.com/search?q=gezi-wen-sage-mem) | 社区 | 0 | ✅ 运行级可用 | — |
+| [golitter-dsh-deepseek-billing](https://github.com/search?q=golitter-dsh-deepseek-billing) | 社区 | 0 | ✅ 运行级可用 | — |
+| [greatwhitesharklab-dsh-plugin-worktree-manage](https://github.com/search?q=greatwhitesharklab-dsh-plugin-worktree-manage) | 社区 | 0 | ✅ 运行级可用 | — |
+| [guomonth-dsh-multi-tenant](https://github.com/search?q=guomonth-dsh-multi-tenant) | 社区 | 0 | ✅ 运行级可用 | — |
+| [h1a3x-dsh-token-stats](https://github.com/search?q=h1a3x-dsh-token-stats) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hahaha-taotao-dsh-oauth-api](https://github.com/search?q=hahaha-taotao-dsh-oauth-api) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hamsammike-dsh-mod-manager](https://github.com/search?q=hamsammike-dsh-mod-manager) | 社区 | 0 | ✅ 运行级可用 | — |
+| [han-1413141-dsh-cost-meter](https://github.com/search?q=han-1413141-dsh-cost-meter) | 社区 | 0 | ✅ 运行级可用 | — |
+| [han-1413141-dsh-sticky-disclosure](https://github.com/search?q=han-1413141-dsh-sticky-disclosure) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hanihahaha-deepseek-harness-plugins](https://github.com/search?q=hanihahaha-deepseek-harness-plugins) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hashdiana-dsh-token-usage](https://github.com/search?q=hashdiana-dsh-token-usage) | 社区 | 0 | ✅ 运行级可用 | — |
+| [havingautism-dsh-deepresearch](https://github.com/search?q=havingautism-dsh-deepresearch) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hel10o-dsh-vision-paste](https://github.com/search?q=hel10o-dsh-vision-paste) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hellodigua-dsh-share](https://github.com/search?q=hellodigua-dsh-share) | 社区 | 0 | ✅ 运行级可用 | — |
+| [heyflyingpig-long-draft-input](https://github.com/search?q=heyflyingpig-long-draft-input) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hisaniwo-dsh-ergonomics](https://github.com/search?q=hisaniwo-dsh-ergonomics) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hjjj0918-dsh-plugin-local-utilities](https://github.com/search?q=hjjj0918-dsh-plugin-local-utilities) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hnmrxz-dsh-plugin-deepseek-balance](https://github.com/search?q=hnmrxz-dsh-plugin-deepseek-balance) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hnmrxz-dsh-plugin-sysmon](https://github.com/search?q=hnmrxz-dsh-plugin-sysmon) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hnmrxz-dsh-plugin-usage-dashboard](https://github.com/search?q=hnmrxz-dsh-plugin-usage-dashboard) | 社区 | 0 | ✅ 运行级可用 | — |
+| [honghudavy-star-dsh-plugins-4u](https://github.com/search?q=honghudavy-star-dsh-plugins-4u) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hongzhongl-dsh-hotswap](https://github.com/search?q=hongzhongl-dsh-hotswap) | 社区 | 0 | ✅ 运行级可用 | — |
+| [houyongsheng-deepseek-harness-molt](https://github.com/search?q=houyongsheng-deepseek-harness-molt) | 社区 | 0 | ✅ 运行级可用 | — |
+| [huanlinoto-dsh-plugin-anti-ads](https://github.com/search?q=huanlinoto-dsh-plugin-anti-ads) | 社区 | 0 | ✅ 运行级可用 | — |
+| [huanlinoto-dsh-plugin-d399](https://github.com/search?q=huanlinoto-dsh-plugin-d399) | 社区 | 0 | ✅ 运行级可用 | — |
+| [huanlinoto-dsh-plugin-interpreters](https://github.com/search?q=huanlinoto-dsh-plugin-interpreters) | 社区 | 0 | ✅ 运行级可用 | — |
+| [huanlinoto-dsh-plugin-sleep](https://github.com/search?q=huanlinoto-dsh-plugin-sleep) | 社区 | 0 | ✅ 运行级可用 | — |
+| [huanlinoto-dsh-plugin-spur](https://github.com/search?q=huanlinoto-dsh-plugin-spur) | 社区 | 0 | ✅ 运行级可用 | — |
+| [huashenglian-dsh-her-eyes](https://github.com/search?q=huashenglian-dsh-her-eyes) | 社区 | 0 | ✅ 运行级可用 | — |
+| [humblebanana-open-record-replay](https://github.com/search?q=humblebanana-open-record-replay) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hust-open-atom-club-oh-dsh](https://github.com/search?q=hust-open-atom-club-oh-dsh) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hyperionjust-dsh-tool-underseal](https://github.com/search?q=hyperionjust-dsh-tool-underseal) | 社区 | 0 | ✅ 运行级可用 | — |
+| [hyqhyq3-dsh-mcp-manager](https://github.com/search?q=hyqhyq3-dsh-mcp-manager) | 社区 | 0 | ✅ 运行级可用 | — |
+| [iccuse-dsh-pain-point-check](https://github.com/search?q=iccuse-dsh-pain-point-check) | 社区 | 0 | ✅ 运行级可用 | — |
+| [icetomoyo-dsh-workflow](https://github.com/search?q=icetomoyo-dsh-workflow) | 社区 | 0 | ✅ 运行级可用 | — |
+| [ihuajiu-dsh-plugin-finder](https://github.com/search?q=ihuajiu-dsh-plugin-finder) | 社区 | 0 | ✅ 运行级可用 | — |
+| [imeepos-dsh-billing-plugin](https://github.com/search?q=imeepos-dsh-billing-plugin) | 社区 | 0 | ✅ 运行级可用 | — |
+| [imsai-sh-awesome-deepseek-harness-plugins](https://github.com/search?q=imsai-sh-awesome-deepseek-harness-plugins) | 社区 | 0 | ✅ 运行级可用 | — |
+| [initialencounter-dsh-plugin-drone](https://github.com/search?q=initialencounter-dsh-plugin-drone) | 社区 | 0 | ✅ 运行级可用 | — |
+| [innocence1110-deepseek-harness](https://github.com/search?q=innocence1110-deepseek-harness) | 社区 | 0 | ✅ 运行级可用 | — |
+| [inspireason-dsh-plugin-organizer](https://github.com/search?q=inspireason-dsh-plugin-organizer) | 社区 | 0 | ✅ 运行级可用 | — |
+| [isekai-mfu-dsh-mimo-vision-hint](https://github.com/search?q=isekai-mfu-dsh-mimo-vision-hint) | 社区 | 0 | ✅ 运行级可用 | — |
+| [jackuh105-remielle-dsh-plugin](https://github.com/search?q=jackuh105-remielle-dsh-plugin) | 社区 | 0 | ✅ 运行级可用 | — |
+| [ghost011118-dsh-balance-meter](https://github.com/search?q=ghost011118-dsh-balance-meter) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [goalfyai-goalfydata](https://github.com/search?q=goalfyai-goalfydata) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [gxpppp-dsh-search-mcp](https://github.com/search?q=gxpppp-dsh-search-mcp) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [gxx182-dsh-vision-bridge](https://github.com/search?q=gxx182-dsh-vision-bridge) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [hacksing-dsh-plugins](https://github.com/search?q=hacksing-dsh-plugins) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [harcochen-dsh-vsc-integration](https://github.com/search?q=harcochen-dsh-vsc-integration) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [havingautism-dsh-notebooks](https://github.com/search?q=havingautism-dsh-notebooks) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [hellosky983-dsh-mc-launcher](https://github.com/search?q=hellosky983-dsh-mc-launcher) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [hikariming-dshfind](https://github.com/search?q=hikariming-dshfind) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [hologramsteve-deepseek-harness-js](https://github.com/search?q=hologramsteve-deepseek-harness-js) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [hsiangnianian-dsh-auto-continue](https://github.com/search?q=hsiangnianian-dsh-auto-continue) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [huanlinoto-dsh-plugin-aigc-canvas](https://github.com/search?q=huanlinoto-dsh-plugin-aigc-canvas) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [huanlinoto-dsh-plugin-auto-blame](https://github.com/search?q=huanlinoto-dsh-plugin-auto-blame) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [humblebanana-dsh-record-replay](https://github.com/search?q=humblebanana-dsh-record-replay) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [hunterxxn-deep-flow](https://github.com/search?q=hunterxxn-deep-flow) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [hyls9527-dsh-plugins](https://github.com/search?q=hyls9527-dsh-plugins) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [hyy-king-dsh-plugin-auditor](https://github.com/search?q=hyy-king-dsh-plugin-auditor) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [iceprosurface-dsh-gateway-config](https://github.com/search?q=iceprosurface-dsh-gateway-config) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [ilimei-dsh-zenmux-oauth](https://github.com/search?q=ilimei-dsh-zenmux-oauth) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [imsai-sh-zhuzhiliao](https://github.com/search?q=imsai-sh-zhuzhiliao) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [imtheolin-ai-keyboard](https://github.com/search?q=imtheolin-ai-keyboard) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [inference1-clarify-intent-and-establish-share](https://github.com/search?q=inference1-clarify-intent-and-establish-share) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [inklingyoshi584-dsh-tool-hashline](https://github.com/search?q=inklingyoshi584-dsh-tool-hashline) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [izz-blue-dsh-deepseek-usage-dashboard](https://github.com/search?q=izz-blue-dsh-deepseek-usage-dashboard) | 社区 | 0 | ❌ 运行级不兼容 | — |
+| [hccccc01333-dsh-report-html](https://github.com/search?q=hccccc01333-dsh-report-html) | 社区 | 0 | ⚠️ 待定 | — |
+| [hezi2020-dsh-plugin-wiki](https://github.com/search?q=hezi2020-dsh-plugin-wiki) | 社区 | 0 | ⚠️ 待定 | — |
+| [huangmouren2023-deepseek-harness-toolkit](https://github.com/search?q=huangmouren2023-deepseek-harness-toolkit) | 社区 | 0 | ⚠️ 待定 | — |
 </details>
 
 *描述缺失或暂未归类的仓库，补充信息后将细分*
@@ -1954,7 +2137,7 @@ DSH 插件社区讨论群（微信群）：插件作者、维护者与使用者�
 | · 未测 | 尚未派发运行级测试 | 不应推断为兼容或不兼容 |
 
 > [!NOTE]
-> **测试版本**：dsh（容器内 agent）+ Qwen3.6-35B 驱动（经 de-stream 代理）· k8s 5 分片 · 以快照 `run_id` 锚定具体轮次（当前 `20260814T213619Z`）。DSH 的 npm 版本号未随快照记录，以 run_id 与 `reports/agent-test/` 日期交叉核对。
+> **测试版本**：dsh（容器内 agent）+ Qwen3.6-35B 驱动（经 de-stream 代理）· k8s 5 分片 · 以快照 `run_id` 锚定具体轮次（当前 `20260815T181741Z`）。DSH 的 npm 版本号未随快照记录，以 run_id 与 `reports/agent-test/` 日期交叉核对。
 > **口径提示**：徽章与统计中的「已测 N」是单轮运行口径；分类目录与全量清单是跨轮累积口径，两者数字不同属正常。
 
 每个结论都应同时看四项：**插件 commit、mainline commit、测试日期、测试层级**。缺少其中任一项时，降低对结果的信任等级。
@@ -2060,7 +2243,7 @@ DSH 插件社区讨论群（微信群）：插件作者、维护者与使用者�
 ## 当前生态快照
 
 <!-- AUTO:ecosystem:START -->
-> 渲染于快照 20260815T125358Z（2026-08-15 20:53 UTC+8）· 数据源 data/snapshots/（渲染即对齐）
+> 渲染于快照 20260815T181741Z（2026-08-16 02:17 UTC+8）· 数据源 data/snapshots/（渲染即对齐）
 
 | 证据层 | 当前结果 |
 |---|---:|
@@ -2068,7 +2251,7 @@ DSH 插件社区讨论群（微信群）：插件作者、维护者与使用者�
 | 静态综合判定 | 277 / 286 兼容，9 需适配（静态轨 2026-08-13 · 经快照入仓） |
 | 证据不足 | 94 待调研 |
 | 其他 | 0 占位 · 0 不适用 · 0 已删除 |
-| 运行级实测 | ✅324 可用 · 134 不兼容 · 10 待定（共 468 个，k8s agent 口径）|
+| 运行级实测 | ✅419 可用 · 182 不兼容 · 13 待定（共 614 个，k8s agent 口径）|
 | 正在跟踪的 PR | 2（快照 deliver 口径） |
 
 [完整索引](reports/2026-08-15/index.md) · [静态矩阵](reports/2026-08-15/mainline-compat.md) · [编译实验](reports/2026-08-15/compile-compat.md) · [运行实测](reports/2026-08-15/agent-test.md)
