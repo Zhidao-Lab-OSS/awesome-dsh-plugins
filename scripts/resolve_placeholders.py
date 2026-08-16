@@ -5,9 +5,10 @@
 结果写入 data/locate-cache.json（增量合并，幂等）。命中仓库同时记录实时 star（stargazerCount），
 供 gen-plugins-all.py 渲染——快照层 star 为 0 的条目以此恢复真实值。
 已 found 但缺 star 的缓存条目会被重新反查补齐（刷新路径）。
-同时维护 data/url-audit.json：真实 URL 条目 ∪ 定位命中仓库的存在性审计
-（改名/删除/转私有判 gone，7 天 TTL 重查），gen-plugins-all.py 据此把消亡链接降为空仓监测。
-手动或定期运行；gen-plugins-all.py 消费。依赖：gh 认证 token + curl。
+同时维护 data/url-audit.json：真实 URL 条目 ∪ 定位命中仓库 ∪ README/PLUGINS.md 手工区链接的
+存在性审计（改名/删除/转私有判 gone，7 天 TTL 重查），gen-plugins_all.py 据此把消亡链接降为
+空仓监测；手工区链接判 gone 仅输出告警（人工处置，不自动改文档）。
+远程 resolve-watch 每日定时运行；也可手动执行。依赖：gh 认证 token + curl。
 """
 import datetime
 import glob
@@ -62,6 +63,22 @@ def real_url_fulls():
     return out
 
 
+DOC_FILES = ('README.md', 'README.en-US.md', 'PLUGINS.md')
+
+
+def doc_link_fulls():
+    """README/PLUGINS.md 等手工区文档中的仓库链接（小写全名）——审计对象池，
+    判 gone 只报告不自动修改（手工内容归人工维护）。"""
+    out = set()
+    for name in DOC_FILES:
+        fp = ROOT / name
+        if not fp.exists():
+            continue
+        for u in re.findall(r'\]\((https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)/?\)', fp.read_text()):
+            out.add(u.split('github.com/')[1].strip('/').lower())
+    return out
+
+
 def check_existence(batch):
     """GraphQL 直查仓库存在性；返回 {full_name_lower: bool}。失败批次返回空。"""
     defs = ', '.join(f'$o{j}: String! $n{j}: String!' for j in range(len(batch)))
@@ -89,7 +106,8 @@ def check_existence(batch):
 
 
 def audit_urls(locate_known):
-    """维护 data/url-audit.json：真实 URL 条目 ∪ 定位命中仓库，缺失或超 TTL 的重查存在性。"""
+    """维护 data/url-audit.json：真实 URL 条目 ∪ 定位命中仓库 ∪ 手工区文档链接，
+    缺失或超 TTL 的重查存在性；手工区链接判 gone 时输出告警（不自动改文档）。"""
     audit = {'checked_at': '', 'entries': {}}
     if AUDIT.exists():
         try:
@@ -98,7 +116,8 @@ def audit_urls(locate_known):
             pass
     today = time.strftime('%Y-%m-%d')
     cutoff = (datetime.date.today() - datetime.timedelta(days=AUDIT_TTL_DAYS)).isoformat()
-    universe = real_url_fulls() | {
+    doc_fulls = doc_link_fulls()
+    universe = real_url_fulls() | doc_fulls | {
         (v.get('full_name') or '').lower() for v in locate_known.values()
         if v.get('status') == 'found' and v.get('full_name')}
     stale = sorted(u for u in universe
@@ -117,6 +136,11 @@ def audit_urls(locate_known):
     from collections import Counter
     sc = Counter(v['status'] for v in audit['entries'].values())
     print(f'[audit] 缓存合计 {len(audit["entries"])}：{dict(sc)}')
+    doc_gone = sorted(u for u in doc_fulls if audit['entries'].get(u, {}).get('status') == 'gone')
+    if doc_gone:
+        print(f'[audit] ⚠️ 手工区文档（README/PLUGINS.md）存在失效仓库链接 {len(doc_gone)} 个——人工处置：')
+        for u in doc_gone:
+            print(f'  gone: {u}')
 
 
 def match(name, repos):

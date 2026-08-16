@@ -6764,6 +6764,202 @@
 "zzh-newlearner/dsh-postmortem": {
 "status": "ok",
 "checked": "2026-08-16"
+},
+"aaravarr/dsh-subagent-max": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"amethystluna/embedded-workbench": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"amethystluna/logicprobe": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"arvin-yd/dsh-update-notifier": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"beizi6/dsh-opencodego-usage": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"ben7am1n/dsh-telegram": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"chenchen913/dsh-session-cleaner-cli": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"chi-hong22/dsh-latexcp": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"cmfok/dsh-feishucard": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"dsh-external/dsh-artifact": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"dsh-external/dsh-split-panes": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"equinox7379/dsh-daily-brief": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"equinox7379/dsh-session-repair": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"equinox7379/dsh-skill-search": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"equinox7379/dsh-turn-watchdog": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"headroomlabs-ai/headroom": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"heartmove/dsh-side-chat": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"jueming2049/deepseek-skin-studio": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"leemancheung/dsh-agent-preset-recommender": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"leemancheung/dsh-image-gen": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"leemancheung/dsh-qq2007-skin": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"leemancheung/dsh-task-dag": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"leemancheung/dsh-whale-animation": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"mario841859784/dsh-onebot": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"meredith2328/dsh-sidebar-mode": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"nexusagentx/dsh-lens": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"nexusagentx/dsh-web-access": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"qing3a/dsh-repo-context": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"qing3a/dsh-tray": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"sandbaseai/sandbase-skills": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"sdongmaker/vpshub": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"stardustlc666/dsh-codex-port": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"stardustlc666/dsh-docker": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"stardustlc666/dsh-ffmpeg": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"stardustlc666/dsh-hyperframes": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"stardustlc666/dsh-remotion": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"stardustlc666/dsh-sql": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"stardustlc666/dsh-voice": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"timeance/dsh-approve-for-me": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"twotwopiggy/dsh-balance": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"vibeinging/deepseek-harness-desktop-app": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"weijiafu14/dsh-remote-sandbox": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"whyihaveyou/dsh-suite": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"wolfgenerals/ncm-player": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"wulun811/liuhe": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"yun520-1/deepseek-heartflow": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"zhang66633/dsh-pixel-ui": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"zhang66633/dsh-plugin-installer": {
+"status": "ok",
+"checked": "2026-08-16"
+},
+"zhu1090093659/dsh-web-ui": {
+"status": "ok",
+"checked": "2026-08-16"
 }
 }
 }
