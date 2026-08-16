@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-"""resolve-placeholders.py — 占位 URL 定位复核器。
+"""resolve-placeholders.py — 占位 URL 定位复核器 + 仓库存在性审计。
 
 对快照 catalog_entries 中 search?q= 占位条目做 GitHub 反查（GraphQL 变量法，三级匹配），
 结果写入 data/locate-cache.json（增量合并，幂等）。命中仓库同时记录实时 star（stargazerCount），
 供 gen-plugins-all.py 渲染——快照层 star 为 0 的条目以此恢复真实值。
 已 found 但缺 star 的缓存条目会被重新反查补齐（刷新路径）。
+同时维护 data/url-audit.json：真实 URL 条目 ∪ 定位命中仓库的存在性审计
+（改名/删除/转私有判 gone，7 天 TTL 重查），gen-plugins-all.py 据此把消亡链接降为空仓监测。
 手动或定期运行；gen-plugins-all.py 消费。依赖：gh 认证 token + curl。
 """
+import datetime
 import glob
 import json
 import re
@@ -16,7 +19,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE = ROOT / 'data' / 'locate-cache.json'
+AUDIT = ROOT / 'data' / 'url-audit.json'
 BATCH = 40
+AUDIT_TTL_DAYS = 7
+REAL_URL_RE = re.compile(r'github\.com/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)')
 
 _token = None
 
@@ -39,6 +45,78 @@ def placeholder_names():
             if 'search?q=' in (e.get('url') or ''):
                 names.add(e['name'])
     return sorted(names)
+
+
+def real_url_fulls():
+    """快照层真实 URL 条目的仓库全名（小写）——URL 存在性审计的对象池之一。"""
+    out = set()
+    for fp in sorted(glob.glob(str(ROOT / 'data' / 'snapshots' / '*.json'))):
+        try:
+            d = json.loads(Path(fp).read_text())
+        except json.JSONDecodeError:
+            continue
+        for e in d.get('catalog_entries') or []:
+            m = REAL_URL_RE.search(e.get('url') or '')
+            if m and 'search?q=' not in (e.get('url') or ''):
+                out.add(f"{m.group(1)}/{m.group(2)}".lower())
+    return out
+
+
+def check_existence(batch):
+    """GraphQL 直查仓库存在性；返回 {full_name_lower: bool}。失败批次返回空。"""
+    defs = ', '.join(f'$o{j}: String! $n{j}: String!' for j in range(len(batch)))
+    sel = ' '.join(f'r{j}: repository(owner: $o{j}, name: $n{j}) {{ id }}' for j in range(len(batch)))
+    q = f'query ({defs}) {{ {sel} }}'
+    vars = {}
+    for j, full in enumerate(batch):
+        o, n = full.split('/')
+        vars[f'o{j}'], vars[f'n{j}'] = o, n
+    for _ in range(3):
+        p = subprocess.run(['curl', '-s', '--max-time', '50',
+                            '-H', f'Authorization: Bearer {token()}',
+                            '-H', 'Content-Type: application/json',
+                            '-X', 'POST', 'https://api.github.com/graphql',
+                            '-d', json.dumps({'query': q, 'variables': vars})],
+                           capture_output=True, text=True)
+        try:
+            data = json.loads(p.stdout).get('data') or {}
+        except Exception:
+            data = {}
+        if len(data) >= len(batch) * 0.8:
+            return {full: data.get(f'r{j}') is not None for j, full in enumerate(batch)}
+        time.sleep(3)
+    return {}
+
+
+def audit_urls(locate_known):
+    """维护 data/url-audit.json：真实 URL 条目 ∪ 定位命中仓库，缺失或超 TTL 的重查存在性。"""
+    audit = {'checked_at': '', 'entries': {}}
+    if AUDIT.exists():
+        try:
+            audit = json.loads(AUDIT.read_text())
+        except json.JSONDecodeError:
+            pass
+    today = time.strftime('%Y-%m-%d')
+    cutoff = (datetime.date.today() - datetime.timedelta(days=AUDIT_TTL_DAYS)).isoformat()
+    universe = real_url_fulls() | {
+        (v.get('full_name') or '').lower() for v in locate_known.values()
+        if v.get('status') == 'found' and v.get('full_name')}
+    stale = sorted(u for u in universe
+                   if u and audit['entries'].get(u, {}).get('checked', '') < cutoff)
+    print(f'[audit] URL 存在性待查 {len(stale)} 个（缓存已有 {len(audit["entries"])}，TTL {AUDIT_TTL_DAYS} 天）')
+    for i in range(0, len(stale), BATCH):
+        res = check_existence(stale[i:i + BATCH])
+        for full, ok in res.items():
+            audit['entries'][full] = {'status': 'ok' if ok else 'gone', 'checked': today}
+        if res:
+            print(f'  {min(i + BATCH, len(stale))}/{len(stale)}', flush=True)
+        time.sleep(2)
+    audit['checked_at'] = today
+    AUDIT.parent.mkdir(parents=True, exist_ok=True)
+    AUDIT.write_text(json.dumps(audit, ensure_ascii=False, indent=0))
+    from collections import Counter
+    sc = Counter(v['status'] for v in audit['entries'].values())
+    print(f'[audit] 缓存合计 {len(audit["entries"])}：{dict(sc)}')
 
 
 def match(name, repos):
@@ -98,8 +176,6 @@ def main():
              if n not in known or known[n].get('status') == 'error'
              or (known[n].get('status') == 'found' and not isinstance(known[n].get('star'), int))]
     print(f'[resolve] 待复核/补星 {len(names)} 个（缓存已有 {len(known)}）')
-    if not names:
-        return
 
     failed = []
     for i in range(0, len(names), BATCH):
@@ -115,6 +191,8 @@ def main():
     cache['resolved_at'] = time.strftime('%Y-%m-%d')
     CACHE.parent.mkdir(parents=True, exist_ok=True)
     CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=0))
+
+    audit_urls(known)
     from collections import Counter
     sc = Counter(v['status'] for v in known.values())
     print(f'[resolve] 缓存合计 {len(known)}：{dict(sc)}（失败 {len(failed)} 可重跑）')

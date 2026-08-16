@@ -5,19 +5,19 @@
 
 ## 统一度量衡
 
-**判定维度**（运行级四档，仅已定位条目 1690 个进入统计；测试：dsh 容器 agent + Qwen3.6-35B · k8s 5 分片 · run_id 锚定轮次）：
+**判定维度**（运行级四档，仅已定位条目 1682 个进入统计；测试：dsh 容器 agent + Qwen3.6-35B · k8s 5 分片 · run_id 锚定轮次）：
 
-- `[可用]`（1041）/ `[不兼容]`（356）/ `[待定]`（141）/ `[未测]`（152）
+- `[可用]`（1036）/ `[不兼容]`（356）/ `[待定]`（138）/ `[未测]`（152）
 
 **定位维度**（与判定正交；监测类不显示对错判定，原始结果保留于快照层）：
 
-- `[空仓监测]`（59）— GitHub 复核无此仓库；待重现后恢复判定显示
+- `[空仓监测]`（67）— GitHub 复核无此仓库；待重现后恢复判定显示
 - `[歧义监测]`（102）— 同名多仓无法锁定本体；锁定前不展示
 - 定位复核累计修复 566 个占位 URL
 
 > 〔PR〕= 经已合并 PR 正式登记；收录 ≠ 兼容 ≠ 运行可用 ≠ 安全审计。
 
-## 汇总：1851 条（已定位 1690 · 监测/未定位 161）· PR 登记 22 个
+## 汇总：1851 条（已定位 1682 · 监测/未定位 169）· PR 登记 22 个
 
 ## 🎓 技能包（18）
 
@@ -313,7 +313,7 @@
 - `[未测]` [sidesight](https://github.com/ZhuXinAI/sidesight) ★1 — CLI-first vision sidecar for text-only coding agents
 - `[可用]` [dsh-plugin-ui-turnav](https://github.com/AuraxM/dsh-plugin-ui-turnav) ★0 — —
 - `[可用]` [dsh-auth](https://github.com/cestbon0309/dsh-auth) ★0 — A plugin that allows you to configure access password for dsh webui, and access
-- `[可用]` [dsh-mobile-ui](https://github.com/citrusli2026/dsh-mobile-ui) ★0 — Mobile UI overlay (bottom strip, session drawer) for the DeepSeek Harness web GU
+- `[空仓监测]` **dsh-mobile-ui** — GitHub 无此仓库，判定暂不展示
 - `[可用]` [dsh-system-control](https://github.com/FrankZhangIronly/dsh-system-control) ★0 — DSH web plugin: System menu (Restart / Shutdown) in the sidebar footer
 - `[可用]` [harcochen-dsh-plugin-guide](https://github.com/HarcoChen/dsh-plugin-guide) ★0 — —
 - `[空仓监测]` **hilbert-beinghappy-deepseek-tui** — GitHub 无此仓库，判定暂不展示
@@ -469,7 +469,7 @@
 - `[可用]` [dsh-opencode-go-quota](https://github.com/Easy19613/dsh-opencode-go-quota) ★2 — OpenCode Go (Zen Go) quota display plugin for the DeepSeek Harness web UI
 - `[可用]` [dsh-tiered-approval](https://github.com/Elaina-real/dsh-tiered-approval) ★2 — Tiered auto-review for DeepSeek Harness: static-rule safety net + LLM reviewer +
 - `[可用]` [dsh-model-provider-label](https://github.com/haiyoucuv/dsh-model-provider-label) ★2 — DeepSeek Harness plugin that disambiguates same-named models by showing their provider
-- `[可用]` [dsh-codex-agent-bridge](https://github.com/je00/dsh-codex-agent-bridge) ★2 — Use the Codex models included with your ChatGPT subscription directly in DeepSee
+- `[空仓监测]` **dsh-codex-agent-bridge** — GitHub 无此仓库，判定暂不展示
 - `[可用]` [kalynnka-vscode-deepseek-harness](https://github.com/kalynnka/vscode-deepseek-harness) ★2 — —
 - `[可用]` [ai-sdk-provider-dsh](https://github.com/krislavten/ai-sdk-provider-dsh) ★2 — AI SDK provider that drives a DeepSeek Harness (dsh) runtime as a LanguageModelV
 - `[可用]` [dsh-project-mcp-bridge](https://github.com/KYinCode/dsh-project-mcp-bridge) ★2 — Per-project MCP loading for DeepSeek Harness: drop a .dsh/mcp.json into a project and its sessions get the MCP
@@ -512,7 +512,7 @@
 - `[不兼容]` [dsh-cc-connect](https://github.com/whiteguo233/dsh-cc-connect) ★2 — 通过cc connect远程使用dsh
 - `[可用]` [dsh-trace](https://github.com/vibeinging/dsh-trace) ★2 — DeepSeek Harness telemetry backend that exports turns, model steps, and tool cal
 - `[不兼容]` [deepseek-harness-shell](https://github.com/1816586742-stack/deepseek-harness-shell) ★1 — Community desktop shell for DeepSeek Harness — Electron, cross-platform, tray, auto-update, Chinese locale.
-- `[可用]` [dsh-worktrees](https://github.com/Alexis-fish/dsh-worktrees) ★1 — Git worktree isolation for parallel DeepSeek Harness sessions
+- `[空仓监测]` **dsh-worktrees** — GitHub 无此仓库，判定暂不展示
 - `[可用]` [opencode-usage](https://github.com/AmaTsumeAkira/opencode-usage) ★1 — OpenCode Go 订阅额度徽章插件（dsh bundle） \| OpenCode Go quota badge plugin for dsh
 - `[可用]` [dsh-codex-oauth](https://github.com/Babulubobo/dsh-codex-oauth) ★1 — use your codex subscription in deepseek harness
 - `[可用]` [dsh-plugin-auto-review](https://github.com/bingps/dsh-plugin-auto-review) ★1 — —
@@ -553,7 +553,7 @@
 - `[可用]` [dsh-upstream-watch](https://github.com/t479842598/dsh-upstream-watch) ★1 — DSH plugin: watch GitHub upstream repos for new commits on default branch, live
 - `[待定]` [dsh-provider-billing](https://github.com/ZeroingIn/dsh-provider-billing) ★1 — DeepSeek Harness plugin: provider account balance inside each Models settings ro
 - `[不兼容]` [dsh-web-search-exa](https://github.com/TonyDua/dsh-web-search-exa) ★1 — Zero-config Exa web search provider for DeepSeek Harness (dsh): keyless anonymou
-- `[待定]` [dsh-projects](https://github.com/Alexis-fish/dsh-projects) ★0 — Codex-style projects for DeepSeek Harness
+- `[空仓监测]` **dsh-projects** — GitHub 无此仓库，判定暂不展示
 - `[可用]` [dsh-codetime](https://github.com/codetime-dev/dsh-codetime) ★0 — CodeTime for DeepSeek Harness
 - `[空仓监测]` **criscolthecoder-dsh-plugin-browser** — GitHub 无此仓库，判定暂不展示
 - `[不兼容]` [dsh-worktree](https://github.com/Eleven-is-cool/dsh-worktree) ★0 — Git worktree plugin for DeepSeek Harness web: browse/create worktrees from the w
@@ -806,7 +806,7 @@
 - `[可用]` [dsh-plugins-plan-usage](https://github.com/chendefine/dsh-plugins-plan-usage) ★0 — deepseek harness plugins plan-usage
 - `[空仓监测]` **culeot-dsh-memory** — GitHub 无此仓库，判定暂不展示
 - `[可用]` [dsh-pi-adapter](https://github.com/cyzlmh/dsh-pi-adapter) ★0 — Run pi coding-agent extensions (ExtensionAPI) inside DeepSeek Harness via a cord
-- `[待定]` [trae-dsh-plugin](https://github.com/DaoFaZiran2010/trae-dsh-plugin) ★0 — TRAE IDE插件，集成DeepSeek Harness Agent框架
+- `[空仓监测]` **trae-dsh-plugin** — GitHub 无此仓库，判定暂不展示
 - `[空仓监测]` **greatwhitesharklab-dsh-plugin-subagent-manage** — GitHub 无此仓库，判定暂不展示
 - `[空仓监测]` **haoyuan-sjtu-deepseek-harness-governed-memory** — GitHub 无此仓库，判定暂不展示
 - `[可用]` [dsh-plugin-skill-panel](https://github.com/jasper-zsh/dsh-plugin-skill-panel) ★0 — DeepSeek Harness（DSH）的只读技能清单插件，在 Web GUI 中展示全局技能和当前会话可见的技能，并从会话日志推导技能加载状态
@@ -847,7 +847,7 @@
 - `[歧义监测]` **session-teleport** — 同名多仓，判定暂不展示
 - `[歧义监测]` **dsh-deeplink** — 同名多仓，判定暂不展示
 - `[可用]` [dsh-plugin-eval](https://github.com/xiaoboren0-hub/dsh-plugin-eval) ★0 — dream-plugin bundle: plugin self-healing loop (seek/eval/pair/evolve)
-- `[可用]` [dsh-plugin-ptc-context](https://github.com/FanetheDivine/dsh-plugin-ptc-context) ★0 — DSH插件，增强PTC模式的上下文管理
+- `[空仓监测]` **dsh-plugin-ptc-context** — GitHub 无此仓库，判定暂不展示
 
 ## 📡 消息通讯（94）
 
@@ -1487,7 +1487,7 @@
 - `[可用]` [golitter-dsh-deepseek-billing](https://github.com/golitter/dsh-deepseek-billing) ★3 — —
 - `[可用]` [dsh-multi-tenant](https://github.com/GuoMonth/dsh-multi-tenant) ★3 — Multi-tenant SaaS extension for DeepSeek Harness (DSH): tenant identity, session isolation, authorization, ten
 - `[可用]` [dsh-sticky-disclosure](https://github.com/Han-1413141/dsh-sticky-disclosure) ★3 — DSH Web client plugin: collapse every expanded section (Think / tool cards) in the conversation in one click,
-- `[待定]` [dsh-report-html](https://github.com/hccccc01333/dsh-report-html) ★3 — Generate self-contained interactive HTML reports from Markdown, tables, charts, China province maps, flowchart
+- `[空仓监测]` **dsh-report-html** — GitHub 无此仓库，判定暂不展示
 - `[不兼容]` [hyls9527-dsh-plugins](https://github.com/hyls9527/dsh-plugins) ★3 — —
 - `[可用]` [dsh-tool-underseal](https://github.com/Hyperionjust/dsh-tool-underseal) ★3 — —
 - `[可用]` [dsh-plugin-finder](https://github.com/ihuajiu/dsh-plugin-finder) ★3 — Natural-language plugin search for DeepSeek Harness — ask what you need, get matching dsh.so plugins with inst
@@ -1582,7 +1582,7 @@
 - `[可用]` [linqunxun-dsh-plugins](https://github.com/linqunxun/dsh-plugins) ★2 — —
 - `[可用]` [loner1024-deepseek-harness-sdk-rs](https://github.com/Loner1024/deepseek-harness-sdk-rs) ★2 — —
 - `[可用]` [lsz-asd-dsh-chameleon](https://github.com/lsz-asd/dsh-chameleon) ★2 — —
-- `[可用]` [dsh-think-flow-flow](https://github.com/lynkas/dsh-think-flow-flow) ★2 — DeepSeek Harness client plugin: constant-rate typewriter reveal for assistant output and reasoning, with per-m
+- `[空仓监测]` **dsh-think-flow-flow** — GitHub 无此仓库，判定暂不展示
 - `[不兼容]` [mappedinfo-plaindeck](https://github.com/Mappedinfo/PlainDeck) ★2 — —
 - `[可用]` [dsh-xai](https://github.com/MirDie/dsh-xai) ★2 — xAI Grok SuperGrok / X Premium OAuth for DeepSeek Harness
 - `[可用]` [dsh-deepseek-vision-router](https://github.com/mochgolf/dsh-deepseek-vision-router) ★2 — Transparent image preprocessing route for DeepSeek Harness

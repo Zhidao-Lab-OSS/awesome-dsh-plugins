@@ -22,6 +22,7 @@ OUT = ROOT / 'PLUGINS-ALL.md'
 LOCATE_CACHE = ROOT / 'data' / 'locate-cache.json'
 DESC_CACHE = ROOT / 'data' / 'desc-cache.json'
 REPO_MAP = ROOT / 'data' / 'repo-map.json'
+URL_AUDIT = ROOT / 'data' / 'url-audit.json'
 
 REAL_URL_RE = re.compile(r'github\.com/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)')
 # 互斥判定（✅/❌ 矛盾才降待定；⚠️=测不出、⏳=未测属非结论性，不参与冲突）
@@ -155,6 +156,7 @@ def main():
     # 实时 star 映射（locate-cache 的 full_name → stargazerCount），对全部已定位条目生效
     live_star = {r['full_name'].lower(): r['star'] for r in locate.values()
                  if r.get('status') == 'found' and r.get('full_name') and isinstance(r.get('star'), int)}
+    url_audit = json.loads(URL_AUDIT.read_text()).get('entries', {}) if URL_AUDIT.exists() else {}
 
     n_fix = n_empty = n_amb = n_unresolved = n_star = 0
     for e in entries:
@@ -175,6 +177,12 @@ def main():
                 n_unresolved += 1
         else:
             e['locate'] = 'located'
+        # 消亡仓库降级（url-audit 判 gone：已删除/改名/转私有 → 空仓监测，不呈现链接）
+        m0 = REAL_URL_RE.search(e.get('url') or '')
+        if e['locate'] == 'located' and m0 \
+                and url_audit.get(f"{m0.group(1)}/{m0.group(2)}".lower(), {}).get('status') == 'gone':
+            e['locate'] = 'empty_watch'
+            n_empty += 1
         # 实时 star 覆盖（含真实 URL 条目与合并条目；快照层 star 陈旧或为 0）
         m = REAL_URL_RE.search(e.get('url') or '')
         if m:
