@@ -13,7 +13,7 @@
 **A daily-updated radar that auto-discovers and compatibility-tests every plugin for DeepSeek Harness.**
 Know which plugins work before you install them.
 
-[![confirmed](https://img.shields.io/badge/confirmed-2560-blue)](#star-top-20) [![scan](https://img.shields.io/badge/scan-every_6h-green)](#ecosystem-snapshot) [![tested](https://img.shields.io/badge/tested-1305-orange)](#how-we-assess-compatibility) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![confirmed](https://img.shields.io/badge/confirmed-1253-blue)](#star-top-20) [![scan](https://img.shields.io/badge/scan-every_6h-green)](#ecosystem-snapshot) [![tested](https://img.shields.io/badge/tested-1299-orange)](#how-we-assess-compatibility) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 [![runtime OK](https://img.shields.io/badge/runtime_OK-860-brightgreen)](#2-understand-status-unified-4-tier-scale) [![incompatible](https://img.shields.io/badge/incompatible-394-red)](#2-understand-status-unified-4-tier-scale) [![pending](https://img.shields.io/badge/pending-51-yellow)](#2-understand-status-unified-4-tier-scale) [![untested](https://img.shields.io/badge/untested-0-lightgrey)](#2-understand-status-unified-4-tier-scale)
 
@@ -28,22 +28,22 @@ Know which plugins work before you install them.
 <!-- AUTO:pipeline:START -->
 ```mermaid
 flowchart TB
-    subgraph Discovery["发现（每 6 小时 · probe 每 15 分钟 巡检触发）"]
-        A1["GitHub Search<br/>topic + keyword<br/>候选 2855 · 实时"]
-        A2["本地库补全 · 去重 repo id"]
-        A3["私有 org 仓排除<br/>35s 错峰 · 403 退避 · dshow 黑名单"]
+    subgraph Discovery[" Discovery (every 6h · probe every 15 min)"]
+        A1["GitHub Search<br/>topic ×2 + keyword ×3<br/>candidates 2826 · age 246m"]
+        A2["Local DB merge · dedupe by repo id"]
+        A3[" Private org repos excluded<br/>35s stagger · 403 backoff · dshow blocklist"]
     end
-    subgraph Validation["验证（driver 流式循环）"]
+    subgraph Validation[" Validation (driver 20s streaming loop)"]
         B1{"package.json<br/>name + main/exports/dsh?"}
     end
-    B1 -->|"插件 2560"| C1["k8s 运行级测试<br/>一插件一 pod · 并发 10<br/>dsh agent + Qwen（de-stream）"]
-    B1 -->|"非插件（累计删 1064）"| B3["即删省空间"]
-    C1 --> D1{"判定 · 总 1305"}
-    D1 -->|"860 可用 / 394 不兼容"| E1["聚合 + README 分类统计"]
-    D1 -->|"51 待定"| C1
-    E1 --> E2["cadence 交付<br/>已交付 1305 · 双仓 bot PR（幂等 supersede）"]
-    S["静态四维轨（每日 02:00）"] -.-> E1
-    M["radar-probe 每 15 分钟 自愈<br/>7 指标流 × 60s · 完成累计 1305"] -.-> A1
+    B1 -->|"plugins 1253"| C1["k8s runtime test<br/>1 pod per plugin · concurrency 10<br/>dsh agent + Qwen (de-stream)"]
+    B1 -->|"non-plugins (dropped 1064)"| B3[" dropped to save space"]
+    C1 --> D1{"verdict · total 1299"}
+    D1 -->|" 860 /  394"| E1["aggregate + README stats"]
+    D1 -->|" 45 env retries"| C1
+    E1 --> E2["cadence deliver<br/>delta this cycle —/100<br/>dual-repo bot PRs (idempotent)"]
+    S[" static 4D track (daily 02:00)"] -.-> E1
+    M[" radar-probe every 15 min self-heal<br/>7 metric streams × 60s · done 0"] -.-> A1
     M -.-> C1
 ```
 <!-- AUTO:pipeline:END -->
@@ -70,30 +70,30 @@ flowchart TB
 
 <!-- AUTO:featured:START -->
 
-> 按 GitHub star 数排序，每 20 分钟自动刷新。数据截至 2026-08-16 19:53（UTC+8）。
+> 按 GitHub star 数排序，每 20 分钟自动刷新。数据截至 2026-08-16 20:22（UTC+8）。
 
-| # | 插件 |  | 说明 |
+| # | 插件 | ⭐ | 说明 |
 |---|---|---|---|
-| 1 | [headroom](https://github.com/headroomlabs-ai/headroom) | 66493 | Compress tool outputs, logs, files, and RAG chunks befo… |
-| 2 | [dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui) | 3143 | Plugin and skin collection for DeepSeek Harness (DSH) W… |
-| 3 | [modlens](https://github.com/liustack/modlens) | 2191 | The first vision plugin for DeepSeek Harness, and the v… |
-| 4 | [DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) | 1483 | 开放的侧边栏底座，支持三方拓展注册新侧边栏页面。内置文件渲染编辑/终端/Git/子代理页面 |
-| 5 | [dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) | 1438 | DSH 官方公众号收录的 TUI 补位插件：Claude Code 风，鲸鱼顶栏/实时状态/流式思考/双击 E… |
+| 1 | [headroom](https://github.com/headroomlabs-ai/headroom) | 66495 | Compress tool outputs, logs, files, and RAG chunks befo… |
+| 2 | [dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui) | 3166 | Plugin and skin collection for DeepSeek Harness (DSH) W… |
+| 3 | [modlens](https://github.com/liustack/modlens) | 2208 | The first vision plugin for DeepSeek Harness, and the v… |
+| 4 | [DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) | 1495 | 开放的侧边栏底座，支持三方拓展注册新侧边栏页面。内置文件渲染编辑/终端/Git/子代理页面 |
+| 5 | [dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) | 1441 | DSH 官方公众号收录的 TUI 补位插件：Claude Code 风，鲸鱼顶栏/实时状态/流式思考/双击 E… |
 | 6 | [TokenTracker](https://github.com/xiufengsun/TokenTracker) | 1327 | Local-first AI token usage & cost tracker for 31 coding… |
 | 7 | [PicGo-Core](https://github.com/PicGo/PicGo-Core) | 974 | :zap:The ultimate image uploading engine. Both CLI & AP… |
 | 8 | [sandbase-harness](https://github.com/sandbaseai/sandbase-harness) | 598 | Open-source CMA-compatible agent runtime for any model,… |
-| 9 | [dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit) | 485 | 让纯文本模型更好地做视觉任务的DeepSeek Harness插件：带意图的图片问答、长截图 OCR、UI 还… |
+| 9 | [dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit) | 488 | 让纯文本模型更好地做视觉任务的DeepSeek Harness插件：带意图的图片问答、长截图 OCR、UI 还… |
 | 10 | [dsh-ads](https://github.com/Nagi-ovo/dsh-ads) | 445 | 把 DSH 变成 2005 年门户网站｜Parody ads, fake games, and popups … |
-| 11 | [dsh-agent-teams](https://github.com/NanmiCoder/dsh-agent-teams) | 385 | AgentTeams plugin for DeepSeek Harness |
+| 11 | [dsh-agent-teams](https://github.com/NanmiCoder/dsh-agent-teams) | 388 | AgentTeams plugin for DeepSeek Harness |
 | 12 | [Abu-Cowork](https://github.com/PM-Shawn/Abu-Cowork) | 329 | Open-source alternative to Claude Cowork — a local-firs… |
-| 13 | [dsh-vision-router](https://github.com/ysr666/dsh-vision-router) | 310 | Eyes for text-only DeepSeek Harness agents: built-in fr… |
-| 14 | [dsh-at-file](https://github.com/omdsh-dev/dsh-at-file) | 248 | Codex-style @file mentions for DeepSeek Harness: search… |
-| 15 | [Bigfish](https://github.com/turtle2209/Bigfish) | 229 | Bigfish —— DeepSeek Harness 的第三方桌面端，内置 Node 运行时，双击即用，附带… |
+| 13 | [dsh-vision-router](https://github.com/ysr666/dsh-vision-router) | 318 | Eyes for text-only DeepSeek Harness agents: built-in fr… |
+| 14 | [dsh-at-file](https://github.com/omdsh-dev/dsh-at-file) | 249 | Codex-style @file mentions for DeepSeek Harness: search… |
+| 15 | [Bigfish](https://github.com/turtle2209/Bigfish) | 230 | Bigfish —— DeepSeek Harness 的第三方桌面端，内置 Node 运行时，双击即用，附带… |
 | 16 | [oh-dsh](https://github.com/hust-open-atom-club/oh-dsh) | 210 | 一套 DSH runtime，Desktop、Web 与 TUI 三种开发体验。 |
 | 17 | [deepseek-harness-desktop-app](https://github.com/vibeinging/deepseek-harness-desktop-app) | 209 | DeepSeek Harness Desktop App: a local AI desktop worksp… |
-| 18 | [dsh-browser](https://github.com/Lum1104/dsh-browser) | 185 | dsh plugin: Chrome sidebar extension that lets DSH oper… |
+| 18 | [dsh-browser](https://github.com/Lum1104/dsh-browser) | 186 | dsh plugin: Chrome sidebar extension that lets DSH oper… |
 | 19 | [dsh-tianshu-tui](https://github.com/huiliyi37/dsh-tianshu-tui) | 184 | dsh-tianshu-tui — 是官方 Dsh web端的交互式终端极简风格 UI 插件。以自研ansi为… |
-| 20 | [whale-girl](https://github.com/vlln/whale-girl) | 183 | DSH Web GUI 桌面宠物插件（QQ 宠物形态）：右下角悬浮、可拖拽/投喂/玩耍的积累型伙伴。 |
+| 20 | [whale-girl](https://github.com/vlln/whale-girl) | 184 | DSH Web GUI 桌面宠物插件（QQ 宠物形态）：右下角悬浮、可拖拽/投喂/玩耍的积累型伙伴。 |
 
 <!-- AUTO:featured:END -->
 
@@ -103,19 +103,19 @@ flowchart TB
 
 Per-plugin details (verdict · location · stars) in **PLUGINS-ALL.md**.
 
-- ** 技能包**（18）— OK 13 · incompatible 3 · pending 2 · untested 0 · watching 0 — [details](PLUGINS-ALL.md#-技能包18)
-- ** 记忆增强**（19）— OK 10 · incompatible 7 · pending 2 · untested 0 · watching 0 — [details](PLUGINS-ALL.md#-记忆增强19)
-- ** 主题皮肤**（8）— OK 4 · incompatible 0 · pending 3 · untested 1 · watching 0 — [details](PLUGINS-ALL.md#-主题皮肤8)
-- ** 市场与管理**（40）— OK 28 · incompatible 8 · pending 1 · untested 2 · watching 1 — [details](PLUGINS-ALL.md#-市场与管理40)
-- ** Web UI 增强**（232）— OK 149 · incompatible 36 · pending 15 · untested 18 · watching 14 — [details](PLUGINS-ALL.md#-web-ui-增强232)
-- ** 编码开发**（252）— OK 133 · incompatible 38 · pending 24 · untested 28 · watching 29 — [details](PLUGINS-ALL.md#-编码开发252)
-- ** Agent 能力**（240）— OK 135 · incompatible 42 · pending 20 · untested 22 · watching 21 — [details](PLUGINS-ALL.md#-agent-能力240)
-- ** 消息通讯**（94）— OK 54 · incompatible 14 · pending 10 · untested 11 · watching 5 — [details](PLUGINS-ALL.md#-消息通讯94)
-- ** 文件数据**（76）— OK 40 · incompatible 17 · pending 8 · untested 6 · watching 5 — [details](PLUGINS-ALL.md#-文件数据76)
-- ** 娱乐生活**（47）— OK 30 · incompatible 5 · pending 5 · untested 3 · watching 4 — [details](PLUGINS-ALL.md#-娱乐生活47)
-- ** 基建部署**（201）— OK 102 · incompatible 60 · pending 14 · untested 10 · watching 15 — [details](PLUGINS-ALL.md#-基建部署201)
-- ** 学习研究**（19）— OK 8 · incompatible 4 · pending 1 · untested 4 · watching 2 — [details](PLUGINS-ALL.md#-学习研究19)
-- ** 其他**（605）— OK 330 · incompatible 122 · pending 33 · untested 47 · watching 73 — [details](PLUGINS-ALL.md#-其他605)
+- **🎓 技能包**（18）— OK 13 · incompatible 3 · pending 2 · untested 0 · watching 0 — [details](PLUGINS-ALL.md#-技能包18)
+- **🧠 记忆增强**（19）— OK 10 · incompatible 7 · pending 2 · untested 0 · watching 0 — [details](PLUGINS-ALL.md#-记忆增强19)
+- **🎨 主题皮肤**（8）— OK 4 · incompatible 0 · pending 3 · untested 1 · watching 0 — [details](PLUGINS-ALL.md#-主题皮肤8)
+- **🛒 市场与管理**（40）— OK 28 · incompatible 8 · pending 1 · untested 2 · watching 1 — [details](PLUGINS-ALL.md#-市场与管理40)
+- **🔌 Web UI 增强**（232）— OK 149 · incompatible 36 · pending 15 · untested 18 · watching 14 — [details](PLUGINS-ALL.md#-web-ui-增强232)
+- **💻 编码开发**（252）— OK 133 · incompatible 38 · pending 24 · untested 28 · watching 29 — [details](PLUGINS-ALL.md#-编码开发252)
+- **🤖 Agent 能力**（240）— OK 135 · incompatible 42 · pending 20 · untested 22 · watching 21 — [details](PLUGINS-ALL.md#-agent-能力240)
+- **📡 消息通讯**（94）— OK 54 · incompatible 14 · pending 10 · untested 11 · watching 5 — [details](PLUGINS-ALL.md#-消息通讯94)
+- **🗂 文件数据**（76）— OK 40 · incompatible 17 · pending 8 · untested 6 · watching 5 — [details](PLUGINS-ALL.md#-文件数据76)
+- **🎮 娱乐生活**（47）— OK 30 · incompatible 5 · pending 5 · untested 3 · watching 4 — [details](PLUGINS-ALL.md#-娱乐生活47)
+- **🛠 基建部署**（201）— OK 102 · incompatible 60 · pending 14 · untested 10 · watching 15 — [details](PLUGINS-ALL.md#-基建部署201)
+- **📚 学习研究**（19）— OK 8 · incompatible 4 · pending 1 · untested 4 · watching 2 — [details](PLUGINS-ALL.md#-学习研究19)
+- **❓ 其他**（605）— OK 330 · incompatible 122 · pending 33 · untested 47 · watching 73 — [details](PLUGINS-ALL.md#-其他605)
 
 <!-- AUTO:catalog:END -->
 
