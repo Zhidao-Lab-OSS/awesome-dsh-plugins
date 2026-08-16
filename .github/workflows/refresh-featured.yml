@@ -5,8 +5,6 @@ name: refresh-featured
 #   - workflow_dispatch 支持手动触发
 # 变化时提交并推送 origin；配置了 DSH_EXT_TOKEN secret 时同步推送 dsh-ext 镜像。
 on:
-  schedule:
-    - cron: "*/20 * * * *"
   workflow_dispatch: {}
 
 permissions:
