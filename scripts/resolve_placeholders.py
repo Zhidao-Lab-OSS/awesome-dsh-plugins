@@ -2,8 +2,10 @@
 """resolve-placeholders.py — 占位 URL 定位复核器。
 
 对快照 catalog_entries 中 search?q= 占位条目做 GitHub 反查（GraphQL 变量法，三级匹配），
-结果写入 data/locate-cache.json（增量合并，幂等）。手动或定期运行；gen-plugins-all.py 消费。
-依赖：gh 认证 token + curl。
+结果写入 data/locate-cache.json（增量合并，幂等）。命中仓库同时记录实时 star（stargazerCount），
+供 gen-plugins-all.py 渲染——快照层 star 为 0 的条目以此恢复真实值。
+已 found 但缺 star 的缓存条目会被重新反查补齐（刷新路径）。
+手动或定期运行；gen-plugins-all.py 消费。依赖：gh 认证 token + curl。
 """
 import glob
 import json
@@ -40,25 +42,26 @@ def placeholder_names():
 
 
 def match(name, repos):
+    """repos: [(nameWithOwner, stargazerCount)]；返回定位结果，found 附带实时 star。"""
     low = name.lower()
-    exact = [r for r in repos if r.split('/')[1].lower() == low]
+    exact = [r for r in repos if r[0].split('/')[1].lower() == low]
     if len(exact) == 1:
-        return {'status': 'found', 'full_name': exact[0]}
+        return {'status': 'found', 'full_name': exact[0][0], 'star': exact[0][1]}
     if len(exact) > 1:
-        return {'status': 'ambiguous', 'candidates': exact[:3]}
-    joined = [r for r in repos if r.lower().replace('/', '-') == low]
+        return {'status': 'ambiguous', 'candidates': [r[0] for r in exact[:3]]}
+    joined = [r for r in repos if r[0].lower().replace('/', '-') == low]
     if len(joined) == 1:
-        return {'status': 'found', 'full_name': joined[0]}
+        return {'status': 'found', 'full_name': joined[0][0], 'star': joined[0][1]}
     if len(joined) > 1:
-        return {'status': 'ambiguous', 'candidates': joined[:3]}
+        return {'status': 'ambiguous', 'candidates': [r[0] for r in joined[:3]]}
     if len(repos) == 1:
-        return {'status': 'found', 'full_name': repos[0], 'fuzzy': True}
-    return {'status': 'ambiguous', 'candidates': repos[:3]} if repos else {'status': 'not_found'}
+        return {'status': 'found', 'full_name': repos[0][0], 'star': repos[0][1], 'fuzzy': True}
+    return {'status': 'ambiguous', 'candidates': [r[0] for r in repos[:3]]} if repos else {'status': 'not_found'}
 
 
 def run_batch(batch, out):
     defs = ', '.join(f'$q{j}: String!' for j in range(len(batch)))
-    sel = ' '.join(f's{j}: search(query: $q{j}, type: REPOSITORY, first: 5) {{ nodes {{ ... on Repository {{ nameWithOwner }} }} }}'
+    sel = ' '.join(f's{j}: search(query: $q{j}, type: REPOSITORY, first: 5) {{ nodes {{ ... on Repository {{ nameWithOwner stargazerCount }} }} }}'
                    for j in range(len(batch)))
     q = f'query ({defs}) {{ {sel} }}'
     vars = {f'q{j}': f'"{n}" in:name' for j, n in enumerate(batch)}
@@ -76,7 +79,7 @@ def run_batch(batch, out):
         if len(data) >= len(batch) * 0.8:
             for j, n in enumerate(batch):
                 nodes = (data.get(f's{j}') or {}).get('nodes') or []
-                out[n] = match(n, [x['nameWithOwner'] for x in nodes])
+                out[n] = match(n, [(x['nameWithOwner'], x.get('stargazerCount') or 0) for x in nodes])
             return True
         time.sleep(3)
     return False
@@ -91,8 +94,10 @@ def main():
             pass
     known = cache['entries']
 
-    names = [n for n in placeholder_names() if n not in known or known[n].get('status') == 'error']
-    print(f'[resolve] 待复核 {len(names)} 个（缓存已有 {len(known)}）')
+    names = [n for n in placeholder_names()
+             if n not in known or known[n].get('status') == 'error'
+             or (known[n].get('status') == 'found' and not isinstance(known[n].get('star'), int))]
+    print(f'[resolve] 待复核/补星 {len(names)} 个（缓存已有 {len(known)}）')
     if not names:
         return
 
