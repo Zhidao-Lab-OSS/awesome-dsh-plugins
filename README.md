@@ -12,7 +12,7 @@
 
 安装前就知道哪个能用，不用自己踩坑。
 
-[![confirmed](https://img.shields.io/badge/confirmed-1253-blue)](#热门插件star-top-20) [![scan](https://img.shields.io/badge/scan-every_6h-green)](#当前生态快照) [![tested](https://img.shields.io/badge/tested-1393-orange)](#本仓库如何判定) [![dshfind](https://dshfind.com/api/badge/AdamPlatin123/awesome-dsh-plugins?lang=zh)](https://dshfind.com/zh/plugins/AdamPlatin123/awesome-dsh-plugins?ref=badge) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![confirmed](https://img.shields.io/badge/confirmed-159-blue)](#热门插件star-top-20) [![scan](https://img.shields.io/badge/scan-every_6h-green)](#当前生态快照) [![tested](https://img.shields.io/badge/tested-75-orange)](#本仓库如何判定) [![dshfind](https://dshfind.com/api/badge/AdamPlatin123/awesome-dsh-plugins?lang=zh)](https://dshfind.com/zh/plugins/AdamPlatin123/awesome-dsh-plugins?ref=badge) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 [![运行级可用](https://img.shields.io/badge/运行级可用-879-brightgreen)](#2-看懂状态统一四档口径) [![运行级不兼容](https://img.shields.io/badge/运行级不兼容-451-red)](#2-看懂状态统一四档口径) [![待定](https://img.shields.io/badge/待定-63-yellow)](#2-看懂状态统一四档口径) [![未测](https://img.shields.io/badge/·_未测-0-lightgrey)](#2-看懂状态统一四档口径)
 
@@ -43,7 +43,6 @@ flowchart TB
     D1 -->|" 879 /  451"| E1["聚合 + README 分类统计"]
     D1 -->|" 63 环境类重试"| C1
     E1 --> E2["cadence 交付<br/>本周期增量 —/100<br/>双仓 bot PR（幂等 supersede）"]
-    S[" 静态四维轨（每日 02:00）"] -.-> E1
     M[" radar-probe 每 15 分钟 自愈<br/>7 指标流 × 60s · 完成累计 0"] -.-> A1
     M -.-> C1
 ```
@@ -71,28 +70,28 @@ flowchart TB
 
 <!-- AUTO:featured:START -->
 
-> 按 GitHub star 数排序，每 20 分钟自动刷新。数据截至 2026-08-17 05:17（UTC+8）。
+> 按 GitHub star 数排序，每 20 分钟自动刷新。数据截至 2026-08-17 05:37（UTC+8）。
 
 | # | 插件 | ⭐ | 说明 |
 |---|---|---|---|
-| 1 | [headroom](https://github.com/headroomlabs-ai/headroom) | 66527 | Compress tool outputs, logs, files, and RAG chunks befo… |
-| 2 | [dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui) | 3406 | Plugin and skin collection for DeepSeek Harness (DSH) W… |
-| 3 | [modlens](https://github.com/liustack/modlens) | 2358 | The first vision plugin for DeepSeek Harness, and the v… |
+| 1 | [headroom](https://github.com/headroomlabs-ai/headroom) | 66526 | Compress tool outputs, logs, files, and RAG chunks befo… |
+| 2 | [dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui) | 3409 | Plugin and skin collection for DeepSeek Harness (DSH) W… |
+| 3 | [modlens](https://github.com/liustack/modlens) | 2359 | The first vision plugin for DeepSeek Harness, and the v… |
 | 4 | [DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) | 1623 | 开放的侧边栏底座，支持三方拓展注册新侧边栏页面。内置文件渲染编辑/终端/Git/子代理页面 |
 | 5 | [dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) | 1537 | DSH 官方公众号收录的 TUI 补位插件：Claude Code 风，鲸鱼顶栏/实时状态/流式思考/双击 E… |
 | 6 | [TokenTracker](https://github.com/xiufengsun/TokenTracker) | 1333 | Local-first AI token usage & cost tracker for 31 coding… |
 | 7 | [PicGo-Core](https://github.com/PicGo/PicGo-Core) | 975 | :zap:The ultimate image uploading engine. Both CLI & AP… |
-| 8 | [sandbase-harness](https://github.com/sandbaseai/sandbase-harness) | 600 | Open-source CMA-compatible agent runtime for any model,… |
+| 8 | [sandbase-harness](https://github.com/sandbaseai/sandbase-harness) | 601 | Open-source CMA-compatible agent runtime for any model,… |
 | 9 | [dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit) | 523 | 让纯文本模型更好地做视觉任务的DeepSeek Harness插件：带意图的图片问答、长截图 OCR、UI 还… |
-| 10 | [dsh-ads](https://github.com/Nagi-ovo/dsh-ads) | 456 | 把 DSH 变成 2005 年门户网站｜Parody ads, fake games, and popups … |
-| 11 | [dsh-vision-router](https://github.com/ysr666/dsh-vision-router) | 428 | Eyes for text-only DeepSeek Harness agents: built-in fr… |
-| 12 | [dsh-agent-teams](https://github.com/NanmiCoder/dsh-agent-teams) | 413 | AgentTeams plugin for DeepSeek Harness |
+| 10 | [dsh-ads](https://github.com/Nagi-ovo/dsh-ads) | 457 | 把 DSH 变成 2005 年门户网站｜Parody ads, fake games, and popups … |
+| 11 | [dsh-vision-router](https://github.com/ysr666/dsh-vision-router) | 429 | Eyes for text-only DeepSeek Harness agents: built-in fr… |
+| 12 | [dsh-agent-teams](https://github.com/NanmiCoder/dsh-agent-teams) | 414 | AgentTeams plugin for DeepSeek Harness |
 | 13 | [Abu-Cowork](https://github.com/PM-Shawn/Abu-Cowork) | 330 | Open-source alternative to Claude Cowork — a local-firs… |
 | 14 | [dsh-at-file](https://github.com/omdsh-dev/dsh-at-file) | 264 | Codex-style @file mentions for DeepSeek Harness: search… |
 | 15 | [Bigfish](https://github.com/turtle2209/Bigfish) | 237 | Bigfish —— DeepSeek Harness 的第三方桌面端，内置 Node 运行时，双击即用，附带… |
-| 16 | [oh-dsh](https://github.com/hust-open-atom-club/oh-dsh) | 216 | 一套 DSH runtime，Desktop、Web 与 TUI 三种开发体验。 |
+| 16 | [oh-dsh](https://github.com/hust-open-atom-club/oh-dsh) | 215 | 一套 DSH runtime，Desktop、Web 与 TUI 三种开发体验。 |
 | 17 | [deepseek-harness-desktop-app](https://github.com/vibeinging/deepseek-harness-desktop-app) | 214 | DeepSeek Harness Desktop App: a local AI desktop worksp… |
-| 18 | [dsh-browser](https://github.com/Lum1104/dsh-browser) | 199 | dsh plugin: Chrome sidebar extension that lets DSH oper… |
+| 18 | [dsh-browser](https://github.com/Lum1104/dsh-browser) | 200 | dsh plugin: Chrome sidebar extension that lets DSH oper… |
 | 19 | [whale-girl](https://github.com/vlln/whale-girl) | 194 | DSH Web GUI 桌面宠物插件（QQ 宠物形态）：右下角悬浮、可拖拽/投喂/玩耍的积累型伙伴。 |
 | 20 | [dsh-tianshu-tui](https://github.com/huiliyi37/dsh-tianshu-tui) | 192 | dsh-tianshu-tui — 是官方 Dsh web端的交互式终端极简风格 UI 插件。以自研ansi为… |
 
@@ -107,16 +106,16 @@ flowchart TB
 - **🎓 技能包**（18）— 可用 14 · 不兼容 3 · 待定 1 · 未测 0 · 监测 0 — [明细](PLUGINS-ALL.md#-技能包18)
 - **🧠 记忆增强**（20）— 可用 10 · 不兼容 7 · 待定 3 · 未测 0 · 监测 0 — [明细](PLUGINS-ALL.md#-记忆增强20)
 - **🎨 主题皮肤**（8）— 可用 4 · 不兼容 0 · 待定 3 · 未测 1 · 监测 0 — [明细](PLUGINS-ALL.md#-主题皮肤8)
-- **🛒 市场与管理**（41）— 可用 28 · 不兼容 9 · 待定 2 · 未测 1 · 监测 1 — [明细](PLUGINS-ALL.md#-市场与管理41)
+- **🛒 市场与管理**（41）— 可用 28 · 不兼容 8 · 待定 2 · 未测 1 · 监测 2 — [明细](PLUGINS-ALL.md#-市场与管理41)
 - **🔌 Web UI 增强**（231）— 可用 148 · 不兼容 37 · 待定 19 · 未测 13 · 监测 14 — [明细](PLUGINS-ALL.md#-web-ui-增强231)
 - **💻 编码开发**（253）— 可用 133 · 不兼容 39 · 待定 26 · 未测 26 · 监测 29 — [明细](PLUGINS-ALL.md#-编码开发253)
-- **🤖 Agent 能力**（242）— 可用 134 · 不兼容 44 · 待定 24 · 未测 19 · 监测 21 — [明细](PLUGINS-ALL.md#-agent-能力242)
+- **🤖 Agent 能力**（242）— 可用 134 · 不兼容 42 · 待定 22 · 未测 19 · 监测 25 — [明细](PLUGINS-ALL.md#-agent-能力242)
 - **📡 消息通讯**（93）— 可用 49 · 不兼容 17 · 待定 14 · 未测 8 · 监测 5 — [明细](PLUGINS-ALL.md#-消息通讯93)
-- **🗂 文件数据**（77）— 可用 39 · 不兼容 19 · 待定 10 · 未测 4 · 监测 5 — [明细](PLUGINS-ALL.md#-文件数据77)
-- **🎮 娱乐生活**（50）— 可用 31 · 不兼容 6 · 待定 6 · 未测 2 · 监测 5 — [明细](PLUGINS-ALL.md#-娱乐生活50)
-- **🛠 基建部署**（213）— 可用 103 · 不兼容 71 · 待定 17 · 未测 6 · 监测 16 — [明细](PLUGINS-ALL.md#-基建部署213)
+- **🗂 文件数据**（77）— 可用 39 · 不兼容 19 · 待定 8 · 未测 4 · 监测 7 — [明细](PLUGINS-ALL.md#-文件数据77)
+- **🎮 娱乐生活**（50）— 可用 31 · 不兼容 6 · 待定 5 · 未测 2 · 监测 6 — [明细](PLUGINS-ALL.md#-娱乐生活50)
+- **🛠 基建部署**（213）— 可用 101 · 不兼容 65 · 待定 15 · 未测 6 · 监测 26 — [明细](PLUGINS-ALL.md#-基建部署213)
 - **📚 学习研究**（18）— 可用 7 · 不兼容 5 · 待定 1 · 未测 3 · 监测 2 — [明细](PLUGINS-ALL.md#-学习研究18)
-- **❓ 其他**（625）— 可用 334 · 不兼容 131 · 待定 40 · 未测 45 · 监测 75 — [明细](PLUGINS-ALL.md#-其他625)
+- **❓ 其他**（625）— 可用 333 · 不兼容 123 · 待定 33 · 未测 45 · 监测 91 — [明细](PLUGINS-ALL.md#-其他625)
 
 <!-- AUTO:catalog:END -->
 
@@ -268,23 +267,9 @@ DSH 插件社区讨论群（微信群）：插件作者、维护者与使用者�
 | 证据层 | 当前结果 |
 |---|---:|
 | 自动收录 | 1253 个仓库 |
-| 静态综合判定 | 277 / 286 兼容，9 需适配（静态轨 2026-08-13 · 经快照入仓） |
-| 证据不足 | 94 待调研 |
-| 其他 | 0 占位 · 0 不适用 · 0 已删除 |
 | 运行级实测 | 879 可用 · 451 不兼容 · 63 待定（共 1393 个，k8s agent 口径）|
-| 正在跟踪的 PR | 2（快照 deliver 口径） |
 
 [完整索引](PLUGINS-ALL.md) · [运行实测](reports/2026-08-16/agent-test-v2.md)
-
-<details><summary>插件状态明细（按判定分群 · 与上方分类目录互补 · 默认折叠）</summary>
-
-**🐙 正在跟踪的 open PR**
-
-| 仓库 | PR | 标题 | 更新 |
-|---|---|---|---|
-| （暂无公开可访问的 open PR） | | | |
-
-</details>
 
 <!-- AUTO:ecosystem:END -->
 
