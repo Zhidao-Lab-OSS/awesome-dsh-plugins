@@ -13,15 +13,15 @@
 **A daily-updated radar that auto-discovers and compatibility-tests every plugin for DeepSeek Harness.**
 Know which plugins work before you install them.
 
-[![confirmed](https://img.shields.io/badge/confirmed-1253-blue)](#-star-top-20) [![scan](https://img.shields.io/badge/scan-every_6h-green)](#ecosystem-snapshot) [![tested](https://img.shields.io/badge/tested-1299-orange)](#how-we-assess-compatibility) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![confirmed](https://img.shields.io/badge/confirmed-138-blue)](#-star-top-20) [![scan](https://img.shields.io/badge/scan-every_6h-green)](#ecosystem-snapshot) [![tested](https://img.shields.io/badge/tested-72-orange)](#how-we-assess-compatibility) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-[![✅ runtime OK](https://img.shields.io/badge/✅_runtime_OK-860-brightgreen)](#2-understand-status-unified-4-tier-scale) [![❌ incompatible](https://img.shields.io/badge/❌_incompatible-394-red)](#2-understand-status-unified-4-tier-scale) [![⚠️ pending](https://img.shields.io/badge/⚠️_pending-45-yellow)](#2-understand-status-unified-4-tier-scale) [![untested](https://img.shields.io/badge/untested-0-lightgrey)](#2-understand-status-unified-4-tier-scale)
+[![✅ runtime OK](https://img.shields.io/badge/✅_runtime_OK-379-brightgreen)](#2-understand-status-unified-4-tier-scale) [![❌ incompatible](https://img.shields.io/badge/❌_incompatible-155-red)](#2-understand-status-unified-4-tier-scale) [![⚠️ pending](https://img.shields.io/badge/⚠️_pending-14-yellow)](#2-understand-status-unified-4-tier-scale) [![untested](https://img.shields.io/badge/untested-0-lightgrey)](#2-understand-status-unified-4-tier-scale)
 
 [English](README.en-US.md) | [简体中文](README.md)
 
 ---
 
-**What is this?** DeepSeek Harness (DSH) is an open-source coding agent where everything is a plugin. This repo is a **radar** that automatically tracks its plugin ecosystem — **1253 plugin repos indexed** (clone-verified package.json), **1299 runtime-tested on the k8s track**.
+**What is this?** DeepSeek Harness (DSH) is an open-source coding agent where everything is a plugin. This repo is a **radar** that automatically tracks its plugin ecosystem — **1253 plugin repos indexed** (clone-verified package.json), **548 runtime-tested on the k8s track**.
 
 ## How it works
 
@@ -29,7 +29,7 @@ Know which plugins work before you install them.
 ```mermaid
 flowchart TB
     subgraph Discovery["🔍 Discovery (every 6h · probe every 15 min)"]
-        A1["GitHub Search<br/>topic ×2 + keyword ×3<br/>candidates 2826 · age 246m"]
+        A1["GitHub Search<br/>topic ×2 + keyword ×3<br/>candidates 2823 · age 208m"]
         A2["Local DB merge · dedupe by repo id"]
         A3["🚫 Private org repos excluded<br/>35s stagger · 403 backoff · dshow blocklist"]
     end
@@ -38,9 +38,9 @@ flowchart TB
     end
     B1 -->|"plugins 1253"| C1["k8s runtime test<br/>1 pod per plugin · concurrency 10<br/>dsh agent + Qwen (de-stream)"]
     B1 -->|"non-plugins (dropped 1064)"| B3["❌ dropped to save space"]
-    C1 --> D1{"verdict · total 1299"}
-    D1 -->|"✅ 860 / ❌ 394"| E1["aggregate + README stats"]
-    D1 -->|"⚠️ 45 env retries"| C1
+    C1 --> D1{"verdict · total 548"}
+    D1 -->|"✅ 379 / ❌ 155"| E1["aggregate + README stats"]
+    D1 -->|"⚠️ 14 env retries"| C1
     E1 --> E2["cadence deliver<br/>delta this cycle —/100<br/>dual-repo bot PRs (idempotent)"]
     S["⚖️ static 4D track (daily 02:00)"] -.-> E1
     M["🛡 radar-probe every 15 min self-heal<br/>7 metric streams × 60s · done 0"] -.-> A1
@@ -70,30 +70,30 @@ flowchart TB
 
 <!-- AUTO:featured:START -->
 
-> 按 GitHub star 数排序，每 20 分钟自动刷新。数据截至 2026-08-16 19:13（UTC+8）。
+> 按 GitHub star 数排序，每 20 分钟自动刷新。数据截至 2026-08-16 19:36（UTC+8）。
 
 | # | 插件 | ⭐ | 说明 |
 |---|---|---|---|
 | 1 | [headroom](https://github.com/headroomlabs-ai/headroom) | 66491 | Compress tool outputs, logs, files, and RAG chunks befo… |
-| 2 | [dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui) | 3120 | Plugin and skin collection for DeepSeek Harness (DSH) W… |
-| 3 | [modlens](https://github.com/liustack/modlens) | 2180 | The first vision plugin for DeepSeek Harness, and the v… |
-| 4 | [DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) | 1471 | 开放的侧边栏底座，支持三方拓展注册新侧边栏页面。内置文件渲染编辑/终端/Git/子代理页面 |
-| 5 | [dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) | 1428 | DSH 官方公众号收录的 TUI 补位插件：Claude Code 风，鲸鱼顶栏/实时状态/流式思考/双击 E… |
+| 2 | [dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui) | 3135 | Plugin and skin collection for DeepSeek Harness (DSH) W… |
+| 3 | [modlens](https://github.com/liustack/modlens) | 2185 | The first vision plugin for DeepSeek Harness, and the v… |
+| 4 | [DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) | 1477 | 开放的侧边栏底座，支持三方拓展注册新侧边栏页面。内置文件渲染编辑/终端/Git/子代理页面 |
+| 5 | [dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) | 1435 | DSH 官方公众号收录的 TUI 补位插件：Claude Code 风，鲸鱼顶栏/实时状态/流式思考/双击 E… |
 | 6 | [TokenTracker](https://github.com/xiufengsun/TokenTracker) | 1327 | Local-first AI token usage & cost tracker for 31 coding… |
 | 7 | [PicGo-Core](https://github.com/PicGo/PicGo-Core) | 974 | :zap:The ultimate image uploading engine. Both CLI & AP… |
 | 8 | [sandbase-harness](https://github.com/sandbaseai/sandbase-harness) | 597 | Open-source CMA-compatible agent runtime for any model,… |
-| 9 | [dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit) | 483 | 让纯文本模型更好地做视觉任务的DeepSeek Harness插件：带意图的图片问答、长截图 OCR、UI 还… |
-| 10 | [dsh-ads](https://github.com/Nagi-ovo/dsh-ads) | 441 | 把 DSH 变成 2005 年门户网站｜Parody ads, fake games, and popups … |
-| 11 | [dsh-agent-teams](https://github.com/NanmiCoder/dsh-agent-teams) | 383 | AgentTeams plugin for DeepSeek Harness |
+| 9 | [dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit) | 485 | 让纯文本模型更好地做视觉任务的DeepSeek Harness插件：带意图的图片问答、长截图 OCR、UI 还… |
+| 10 | [dsh-ads](https://github.com/Nagi-ovo/dsh-ads) | 444 | 把 DSH 变成 2005 年门户网站｜Parody ads, fake games, and popups … |
+| 11 | [dsh-agent-teams](https://github.com/NanmiCoder/dsh-agent-teams) | 385 | AgentTeams plugin for DeepSeek Harness |
 | 12 | [Abu-Cowork](https://github.com/PM-Shawn/Abu-Cowork) | 329 | Open-source alternative to Claude Cowork — a local-firs… |
-| 13 | [dsh-vision-router](https://github.com/ysr666/dsh-vision-router) | 301 | Eyes for text-only DeepSeek Harness agents: built-in fr… |
-| 14 | [dsh-at-file](https://github.com/omdsh-dev/dsh-at-file) | 245 | Codex-style @file mentions for DeepSeek Harness: search… |
+| 13 | [dsh-vision-router](https://github.com/ysr666/dsh-vision-router) | 304 | Eyes for text-only DeepSeek Harness agents: built-in fr… |
+| 14 | [dsh-at-file](https://github.com/omdsh-dev/dsh-at-file) | 248 | Codex-style @file mentions for DeepSeek Harness: search… |
 | 15 | [Bigfish](https://github.com/turtle2209/Bigfish) | 229 | Bigfish —— DeepSeek Harness 的第三方桌面端，内置 Node 运行时，双击即用，附带… |
 | 16 | [oh-dsh](https://github.com/hust-open-atom-club/oh-dsh) | 210 | 一套 DSH runtime，Desktop、Web 与 TUI 三种开发体验。 |
-| 17 | [deepseek-harness-desktop-app](https://github.com/vibeinging/deepseek-harness-desktop-app) | 208 | DeepSeek Harness Desktop App: a local AI desktop worksp… |
+| 17 | [deepseek-harness-desktop-app](https://github.com/vibeinging/deepseek-harness-desktop-app) | 209 | DeepSeek Harness Desktop App: a local AI desktop worksp… |
 | 18 | [dsh-browser](https://github.com/Lum1104/dsh-browser) | 184 | dsh plugin: Chrome sidebar extension that lets DSH oper… |
-| 19 | [dsh-tianshu-tui](https://github.com/huiliyi37/dsh-tianshu-tui) | 182 | dsh-tianshu-tui — 是官方 Dsh web端的交互式终端极简风格 UI 插件。以自研ansi为… |
-| 20 | [whale-girl](https://github.com/vlln/whale-girl) | 182 | DSH Web GUI 桌面宠物插件（QQ 宠物形态）：右下角悬浮、可拖拽/投喂/玩耍的积累型伙伴。 |
+| 19 | [dsh-tianshu-tui](https://github.com/huiliyi37/dsh-tianshu-tui) | 184 | dsh-tianshu-tui — 是官方 Dsh web端的交互式终端极简风格 UI 插件。以自研ansi为… |
+| 20 | [whale-girl](https://github.com/vlln/whale-girl) | 183 | DSH Web GUI 桌面宠物插件（QQ 宠物形态）：右下角悬浮、可拖拽/投喂/玩耍的积累型伙伴。 |
 
 <!-- AUTO:featured:END -->
 
@@ -103,19 +103,19 @@ flowchart TB
 
 Per-plugin details (verdict · location · stars) in **PLUGINS-ALL.md**.
 
-- **🎓 技能包**（18）— OK 13 · incompatible 3 · pending 2 · untested 0 · watching 0 — [details](PLUGINS-ALL.md#-技能包18)
-- **🧠 记忆增强**（19）— OK 10 · incompatible 7 · pending 2 · untested 0 · watching 0 — [details](PLUGINS-ALL.md#-记忆增强19)
+- **🎓 技能包**（8）— OK 5 · incompatible 1 · pending 1 · untested 1 · watching 0 — [details](PLUGINS-ALL.md#-技能包8)
+- **🧠 记忆增强**（15）— OK 10 · incompatible 2 · pending 1 · untested 2 · watching 0 — [details](PLUGINS-ALL.md#-记忆增强15)
 - **🎨 主题皮肤**（8）— OK 4 · incompatible 0 · pending 3 · untested 1 · watching 0 — [details](PLUGINS-ALL.md#-主题皮肤8)
-- **🛒 市场与管理**（40）— OK 28 · incompatible 8 · pending 1 · untested 2 · watching 1 — [details](PLUGINS-ALL.md#-市场与管理40)
-- **🔌 Web UI 增强**（232）— OK 150 · incompatible 36 · pending 15 · untested 18 · watching 13 — [details](PLUGINS-ALL.md#-web-ui-增强232)
-- **💻 编码开发**（252）— OK 135 · incompatible 38 · pending 25 · untested 28 · watching 26 — [details](PLUGINS-ALL.md#-编码开发252)
-- **🤖 Agent 能力**（240）— OK 136 · incompatible 42 · pending 21 · untested 22 · watching 19 — [details](PLUGINS-ALL.md#-agent-能力240)
-- **📡 消息通讯**（94）— OK 54 · incompatible 14 · pending 10 · untested 11 · watching 5 — [details](PLUGINS-ALL.md#-消息通讯94)
-- **🗂 文件数据**（76）— OK 40 · incompatible 17 · pending 8 · untested 6 · watching 5 — [details](PLUGINS-ALL.md#-文件数据76)
-- **🎮 娱乐生活**（47）— OK 30 · incompatible 5 · pending 5 · untested 3 · watching 4 — [details](PLUGINS-ALL.md#-娱乐生活47)
-- **🛠 基建部署**（201）— OK 102 · incompatible 60 · pending 14 · untested 10 · watching 15 — [details](PLUGINS-ALL.md#-基建部署201)
-- **📚 学习研究**（19）— OK 8 · incompatible 4 · pending 1 · untested 4 · watching 2 — [details](PLUGINS-ALL.md#-学习研究19)
-- **❓ 其他**（605）— OK 331 · incompatible 122 · pending 34 · untested 47 · watching 71 — [details](PLUGINS-ALL.md#-其他605)
+- **🛒 市场与管理**（31）— OK 21 · incompatible 2 · pending 0 · untested 7 · watching 1 — [details](PLUGINS-ALL.md#-市场与管理31)
+- **🔌 Web UI 增强**（360）— OK 204 · incompatible 47 · pending 18 · untested 78 · watching 13 — [details](PLUGINS-ALL.md#-web-ui-增强360)
+- **💻 编码开发**（362）— OK 168 · incompatible 39 · pending 11 · untested 122 · watching 22 — [details](PLUGINS-ALL.md#-编码开发362)
+- **🤖 Agent 能力**（317）— OK 158 · incompatible 39 · pending 13 · untested 89 · watching 18 — [details](PLUGINS-ALL.md#-agent-能力317)
+- **📡 消息通讯**（131）— OK 71 · incompatible 16 · pending 3 · untested 36 · watching 5 — [details](PLUGINS-ALL.md#-消息通讯131)
+- **🗂 文件数据**（112）— OK 46 · incompatible 22 · pending 8 · untested 30 · watching 6 — [details](PLUGINS-ALL.md#-文件数据112)
+- **🎮 娱乐生活**（55）— OK 34 · incompatible 4 · pending 1 · untested 11 · watching 5 — [details](PLUGINS-ALL.md#-娱乐生活55)
+- **🛠 基建部署**（152）— OK 76 · incompatible 32 · pending 6 · untested 29 · watching 9 — [details](PLUGINS-ALL.md#-基建部署152)
+- **📚 学习研究**（26）— OK 11 · incompatible 6 · pending 0 · untested 7 · watching 2 — [details](PLUGINS-ALL.md#-学习研究26)
+- **❓ 其他**（571）— OK 268 · incompatible 73 · pending 13 · untested 148 · watching 69 — [details](PLUGINS-ALL.md#-其他571)
 
 <!-- AUTO:catalog:END -->
 
@@ -155,7 +155,7 @@ All entries use a **single runtime scale** (k8s container tests — see the test
 | · Untested | Never dispatched to a runtime test | Do not infer either compatibility or incompatibility |
 
 > [!NOTE]
-> **Test version**: dsh (in-container agent) driven by Qwen3.6-35B (via the de-stream proxy) · k8s, 5 shards · each run is anchored by the snapshot `run_id` (currently `20260816T104501Z`). The DSH npm version is not recorded per snapshot — cross-check via run_id and the `reports/agent-test/` dates.
+> **Test version**: dsh (in-container agent) driven by Qwen3.6-35B (via the de-stream proxy) · k8s, 5 shards · each run is anchored by the snapshot `run_id` (currently `20260815T151237Z`). The DSH npm version is not recorded per snapshot — cross-check via run_id and the `reports/agent-test/` dates.
 > **Scale note**: "tested N" in badges and stats is the single-run scale; the catalog and full listing use the cross-run cumulative scale — the numbers legitimately differ.
 
 Every conclusion carries four facts: **plugin commit, mainline commit, test date, test level**. If any one is missing, lower your trust in the result.
@@ -261,7 +261,7 @@ Small PRs that just fix a link, category, description, or status evidence are al
 ## Ecosystem Snapshot
 
 <!-- AUTO:ecosystem:START -->
-> 渲染于快照 20260816T104501Z（2026-08-16 18:45 UTC+8）· 数据源 data/snapshots/（渲染即对齐）
+> 渲染于快照 20260815T151237Z（2026-08-15 23:12 UTC+8）· 数据源 data/snapshots/（渲染即对齐）
 
 | 证据层 | 当前结果 |
 |---|---:|
@@ -269,10 +269,10 @@ Small PRs that just fix a link, category, description, or status evidence are al
 | 静态综合判定 | 277 / 286 兼容，9 需适配（静态轨 2026-08-13 · 经快照入仓） |
 | 证据不足 | 94 待调研 |
 | 其他 | 0 占位 · 0 不适用 · 0 已删除 |
-| 运行级实测 | ✅860 可用 · 394 不兼容 · 45 待定（共 1299 个，k8s agent 口径）|
+| 运行级实测 | ✅379 可用 · 155 不兼容 · 14 待定（共 548 个，k8s agent 口径）|
 | 正在跟踪的 PR | 2（快照 deliver 口径） |
 
-[完整索引](reports/2026-08-16/index.md) · [静态矩阵](reports/2026-08-16/mainline-compat.md) · [编译实验](reports/2026-08-16/compile-compat.md) · [运行实测](reports/2026-08-16/agent-test.md)
+[完整索引](reports/2026-08-15/index.md) · [静态矩阵](reports/2026-08-15/mainline-compat.md) · [编译实验](reports/2026-08-15/compile-compat.md) · [运行实测](reports/2026-08-15/agent-test.md)
 
 <details><summary>插件状态明细（按判定分群 · 与上方分类目录互补 · 默认折叠）</summary>
 
