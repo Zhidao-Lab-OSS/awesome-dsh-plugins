@@ -2,7 +2,8 @@
 """gen-plugins-all.py — 全量插件清单生成器（PLUGINS-ALL.md）。
 
 数据：data/snapshots/ 全部快照按 run_id 新→旧合并 ⊕ data/repo-map.json（v2 local_key → 真实仓库）
-⊕ data/locate-cache.json 定位复核（含实时 star）。
+⊕ data/locate-cache.json 定位复核（含实时 star）⊕ PLUGINS.md 登记表兜底（登记轨 ⊕ 快照轨并集：
+登记有而快照无的仓补 [未测] 行，API 判消亡的进空仓监测——#189）。
 合并主键以 GitHub 仓库全名（repo-map / 真实 URL / locate-cache 三源归一）为准，同一仓库的
 v1 键（纯仓库名）与 v2 键（owner-repo local_key）合并为单条：URL 取真实值、star 取最大/实时值、
 判定冲突（如 v1 vs v2）降级为 [待定] 并记录冲突详情；展示名优先纯仓库名。
@@ -194,6 +195,40 @@ def main():
             if ls is not None:
                 e['star'] = ls
                 n_star += 1
+
+    # 登记表兜底（#189）：PLUGINS.md 表行有、已定位集合没有的仓，按登记信息补行（判定 [未测]；
+    # url-audit 判 gone 的登记仓进空仓监测）。登记轨与快照轨在此并集，登记不再单向依赖测试覆盖。
+    n_floor = n_floor_gone = 0
+    reg_md = ROOT / 'PLUGINS.md'
+    if reg_md.is_file():
+        have = set()
+        for e in entries:
+            mh = REAL_URL_RE.search(e.get('url') or '')
+            if mh:
+                have.add(f"{mh.group(1)}/{mh.group(2)}".lower())
+            have.add(e['name'].lower().replace('/', '-'))
+        for line in reg_md.read_text().splitlines():
+            rm = re.match(r'^\|\s*([^|]+?)\s*\|\s*\[[^\]]*\]\('
+                          r'(https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+?)/?\)\s*\|\s*([^|]*)', line)
+            if not rm:
+                continue
+            name, url, desc = rm.group(1).strip(), rm.group(2), rm.group(3).strip()
+            full = url.split('github.com/')[1].strip('/').lower()
+            if full in have:
+                continue
+            dom, _hit = classify(name, desc)
+            fe = {'name': name or full.split('/')[1], 'url': f"https://github.com/{full}",
+                  'star': live_star.get(full, 0), 'verdict': '⏳ 未测',
+                  'domain': dom, 'desc': desc or '—', 'locate': 'located'}
+            if url_audit.get(full, {}).get('status') == 'gone':
+                fe['locate'] = 'empty_watch'
+                n_floor_gone += 1
+            else:
+                n_floor += 1
+            entries.append(fe)
+            have.add(full)
+        if n_floor or n_floor_gone:
+            print(f'[gen-plugins-all] 登记兜底：补 [未测] {n_floor} 行 · 空仓监测 {n_floor_gone} 行（PLUGINS.md ⊕ 快照并集）')
 
     # desc 回填（GitHub 描述缓存）+「其他」兜底重分类（taxonomy v2 规则，仅动其他类）
     n_desc = n_reclass = 0
