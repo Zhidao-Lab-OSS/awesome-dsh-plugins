@@ -7,22 +7,28 @@
 > 约定：插件名与 repo 名一致；scope 使用 `@dsh-external/*`（勿占用 `@deepseek-ai/*` 保留命名空间）；repo 打 `dsh-plugin` topic。
 
 ## 🔌 单插件
-| dsh-session-pin | [PerryLink/dsh-session-pin](https://github.com/PerryLink/dsh-session-pin) | 会话与工作区置顶（双面 host+client）：行级图钉与换色、会话头开关、已置顶面板、持久化 settings 命名空间；0.4.0 再加会话导航组织器——Pin 分组（boards）、标签与保存视图、会话健康摘要（只读脱敏）与 /goto 模糊跳转；全部浏览器本地零网络 | 待测 |
 
 | 插件 | 仓库 | 说明 | 运行级 |
 |---|---|---|---|
+| dsh-session-pin | [PerryLink/dsh-session-pin](https://github.com/PerryLink/dsh-session-pin) | 会话与工作区置顶（双面 host+client）：行级图钉与换色、会话头开关、已置顶面板、持久化 settings 命名空间；0.4.0 再加会话导航组织器——Pin 分组（boards）、标签与保存视图、会话健康摘要（只读脱敏）与 /goto 模糊跳转；全部浏览器本地零网络 | 待测 |
+| dsh-agentfuse-plugin | [MkaliezZ/dsh-agentfuse-plugin](https://github.com/MkaliezZ/dsh-agentfuse-plugin) | 确定性 fail-closed 工具调用授权门：allow/block/ask 策略门 + 审批链延后 + agentfuse-evidence-schema 证据；配 dsh-policy-test 闭环回归；已获本雷达运行级 [可用] 判定 | ✅ |
+| dsh-evidence-task-board | [MkaliezZ/dsh-evidence-task-board](https://github.com/MkaliezZ/dsh-evidence-task-board) | 持久化确定性任务状态原语（创建/状态/证据转移）；npm 包 @mkaliezz/dsh-task-board | 待测 |
+| dsh-test-normalizer | [MkaliezZ/dsh-test-normalizer](https://github.com/MkaliezZ/dsh-test-normalizer) | pytest / Vitest / Jest / Cargo 测试结果归一化为稳定结构；npm 包 @mkaliezz/dsh-test-runner | 待测 |
 | dsh-plugin-guard | [lxzy-7/dsh-plugin-guard](https://github.com/lxzy-7/dsh-plugin-guard) | 插件安装安全网：装/卸/开关插件前自动快照备份，启动健康检查失败自动回退最后良好快照并重试一次，设置>备份管理面板 + 双击一键回退脚本，事故报告自动触发 Agent 分析；零运行时依赖，引擎冒烟测试 + 三种安装布局实测通过 | ✅ |
-| dsh-office | [Fayelin12/dsh-office](https://github.com/Fayelin12/dsh-office) | 办公室工作区/会话仪表盘：悬浮 6 列精灵面板，可视化工作区、会话、token 用量与子代理（web bundle） | ✅ |
+| dsh-office | [Fayelin12/dsh-office](https://github.com/Fayelin12/dsh-office) | 办公室工作区/会话仪表盘：悬浮 6 列精灵面板，可视化工作区、会话、token 用量与子代理，内置 Agent 邮箱、飞书消息、会议日程、妙记逐字稿与办公室日志（web bundle，v0.3.0） | ✅ |
 | deepseek-heartflow | [yun520-1/deepseek-heartflow](https://github.com/yun520-1/deepseek-heartflow) | 心虫（AGI 第1层辨别门禁）：47 维纯规则文本判别 heartflow_check 工具 + tools/post-execute 自动输出监督（block 拦截 / rewrite 提醒），引擎缺失 fail-closed；dsh.bundle manifest 可安装 | ✅ |
+| dsh-session-tabs | [licat2023/dsh-session-tabs](https://github.com/licat2023/dsh-session-tabs) | 浏览器式会话标签页：顶部标签条从侧边栏右缘开始（不挤占侧边栏），点击切换/关闭/新建、中键关标签与侧边栏后台打开、鼠标侧键会话历史导航、运行状态点；纯客户端零网络零持久化 | 待测 |
 | dsh-repo-context | [qing3a/dsh-repo-context](https://github.com/qing3a/dsh-repo-context) | 把 git 状态与仓库规范动态注入 system prompt（section/context/variable，官方 system-prompt 缝隙插件）；dsh-plugin-verify 0.1.2 实测 7/7 waterfall + 工具真实执行（R3 isError:false） | ✅ |
 | dsh-event-auditor | [qing3a/dsh-event-auditor](https://github.com/qing3a/dsh-event-auditor) | Harness 事件流审计面板：观察事件类型/分发模式/计数/最近事件，settings 热改 + /audit 会话命令；已用 mock-llm 运行时验证（74 事件/12 waterfall） | ✅ |
 | dsh-spend | [nonewind/dsh-spend](https://github.com/nonewind/dsh-spend) | Token 用量统计与预计费用：右下角悬浮窗，按模型/按天/按会话多维聚合，内置供应商知识库自动识别计费计划（web bundle） | ✅ |
+| dsh-tokstat | [kongjianguan/dsh-tokstat](https://github.com/kongjianguan/dsh-tokstat) | DSH 使用量与性能统计：设置页「统计」面板（概览/模型/会话/请求，TTFT/TPS/Tokens/成本）+ Python TUI；Node half + client web bundle | ✅ |
 | dsh-tray | [qing3a/dsh-tray](https://github.com/qing3a/dsh-tray) | DeepSeek Harness Windows 系统托盘插件（trayicon exe 宿主，无 native 编译）；菜单/通知/headless 降级，双 profile 已验证 | ✅ |
 | dsh-lan-access | [Leon0555/dsh-lan-access](https://github.com/Leon0555/dsh-lan-access) | 局域网访问：Web GUI 绑定 0.0.0.0 + crypto.randomUUID polyfill（修复非安全上下文下 RPC 崩溃），npm 可装 | ✅ |
 | dsh-full-remote | [JUANWANG-BUAA/dsh-full-remote](https://github.com/JUANWANG-BUAA/dsh-full-remote) | 令牌反向代理：改写 Host/Origin，远程恢复 `settings.*`/`credentials.*`/`host.listDirectory`（通用隧道会 403）；一次性扫码邀请、按设备会话；npm `dsh-full-remote` | ✅ |
 | dsh-bash-terminal | [MAXeaglet/dsh-bash-terminal](https://github.com/MAXeaglet/dsh-bash-terminal) | Windows 三终端 shell 工具（PowerShell/Git Bash/WSL，默认终端由用户在设置中选择）+ 交互式 PTY 终端 + 官方沙箱对接；4 套件测试 + GitHub Actions CI 全绿 | ✅ |
 | dsh-win32 | [sjh9714/dsh-win32](https://github.com/sjh9714/dsh-win32) | 在 Windows 上把 DSH 用起来：一行装好极简模式的持久 shell（Git Bash/ConPTY，沙箱内可用），npm 可装 | ✅ |
 | dsh-artifact | [dsh-external/dsh-artifact](https://github.com/dsh-external/dsh-artifact) | 制品管理 | ✅ |
+| dsh-condense | [JxaMe/dsh-condense](https://github.com/JxaMe/dsh-condense) | token 优化插件：屏蔽低信号读取、压缩大输出、哈希去重、smart_read 骨架化（tree-sitter）、BM25 检索、真实用量统计+持久化；npm `@jxame/dsh-condense` | ✅ |
 | dsh-split-panes | [dsh-external/dsh-split-panes](https://github.com/dsh-external/dsh-split-panes) | 分屏面板 | ✅ |
 | dsh-sentinel | [fuhefei/dsh-sentinel](https://github.com/fuhefei/dsh-sentinel) | 事件驱动唤醒 agent loop（文件/命令/http/进程/webhook 传感器） | ✅ |
 | dsh-plugin-automations | [Sev7een/dsh-plugin-automations](https://github.com/Sev7een/dsh-plugin-automations) | Web 设置页定时任务：支持准点或 DeepSeek 谷时段执行、单次/每日重复，并持久化任务状态 | 待测 |
@@ -30,6 +36,7 @@
 | dsh-genui | [omdsh-dev/dsh-genui](https://github.com/omdsh-dev/dsh-genui) | GenUI 内联交互组件：dsh-ui fence 渲染图表/表单/测验/3D 场景，带 action 事件环 | ✅ |
 | dsh-annotation | [omdsh-dev/dsh-annotation](https://github.com/omdsh-dev/dsh-annotation) | DSH Web 选中批注插件：选文字→批注→回车随消息发送，回复按 Annotation N 逐条对照（可悬浮芯片） | ✅ |
 | dsh-ui-quote-selection | [nekogpt/dsh-ui-quote-selection](https://github.com/nekogpt/dsh-ui-quote-selection) | 在 DSH Web 中选中文字，一键引用到输入框；发送问题时自动附上完整原文 | ✅ |
+| CiteCiter | [kirkchinese/CiteCiter](https://github.com/kirkchinese/CiteCiter) | 在 DSH Web 中选中已完成的助手回复，右键 `Citer!` 后从真实会话边界创建只读子会话，并在 details 侧栏流式解释；不写入父会话日志，支持 Markdown、代码、KaTeX、安全 SVG 与无网络 HTML 预览；npm `@kirkchinese/dsh-citeciter` 0.1.1，17 项测试及真实 registry 安装、浏览器 smoke 均通过 | 待测 |
 | dsh-security-scan | [ben7am1n/dsh-security-scan](https://github.com/ben7am1n/dsh-security-scan) | Secret & dangerous-pattern scanner — API keys/tokens/private keys redacted; ignore lists; zero deps | ✅ |
 | dsh-email | [STARDUSTLC666/dsh-email](https://github.com/STARDUSTLC666/dsh-email) | 邮件工具插件：IMAP/SMTP 收/发/搜/列文件夹/附件下载（email_list/read/search/send/folders/attachment），内置 QQ/163/126/新浪/阿里/Gmail/Outlook/iCloud 预设，支持多账号与连接复用，发信默认走审批门；纯 Node 全平台 | 待测 |
 | dsh-calendar | [STARDUSTLC666/dsh-calendar](https://github.com/STARDUSTLC666/dsh-calendar) | CalDAV 日历插件：查/建/改/删/搜日程（calendar_list/create/update/delete/search），Google/iCloud/Nextcloud/自定义端点，应用专用密码 | 待测 |
@@ -101,13 +108,47 @@
 | dsh-approval-gate | [moon09300731/dsh-approval-gate](https://github.com/moon09300731/dsh-approval-gate) | 自动审批门控：Flash 预判写入/命令是否不可回补，安全操作自动批准、危险操作转人工（fail-safe） | 待测 |
 | dsh-routing-suite | [yjh051108/dsh-routing-suite](https://github.com/yjh051108/dsh-routing-suite) | 注入器 × 思维模式路由套装（3300+★ 正主仓，勿与同名仿品混）：免重启运行时注入器 + 任务感知推理模式路由预设（P1-P23 实测）；injector 子目录 `dsh plugin add` 安装 | 待测（registry 插队实测） |
 | Bigfish | [turtle2209/Bigfish](https://github.com/turtle2209/Bigfish) | DeepSeek Harness 第三方桌面端：内置 Node 运行时双击即用（Top50 精选成员，registry 插队实测） | 待测（registry 插队实测） |
+| dsh-open-file | [Hyp6666/dsh-open-file](https://github.com/Hyp6666/dsh-open-file) | DSH Web 工作区文件附件插件：多文件选择与全页拖放，读取文本、PDF、DOCX、PPTX、XLSX、ZIP 和图片，提供英中 OCR、页面渲染及 `file_inspect` / `file_read` / `file_ocr` / `file_render` 四个可追溯工具；npm `dsh-open-file` 0.1.1 | 待测 |
+| dsh-agent-team-gui | [toolclub/dsh-agent-team-gui](https://github.com/toolclub/dsh-agent-team-gui) | 持久化多模型 Agent 小队：主 Agent 按成员特性动态编排有界 DAG，成员独立配置模型与工具策略；在 Settings/Composer 管理和选择小队，Run Center 支持追踪、重试与取消，并提供逐 Agent Token 成本洞察；v0.5.0 通过 117 Host + 62 Client 测试及 DSH rc.6 全新 Web profile 安装/浏览器冒烟 | 待测 |
+| dsh-ssh | [dmz2922990/dsh-ssh](https://github.com/dmz2922990/dsh-ssh) | SSH 主机管理 + 远程执行：ssh_host_list/add/update/remove/ssh_bash 五工具，主机台账持久化到 ~/.dsh/ssh-hosts.json，支持 agent/key/password 三种认证（password 走 SSH_ASKPASS，沙箱可用）；提供 Agent 预设与 Cordis 插件两种形态 | 待测 |
+| dsh-mcp-list | [dmz2922990/dsh-mcp-list](https://github.com/dmz2922990/dsh-mcp-list) | 设置面板新增 MCP 页：按服务器分组列出全部已挂载 MCP 服务器与工具，扫描最近会话统计各工具调用次数，一键在系统编辑器打开 cordis.patch.yml 的 MCP 配置 | 待测 |
+| dsh-thinkmeter | [dmz2922990/dsh-thinkmeter](https://github.com/dmz2922990/dsh-thinkmeter) | Think 思考行 Token 计量表：把聊天视图流式 Think 预览替换为实时 token 数显示（Thinking ≈ N tokens），落定时精确取 usage.reasoningTokens、缺失时启发式估算，点击可展开/收起完整思考文本（web client 插件，dsh.bundle 一键安装） | 待测 |
+| dsh-mmx-bridge | [welsione/dsh-mmx-bridge](https://github.com/welsione/dsh-mmx-bridge) | MiniMax 多模态桥接插件：一个 mmx_bridge 工具覆盖图像理解（VLM）/文生图/文图生视频/语音合成/音乐生成/音频翻唱/联网搜索/用量查询，生成产物经 /mmx-files/ 同源内嵌图片预览与音视频播放器，附 Web 设置页管理卡片；零 npm 运行时依赖 | 待测 |
+| dsh-trading-toolkit | [kentleenot/dsh-trading-toolkit](https://github.com/kentleenot/dsh-trading-toolkit) | A股+美股行情工具箱：实时行情/OHLCV K线/ADX 三状态信号/回测预览，东方财富免 Key 直连，只读永不下单 | ? |
+| dsh-univer-office | [dream-num/dsh-univer-office](https://github.com/dream-num/dsh-univer-office) | Univer 办公插件：在 DSH 中创建/编辑/检查/交付表格、文档、演示文稿、多维表格和画布，支持 xlsx/docx/pptx 导入导出、实时预览与 worktree 审阅；npm `dsh-univer-office` 0.2.5 | 待测 |
+| dsh-prompt-optimizer | [Y1X1n/dsh-prompt-optimizer](https://github.com/Y1X1n/dsh-prompt-optimizer) | 发送栏「优化」按钮一键分析并改写提示词草稿，SSE 流式逐段上屏；上下文感知双策略（无上下文按结构模板改写，有上下文先提炼目的再润色，已否决方向不重提），轻量记忆链延续多轮修改、发送即归零；斜杠命令前缀保留；dock 面板可替换/撤回/复制/重试，发送后自动关闭，实时显示阶段与用时；模型跟随会话（可固定 + 回退路由 failover），设置折叠卡含快速模式、推理钳档、Token 上限自适应、携带上下文等开关；55 例自动化测试 + GitHub Actions CI，rc.7 真实 profile 端到端实测 | 待测 |
+| dsh-experts | [fuchao2pku/dsh-experts](https://github.com/fuchao2pku/dsh-experts) | DSH 设置页内置「专家市场」：浏览/搜索社区专家与专家团、查看详情并复制到输入框；默认消费 awesome-dsh-experts 目录（7 个种子专家/团），rc.6 web profile 实测 0 加载错误、27 测试全绿 | ✅ |
+| dsh-desk-pet | [anneheartrecord/dsh-desk-pet](https://github.com/anneheartrecord/dsh-desk-pet) | macOS 桌宠：真的 AppKit 置顶窗口而不是页面里的挂件，全屏 Space 也盖得住；六种状态跟着本地 DSH 走（空闲／干活／等你确认／报错／刚跑完／打盹），原生右键菜单含免打扰与会话清单；自带的 skill 用你自己的画图工具和额度把一张照片扩成整套十八个姿势的皮肤，装在包外，升级不会删。跑系统自带的 Python 与 ctypes，零运行时依赖，不用 Electron。**仅 macOS** | 待测 |
+| dsh-research-report | [PerryLink/dsh-research-report](https://github.com/PerryLink/dsh-research-report) | 证据账本与可验证报告引擎：内容寻址的声明-快照绑定与逐字节核查，产出带逐条判定与 SHA-256 清单封存的版本化报告；npm 0.1.0 已发布 | 待测 |
+| dsh-socrates | [Cruciforms/dsh-socrates](https://github.com/Cruciforms/dsh-socrates) | 苏格拉底式澄清优先的深度研究插件：自适应多轮研究、交叉验证（声明级三分裁决+单跳回补）、程序化引用审计、学术三源（arXiv/PubMed/S2）、模型分层降本（Pro/Flash） | 待测 |
+| dsh-plugin-hub | [Noob-stupid/dsh-plugin-hub](https://github.com/Noob-stupid/dsh-plugin-hub) | DSH 插件管理面板：一键启停 + 多源市场（GitHub/Gitee/自定义）+ 静态索引市场（500+ 插件/300 技能）+ 技能安装/停用 + 套装一键装配 + 框架升级适配 | 待测 |
+| dsh-simple-wiki-memory | [rainow/dsh-simple-wiki-memory](https://github.com/rainow/dsh-simple-wiki-memory) | 简易 Wiki 持久记忆（DSWM）：一个索引文档自动注入 + 每主题一个 md 文件按需读取，省 token 轻量无压力；pending 准入→确认晋升→archive 归档三区 + memory-log 审计 + git 自动备份；纯 Markdown 所见即所得，跨 harness 共享 | 待测 |
+| open-design | [nexu-io/open-design](https://github.com/nexu-io/open-design) | DSH 设计插件：开源 Claude Design 替代（Top50 精选成员，registry 插队实测） | 待测（registry 插队实测） |
+| ouroboros | [Q00/ouroboros](https://github.com/Q00/ouroboros) | Agent OS：agent 自我变强、人只守底线（Top50 Booster 成员，registry 插队实测） | 待测（registry 插队实测） |
+| dsh-anchored-standard | [xiaobright/dsh-anchored-standard](https://github.com/xiaobright/dsh-anchored-standard) | 两阶段 DSH 预设：极简模式对齐启动 → 全量装载（Top50 Booster 成员，registry 插队实测） | 待测（registry 插队实测） |
+| EverOS | [EverMind-AI/EverOS](https://github.com/EverMind-AI/EverOS) | 全 agent 便携记忆层：本地优先 Markdown-native（Top50 成员，registry 插队实测） | 待测（registry 插队实测） |
+| openpencil | [ZSeven-W/openpencil](https://github.com/ZSeven-W/openpencil) | OpenPencil 设计工具本体（DSH 适配器 dsh-openpencil 已另有条目；本体插队实测） | 待测（registry 插队实测） |
+| EchoBird | [edison7009/EchoBird](https://github.com/edison7009/EchoBird) | 多引擎一键安装与模型切换（Top50 成员，registry 插队实测） | 待测（registry 插队实测） |
+| Aegis | [GanyuanRan/Aegis](https://github.com/GanyuanRan/Aegis) | 软件工程方法论技能包：baseline-first 规划、系统性重构等技能（对方清单 1089★，rc.8 实测 ✅） | ✅ |
+| api-relay-audit | [toby-bridges/api-relay-audit](https://github.com/toby-bridges/api-relay-audit) | 从 DSH 发起 AI API 中继/LLM 代理的本地安全审计，产出 Markdown 报告（797★，rc.8 实测 ✅） | ✅ |
+| treg | [superdesigndev/treg](https://github.com/superdesigndev/treg) | 工具目录：可检索约 2600 个外部端点（SEO/SERP/外链/社媒/人脉挖掘，536★，rc.8 实测 ✅） | ✅ |
+| superdesign-skill | [superdesigndev/superdesign-skill](https://github.com/superdesigndev/superdesign-skill) | UI 与营销图形设计技能（Superdesign 画布，读仓取上下文，436★，rc.8 实测 ✅） | ✅ |
+| better-deepseek | [EdgeTypE/better-deepseek](https://github.com/EdgeTypE/better-deepseek) | Better DeepSeek Chrome 扩展桥接插件（398★，rc.8 实测 ✅） | ✅ |
+| dsh-plugin-subscriptions | [V1ki/dsh-plugin-subscriptions](https://github.com/V1ki/dsh-plugin-subscriptions) | 把 ChatGPT(Codex)/Claude/Grok 订阅作为 DSH 的 LLM 供应商，含设置页管理（216★，rc.8 实测 ✅） | ✅ |
+| modsearch | [liustack/modsearch](https://github.com/liustack/modsearch) | 纯文本 agent 的网页搜索桥：问 web 或 X，返回结构化 JSON 证据（modlens 同作者，205★，rc.8 实测 ✅） | ✅ |
+| dsh-cost-meter | [Han-1413141/dsh-cost-meter](https://github.com/Han-1413141/dsh-cost-meter) | 按会话/按日 API 成本、预算与用量百分比、官方余额、历史看板（138★，rc.8 实测 ✅） | ✅ |
+| TokenLedger | [zh667/TokenLedger](https://github.com/zh667/TokenLedger) | 侧栏用量面板：把 token 归因到实际服务请求的中继站（121★，rc.8 实测 ✅） | ✅ |
+| dsh-easyrewrite | [Renzic-Stone/DSH-EasyRewrite](https://github.com/Renzic-Stone/DSH-EasyRewrite) | DSH Web 用户消息气泡内联编辑与撤回插件：惰性提交、无痕替换、版本翻页器、草稿自动备份、三语 i18n（中/英/日）；npm `dsh-easyrewrite`（dsh.bundle.patch → cordis.patch.yml，`dsh plugin add` 一键安装） | 待测 |
+| tabbit-browser | [Tabbit-Browser/dsh-plugin](https://github.com/Tabbit-Browser/dsh-plugin) | 让 DSH Agent 通过 Tabbit 浏览器自带的 `tabbit-cli`（任务隔离的 Playwright CLI）控制真实网页、复用真实登录态，完成网页自动化、信息提取、QA 与基准测试；bundle 随安装自动注册 `tabbit-browser` skill（持久化任务空间、locator 与等待、截图、回执与恢复）+ `tabbit_browser_install` 环境预检工具（要求正式版 ≥ 1.9.0，缺失或过低时按系统地区后台下载国内 `tabbit.com` / 国际 `tabbit.ai` 对应安装包到 Downloads 并通知绝对路径）；MIT，npm `tabbit-browser` | 待测 |
 ## 🧰 插件集
 
 | 插件 | 仓库 | 说明 | 运行级 |
 |---|---|---|---|
+| dsh-plugins | [MkaliezZ/dsh-plugins](https://github.com/MkaliezZ/dsh-plugins) | DSH 插件家族索引：16 个插件（fail-closed 授权安全线 / 策略测试与诊断 / 工作区生产力 / 运行时基础设施），统一 dsh-plugin topic | 待测 |
 | dsh-subagent-tools | [lynx-gt/dsh-subagent-tools](https://github.com/lynx-gt/dsh-subagent-tools) | 子代理委派按次覆盖 model/provider/persona/toolFilter、@preset: 引用、provider/model 复合 id（bundle，不改官方文件）；rc.6 headless+web 实测通过 | ✅ |
 | dsh-subagent-cwd | [lynx-gt/dsh-subagent-cwd](https://github.com/lynx-gt/dsh-subagent-cwd) | dsh-subagent-tools 加按次 cwd（子代理工作目录），附两处进程内 provider 补丁；rc.6 前台/后台 cwd 实测通过 | ✅ |
 | dsh-update-notifier | [arvin-yd/dsh-update-notifier](https://github.com/arvin-yd/dsh-update-notifier) | DSH 本体版本徽标：常驻侧边栏 Settings 行右侧，三色状态点（红=有更新/绿=最新/黄=检查中或失败），点开五态弹窗（复制更新命令/忽略/稍后/立即检查），启动 10s 首查+6h 复查；零构建、29 单测、mock-llm headless L4 实测（mainline 47f9438，证据见 [VERIFICATION.md](https://github.com/arvin-yd/dsh-update-notifier/blob/main/VERIFICATION.md)） | ✅ |
+| dsh-daily-kit | [zhouwei713/dsh-daily-kit](https://github.com/zhouwei713/dsh-daily-kit) | 日常插件集合 monorepo：16 个插件（审批门/桌面与Webhook通知/成本计量/会话导出/Ollama 本地模型/上下文水位/办公文档解析/本地文件夹索引/cron 全局调度/RSS与网页内容监控/日历/Gmail/待办/天气地点/票据识别/音视频转录）+ 4 个一键 bundle（dev-buddy/evidence-wall/inbox-zero/daily-briefing）；权限透明、读取优先、零 native 依赖，596 单测，dsh rc.6/rc.7 真实加载与 npm 安装实测通过 | ✅ |
 
 ## 🎓 技能
 
@@ -125,7 +166,7 @@
 |---|---|---|---|
 | dsh-telegram | [ben7am1n/dsh-telegram](https://github.com/ben7am1n/dsh-telegram) | Telegram runtime adapter — chat with dsh agents from Telegram; per-chat sessions, followup bridging, committed-text streaming, allowlist auth, zero runtime deps | 待测 |
 | dsh-webhook-bridge | [ben7am1n/dsh-webhook-bridge](https://github.com/ben7am1n/dsh-webhook-bridge) | ✅ | ✅ |
-| dsh-lark-bot | [PlutoKeating/dsh-lark-bot](https://github.com/PlutoKeating/dsh-lark-bot) | dsh-lark-bot：把 DeepSeek Harness (dsh) 桥接进飞书/Lark 的 bot — 标准 dsh profile bundle（`dsh plugin add` 一行安装），桥接引擎在 dsh 进程内运行；流式卡片、git worktree 项目隔离、scope 并行任务、多角色 Agent、会话归档、lark_notify 跨会话通知、安全网守护（dsh 下线后经飞书 /safemode 仅核心自愈）（0.8.0） | ✅ |
+| dsh-lark-bot | [PlutoKeating/dsh-lark-bot](https://github.com/PlutoKeating/dsh-lark-bot) | dsh-lark-bot：把 DeepSeek Harness (dsh) 桥接进飞书/Lark 的 bot — 标准 dsh profile bundle（`npx dsh-lark-bot@latest setup` 一行安装），扫码即用：流式卡片、git worktree 项目工作区、scope 并行任务、多角色 Agent、会话归档、lark_notify 跨会话通知、对话内模型/密钥管理、安全网守护（dsh 崩溃后飞书仍可自救，/safemode 仅核心自愈）（0.15.1） | ✅ |
 | dsh-lark-link | [amlyczz/dsh-lark-link](https://github.com/amlyczz/dsh-lark-link) | High-reliability Feishu/Lark bridge — QR one-click auth, CardKit streaming, zero-loss persistent outbox (at-least-once), per-conversation DSH sessions, self-healing connection, media in/out, reusable DSH Web GUI | ✅ |
 | dsh-feishu-bridge | [wz-heng/dsh-feishu-bridge](https://github.com/wz-heng/dsh-feishu-bridge) | 安全边界优先的飞书/Lark channel 桥：fail-closed 白名单（空名单拒绝所有人）、webhook 签名/时间戳/重放三重校验、一次性身份绑定卡片 nonce、远程 bash 工具审批闸门（超时即拒）；ws/webhook 双 transport，`dsh plugin add` 薄壳或独立进程两种装法；已向上游 lark-channel-sdk 负责任披露验签缺陷（issues #11/#12） | 待测 |
 | dsh-wechat-bridge | [gtaifu/dsh-wechat-bridge](https://github.com/gtaifu/dsh-wechat-bridge) | WeChat bridge via official Tencent iLink bot API — QR-code login, one friend = one persistent agent session, zero runtime deps, no OpenClaw | ❌ |
@@ -141,14 +182,21 @@
 | dsh-remote-sandbox | [weijiafu14/dsh-remote-sandbox](https://github.com/weijiafu14/dsh-remote-sandbox) | 生产级远程执行世界：E2B 沙箱内纯 JS sidecar，fs/subprocess 单次往返、进程输出有界、心跳保活、崩溃透明恢复（resume/recreate）、tar 工作区同步；修复官方 e2b POC 两处 host 假设。43 项测试（含 6 项真机 E2E）全绿 | 已测 |
 | dsh-session-cleaner-cli | [ChenChen913/dsh-session-cleaner-cli](https://github.com/ChenChen913/dsh-session-cleaner-cli) | DSH 会话数据离线清理 CLI：按工作区交互/命令删除会话（回收站+恢复+自动备份）、同步工作区账目与投影缓存、修剪幽灵条目；零依赖 Node≥18，8 项端到端测试全绿 + CI | 待测 |
 | dsh-suite | [whyihaveyou/dsh-suite](https://github.com/whyihaveyou/dsh-suite) | DSH 插件活目录 + 脚手架 + 内置插件商店：785+ 插件每小时刷新、每日兼容 CI 实测、中英双语可搜索目录站；含 create-dsh-plugin 脚手架与 plugin-manager / plugin-notify / plugin-session-export / plugin-team-board 五个 npm 包 | 已测 |
+| dsh-change-budget | [Raphaelutumn/dsh-change-budget](https://github.com/Raphaelutumn/dsh-change-budget) | 为每个 DSH Agent 回合设置文件数、修改调用数与 UTF-8 载荷额度；在受支持的文件修改工具执行前阻止超额修改，并对并行调用同步预留额度 | 待测 |
 
-## ❓ 未分类
+## 📚 学习研究
 
 | 插件 | 仓库 | 说明 | 运行级 |
 |---|---|---|---|
+| dsh-fund-research | [PerryLink/dsh-fund-research](https://github.com/PerryLink/dsh-fund-research) | 中国公募基金确定性研究：天天基金/东方财富公开数据采集（pingzhongdata JS 块、F10 持仓与经理页、个股估值 + push2delay 兜底主机），业绩拆解/持仓穿透/风格归因/经理画像纯函数计算，版本化 Markdown 报告附每个关键数字可回溯到 sha256 源快照的附录；npm dsh-fund-research 已发布；仅供研究，不构成投资建议 | 待测 |
+## ❓ 未分类
+
 <!-- 新增条目示例（复制下面一行修改后插入对应分类表格末尾）：
 | my-plugin | [你的账号/my-plugin](https://github.com/你的账号/my-plugin) | 一句话功能描述 | 待测 |
 -->
+
+| 插件 | 仓库 | 说明 | 运行级 |
+|---|---|---|---|
 | dsh-plugin-workshop | [yyyyukari/dsh-plugin-workshop](https://github.com/yyyyukari/dsh-plugin-workshop) | 创意工坊式插件浏览器：侧栏常驻入口，搜索/最热/最新/近 7-90 天飙升榜、中文关键词映射、描述与 README 机翻、插件特征验证过滤、一键安装/更新/卸载，内置已安装插件管理（零服务器，GitHub 直连） | ✅ |
 | dsh-file-review | [left0ver/dsh-file-review](https://github.com/left0ver/dsh-file-review) | 文件审查插件：diff 的形式查看文件的修改内容，方便对 agent 的修改进行审查 | ✅ |
 | dsh-file-claim | [Nwflower/dsh-file-claim](https://github.com/Nwflower/dsh-file-claim) | 同一工作区并行多会话的文件认领与写入保护（claim/release、心跳 stale 接管、pending 三路合并） | ✅ |
@@ -186,8 +234,10 @@
 | dsh-agfs | [openAGFS/dsh-agfs](https://github.com/openAGFS/dsh-agfs) | 文件浏览器 Web 插件（npm `@open-agfs/dsh-agfs`，`dsh plugin add` 一行安装）：宿主 webserver 同进程托管 React 前端 + REST API + `/dsh-agfs` 命令 + `browse_files`/`read_file` 模型工具；一键AI分析（右键建工作区并唤醒新会话，与手动创建一致的 agent preset 工具集）、本地打开（系统文件管理器）、三种显示尺寸、Win10 文件管理器主题（Segoe MDL2 Assets 官方图标）；109 单测 + 真实 Loader/HTTP 组合测试全绿，rc.6 web profile 实测通过（一键分析真实运行 55 次工具调用 0 错误） | ✅ |
 | dsh-open-eyes | [Hyp6666/dsh-open-eyes](https://github.com/Hyp6666/dsh-open-eyes) | 让用户选择的多模态模型成为 DeepSeek 的眼睛：显式纯文本路由下桥接 WebUI 粘贴/拖入图片，并提供 vision_analyze；原生支持 OpenAI Responses、Chat Completions 与 Anthropic Messages，Credential Reference + workspace 边界；125 单测、Node 22/24 CI 与真实 tarball 临时 profile 安装/卸载通过 | 待测 |
 | dsh-plugin | [plur-ai/dsh-plugin](https://github.com/plur-ai/dsh-plugin) | PLUR 持久记忆：engram 在每次 assembly 渲染进 system prompt（section 的 text 为函数），而非藏在工具调用后——记忆块被替换而非追加，上下文长度不随会话增长（实测 60 轮恒定）；全本地 BM25 + BGE 混合检索（RRF 融合，零 API 调用）、可编辑的纯 YAML 存储、按工作区划分 scope、/plur 与 /plur-memory 命令 | ✅ |
+| dsh-industry-research | [PerryLink/dsh-industry-research](https://github.com/PerryLink/dsh-industry-research) | 行业与公司研究领域包：产业链结构模型（industry_map）、公开来源政策/新闻追踪（industry_track）、公司扫描卡片（company_scan）与可审计研究报告（industry_report，可选 ctx.researchReport 密封桥 + 内置 Markdown 兜底）；全部检索走官方 ctx.web，指标带来源引用，仅供研究不构成投资建议 | ✅ |
 | cc-dsh-notifier | [baobaolaodie/cc-dsh-notifier](https://github.com/baobaolaodie/cc-dsh-notifier) | Windows 桌面通知:Claude Code hooks 与 dsh web/tui 双 surface 事件(权限请求/提问/工具报错/等待输入)→ 原生 Toast + 点击跳转;聚焦感知静默、多会话、tarball 零手工安装;Windows 10/11 专用 | 待测 |
 | dsh-openviking | [Rxiain/dsh-openviking](https://github.com/Rxiain/dsh-openviking) | OpenViking 检索、资源管理、自动召回与会话记忆：memsearch/memfind 等 10 个工具、已索引仓库上下文注入、自动召回注入、会话同步+自动提交 | ✅ |
+| dsh-capcheck | [heming-gmh/dsh-capcheck](https://github.com/heming-gmh/dsh-capcheck) | 装插件之前先看看它实际能碰到什么：静态分析 inject 声明、ctx 成员访问和依赖声明，对照能力分级表出报告，扫过的插件里 dsh-ssh 的远程命令执行绕过了官方审批沙箱、dshmarket 拿到了能启停其它插件的 Loader 控制权；优先扫真实发布的 npm tarball，因为很多插件的构建产物没提交到 GitHub 仓库 | ✅ |
 | dsh-session-hotkeys | [YEYEYEYESHIFU/dsh-session-hotkeys](https://github.com/YEYEYEYESHIFU/dsh-session-hotkeys) | Web UI 会话快捷键：Alt+1-9 顺序切换、固定槽位三态、Alt+↑↓ 循环切换、高亮导航模式、归档/重命名/新建会话、可改键面板（键盘导航 + 内置诊断），Windows/macOS 双预设无冲突，npm 已发布 | 待测 |
 | dsh-result-only-view | [YEYEYEYESHIFU/dsh-result-only-view](https://github.com/YEYEYEYESHIFU/dsh-result-only-view) | Web 对话「只看结果」开关：隐藏思考与工具调用过程，运行中仅保留一条实时状态行，回合结束显示「已处理 N 步」痕迹行可点击展开回看；中英双语，常规设置可配置痕迹行与 reduced-motion 光影策略；npm 已发布 | 待测 |
 | dsh-quant-data-mcp | [helibeiqi/dsh-quant-data-mcp](https://github.com/helibeiqi/dsh-quant-data-mcp) | 零依赖 MCP stdio server 模板 + 开箱即用 A 股数据工具：无需 API Key、纯 NDJSON 协议、路径全走环境变量、可 `dsh plugin add` 一键挂载的 dsh bundle | 待测 |
@@ -205,3 +255,5 @@
 | dsh-library | [PerryLink/dsh-library](https://github.com/PerryLink/dsh-library) | 本地优先文档知识库：library_add/remove/list、语义+关键词混合 library_search（多样性重排、相关性过滤、避免 lost-in-the-middle）、引用感知注入与 library_cite_check/diagnose，SQLite 索引 + 本地嵌入，零模型下载 | 待测 |
 | dsh-budget | [PerryLink/dsh-budget](https://github.com/PerryLink/dsh-budget) | 成本治理：按模型/会话/天聚合 token 与费用计量，会话/日/月预算上限 + 阈值告警（桌面通知 + webhook）与超限 alert/block/degrade 策略，碳足迹估算、分模型延迟基准、Settings 预算页与 /budget 命令 | 待测 |
 | dsh-defend | [PerryLink/dsh-defend](https://github.com/PerryLink/dsh-defend) | 注入/越狱/密钥泄露检测 + 危险删除门禁：Aho-Corasick 引擎在用户消息、工具参数、工具结果三处按 allow/ask/block 拦截（脱敏 defend/detection 审计事件、defend_report 工具、/defend 命令），并拒绝工作区外的递归删除命令 | 待测 |
+| dsh-sessions-manager | [TOBYCAI/dsh-sessions-manager](https://github.com/TOBYCAI/dsh-sessions-manager) | 统一「会话管理」面板：归档/恢复/彻底删除/跨工作区移动/批量多选/工作区标签 + 每条会话详情（磁盘占用、轮次/步骤/消息、工具使用、write/edit 文件、血统）；卡片操作收敛为 ⋯ 菜单 | 待测 |
+
