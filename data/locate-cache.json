@@ -1,5 +1,5 @@
 {
-"resolved_at": "2026-08-19",
+"resolved_at": "2026-08-26",
 "entries": {
 "01virex-dsh-status-rotator": {
 "status": "found",
@@ -11392,6 +11392,690 @@
 "status": "found",
 "full_name": "ZTKyo/deepseek-harness-desktop",
 "star": 0
+},
+"23swccp-dsh-undo-plugin": {
+"status": "not_found"
+},
+"adydc-99-dsh-wallpaper": {
+"status": "found",
+"full_name": "adydc-99/dsh-wallpaper-ui",
+"star": 1,
+"fuzzy": true
+},
+"aihesa-ui-conversation-indexed": {
+"status": "found",
+"full_name": "AiHeSa/ui-conversation-indexed",
+"star": 1
+},
+"alexyin-tongji-dsh-ui-enhancer": {
+"status": "found",
+"full_name": "AlexYin-Tongji/dsh-ui-enhancer",
+"star": 1
+},
+"arcticus17-dsh-toolkit": {
+"status": "found",
+"full_name": "Arcticus17/dsh-toolkit",
+"star": 0
+},
+"awesome-ai-pedia-dsh-plugin-desktop": {
+"status": "found",
+"full_name": "Awesome-AI-Pedia/dsh-plugin-desktop",
+"star": 1
+},
+"benhuhuan-dhs-tuicode": {
+"status": "found",
+"full_name": "BenHuHuan/dhs-tuicode",
+"star": 3
+},
+"billychen123-qdd": {
+"status": "found",
+"full_name": "BillyChen123/qdd",
+"star": 6
+},
+"clarklevis1995-dsh-plugin-mobile-gateway": {
+"status": "found",
+"full_name": "Clarklevis1995/dsh-plugin-mobile-gateway",
+"star": 3
+},
+"coco-king-dsh-monitor": {
+"status": "found",
+"full_name": "Coco-king/dsh-monitor",
+"star": 0
+},
+"cuteg41cute-dsh-api": {
+"status": "found",
+"full_name": "cuteG41cute/dsh-api",
+"star": 1
+},
+"cuteg41cute-dsh-desktop": {
+"status": "found",
+"full_name": "cuteG41cute/dsh-desktop",
+"star": 1
+},
+"daseanle-dsh-mcp-orchestrator": {
+"status": "not_found"
+},
+"daseanle-dsh-obsidian-bridge": {
+"status": "not_found"
+},
+"daseanle-dsh-teacher-preset": {
+"status": "not_found"
+},
+"debug-lzy-restart-service-button": {
+"status": "found",
+"full_name": "DeBug-lzy/Restart-service-button",
+"star": 1
+},
+"dingminhua-dsh-subagent-default-model": {
+"status": "found",
+"full_name": "dingminhua/dsh-subagent-default-model",
+"star": 2
+},
+"dm-odyssey-dsh-session-manager": {
+"status": "found",
+"full_name": "DM-Odyssey/dsh-session-manager",
+"star": 0
+},
+"dongdong1997-dsh-mcskin": {
+"status": "found",
+"full_name": "DongDong1997/dsh-mcskin",
+"star": 1
+},
+"easytz-dsh-tui": {
+"status": "found",
+"full_name": "EasyTZ/dsh-tui",
+"star": 2
+},
+"gutianshuo-powershell-fix": {
+"status": "found",
+"full_name": "GuTianshuo/powershell-fix",
+"star": 1
+},
+"haodongzhang022-hue-openliulan": {
+"status": "found",
+"full_name": "haodongzhang022-hue/OpenLiulan",
+"star": 1
+},
+"hgxy2004-dsh-desktop": {
+"status": "found",
+"full_name": "HGXY2004/dsh-desktop",
+"star": 0
+},
+"horusjiang-dsh-map-tools": {
+"status": "found",
+"full_name": "HorusJiang/dsh-map-tools",
+"star": 1
+},
+"hudson-junior-wang-dsh-search-switcher": {
+"status": "found",
+"full_name": "Hudson-Junior-Wang/dsh-search-switcher",
+"star": 1
+},
+"icebear662-dsh-vision-edge-doubao": {
+"status": "found",
+"full_name": "iceBear662/dsh-vision-edge-doubao",
+"star": 2
+},
+"jackcontrols-dsh-telegram-control": {
+"status": "found",
+"full_name": "jackControls/dsh-telegram-control",
+"star": 1
+},
+"jasperguwp-dsh-plugin-schemes": {
+"status": "found",
+"full_name": "JasperGuWP/dsh-plugin-schemes",
+"star": 2
+},
+"jasperguwp-dsh-project-memory": {
+"status": "found",
+"full_name": "JasperGuWP/dsh-project-memory",
+"star": 3
+},
+"jiaoxicai2013-deepseek-harness-desktop-electr": {
+"status": "not_found"
+},
+"lessxi-paper-workbench": {
+"status": "found",
+"full_name": "LessXi/paper-workbench",
+"star": 0
+},
+"leyan0365-dsh-retro-mac": {
+"status": "found",
+"full_name": "Leyan0365/dsh-retro-mac",
+"star": 1
+},
+"likenttt-garmin-connect-plugin-for-dsh": {
+"status": "found",
+"full_name": "Likenttt/garmin-connect-plugin-for-dsh",
+"star": 10
+},
+"lin-a1-dsh-hub": {
+"status": "found",
+"full_name": "Lin-A1/dsh-hub",
+"star": 1
+},
+"littledogwang-dsh-agora": {
+"status": "not_found"
+},
+"lm20230311-awesome-dsh-plugin-cn": {
+"status": "not_found"
+},
+"lm20230311-dsh-billing-cn": {
+"status": "not_found"
+},
+"lzh3070-dsh-file-review-tab": {
+"status": "found",
+"full_name": "Lzh3070/dsh-file-review-tab",
+"star": 11
+},
+"makoveli89-dsh-swarm": {
+"status": "found",
+"full_name": "Makoveli89/dsh-swarm",
+"star": 0
+},
+"max-null-dsh-node-appearance": {
+"status": "found",
+"full_name": "Max-Null/dsh-node-appearance",
+"star": 2
+},
+"mcxcc303-dsh-dslow": {
+"status": "found",
+"full_name": "MCXCC303/dsh-dslow",
+"star": 0
+},
+"mdr-ex1000-dsh-rw": {
+"status": "found",
+"full_name": "MDR-EX1000/dsh-rw",
+"star": 0
+},
+"neomei-dsh-roundtable": {
+"status": "found",
+"full_name": "NeoMei/dsh-roundtable",
+"star": 1
+},
+"nexusclawhq-nexusclaw-agent-governance": {
+"status": "found",
+"full_name": "NexusClawHQ/nexusclaw-agent-governance",
+"star": 1
+},
+"nokorinnishikino-kidai-plugin-market-hub": {
+"status": "found",
+"full_name": "NokorinNishikino/kidai-plugin-market-hub",
+"star": 1
+},
+"onlyqzq-riskproof": {
+"status": "not_found"
+},
+"palaiologos1453-dsh-worktree-studio": {
+"status": "found",
+"full_name": "Palaiologos1453/dsh-worktree-studio",
+"star": 1
+},
+"perederey-dsh-mobile-ui": {
+"status": "found",
+"full_name": "Perederey/dsh-mobile-ui",
+"star": 0
+},
+"ratevoid-dsh-aseprite": {
+"status": "found",
+"full_name": "Ratevoid/dsh-aseprite",
+"star": 3
+},
+"ricketts-guo-dsh-off-peak-message": {
+"status": "found",
+"full_name": "Ricketts-Guo/dsh-off-peak-message",
+"star": 2
+},
+"roooooyczx-dsh-peakseek": {
+"status": "found",
+"full_name": "ROOOOOYczx/DSH-peakseek",
+"star": 1
+},
+"scottliu2512-dsh-desktop": {
+"status": "found",
+"full_name": "ScottLiu2512/dsh-desktop",
+"star": 1
+},
+"sensenmeng-dsh-plugin-8r": {
+"status": "found",
+"full_name": "SensenMeng/dsh-plugin-8r",
+"star": 3
+},
+"shenpingdd-wooden-fish-dsh": {
+"status": "found",
+"full_name": "ShenpingDD/wooden-fish-dsh",
+"star": 0
+},
+"shilunka-deepseek-harness-desktop": {
+"status": "found",
+"full_name": "SHILUNKA/deepseek-harness-desktop",
+"star": 0
+},
+"sivan757-dsh-agent-plugin-market": {
+"status": "not_found"
+},
+"sjkhx-yukinodigital": {
+"status": "found",
+"full_name": "Sjkhx/yukinoDigital",
+"star": 3
+},
+"snow-the-dsh-ark-plan": {
+"status": "found",
+"full_name": "snow-The/dsh-ark-plan",
+"star": 1
+},
+"snow-the-dsh-session-handoff": {
+"status": "found",
+"full_name": "snow-The/dsh-session-handoff",
+"star": 1
+},
+"sparkelf-dsh-plugins-plus": {
+"status": "found",
+"full_name": "SparkElf/dsh-plugins-plus",
+"star": 2
+},
+"star-dreamy-deepseek-harness-desktop": {
+"status": "found",
+"full_name": "Star-Dreamy/deepseek-harness-desktop",
+"star": 0
+},
+"starryhui-dsh-custom-background": {
+"status": "found",
+"full_name": "StarryHui/dsh-custom-background",
+"star": 8
+},
+"sunqingyuan0-kabutack": {
+"status": "found",
+"full_name": "SunQingyuan0/Kabutack",
+"star": 4
+},
+"swordywq-deepseek-harness-desktop": {
+"status": "found",
+"full_name": "swordYWQ/deepseek-harness-desktop",
+"star": 0
+},
+"ther000-dshweblauncher": {
+"status": "found",
+"full_name": "ther000/DshWebLauncher",
+"star": 0
+},
+"tyeclipse-dsh-geodesy": {
+"status": "found",
+"full_name": "TYEclipse/dsh-geodesy",
+"star": 2
+},
+"wanbinyu-dsh-error-lens": {
+"status": "found",
+"full_name": "Wanbinyu/dsh-error-lens",
+"star": 2
+},
+"wanbinyu-dsh-provider-probe": {
+"status": "found",
+"full_name": "Wanbinyu/dsh-provider-probe",
+"star": 2
+},
+"wavespeedai-wavespeed-dsh-skill": {
+"status": "found",
+"full_name": "WaveSpeedAI/wavespeed-dsh-skill",
+"star": 1
+},
+"windsland52-dsh-auto-retry": {
+"status": "found",
+"full_name": "Windsland52/dsh-auto-retry",
+"star": 0
+},
+"wiziscool-dsh-ears": {
+"status": "found",
+"full_name": "WizisCool/dsh-ears",
+"star": 11
+},
+"wuwl-98-dsh-theme-paper": {
+"status": "found",
+"full_name": "WuWL-98/dsh-theme-paper",
+"star": 2
+},
+"wyxbupt-22-dsh-plugin-edit-message": {
+"status": "found",
+"full_name": "WyxBUPT-22/dsh-plugin-edit-message",
+"star": 1
+},
+"xgrin-dsh-search-router": {
+"status": "found",
+"full_name": "XGrin/dsh-search-router",
+"star": 2
+},
+"xiangbingyu-life-distiller": {
+"status": "found",
+"full_name": "Xiangbingyu/life-distiller",
+"star": 1
+},
+"xiangliuy-dsh-web-search-bing-rss": {
+"status": "found",
+"full_name": "Xiangliuy/dsh-web-search-bing-rss",
+"star": 0
+},
+"yancey2023-dsh-fold": {
+"status": "found",
+"full_name": "Yancey2023/dsh-fold",
+"star": 0
+},
+"yaoay-dsh-conversation-accents": {
+"status": "found",
+"full_name": "YaoaY/dsh-conversation-accents",
+"star": 1
+},
+"yaoay-dsh-gpt-compat": {
+"status": "found",
+"full_name": "YaoaY/dsh-gpt-compat",
+"star": 1
+},
+"yourtsao-offical-paper-wrighting-chinese-skil": {
+"status": "not_found"
+},
+"yurewright-dsh-plgstore": {
+"status": "found",
+"full_name": "YureWright/dsh-plgstore",
+"star": 1
+},
+"zanderkong-look-here": {
+"status": "found",
+"full_name": "ZanderKong/look-here",
+"star": 0
+},
+"zelinw1-dsh-cosplay": {
+"status": "found",
+"full_name": "ZelinW1/dsh-cosplay",
+"star": 3
+},
+"zenjibad-dsh-drop-any-file": {
+"status": "found",
+"full_name": "Zenjibad/dsh-drop-any-file",
+"star": 0
+},
+"zenjibad-dsh-mcp-toggle": {
+"status": "found",
+"full_name": "Zenjibad/dsh-mcp-toggle",
+"star": 0
+},
+"zenjibad-dsh-plugin-toggle": {
+"status": "found",
+"full_name": "Zenjibad/dsh-plugin-toggle",
+"star": 0
+},
+"zhangjianyu1006156-dsh-balance-display": {
+"status": "found",
+"full_name": "zhangjianyu1006156/dsh-balance-display",
+"star": 3
+},
+"anneheartrecord/dsh-desk-pet": {
+"status": "found",
+"full_name": "anneheartrecord/dsh-desk-pet",
+"star": 5,
+"src": "registry"
+},
+"cruciforms/dsh-socrates": {
+"status": "found",
+"full_name": "cruciforms/dsh-socrates",
+"star": 0,
+"src": "registry"
+},
+"dmz2922990/dsh-mcp-list": {
+"status": "found",
+"full_name": "dmz2922990/dsh-mcp-list",
+"star": 0,
+"src": "registry"
+},
+"dmz2922990/dsh-ssh": {
+"status": "found",
+"full_name": "dmz2922990/dsh-ssh",
+"star": 1,
+"src": "registry"
+},
+"dmz2922990/dsh-thinkmeter": {
+"status": "found",
+"full_name": "dmz2922990/dsh-thinkmeter",
+"star": 0,
+"src": "registry"
+},
+"dream-num/dsh-univer-office": {
+"status": "found",
+"full_name": "dream-num/dsh-univer-office",
+"star": 129,
+"src": "registry"
+},
+"edgetype/better-deepseek": {
+"status": "found",
+"full_name": "edgetype/better-deepseek",
+"star": 416,
+"src": "registry"
+},
+"edison7009/echobird": {
+"status": "found",
+"full_name": "edison7009/echobird",
+"star": 3126,
+"src": "registry"
+},
+"evermind-ai/everos": {
+"status": "found",
+"full_name": "evermind-ai/everos",
+"star": 12420,
+"src": "registry"
+},
+"fuchao2pku/dsh-experts": {
+"status": "found",
+"full_name": "fuchao2pku/dsh-experts",
+"star": 0,
+"src": "registry"
+},
+"ganyuanran/aegis": {
+"status": "found",
+"full_name": "ganyuanran/aegis",
+"star": 1131,
+"src": "registry"
+},
+"han-1413141/dsh-cost-meter": {
+"status": "found",
+"full_name": "han-1413141/dsh-cost-meter",
+"star": 193,
+"src": "registry"
+},
+"heming-gmh/dsh-capcheck": {
+"status": "found",
+"full_name": "heming-gmh/dsh-capcheck",
+"star": 1,
+"src": "registry"
+},
+"hyp6666/dsh-open-file": {
+"status": "found",
+"full_name": "hyp6666/dsh-open-file",
+"star": 2,
+"src": "registry"
+},
+"kentleenot/dsh-trading-toolkit": {
+"status": "found",
+"full_name": "kentleenot/dsh-trading-toolkit",
+"star": 2,
+"src": "registry"
+},
+"kirkchinese/citeciter": {
+"status": "found",
+"full_name": "kirkchinese/citeciter",
+"star": 4,
+"src": "registry"
+},
+"kongjianguan/dsh-tokstat": {
+"status": "found",
+"full_name": "kongjianguan/dsh-tokstat",
+"star": 0,
+"src": "registry"
+},
+"licat2023/dsh-session-tabs": {
+"status": "found",
+"full_name": "licat2023/dsh-session-tabs",
+"star": 0,
+"src": "registry"
+},
+"liustack/modsearch": {
+"status": "found",
+"full_name": "liustack/modsearch",
+"star": 271,
+"src": "registry"
+},
+"mkaliezz/dsh-agentfuse-plugin": {
+"status": "found",
+"full_name": "mkaliezz/dsh-agentfuse-plugin",
+"star": 3,
+"src": "registry"
+},
+"mkaliezz/dsh-evidence-task-board": {
+"status": "found",
+"full_name": "mkaliezz/dsh-evidence-task-board",
+"star": 1,
+"src": "registry"
+},
+"mkaliezz/dsh-plugins": {
+"status": "found",
+"full_name": "mkaliezz/dsh-plugins",
+"star": 0,
+"src": "registry"
+},
+"mkaliezz/dsh-test-normalizer": {
+"status": "found",
+"full_name": "mkaliezz/dsh-test-normalizer",
+"star": 0,
+"src": "registry"
+},
+"nexu-io/open-design": {
+"status": "found",
+"full_name": "nexu-io/open-design",
+"star": 91454,
+"src": "registry"
+},
+"noob-stupid/dsh-plugin-hub": {
+"status": "found",
+"full_name": "noob-stupid/dsh-plugin-hub",
+"star": 70,
+"src": "registry"
+},
+"perrylink/dsh-fund-research": {
+"status": "found",
+"full_name": "perrylink/dsh-fund-research",
+"star": 3,
+"src": "registry"
+},
+"perrylink/dsh-industry-research": {
+"status": "found",
+"full_name": "perrylink/dsh-industry-research",
+"star": 5,
+"src": "registry"
+},
+"perrylink/dsh-research-report": {
+"status": "found",
+"full_name": "perrylink/dsh-research-report",
+"star": 4,
+"src": "registry"
+},
+"q00/ouroboros": {
+"status": "found",
+"full_name": "q00/ouroboros",
+"star": 5663,
+"src": "registry"
+},
+"rainow/dsh-simple-wiki-memory": {
+"status": "found",
+"full_name": "rainow/dsh-simple-wiki-memory",
+"star": 3,
+"src": "registry"
+},
+"raphaelutumn/dsh-change-budget": {
+"status": "found",
+"full_name": "raphaelutumn/dsh-change-budget",
+"star": 2,
+"src": "registry"
+},
+"renzic-stone/dsh-easyrewrite": {
+"status": "found",
+"full_name": "renzic-stone/dsh-easyrewrite",
+"star": 75,
+"src": "registry"
+},
+"superdesigndev/superdesign-skill": {
+"status": "found",
+"full_name": "superdesigndev/superdesign-skill",
+"star": 449,
+"src": "registry"
+},
+"superdesigndev/treg": {
+"status": "found",
+"full_name": "superdesigndev/treg",
+"star": 612,
+"src": "registry"
+},
+"tabbit-browser/dsh-plugin": {
+"status": "found",
+"full_name": "tabbit-browser/dsh-plugin",
+"star": 96,
+"src": "registry"
+},
+"toby-bridges/api-relay-audit": {
+"status": "found",
+"full_name": "toby-bridges/api-relay-audit",
+"star": 809,
+"src": "registry"
+},
+"tobycai/dsh-sessions-manager": {
+"status": "found",
+"full_name": "tobycai/dsh-sessions-manager",
+"star": 2,
+"src": "registry"
+},
+"toolclub/dsh-agent-team-gui": {
+"status": "found",
+"full_name": "toolclub/dsh-agent-team-gui",
+"star": 131,
+"src": "registry"
+},
+"v1ki/dsh-plugin-subscriptions": {
+"status": "found",
+"full_name": "v1ki/dsh-plugin-subscriptions",
+"star": 273,
+"src": "registry"
+},
+"welsione/dsh-mmx-bridge": {
+"status": "found",
+"full_name": "welsione/dsh-mmx-bridge",
+"star": 10,
+"src": "registry"
+},
+"xiaobright/dsh-anchored-standard": {
+"status": "found",
+"full_name": "xiaobright/dsh-anchored-standard",
+"star": 3753,
+"src": "registry"
+},
+"y1x1n/dsh-prompt-optimizer": {
+"status": "found",
+"full_name": "y1x1n/dsh-prompt-optimizer",
+"star": 8,
+"src": "registry"
+},
+"zh667/tokenledger": {
+"status": "found",
+"full_name": "zh667/tokenledger",
+"star": 153,
+"src": "registry"
+},
+"zhouwei713/dsh-daily-kit": {
+"status": "found",
+"full_name": "zhouwei713/dsh-daily-kit",
+"star": 2,
+"src": "registry"
+},
+"zseven-w/openpencil": {
+"status": "found",
+"full_name": "zseven-w/openpencil",
+"star": 5647,
+"src": "registry"
 }
 }
 }
