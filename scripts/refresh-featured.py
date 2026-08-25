@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""刷新 README 星标榜（Star Top 20）。
+"""刷新 README 精选插件榜 + 整合包节（人工策展 + 自动刷新星标）。
 
-候选池 = README.md / README.en-US.md / PLUGINS.md 的 GitHub 引用 + catalog/plugins/*.json。
-逐仓库 REST 查询（跟随改名重定向），剔除私有/已删除/非插件后按 star 排序取前 20，
-重写两份 README 的 AUTO:featured 块。星数不足 20 或候选过少时中止（不写半成品榜单）。
+精选榜成员来自 data/awesome-50.json、整合包来自 data/bundles.json（均人工策展，
+本脚本只读不改成员）；逐仓库 REST 查询星标（跟随改名重定向），渲染分类表格，
+重写两份 README 的 AUTO:featured 与 AUTO:bundles 块。任一策展成员不可达或
+查询失败即中止（成员是固定名单，消失/失联是异常信号，不写半截榜单）。
 
-依赖：环境变量 GH_TOKEN（GitHub token，读公开仓库 + 推送）；curl；python3。
+依赖：环境变量 GH_TOKEN（GitHub token，读公开仓库）；curl；python3。
 用法：GH_TOKEN=... python3 scripts/refresh-featured.py [--dry]
 """
 import json
@@ -20,42 +21,15 @@ from zoneinfo import ZoneInfo
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DRY = '--dry' in sys.argv
-TOP_N = 20
-MIN_CANDIDATES = 120  # 候选池低于此值视为数据异常，中止
-REFRESH_LABEL = '每 20 分钟自动刷新'
-
-# 非插件类仓库不进插件星标榜（社区网站 / 市场网站 / 本仓库自身）
-EXCLUDE = {
-    'hikariming/dshfind',
-    'bradeGithub/DSH-Plugins-Marketplace',
-    'AdamPlatin123/awesome-dsh-plugins',
-    'dsh-external/awesome-dsh-plugins',
-}
+CURATED = os.path.join(ROOT, 'data', 'awesome-50.json')
+BUNDLES = os.path.join(ROOT, 'data', 'bundles.json')
+REFRESH_LABEL = '每 6 小时自动刷新'
+VERDICT_MARK = {'ok': '✅', 'pending': '待定', 'incompatible': '需适配', 'untested': '未测', None: '—'}
 
 TOKEN = os.environ.get('GH_TOKEN') or subprocess.run(
     ['gh', 'auth', 'token'], capture_output=True, text=True).stdout.strip()
 if not TOKEN:
     sys.exit('[错误] 缺少 GH_TOKEN（且 gh auth token 不可用）')
-
-
-def collect_candidates():
-    repos = set()
-    for name in ['README.md', 'README.en-US.md', 'PLUGINS.md']:
-        path = os.path.join(ROOT, name)
-        if not os.path.exists(path):
-            continue
-        text = open(path, encoding='utf-8').read()
-        for m in re.finditer(r'https://github\.com/([^\s\)\]"]+)', text):
-            parts = m.group(1).split('/')
-            if len(parts) >= 2 and parts[0] not in ('features', 'actions', 'topics', 'about'):
-                repos.add('/'.join(parts[:2]))
-    for entry in sorted(os.listdir(os.path.join(ROOT, 'catalog', 'plugins'))):
-        if entry.endswith('.json'):
-            d = json.load(open(os.path.join(ROOT, 'catalog', 'plugins', entry), encoding='utf-8'))
-            full = d.get('repository', {}).get('full_name', '')
-            if full.count('/') == 1:
-                repos.add(full)
-    return repos - EXCLUDE
 
 
 def fetch(repo):
@@ -83,44 +57,82 @@ def fetch(repo):
 
 
 def main():
-    candidates = collect_candidates()
-    print(f'[candidates] {len(candidates)} 个')
-    if len(candidates) < MIN_CANDIDATES:
-        sys.exit(f'[中止] 候选 {len(candidates)} < {MIN_CANDIDATES}，疑似引用解析异常')
+    data = json.load(open(CURATED, encoding='utf-8'))
+    bdata = json.load(open(BUNDLES, encoding='utf-8'))
+    cats = data['categories']
+    forms = bdata['forms']
+    repos = [p['repo'] for c in cats for p in c['plugins']]
+    brepos = [p['repo'] for f in forms for p in f['plugins']]
+    # 成员数随实测口径动态变化（rc.8 重测通过者）；下限防 JSON 误删，去重防误加
+    if len(repos) < 20:
+        sys.exit(f'[中止] 策展成员仅 {len(repos)} 个（<20），疑似 JSON 损坏，需人工校对')
+    if len(set(repos)) != len(repos):
+        sys.exit('[中止] 策展成员存在重复仓库，JSON 需人工校对')
+    if len(brepos) < 5:
+        sys.exit(f'[中止] 整合包成员仅 {len(brepos)} 个（<5），疑似 JSON 损坏，需人工校对')
+    if len(set(brepos)) != len(brepos):
+        sys.exit('[中止] 整合包成员存在重复仓库，JSON 需人工校对')
 
     with ThreadPoolExecutor(max_workers=16) as ex:
-        results = list(ex.map(fetch, sorted(candidates)))
-    stats = {}
-    failures = []
-    for r in results:
+        results = list(ex.map(fetch, repos + brepos))
+    stars, fails = {}, []
+    for repo, r in zip(repos + brepos, results):
         if r is None:
-            continue
-        if r[0] == 'RETRY_FAIL':
-            failures.append(r[1])
-            continue
-        stats[r[0]] = {'stars': r[1], 'desc': r[2]}
-    print(f'[fetch] 可达 {len(stats)}，不可达(私有/删除) {len(results) - len(stats) - len(failures)}，网络失败 {len(failures)}')
-    if len(stats) < MIN_CANDIDATES:
-        sys.exit(f'[中止] 可达仓库 {len(stats)} < {MIN_CANDIDATES}，疑似 API 异常')
-    if failures:
-        sys.exit(f'[中止] 网络失败 {len(failures)} 个: {failures[:5]}')
-
-    top = sorted(stats.items(), key=lambda kv: (-kv[1]['stars'], kv[0]))[:TOP_N]
-    if len(top) < TOP_N:
-        sys.exit(f'[中止] 有效条目 {len(top)} < {TOP_N}')
+            fails.append(f'{repo}(不可达/私有/归档)')
+        elif r[0] == 'RETRY_FAIL':
+            fails.append(f'{repo}(网络失败)')
+        else:
+            stars[repo] = r[1]
+    print(f'[fetch] 成功 {len(stars)}/{len(repos) + len(brepos)}')
+    if fails:
+        sys.exit(f'[中止] 策展成员查询失败 {len(fails)} 个: {fails[:5]}')
 
     ts = datetime.now(ZoneInfo('Asia/Shanghai')).strftime('%Y-%m-%d %H:%M')
-    rows = []
-    for i, (repo, v) in enumerate(top, 1):
-        name = repo.split('/')[1]
-        desc = v['desc'].replace('|', '\\|')
-        if len(desc) > 55:
-            desc = desc[:55] + '…'
-        rows.append(f'| {i} | [{name}](https://github.com/{repo}) | {v["stars"]} | {desc} |')
-    block = ('<!-- AUTO:featured:START -->\n\n'
-             f'> 按 GitHub star 数排序，{REFRESH_LABEL}。数据截至 {ts}（UTC+8）。\n\n'
-             '| # | 插件 | ⭐ | 说明 |\n|---|---|---|---|\n'
-             + '\n'.join(rows) + '\n\n<!-- AUTO:featured:END -->')
+    total = sum(len(c['plugins']) for c in cats)
+    parts = [
+        '<!-- AUTO:featured:START -->', '',
+        f'> 人工策展 {total} 款插件，按 11 类分组、类内按星标排序；星标{REFRESH_LABEL}'
+        f'（成员调整请提 PR 修改 data/awesome-50.json）。数据截至 {ts}（UTC+8）。',
+        '',
+    ]
+    for c in cats:
+        ranked = sorted(c['plugins'], key=lambda p: (-stars[p['repo']], p['repo'].lower()))
+        parts.append(f"### {c['name']}（{len(ranked)}）")
+        parts.append('')
+        parts.append('| 插件 | ⭐ | 实测 | 说明 |')
+        parts.append('|---|---:|---|---|')
+        for p in ranked:
+            desc = p['desc'].replace('|', '\\|')
+            parts.append(f"| [{p['name']}](https://github.com/{p['repo']}) | {stars[p['repo']]} |"
+                         f" {VERDICT_MARK.get(p.get('verdict'), '—')} | {desc} |")
+        parts.append('')
+    parts.append('> 实测 = 雷达 k8s 运行级判定（✅ 可用 · 待定 · 需适配 · 未测，四档口径见下文）；'
+                 'rc.8 + v4flash 源码路径重测（2026-08-21，50 仓 + 对方清单高星 22 仓）证据见 '
+                 '[data/rc8-retest-20260821/](data/rc8-retest-20260821/) 与 [PLUGINS-ALL.md](PLUGINS-ALL.md)；'
+                 '安装第三方插件前请审查源码并固定 commit。')
+    block = '\n'.join(parts) + '\n\n<!-- AUTO:featured:END -->'
+
+    # ── 整合包节（AUTO:bundles）：四形态，类内星标降序 ──
+    btotal = len(brepos)
+    bparts = [
+        '<!-- AUTO:bundles:START -->', '',
+        f'> 人工策展 {btotal} 个整合包，覆盖预设套件 / 能力合集 / 发行版 / 配方管理器四种形态，'
+        f'类内按星标排序；星标{REFRESH_LABEL}（成员调整请提 PR 修改 data/bundles.json）。数据截至 {ts}（UTC+8）。',
+        '',
+    ]
+    for f in forms:
+        ranked = sorted(f['plugins'], key=lambda p: (-stars[p['repo']], p['repo'].lower()))
+        bparts.append(f"### {f['name']}（{len(ranked)}）")
+        bparts.append('')
+        bparts.append('| 整合包 | ⭐ | 实测 | 说明 |')
+        bparts.append('|---|---:|---|---|')
+        for p in ranked:
+            desc = p['desc'].replace('|', '\\|')
+            bparts.append(f"| [{p['name']}](https://github.com/{p['repo']}) | {stars[p['repo']]} |"
+                          f" {VERDICT_MARK.get(p.get('verdict'), '—')} | {desc} |")
+        bparts.append('')
+    bparts.append('> 实测口径同精选榜；整合包安装方式以各仓库 README 为准（预设类多为 `dsh plugin add` 后在设置中启用，发行版类需按其自身安装器操作）。')
+    bblock = '\n'.join(bparts) + '\n\n<!-- AUTO:bundles:END -->'
 
     changed = False
     for name in ['README.md', 'README.en-US.md']:
@@ -128,6 +140,8 @@ def main():
         text = open(path, encoding='utf-8').read()
         new = re.sub(r'<!-- AUTO:featured:START -->[\s\S]*?<!-- AUTO:featured:END -->',
                      lambda _: block, text, count=1)
+        new = re.sub(r'<!-- AUTO:bundles:START -->[\s\S]*?<!-- AUTO:bundles:END -->',
+                     lambda _: bblock, new, count=1)
         if new != text:
             if not DRY:
                 open(path, 'w', encoding='utf-8').write(new)
@@ -135,7 +149,9 @@ def main():
             print(f'[write] {name}')
     if not changed:
         print('[noop] 榜单无变化')
-    print(f'[done] Top1 {top[0][0]} {top[0][1]["stars"]}⭐')
+    top = max(repos, key=lambda r: stars[r])
+    btop = max(brepos, key=lambda r: stars[r])
+    print(f'[done] 精选 {len(repos)} 款 · 整合包 {len(brepos)} 个 · 榜首 {top} {stars[top]}⭐ · 整合包之首 {btop} {stars[btop]}⭐')
 
 
 if __name__ == '__main__':
