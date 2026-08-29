@@ -17,9 +17,9 @@
 
 安装前就知道哪个能用，不用自己踩坑。
 
-[![confirmed](https://img.shields.io/badge/confirmed-7578-blue)](#精选插件榜) [![scan](https://img.shields.io/badge/scan-every_6h-green)](#当前生态快照) [![tested](https://img.shields.io/badge/tested-10749-orange)](#本仓库如何判定) [![dshfind](https://dshfind.com/api/badge/AdamPlatin123/awesome-dsh-plugins?lang=zh)](https://dshfind.com/zh/plugins/AdamPlatin123/awesome-dsh-plugins?ref=badge) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![confirmed](https://img.shields.io/badge/confirmed-7662-blue)](#精选插件榜) [![scan](https://img.shields.io/badge/scan-every_6h-green)](#当前生态快照) [![tested](https://img.shields.io/badge/tested-10857-orange)](#本仓库如何判定) [![dshfind](https://dshfind.com/api/badge/AdamPlatin123/awesome-dsh-plugins?lang=zh)](https://dshfind.com/zh/plugins/AdamPlatin123/awesome-dsh-plugins?ref=badge) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-[![运行级可用](https://img.shields.io/badge/运行级可用-7252-brightgreen)](#2-看懂状态统一四档口径) [![运行级不兼容](https://img.shields.io/badge/运行级不兼容-2368-red)](#2-看懂状态统一四档口径) [![待定](https://img.shields.io/badge/待定-1129-yellow)](#2-看懂状态统一四档口径) [![未测](https://img.shields.io/badge/·_未测-86-lightgrey)](#2-看懂状态统一四档口径)
+[![运行级可用](https://img.shields.io/badge/运行级可用-7317-brightgreen)](#2-看懂状态统一四档口径) [![运行级不兼容](https://img.shields.io/badge/运行级不兼容-2401-red)](#2-看懂状态统一四档口径) [![待定](https://img.shields.io/badge/待定-1139-yellow)](#2-看懂状态统一四档口径) [![未测](https://img.shields.io/badge/·_未测-86-lightgrey)](#2-看懂状态统一四档口径)
 
 
 
@@ -31,26 +31,26 @@
 
 ## 工作原理
 
-> 数据截至快照 `20260829T000001Z`（2026-08-29 08:00:03 UTC+8 · 分类器 unified-v2-bridge）
+> 数据截至快照 `20260829T001501Z`（2026-08-29 08:15:03 UTC+8 · 分类器 unified-v2-bridge）
 
 <!-- AUTO:pipeline:START -->
 ```mermaid
 flowchart TB
     subgraph Discovery["发现（每 6 小时 · probe 每 15 分钟 巡检触发）"]
-        A1["GitHub Search<br/>topic ×2 + keyword ×3<br/>候选 15997 · 龄 172m"]
+        A1["GitHub Search<br/>topic ×2 + keyword ×3<br/>候选 15997 · 龄 187m"]
         A2["本地库补全 · 去重 repo id"]
         A3["私有 org 仓排除<br/>35s 错峰 · 403 退避 · dshow 黑名单"]
     end
     subgraph Validation["验证（driver 20s 流式循环）"]
         B1{"package.json<br/>name + main/exports/dsh?"}
     end
-    B1 -->|"插件 7578"| C1["k8s 运行级测试<br/>一插件一 pod · 并发 10<br/>dsh agent + Qwen（de-stream）"]
+    B1 -->|"插件 7662"| C1["k8s 运行级测试<br/>一插件一 pod · 并发 10<br/>dsh agent + Qwen（de-stream）"]
     B1 -->|"非插件（累计删 1064）"| B3["即删省空间"]
-    C1 --> D1{"判定 · 总 10749"}
-    D1 -->|"7252 / 2368"| E1["聚合 + README 分类统计"]
-    D1 -->|"1129 环境类重试"| C1
+    C1 --> D1{"判定 · 总 10857"}
+    D1 -->|"7317 / 2401"| E1["聚合 + README 分类统计"]
+    D1 -->|"1139 环境类重试"| C1
     E1 --> E2["cadence 交付<br/>本周期增量 —/100<br/>双仓 bot PR（幂等 supersede）"]
-    M["radar-probe 每 15 分钟 自愈<br/>7 指标流 × 60s · 完成累计 19"]
+    M["radar-probe 每 15 分钟 自愈<br/>7 指标流 × 60s · 完成累计 11"]
     M -.-> A1
     M -.-> C1
 ```
@@ -258,16 +258,16 @@ flowchart TB
 - **🎓 技能包**（21）— 可用 6 · 不兼容 1 · 待定 3 · 未测 8 · 监测 3 — [明细](PLUGINS-ALL.md#-技能包21)
 - **🧠 记忆增强**（31）— 可用 14 · 不兼容 3 · 待定 4 · 未测 2 · 监测 8 — [明细](PLUGINS-ALL.md#-记忆增强31)
 - **🎨 主题皮肤**（17）— 可用 7 · 不兼容 0 · 待定 2 · 未测 5 · 监测 3 — [明细](PLUGINS-ALL.md#-主题皮肤17)
-- **🛒 市场与管理**（217）— 可用 86 · 不兼容 20 · 待定 13 · 未测 5 · 监测 93 — [明细](PLUGINS-ALL.md#-市场与管理217)
-- **🔌 Web UI 增强**（2064）— 可用 1139 · 不兼容 377 · 待定 175 · 未测 13 · 监测 360 — [明细](PLUGINS-ALL.md#-web-ui-增强2064)
-- **💻 编码开发**（1539）— 可用 790 · 不兼容 286 · 待定 146 · 未测 9 · 监测 308 — [明细](PLUGINS-ALL.md#-编码开发1539)
-- **🤖 Agent 能力**（1365）— 可用 594 · 不兼容 226 · 待定 127 · 未测 9 · 监测 409 — [明细](PLUGINS-ALL.md#-agent-能力1365)
-- **📡 消息通讯**（524）— 可用 216 · 不兼容 116 · 待定 40 · 未测 3 · 监测 149 — [明细](PLUGINS-ALL.md#-消息通讯524)
-- **🗂 文件数据**（448）— 可用 209 · 不兼容 78 · 待定 43 · 未测 7 · 监测 111 — [明细](PLUGINS-ALL.md#-文件数据448)
-- **🎮 娱乐生活**（295）— 可用 141 · 不兼容 26 · 待定 27 · 未测 0 · 监测 101 — [明细](PLUGINS-ALL.md#-娱乐生活295)
-- **🛠 基建部署**（970）— 可用 381 · 不兼容 110 · 待定 126 · 未测 4 · 监测 349 — [明细](PLUGINS-ALL.md#-基建部署970)
+- **🛒 市场与管理**（222）— 可用 87 · 不兼容 22 · 待定 13 · 未测 5 · 监测 95 — [明细](PLUGINS-ALL.md#-市场与管理222)
+- **🔌 Web UI 增强**（2083）— 可用 1152 · 不兼容 379 · 待定 177 · 未测 13 · 监测 362 — [明细](PLUGINS-ALL.md#-web-ui-增强2083)
+- **💻 编码开发**（1554）— 可用 796 · 不兼容 288 · 待定 146 · 未测 9 · 监测 315 — [明细](PLUGINS-ALL.md#-编码开发1554)
+- **🤖 Agent 能力**（1377）— 可用 599 · 不兼容 230 · 待定 127 · 未测 9 · 监测 412 — [明细](PLUGINS-ALL.md#-agent-能力1377)
+- **📡 消息通讯**（528）— 可用 218 · 不兼容 117 · 待定 40 · 未测 3 · 监测 150 — [明细](PLUGINS-ALL.md#-消息通讯528)
+- **🗂 文件数据**（454）— 可用 211 · 不兼容 79 · 待定 43 · 未测 7 · 监测 114 — [明细](PLUGINS-ALL.md#-文件数据454)
+- **🎮 娱乐生活**（296）— 可用 142 · 不兼容 26 · 待定 27 · 未测 0 · 监测 101 — [明细](PLUGINS-ALL.md#-娱乐生活296)
+- **🛠 基建部署**（980）— 可用 385 · 不兼容 113 · 待定 126 · 未测 4 · 监测 352 — [明细](PLUGINS-ALL.md#-基建部署980)
 - **📚 学习研究**（102）— 可用 27 · 不兼容 8 · 待定 8 · 未测 2 · 监测 57 — [明细](PLUGINS-ALL.md#-学习研究102)
-- **❓ 其他**（3874）— 可用 1394 · 不兼容 282 · 待定 198 · 未测 19 · 监测 1981 — [明细](PLUGINS-ALL.md#-其他3874)
+- **❓ 其他**（3908）— 可用 1401 · 不兼容 285 · 待定 201 · 未测 19 · 监测 2002 — [明细](PLUGINS-ALL.md#-其他3908)
 
 <!-- AUTO:catalog:END -->
 
@@ -308,7 +308,7 @@ DSH 插件社区讨论群（微信群）：插件作者、维护者与使用者�
 | · 未测 | 尚未派发运行级测试 | 不应推断为兼容或不兼容 |
 
 > [!NOTE]
-> **测试版本**：dsh（容器内 agent）+ Qwen3.6-35B 驱动（经 de-stream 代理）· k8s 5 分片 · 以快照 `run_id` 锚定具体轮次（当前 `20260829T000001Z`）。DSH 的 npm 版本号未随快照记录，以 run_id 与 `reports/agent-test/` 日期交叉核对。
+> **测试版本**：dsh（容器内 agent）+ Qwen3.6-35B 驱动（经 de-stream 代理）· k8s 5 分片 · 以快照 `run_id` 锚定具体轮次（当前 `20260829T001501Z`）。DSH 的 npm 版本号未随快照记录，以 run_id 与 `reports/agent-test/` 日期交叉核对。
 > **口径提示**：徽章与统计中的「已测 N」是单轮运行口径；分类目录与全量清单是跨轮累积口径，两者数字不同属正常。
 
 每个结论都应同时看四项：**插件 commit、mainline commit、测试日期、测试层级**。缺少其中任一项时，降低对结果的信任等级。
@@ -417,12 +417,12 @@ DSH 插件社区讨论群（微信群）：插件作者、维护者与使用者�
 ## 当前生态快照
 
 <!-- AUTO:ecosystem:START -->
-> 渲染于快照 20260829T000001Z（2026-08-29 08:00 UTC+8）· 数据源 data/snapshots/（渲染即对齐）
+> 渲染于快照 20260829T001501Z（2026-08-29 08:15 UTC+8）· 数据源 data/snapshots/（渲染即对齐）
 
 | 证据层 | 当前结果 |
 |---|---:|
 | 自动收录 全量索引 2943 · 收录（克隆验证）2996 · 当前版本（0.1.1-rc.2）已测 345 个仓库 |
-| 运行级实测 | 7252 可用 · 2368 不兼容 · 1129 待定（共 10749 个，k8s agent 口径）|
+| 运行级实测 | 7317 可用 · 2401 不兼容 · 1139 待定（共 10857 个，k8s agent 口径）|
 
 [完整索引](PLUGINS-ALL.md) · [运行实测](reports/2026-08-27/agent-test-v2.md)
 
