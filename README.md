@@ -17,9 +17,9 @@
 
 安装前就知道哪个能用，不用自己踩坑。
 
-[![confirmed](https://img.shields.io/badge/confirmed-942-blue)](#精选插件榜) [![scan](https://img.shields.io/badge/scan-every_6h-green)](#当前生态快照) [![tested](https://img.shields.io/badge/tested-13334-orange)](#本仓库如何判定) [![dshfind](https://dshfind.com/api/badge/AdamPlatin123/dsh-plugin-radar?lang=zh)](https://dshfind.com/zh/plugins/AdamPlatin123/dsh-plugin-radar?ref=badge) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![confirmed](https://img.shields.io/badge/confirmed-978-blue)](#精选插件榜) [![scan](https://img.shields.io/badge/scan-every_6h-green)](#当前生态快照) [![tested](https://img.shields.io/badge/tested-13334-orange)](#本仓库如何判定) [![dshfind](https://dshfind.com/api/badge/AdamPlatin123/dsh-plugin-radar?lang=zh)](https://dshfind.com/zh/plugins/AdamPlatin123/dsh-plugin-radar?ref=badge) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-[![运行级可用](https://img.shields.io/badge/运行级可用_9064-0.1.1--rc.2-brightgreen)](#2-看懂状态统一四档口径) [![待测](https://img.shields.io/badge/待测_1724-0.1.1--rc.2-lightgrey)](#2-看懂状态统一四档口径) [![需适配](https://img.shields.io/badge/需适配_2659-0.1.1--rc.2-yellow)](#2-看懂状态统一四档口径)
+[![运行级可用](https://img.shields.io/badge/运行级可用_8996-0.1.1--rc.2-brightgreen)](#2-看懂状态统一四档口径) [![待测](https://img.shields.io/badge/待测_1730-0.1.1--rc.2-lightgrey)](#2-看懂状态统一四档口径) [![需适配](https://img.shields.io/badge/需适配_2721-0.1.1--rc.2-yellow)](#2-看懂状态统一四档口径)
 
 
 
@@ -46,26 +46,26 @@ Radar Engine（开源 → engine/）
 
 ## 工作原理
 
-> 数据截至快照 `20260905T201501Z`（2026-09-06 04:15:03 UTC+8 · 分类器 unified-v2-bridge）
+> 数据截至快照 `20260906T024501Z`（2026-09-06 10:45:03 UTC+8 · 分类器 unified-v2-bridge）
 
 <!-- AUTO:pipeline:START -->
 ```mermaid
 flowchart TB
     subgraph Discovery["发现（每 6 小时 · probe 每 15 分钟 巡检触发）"]
-        A1["GitHub Search<br/>topic ×2 + keyword ×3<br/>候选 18450 · 龄 160m"]
+        A1["GitHub Search<br/>topic ×2 + keyword ×3<br/>候选 18486 · 龄 92m"]
         A2["本地库补全 · 去重 repo id"]
         A3["私有 org 仓排除<br/>35s 错峰 · 403 退避 · dshow 黑名单"]
     end
     subgraph Validation["验证（driver 20s 流式循环）"]
         B1{"package.json<br/>name + main/exports/dsh?"}
     end
-    B1 -->|"插件 942"| C1["k8s 运行级测试<br/>一插件一 pod · 并发 10<br/>dsh agent + Qwen（de-stream）"]
+    B1 -->|"插件 978"| C1["k8s 运行级测试<br/>一插件一 pod · 并发 10<br/>dsh agent + Qwen（de-stream）"]
     B1 -->|"非插件（累计删 0）"| B3["即删省空间"]
     C1 --> D1{"判定 · 总 13334"}
-    D1 -->|"9064 / 2659"| E1["聚合 + README 分类统计"]
-    D1 -->|"1611 环境类重试"| C1
+    D1 -->|"8996 / 2721"| E1["聚合 + README 分类统计"]
+    D1 -->|"1617 环境类重试"| C1
     E1 --> E2["cadence 交付<br/>本周期增量 —/100<br/>双仓 bot PR（幂等 supersede）"]
-    M["radar-probe 每 15 分钟 自愈<br/>7 指标流 × 60s · 完成累计 19"]
+    M["radar-probe 每 15 分钟 自愈<br/>7 指标流 × 60s · 完成累计 32"]
     M -.-> A1
     M -.-> C1
 ```
@@ -112,12 +112,12 @@ flowchart TB
 
 <!-- AUTO:featured:START -->
 
-> 人工策展 56 款插件，按 11 类分组、类内按星标排序；星标每 6 小时自动刷新（成员调整请提 PR 修改 data/awesome-50.json）。数据截至 2026-09-06 04:28（UTC+8）。
+> 人工策展 56 款插件，按 11 类分组、类内按星标排序；星标每 6 小时自动刷新（成员调整请提 PR 修改 data/awesome-50.json）。数据截至 2026-09-06 12:48（UTC+8）。
 
 ### 🚀 智力增强 Booster（7）
 
-- <img src="assets/tile-adapt.svg" alt="需适配" width="122" height="20"> **[dsh-routing-suite](https://github.com/yjh051108/dsh-routing-suite)** · 7099★ — 注入器 × 思维模式路由套装：免重启运行时注入器 + 任务感知推理模式路由预设（P1-P23 实测）
-- <img src="assets/tile-test.svg" alt="待测试" width="122" height="20"> **[ouroboros](https://github.com/Q00/ouroboros)** · 5775★ — Agent OS：agent 自我变强、人只守底线——自进化运行时（5.7k★；rc.8 实测 ✅）
+- <img src="assets/tile-adapt.svg" alt="需适配" width="122" height="20"> **[dsh-routing-suite](https://github.com/yjh051108/dsh-routing-suite)** · 7098★ — 注入器 × 思维模式路由套装：免重启运行时注入器 + 任务感知推理模式路由预设（P1-P23 实测）
+- <img src="assets/tile-test.svg" alt="待测试" width="122" height="20"> **[ouroboros](https://github.com/Q00/ouroboros)** · 5777★ — Agent OS：agent 自我变强、人只守底线——自进化运行时（5.7k★；rc.8 实测 ✅）
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[harmony-next.skills](https://github.com/linhay/harmony-next.skills)** · 343★ — 技能驱动的工作流增强
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[superpowers-dsh](https://github.com/LayneChai/superpowers-dsh)** · 86★ — TDD/调试/计划等开发技能集
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[forkprobe](https://github.com/Jayden-X-L/forkprobe)** · 71★ — 同一任务跑多个技能对比，自动选优
@@ -126,9 +126,9 @@ flowchart TB
 
 ### 🖥 界面与工作台（7）
 
-- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui)** · 6940★ — Web UI 增强与皮肤合集：任务看板、Git 图、移动端、皮肤中心
-- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar)** · 3357★ — 侧边栏变完整工作台：文件编辑/终端/Git/子代理，支持三方注册扩展页
-- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-genui](https://github.com/omdsh-dev/dsh-genui)** · 408★ — GenUI 内联组件：图表/表单/测验/3D 场景 + action 事件环
+- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui)** · 6960★ — Web UI 增强与皮肤合集：任务看板、Git 图、移动端、皮肤中心
+- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar)** · 3360★ — 侧边栏变完整工作台：文件编辑/终端/Git/子代理，支持三方注册扩展页
+- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-genui](https://github.com/omdsh-dev/dsh-genui)** · 409★ — GenUI 内联组件：图表/表单/测验/3D 场景 + action 事件环
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-visualize](https://github.com/Nagi-ovo/dsh-visualize)** · 256★ — 对话中生成交互式可视化卡片
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-annotation](https://github.com/omdsh-dev/dsh-annotation)** · 109★ — 划选文字→批注→随消息发送，回复逐条对照
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[Liang-Saint-Slider](https://github.com/BruzWJ/Liang-Saint-Slider)** · 96★ — 模型与思考力度选择滑条
@@ -136,24 +136,24 @@ flowchart TB
 
 ### ⌨️ 终端与桌面端（5）
 
-- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-desktop](https://github.com/anywhere-labs/dsh-desktop)** · 23782★ — 生态最高星桌面客户端（21.5k★，原 deepseek-harness-desktop 再改名）：万物皆插件、桌面本身也是插件（雷达重测中；rc.8 源码路径实测 ✅）
-- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[deepseek-harness-desktop](https://github.com/hairyf/deepseek-harness-desktop)** · 1705★ — Tauri 桌面版：5MB 安装包零环境配置，Win/macOS/Linux
+- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-desktop](https://github.com/anywhere-labs/dsh-desktop)** · 23824★ — 生态最高星桌面客户端（21.5k★，原 deepseek-harness-desktop 再改名）：万物皆插件、桌面本身也是插件（雷达重测中；rc.8 源码路径实测 ✅）
+- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[deepseek-harness-desktop](https://github.com/hairyf/deepseek-harness-desktop)** · 1707★ — Tauri 桌面版：5MB 安装包零环境配置，Win/macOS/Linux
 - <img src="assets/tile-adapt.svg" alt="需适配" width="122" height="20"> **[Bigfish](https://github.com/turtle2209/Bigfish)** · 311★ — 第三方桌面端：内置 Node 运行时，双击即用
 - <img src="assets/tile-test.svg" alt="待测试" width="122" height="20"> **[oh-dsh](https://github.com/hust-open-atom-club/oh-dsh)** · 303★ — 社区发行版：桌面/Web/TUI 三形态统一体验
 - <img src="assets/tile-adapt.svg" alt="需适配" width="122" height="20"> **[dsh-tianshu-tui](https://github.com/huiliyi37/dsh-tianshu-tui)** · 262★ — 自研 ANSI 渲染的极简终端 UI
 
 ### 👁 视觉与多模态（4）
 
-- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[modlens](https://github.com/liustack/modlens)** · 3877★ — 生态第一个视觉插件，视觉工作流的基准方案
-- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[agent-vision-toolkit](https://github.com/Anionex/agent-vision-toolkit)** · 1170★ — 通用 agent 视觉工具箱：多图理解/图片问答/前端 UI 还原/GUI 自动化（dsh-vision-toolkit 同作者）
-- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-vision-router](https://github.com/ysr666/dsh-vision-router)** · 1072★ — 内置免费视觉模型路由，给文本 agent 装眼睛
+- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[modlens](https://github.com/liustack/modlens)** · 3878★ — 生态第一个视觉插件，视觉工作流的基准方案
+- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[agent-vision-toolkit](https://github.com/Anionex/agent-vision-toolkit)** · 1173★ — 通用 agent 视觉工具箱：多图理解/图片问答/前端 UI 还原/GUI 自动化（dsh-vision-toolkit 同作者）
+- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-vision-router](https://github.com/ysr666/dsh-vision-router)** · 1073★ — 内置免费视觉模型路由，给文本 agent 装眼睛
 - <img src="assets/tile-adapt.svg" alt="需适配" width="122" height="20"> **[dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit)** · 854★ — 带意图图片问答、长截图 OCR、UI 还原
 
 ### 🤖 Agent 能力与编排（7）
 
-- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[distilly](https://github.com/titanwings/distilly)** · 24372★ — 把专家思维蒸馏为可复用 Skills 的平台（24k★，Agent 域之最，原名 colleague-skill；雷达判可用）
-- <img src="assets/tile-test.svg" alt="待测试" width="122" height="20"> **[dsh-agent-teams](https://github.com/NanmiCoder/dsh-agent-teams)** · 1387★ — 多代理团队编排
-- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[helloagents](https://github.com/hellowind777/helloagents)** · 703★ — agent 能力合集
+- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[distilly](https://github.com/titanwings/distilly)** · 24377★ — 把专家思维蒸馏为可复用 Skills 的平台（24k★，Agent 域之最，原名 colleague-skill；雷达判可用）
+- <img src="assets/tile-test.svg" alt="待测试" width="122" height="20"> **[dsh-agent-teams](https://github.com/NanmiCoder/dsh-agent-teams)** · 1392★ — 多代理团队编排
+- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[helloagents](https://github.com/hellowind777/helloagents)** · 704★ — agent 能力合集
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[sandbase-harness](https://github.com/sandbaseai/sandbase-harness)** · 642★ — CMA 兼容开源 agent 运行时，任意模型可驱动
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[rea](https://github.com/morluto/rea)** · 396★ — 用 agent 逆向工程任何东西：从应用行为到原生二进制
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[open-record-replay](https://github.com/humblebanana/open-record-replay)** · 143★ — macOS 录制回放：把鼠标/键盘/UI 事件存为结构化轨迹供 agent 学习重放
@@ -161,15 +161,15 @@ flowchart TB
 
 ### 💻 编码与生产力（5）
 
-- <img src="assets/tile-test.svg" alt="待测试" width="122" height="20"> **[TokenTracker](https://github.com/xiufengsun/TokenTracker)** · 1521★ — 本地优先的 31 种编码工具 token 用量与成本追踪
+- <img src="assets/tile-test.svg" alt="待测试" width="122" height="20"> **[TokenTracker](https://github.com/xiufengsun/TokenTracker)** · 1523★ — 本地优先的 31 种编码工具 token 用量与成本追踪
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[api-relay-audit](https://github.com/toby-bridges/api-relay-audit)** · 823★ — AI API 中继/LLM 代理本地安全审计，产出 Markdown 报告（rc.8 实测 ✅）
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[claude-paper](https://github.com/alaliqing/claude-paper)** · 334★ — 跨 agent 论文工具箱：速读摘要/深度研读材料/代码演示 + 本地 Web 阅读器
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[mobius](https://github.com/nutshellai-tech/mobius)** · 295★ — 编码增强
-- <img src="assets/tile-test.svg" alt="待测试" width="122" height="20"> **[dsh-remote](https://github.com/flymysql/dsh-remote)** · 58★ — 多机远程工作区：SSH 连接管理、远程目录→本地镜像→原生工作区收养、SFTP 双向同步与 rw_* 工具族
+- <img src="assets/tile-adapt.svg" alt="需适配" width="122" height="20"> **[dsh-remote](https://github.com/flymysql/dsh-remote)** · 59★ — 多机远程工作区：SSH 连接管理、远程目录→本地镜像→原生工作区收养、SFTP 双向同步与 rw_* 工具族
 
 ### 🧠 记忆与上下文（3）
 
-- <img src="assets/tile-test.svg" alt="待测试" width="122" height="20"> **[EverOS](https://github.com/EverMind-AI/EverOS)** · 12717★ — 全 agent 便携记忆层：本地优先、Markdown-native（12.4k★ 记忆域之最；rc.8 实测 ✅）
+- <img src="assets/tile-test.svg" alt="待测试" width="122" height="20"> **[EverOS](https://github.com/EverMind-AI/EverOS)** · 12726★ — 全 agent 便携记忆层：本地优先、Markdown-native（12.4k★ 记忆域之最；rc.8 实测 ✅）
 - <img src="assets/tile-adapt.svg" alt="需适配" width="122" height="20"> **[mnemon](https://github.com/mnemon-dev/mnemon)** · 558★ — 跨 agent、本地优先的持久记忆
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-memory-evolve](https://github.com/csyangwen/dsh-memory-evolve)** · 283★ — 五轨记忆 + git 分支托管 + 后台自我进化
 
@@ -182,26 +182,26 @@ flowchart TB
 
 ### 🗂 文件、数据与浏览（4）
 
-- <img src="assets/tile-adapt.svg" alt="需适配" width="122" height="20"> **[dsh-browser](https://github.com/Lum1104/dsh-browser)** · 574★ — Chrome 侧栏扩展，让 DSH 直接操作浏览器
+- <img src="assets/tile-adapt.svg" alt="需适配" width="122" height="20"> **[dsh-browser](https://github.com/Lum1104/dsh-browser)** · 573★ — Chrome 侧栏扩展，让 DSH 直接操作浏览器
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-openpencil](https://github.com/ZSeven-W/dsh-openpencil)** · 162★ — OpenPencil 设计稿预览与编辑
 - <img src="assets/tile-adapt.svg" alt="需适配" width="122" height="20"> **[dsh-web-search-pro](https://github.com/anweat/dsh-web-search-pro)** · 61★ — 增强型持久网页搜索
 - <img src="assets/tile-test.svg" alt="待测试" width="122" height="20"> **[dsh-plugin-mineru](https://github.com/HuanLinOTO/dsh-plugin-mineru)** · 45★ — PDF/图片/Office 转结构化 Markdown
 
 ### 🛒 市场与管理（4）
 
-- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-market](https://github.com/dsh-market/dsh-market)** · 3247★ — 持续收录 1000+ 插件的市场：中文搜索 + 五维评分
+- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-market](https://github.com/dsh-market/dsh-market)** · 3265★ — 持续收录 1000+ 插件的市场：中文搜索 + 五维评分
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-web-plugin-manager](https://github.com/LX2000WASD/dsh-web-plugin-manager)** · 67★ — Web UI 一键管理插件：启停/装卸/环境管理
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-plugin-check](https://github.com/omdsh-dev/dsh-plugin-check)** · 27★ — 插件健康检查：清单协议/patch 格式/构建陷阱
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[deepseek-plugin-store](https://github.com/Ericwong5021/deepseek-plugin-store)** · 25★ — 独立社区插件商店：发现/安装/提交经验证的插件
 
 ### 🎮 娱乐生活（6）
 
-- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[petdex](https://github.com/crafter-station/petdex)** · 4045★ — 生态最高星桌宠图鉴
+- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[petdex](https://github.com/crafter-station/petdex)** · 4046★ — 生态最高星桌宠图鉴
 - <img src="assets/tile-test.svg" alt="待测试" width="122" height="20"> **[dsh-deep-whale](https://github.com/Small-tailqwq/dsh-deep-whale)** · 1935★ — 深海鲸鱼养成
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[openpets](https://github.com/alvinunreal/openpets)** · 1166★ — 本地优先桌面伴侣平台：动画宠物 + 插件 SDK（娱乐域第二位）
-- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-ads](https://github.com/Nagi-ovo/dsh-ads)** · 609★ — 把 DSH 变回 2005 门户网站：怀旧广告/小游戏/弹窗
+- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-ads](https://github.com/Nagi-ovo/dsh-ads)** · 610★ — 把 DSH 变回 2005 门户网站：怀旧广告/小游戏/弹窗
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[whale-girl](https://github.com/vlln/whale-girl)** · 312★ — QQ 宠物形态桌宠：可拖拽/投喂/玩耍
-- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-kun-like-pet](https://github.com/liyupi/dsh-kun-like-pet)** · 89★ — 小坤桌宠：随 Agent 工作状态切换 9 种动作
+- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-kun-like-pet](https://github.com/liyupi/dsh-kun-like-pet)** · 88★ — 小坤桌宠：随 Agent 工作状态切换 9 种动作
 
 > 兼容状态磁贴 = 雷达 k8s 运行级判定（🟩 已兼容 · 🟨 需适配 · ⬜ 待测试，三态等宽；四档口径见下文），右半为该轮 runner 测试版本（与 [data/radar-env.json](data/radar-env.json) 同源），**本列由 bot 按最新快照自动回写**，榜内成员走插队重测通道优先轮测；rc.8 + v4flash 源码路径重测（2026-08-21，50 仓 + 对方清单高星 22 仓）证据见 [data/rc8-retest-20260821/](data/rc8-retest-20260821/) 与 [PLUGINS-ALL.md](PLUGINS-ALL.md)；安装第三方插件前请审查源码并固定 commit。
 
@@ -211,7 +211,7 @@ flowchart TB
 
 <!-- AUTO:bundles:START -->
 
-> 人工策展 16 个整合包：内测成员作品置顶，其下按预设套件 / 能力合集 / 发行版 / 配方管理器四形态分组，类内按星标排序；星标每 6 小时自动刷新（成员调整请提 PR 修改 data/bundles.json）。数据截至 2026-09-06 04:28（UTC+8）。
+> 人工策展 16 个整合包：内测成员作品置顶，其下按预设套件 / 能力合集 / 发行版 / 配方管理器四形态分组，类内按星标排序；星标每 6 小时自动刷新（成员调整请提 PR 修改 data/bundles.json）。数据截至 2026-09-06 12:48（UTC+8）。
 
 ### ⭐ 内测成员作品（1）
 
@@ -219,16 +219,16 @@ flowchart TB
 
 ### 🎚 预设与配置套件（4）
 
-- <img src="assets/tile-adapt.svg" alt="需适配" width="122" height="20"> **[dsh-routing-suite](https://github.com/yjh051108/dsh-routing-suite)** · 7099★ — 注入器 × 思维模式路由套装：免重启运行时注入器 + P1-P23 任务感知推理模式路由（rc.8 实测 ✅）
-- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-anchored-standard](https://github.com/xiaobright/dsh-anchored-standard)** · 3826★ — 两阶段预设：极简模式对齐启动 → 全量装载（rc.8 实测 ✅）
+- <img src="assets/tile-adapt.svg" alt="需适配" width="122" height="20"> **[dsh-routing-suite](https://github.com/yjh051108/dsh-routing-suite)** · 7098★ — 注入器 × 思维模式路由套装：免重启运行时注入器 + P1-P23 任务感知推理模式路由（rc.8 实测 ✅）
+- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-anchored-standard](https://github.com/xiaobright/dsh-anchored-standard)** · 3827★ — 两阶段预设：极简模式对齐启动 → 全量装载（rc.8 实测 ✅）
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-gitbash-preset](https://github.com/liceses/dsh-gitbash-preset)** · 135★ — Windows 一键「极简模式 Git Bash」预设：把自带极简模式的 bash 调用映射到 Git Bash
 - <img src="assets/tile-test.svg" alt="待测试" width="122" height="20"> **[dsh-roleplay-preset](https://github.com/oliblue-evan/dsh-roleplay-preset)** · 19★ — 沉浸式角色扮演预设：零工具纯对话、酒馆式演出格式、文件记忆库
 
 ### 🧩 能力合集（8）
 
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[Aegis](https://github.com/GanyuanRan/Aegis)** · 1170★ — 软件工程方法论技能包：baseline-first 规划、系统性重构（rc.8 实测 ✅）
-- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[helloagents](https://github.com/hellowind777/helloagents)** · 703★ — agent 能力合集（rc.8 实测 ✅）
-- <img src="assets/tile-test.svg" alt="待测试" width="122" height="20"> **[DeepSec](https://github.com/Unclecheng-li/DeepSec)** · 394★ — AI 安全攻防一体化合集：Android · Web · Native · 协议 · 恶意代码 · AI 六域
+- <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[helloagents](https://github.com/hellowind777/helloagents)** · 704★ — agent 能力合集（rc.8 实测 ✅）
+- <img src="assets/tile-test.svg" alt="待测试" width="122" height="20"> **[DeepSec](https://github.com/Unclecheng-li/DeepSec)** · 395★ — AI 安全攻防一体化合集：Android · Web · Native · 协议 · 恶意代码 · AI 六域
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[harmony-next.skills](https://github.com/linhay/harmony-next.skills)** · 343★ — 技能驱动的工作流增强（rc.8 实测 ✅）
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[dsh-reverse-skill](https://github.com/dhicoc/dsh-reverse-skill)** · 116★ — 完整逆向工程技能合集（85 个 SKILL.md）
 - <img src="assets/tile-ok.svg" alt="已兼容" width="122" height="20"> **[superpowers-dsh](https://github.com/LayneChai/superpowers-dsh)** · 86★ — TDD/调试/计划等开发技能集（rc.8 实测 ✅）
@@ -258,15 +258,15 @@ flowchart TB
 - **🧠 记忆增强**（46）— 可用 14 · 不兼容 5 · 待定 4 · 未测 2 · 监测 21 — [明细](catalog/all/记忆增强.md)
 - **🎨 主题皮肤**（18）— 可用 9 · 不兼容 0 · 待定 1 · 未测 5 · 监测 3 — [明细](catalog/all/主题皮肤.md)
 - **🛒 市场与管理**（308）— 可用 100 · 不兼容 20 · 待定 18 · 未测 8 · 监测 162 — [明细](catalog/all/市场与管理.md)
-- **🔌 Web UI 增强**（2779）— 可用 1360 · 不兼容 396 · 待定 250 · 未测 17 · 监测 756 — [明细](catalog/all/Web%20UI%20增强.md)
-- **💻 编码开发**（2153）— 可用 937 · 不兼容 355 · 待定 180 · 未测 19 · 监测 662 — [明细](catalog/all/编码开发.md)
-- **🤖 Agent 能力**（2244）— 可用 826 · 不兼容 264 · 待定 161 · 未测 11 · 监测 982 — [明细](catalog/all/Agent%20能力.md)
-- **📡 消息通讯**（719）— 可用 259 · 不兼容 115 · 待定 55 · 未测 4 · 监测 286 — [明细](catalog/all/消息通讯.md)
-- **🗂 文件数据**（677）— 可用 274 · 不兼容 93 · 待定 55 · 未测 9 · 监测 246 — [明细](catalog/all/文件数据.md)
-- **🎮 娱乐生活**（451）— 可用 175 · 不兼容 33 · 待定 30 · 未测 0 · 监测 213 — [明细](catalog/all/娱乐生活.md)
-- **🛠 基建部署**（1356）— 可用 443 · 不兼容 131 · 待定 124 · 未测 4 · 监测 654 — [明细](catalog/all/基建部署.md)
-- **📚 学习研究**（156）— 可用 37 · 不兼容 8 · 待定 8 · 未测 2 · 监测 101 — [明细](catalog/all/学习研究.md)
-- **❓ 其他**（7192）— 可用 1852 · 不兼容 357 · 待定 249 · 未测 21 · 监测 4713 — [明细](catalog/all/其他.md)
+- **🔌 Web UI 增强**（2780）— 可用 1345 · 不兼容 404 · 待定 258 · 未测 17 · 监测 756 — [明细](catalog/all/Web%20UI%20增强.md)
+- **💻 编码开发**（2153）— 可用 932 · 不兼容 353 · 待定 187 · 未测 19 · 监测 662 — [明细](catalog/all/编码开发.md)
+- **🤖 Agent 能力**（2244）— 可用 815 · 不兼容 270 · 待定 166 · 未测 11 · 监测 982 — [明细](catalog/all/Agent%20能力.md)
+- **📡 消息通讯**（719）— 可用 259 · 不兼容 114 · 待定 56 · 未测 4 · 监测 286 — [明细](catalog/all/消息通讯.md)
+- **🗂 文件数据**（677）— 可用 272 · 不兼容 94 · 待定 56 · 未测 9 · 监测 246 — [明细](catalog/all/文件数据.md)
+- **🎮 娱乐生活**（451）— 可用 174 · 不兼容 34 · 待定 30 · 未测 0 · 监测 213 — [明细](catalog/all/娱乐生活.md)
+- **🛠 基建部署**（1356）— 可用 443 · 不兼容 130 · 待定 125 · 未测 4 · 监测 654 — [明细](catalog/all/基建部署.md)
+- **📚 学习研究**（156）— 可用 36 · 不兼容 9 · 待定 8 · 未测 2 · 监测 101 — [明细](catalog/all/学习研究.md)
+- **❓ 其他**（7192）— 可用 1838 · 不兼容 363 · 待定 257 · 未测 21 · 监测 4713 — [明细](catalog/all/其他.md)
 
 <!-- AUTO:catalog:END -->
 
@@ -323,7 +323,7 @@ DSH 插件社区讨论群（微信群）：插件作者、维护者与使用者�
 | · 未测 | 尚未派发运行级测试 | 不应推断为兼容或不兼容 |
 
 > [!NOTE]
-> **测试版本**：dsh（容器内 agent）+ Qwen3.6-35B 驱动（经 de-stream 代理）· k8s 5 分片 · 以快照 `run_id` 锚定具体轮次（当前 `20260905T201501Z`）。DSH 的 npm 版本号未随快照记录，以 run_id 与 `reports/agent-test/` 日期交叉核对。
+> **测试版本**：dsh（容器内 agent）+ Qwen3.6-35B 驱动（经 de-stream 代理）· k8s 5 分片 · 以快照 `run_id` 锚定具体轮次（当前 `20260906T024501Z`）。DSH 的 npm 版本号未随快照记录，以 run_id 与 `reports/agent-test/` 日期交叉核对。
 > **口径提示**：徽章与统计中的「已测 N」是单轮运行口径；分类目录与全量清单是跨轮累积口径，两者数字不同属正常。
 
 每个结论都应同时看四项：**插件 commit、mainline commit、测试日期、测试层级**。缺少其中任一项时，降低对结果的信任等级。
@@ -432,12 +432,12 @@ DSH 插件社区讨论群（微信群）：插件作者、维护者与使用者�
 ## 当前生态快照
 
 <!-- AUTO:ecosystem:START -->
-> 渲染于快照 20260905T201501Z（2026-09-06 04:15 UTC+8）· 数据源 data/snapshots/（渲染即对齐）
+> 渲染于快照 20260906T024501Z（2026-09-06 10:45 UTC+8）· 数据源 data/snapshots/（渲染即对齐）
 
 | 证据层 | 当前结果 |
 |---|---:|
 | 自动收录 全量索引 2943 · 收录（克隆验证）2996 · 当前版本（0.1.1-rc.2）已测 345 个仓库 |
-| 运行级实测 | 9064 可用 · 2659 不兼容 · 1611 待定（共 13334 个，k8s agent 口径）|
+| 运行级实测 | 8996 可用 · 2721 不兼容 · 1617 待定（共 13334 个，k8s agent 口径）|
 
 [完整索引](PLUGINS-ALL.md) · [运行实测](reports/2026-08-27/agent-test-v2.md)
 
