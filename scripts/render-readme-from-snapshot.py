@@ -128,20 +128,37 @@ def main():
         ver = (img.split(":", 1)[1] if ":" in img else img).replace("-", "--")
         n_test = n_inc + n_un
 
+        def _quote(s):
+            from urllib.parse import quote as _q
+            return _q(str(s), safe="")
+
         def _badge(label, count, color, ver_str):
             msg = f"{label}_{count}-{ver_str}" if ver_str else f"{label}-{count}"
             return f"https://img.shields.io/badge/{msg}-{color}"
 
+        # 各版本对照磁贴（2026-09-07）：results 实测 digest 分组，历史版本组保留展示
+        _vt = (stats.get("version_tiles") or []) if isinstance(stats, dict) else []
+        _vt_html = ""
+        if _vt:
+            _parts = []
+            for _g in _vt:
+                _v = _g["ver"]
+                _short = _v.replace("0.", "", 1).replace("-rc.", "r")
+                _rate = _g["ok"] * 100 // max(_g["ok"] + _g["bad"], 1)
+                _color = "brightgreen" if _rate >= 60 else ("yellow" if _rate >= 30 else "red")
+                _parts.append(f"[![{_short}](https://img.shields.io/badge/{_quote(_short)}-{_quote(f'{chr(9989)}{_g[chr(111)+chr(107)]} · {chr(10060)}{_g[chr(98)+chr(97)+chr(100)]}')}-{_color})](#2-看懂状态统一四档口径)")
+            _label = "历史版本对照" if is_zh else "version history"
+            _vt_html = f"**{_label}**：" + " ".join(_parts)
         if is_zh:
             tiles = (f"[![运行级可用]({_badge('运行级可用', n_ok, 'brightgreen', ver)})](#2-看懂状态统一四档口径) "
                      f"[![待测]({_badge('待测', n_test, 'lightgrey', ver)})](#2-看懂状态统一四档口径) "
                      f"[![需适配]({_badge('需适配', n_bad, 'yellow', ver)})](#2-看懂状态统一四档口径)")
-            t_readme = re.sub(r"^\[!\[运行级可用\][^\n]*$", lambda _: tiles, t_readme, count=1, flags=re.M)
+            t_readme = re.sub(r"^\[!\[运行级可用\][^\n]*$", lambda _: (tiles + "\n" + _vt_html) if _vt_html else tiles, t_readme, count=1, flags=re.M)
         else:
             tiles = (f"[![runtime OK]({_badge('runtime_OK', n_ok, 'brightgreen', ver)})](#2-understand-status-unified-4-tier-scale) "
                      f"[![to test]({_badge('to_test', n_test, 'lightgrey', ver)})](#2-understand-status-unified-4-tier-scale) "
                      f"[![needs adapt]({_badge('needs_adapt', n_bad, 'yellow', ver)})](#2-understand-status-unified-4-tier-scale)")
-            t_readme = re.sub(r"^\[!\[runtime OK\][^\n]*$", lambda _: tiles, t_readme, count=1, flags=re.M)
+            t_readme = re.sub(r"^\[!\[runtime OK\][^\n]*$", lambda _: (tiles + "\n" + _vt_html) if _vt_html else tiles, t_readme, count=1, flags=re.M)
         t_readme = re.sub(r"(（当前 `)[0-9A-Za-z]+(`)", rf"\g<1>{snap['run_id']}\g<2>", t_readme, count=1)
         t_readme = re.sub(r"(currently `)[0-9A-Za-z]+(`)", rf"\g<1>{snap['run_id']}\g<2>", t_readme, count=1)
 
