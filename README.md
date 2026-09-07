@@ -19,7 +19,7 @@
 
 [![confirmed](https://img.shields.io/badge/confirmed-1103-blue)](#精选插件榜) [![scan](https://img.shields.io/badge/scan-every_6h-green)](#当前生态快照) [![tested](https://img.shields.io/badge/tested-13334-orange)](#本仓库如何判定) [![dshfind](https://dshfind.com/api/badge/AdamPlatin123/dsh-plugin-radar?lang=zh)](https://dshfind.com/zh/plugins/AdamPlatin123/dsh-plugin-radar?ref=badge) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-[![运行级可用](https://img.shields.io/badge/运行级可用_8958-0.1.1--rc.2-brightgreen)](#2-看懂状态统一四档口径) [![待测](https://img.shields.io/badge/待测_1739-0.1.1--rc.2-lightgrey)](#2-看懂状态统一四档口径) [![需适配](https://img.shields.io/badge/需适配_2750-0.1.1--rc.2-yellow)](#2-看懂状态统一四档口径)
+[![运行级可用](https://img.shields.io/badge/运行级可用_8958-0.1.1--rc.2-brightgreen)](#2-看懂状态统一四档口径) [![待测](https://img.shields.io/badge/待测_1712-0.1.1--rc.2-lightgrey)](#2-看懂状态统一四档口径) [![需适配](https://img.shields.io/badge/需适配_2750-0.1.1--rc.2-yellow)](#2-看懂状态统一四档口径)
 
 
 
@@ -252,21 +252,21 @@ flowchart TB
 
 <!-- AUTO:catalog:START -->
 
-逐插件明细（判定 · 定位 · 星标）按域分页见 **[PLUGINS-ALL.md](PLUGINS-ALL.md)** 索引。
+逐插件明细（判定 · 定位 · 星标）见 **[PLUGINS-ALL.md](PLUGINS-ALL.md)**。
 
-- **🎓 技能包**（26）— 可用 6 · 不兼容 1 · 待定 5 · 未测 11 · 监测 3 — [明细](catalog/all/技能包.md)
-- **🧠 记忆增强**（47）— 可用 15 · 不兼容 5 · 待定 4 · 未测 2 · 监测 21 — [明细](catalog/all/记忆增强.md)
-- **🎨 主题皮肤**（17）— 可用 8 · 不兼容 0 · 待定 1 · 未测 5 · 监测 3 — [明细](catalog/all/主题皮肤.md)
-- **🛒 市场与管理**（308）— 可用 100 · 不兼容 20 · 待定 18 · 未测 8 · 监测 162 — [明细](catalog/all/市场与管理.md)
-- **🔌 Web UI 增强**（2781）— 可用 1344 · 不兼容 405 · 待定 258 · 未测 17 · 监测 757 — [明细](catalog/all/Web%20UI%20增强.md)
-- **💻 编码开发**（2157）— 可用 926 · 不兼容 355 · 待定 194 · 未测 19 · 监测 663 — [明细](catalog/all/编码开发.md)
-- **🤖 Agent 能力**（2248）— 可用 814 · 不兼容 273 · 待定 167 · 未测 11 · 监测 983 — [明细](catalog/all/Agent%20能力.md)
-- **📡 消息通讯**（719）— 可用 260 · 不兼容 112 · 待定 58 · 未测 4 · 监测 285 — [明细](catalog/all/消息通讯.md)
-- **🗂 文件数据**（674）— 可用 269 · 不兼容 93 · 待定 57 · 未测 9 · 监测 246 — [明细](catalog/all/文件数据.md)
-- **🎮 娱乐生活**（451）— 可用 172 · 不兼容 35 · 待定 31 · 未测 0 · 监测 213 — [明细](catalog/all/娱乐生活.md)
-- **🛠 基建部署**（1359）— 可用 443 · 不兼容 132 · 待定 125 · 未测 4 · 监测 655 — [明细](catalog/all/基建部署.md)
-- **📚 学习研究**（156）— 可用 36 · 不兼容 9 · 待定 8 · 未测 2 · 监测 101 — [明细](catalog/all/学习研究.md)
-- **❓ 其他**（7196）— 可用 1838 · 不兼容 369 · 待定 253 · 未测 21 · 监测 4715 — [明细](catalog/all/其他.md)
+- **🎓 技能包**（23）— 可用 6 · 不兼容 1 · 待定 5 · 未测 8 · 监测 3 — [明细](PLUGINS-ALL.md#-技能包23)
+- **🧠 记忆增强**（47）— 可用 15 · 不兼容 5 · 待定 4 · 未测 2 · 监测 21 — [明细](PLUGINS-ALL.md#-记忆增强47)
+- **🎨 主题皮肤**（17）— 可用 8 · 不兼容 0 · 待定 1 · 未测 5 · 监测 3 — [明细](PLUGINS-ALL.md#-主题皮肤17)
+- **🛒 市场与管理**（305）— 可用 100 · 不兼容 20 · 待定 18 · 未测 5 · 监测 162 — [明细](PLUGINS-ALL.md#-市场与管理305)
+- **🔌 Web UI 增强**（2777）— 可用 1344 · 不兼容 405 · 待定 258 · 未测 13 · 监测 757 — [明细](PLUGINS-ALL.md#-web-ui-增强2777)
+- **💻 编码开发**（2147）— 可用 926 · 不兼容 355 · 待定 194 · 未测 9 · 监测 663 — [明细](PLUGINS-ALL.md#-编码开发2147)
+- **🤖 Agent 能力**（2246）— 可用 814 · 不兼容 273 · 待定 167 · 未测 9 · 监测 983 — [明细](PLUGINS-ALL.md#-agent-能力2246)
+- **📡 消息通讯**（718）— 可用 260 · 不兼容 112 · 待定 58 · 未测 3 · 监测 285 — [明细](PLUGINS-ALL.md#-消息通讯718)
+- **🗂 文件数据**（672）— 可用 269 · 不兼容 93 · 待定 57 · 未测 7 · 监测 246 — [明细](PLUGINS-ALL.md#-文件数据672)
+- **🎮 娱乐生活**（451）— 可用 172 · 不兼容 35 · 待定 31 · 未测 0 · 监测 213 — [明细](PLUGINS-ALL.md#-娱乐生活451)
+- **🛠 基建部署**（1359）— 可用 443 · 不兼容 132 · 待定 125 · 未测 4 · 监测 655 — [明细](PLUGINS-ALL.md#-基建部署1359)
+- **📚 学习研究**（156）— 可用 36 · 不兼容 9 · 待定 8 · 未测 2 · 监测 101 — [明细](PLUGINS-ALL.md#-学习研究156)
+- **❓ 其他**（7194）— 可用 1838 · 不兼容 369 · 待定 253 · 未测 19 · 监测 4715 — [明细](PLUGINS-ALL.md#-其他7194)
 
 <!-- AUTO:catalog:END -->
 
