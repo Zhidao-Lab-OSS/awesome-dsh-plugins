@@ -71,6 +71,7 @@ def load_snapshots():
 
 _TRACK_FILES: list = []
 _TRACK_IDX: dict = {}
+_CUR_VERSION: str = ''
 
 
 def build_track_index():
@@ -104,6 +105,8 @@ def build_track_index():
             for k in filter(None, (e.get('url'), e.get('name'))):
                 idx.setdefault(k, {})[ver] = mark
     _TRACK_IDX = idx
+    global _CUR_VERSION
+    _CUR_VERSION = max(by_ver.keys()) if by_ver else ''
 
 
 def _verdict_track(name):
@@ -401,21 +404,17 @@ def main():
                 dl.append(f'- `[未定位]` **{name}** — 占位待复核，判定暂不展示{pr}')
             else:
                 bundle_part = '〔📦〕' if e.get('bundle') else ''   # 整合包（dsh.bundle / workspaces 结构）
-                # 版本轨迹（2026-09-07 重架构）：历史各 runner 版本判定有翻转时附加紧凑标记
-                #（如 `1.1r2:✅ 1.2r1:❌`）；当前版本判定即本行状态，不入轨迹
+                # 历史支持版本（2026-09-07 需求升级）：每插件显示其判定为可用的版本集合
+                #（含当前版本）；历史全不可用的显示支持:—。翻转信息隐含其中（对比行状态可知）。
                 _tr = _verdict_track(e.get('url')) or _verdict_track(name)
                 track_part = ''
-                if _tr:
-                    _cur = MARK.get(e.get("verdict"), "")
-                    _hist = list(_tr.values())
-                    _cur_ok = "🟩" in _cur
-                    _flipped = len(set(_hist)) > 1 \
-                        or ("✅" in _hist and not _cur_ok) \
-                        or ("❌" in _hist and _cur_ok)
-                    if _flipped:
-                        track_part = " `" + " ".join(
-                            f"{v.replace('0.', '', 1).replace('-rc.', 'r')}:{m}"
-                            for v, m in sorted(_tr.items())) + "`"
+                if _tr or '可用' in (e.get('verdict') or ''):
+                    _cur_ver = _CUR_VERSION
+                    _sup = sorted(v for v, m in _tr.items() if m == '✅')
+                    if '可用' in (e.get('verdict') or '') and _cur_ver and _cur_ver not in _sup:
+                        _sup.append(_cur_ver)
+                    _short = [v.replace('0.', '', 1).replace('-rc.', 'r') for v in _sup]
+                    track_part = f" `支持:{','.join(_short) if _short else '—'}`"
                 dl.append(f'- {MARK.get(e.get("verdict"), "⬜ `[未测]`")} [{name}]({e["url"]}) {star_part}— {desc}{pr}{bundle_part}{track_part}')
         dom_slug = dom.split(' ', 1)[-1]
         dom_file = dom_dir / f'{dom_slug}.md'
