@@ -20,6 +20,8 @@
 [![confirmed](https://img.shields.io/badge/confirmed-1103-blue)](#精选插件榜) [![scan](https://img.shields.io/badge/scan-every_6h-green)](#当前生态快照) [![tested](https://img.shields.io/badge/tested-13334-orange)](#本仓库如何判定) [![dshfind](https://dshfind.com/api/badge/AdamPlatin123/dsh-plugin-radar?lang=zh)](https://dshfind.com/zh/plugins/AdamPlatin123/dsh-plugin-radar?ref=badge) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 [![运行级可用](https://img.shields.io/badge/运行级可用_8958-0.1.1--rc.2-brightgreen)](#2-看懂状态统一四档口径) [![待测](https://img.shields.io/badge/待测_1712-0.1.1--rc.2-lightgrey)](#2-看懂状态统一四档口径) [![需适配](https://img.shields.io/badge/需适配_2750-0.1.1--rc.2-yellow)](#2-看懂状态统一四档口径)
+**历史版本对照**：[![1.1r2](https://img.shields.io/badge/1.1r2-%E2%9C%853038%20%C2%B7%20%E2%9D%8C780-brightgreen)](#2-看懂状态统一四档口径) [![1.2r1](https://img.shields.io/badge/1.2r1-%E2%9C%855921%20%C2%B7%20%E2%9D%8C1970-brightgreen)](#2-看懂状态统一四档口径)
+**历史版本对照**：[![latest](https://img.shields.io/badge/latest-%E2%9C%850%20%C2%B7%20%E2%9D%8C0-red)](#2-看懂状态统一四档口径) [![1.1r2](https://img.shields.io/badge/1.1r2-%E2%9C%853038%20%C2%B7%20%E2%9D%8C780-brightgreen)](#2-看懂状态统一四档口径) [![1.2r1](https://img.shields.io/badge/1.2r1-%E2%9C%855921%20%C2%B7%20%E2%9D%8C1970-brightgreen)](#2-看懂状态统一四档口径)
 
 
 

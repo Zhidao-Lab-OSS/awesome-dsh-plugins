@@ -113,6 +113,41 @@ def _verdict_track(name):
     return _TRACK_IDX.get(name, {})
 
 
+
+def version_stats():
+    """各 runner 版本判定分布（2026-09-07 多版本磁贴数据面）：results 按实测
+    runner_image_digest 分组统计——绕开指标流 cur_image 滞留，历史组数字立即准确。
+    返回按组内最新 observed_at 排序的 [{ver, ok, bad, inc, skip, total, last_at}]。"""
+    import glob as _g, os as _o
+    from collections import Counter as _C, defaultdict as _D
+    grp = _D(lambda: _C())
+    last = {}
+    for f in _g.glob(_o.path.expanduser("~/dsh-external-research/.rt-agent-v2/results/*.json")):
+        try:
+            d = json.load(open(f))
+        except Exception:
+            continue
+        dg = (d.get("runner_image_digest") or "").strip()
+        if ":" not in dg:
+            continue
+        ver = dg.split(":", 1)[1]
+        st = d.get("status", "")
+        key = {"pass": "ok", "fail": "bad", "inconclusive": "inc"}.get(st, "skip")
+        grp[ver][key] += 1
+        t = d.get("observed_at", "")
+        if t > last.get(ver, ""):
+            last[ver] = t
+    out = []
+    for ver, cc in grp.items():
+        total = sum(cc.values())
+        if total < 50 or not re.match(r"^\d+\.\d+", ver):
+            continue   # 噪声组过滤：裸参数时代 latest 空组/微量组不进磁贴
+        out.append({"ver": ver, "ok": cc["ok"], "bad": cc["bad"], "inc": cc["inc"],
+                    "skip": cc["skip"], "total": total, "last_at": last.get(ver, "")})
+    out.sort(key=lambda x: x["last_at"])
+    return out
+
+
 def canonical_key(e, repo_map, locate):
     """条目 → 规范主键。真实 URL > repo-map local_key > locate-cache；均无则退回原始键。"""
     url = e.get('url') or ''
@@ -436,7 +471,8 @@ def main():
     OUT.write_text('\n'.join(L) + '\n', encoding='utf-8')
     print(f'[gen-plugins-all] {len(entries)} 条 → {OUT.name}（定位修复 {n_fix} / 空仓 {n_empty} / 歧义 {n_amb} / 未定位 {n_unresolved} / 实时星 {n_star}）')
     # 汇总卡数据（供 render 的目录摘要用）：每类分布 + 全局统计（磁贴「未测」=登记兜底口径，快照层不产 ⏳）
-    return {'domains': {dom: {'total': sum(1 for e in entries if e.get('domain') == dom),
+    return {'version_tiles': version_stats(),
+            'domains': {dom: {'total': sum(1 for e in entries if e.get('domain') == dom),
                   'ok': vc_local(entries, dom, '✅ 运行级可用'),
                   'bad': vc_local(entries, dom, '❌ 运行级不兼容'),
                   'inc': vc_local(entries, dom, '⚠️ 待定'),
