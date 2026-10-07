@@ -15,7 +15,7 @@
 安装前就知道哪个能用，不用自己踩坑。
 *Know which plugins work before you install them.*
 
-[![confirmed](https://img.shields.io/badge/confirmed-2049-blue)](#精选插件榜) [![scan](https://img.shields.io/badge/scan-every_6h-green)](#当前生态快照) [![tested](https://img.shields.io/badge/tested-13624-orange)](#本仓库如何判定) [![dshfind](https://dshfind.com/api/badge/AdamPlatin123/dsh-plugin-radar?lang=zh)](https://dshfind.com/zh/plugins/AdamPlatin123/dsh-plugin-radar?ref=badge) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![confirmed](https://img.shields.io/badge/confirmed-2050-blue)](#精选插件榜) [![scan](https://img.shields.io/badge/scan-every_6h-green)](#当前生态快照) [![tested](https://img.shields.io/badge/tested-13624-orange)](#本仓库如何判定) [![dshfind](https://dshfind.com/api/badge/AdamPlatin123/dsh-plugin-radar?lang=zh)](https://dshfind.com/zh/plugins/AdamPlatin123/dsh-plugin-radar?ref=badge) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 **判定按 runner 版本分离 / verdicts by runner version：**
 
@@ -47,21 +47,21 @@ Radar Engine（开源 → engine/）          Radar Engine (open-source → engi
 ```
 
 ## 工作原理
-> *Data as of snapshot — currently `20261007T043001Z` (2026-10-02 20:15:03 UTC+8 · classifier unified-v2-bridge)*
+> *Data as of snapshot — currently `20261007T210001Z` (2026-10-02 20:15:03 UTC+8 · classifier unified-v2-bridge)*
 *How It Works*
 
 <!-- AUTO:pipeline:START -->
 ```mermaid
 flowchart TB
     subgraph Discovery["发现（每 6 小时 · probe 每 15 分钟 巡检触发）"]
-        A1["GitHub Search<br/>topic ×2 + keyword ×3<br/>候选 27103 · 龄 188m"]
+        A1["GitHub Search<br/>topic ×2 + keyword ×3<br/>候选 27345 · 龄 204m"]
         A2["本地库补全 · 去重 repo id"]
         A3["私有 org 仓排除<br/>35s 错峰 · 403 退避 · dshow 黑名单"]
     end
     subgraph Validation["验证（driver 20s 流式循环）"]
         B1{"package.json<br/>name + main/exports/dsh?"}
     end
-    B1 -->|"插件 2049"| C1["k8s 运行级测试<br/>一插件一 pod · 并发 10<br/>dsh agent + Qwen（de-stream）"]
+    B1 -->|"插件 2050"| C1["k8s 运行级测试<br/>一插件一 pod · 并发 10<br/>dsh agent + Qwen（de-stream）"]
     B1 -->|"非插件（累计删 0）"| B3["即删省空间"]
     C1 --> D1{"判定 · 总 13624"}
     D1 -->|"8208 / 3270"| E1["聚合 + README 分类统计"]
@@ -303,17 +303,17 @@ flowchart TB
 
 - **🎓 技能包**（21）— 可用 7 · 不兼容 4 · 待定 5 · 未测 1 · 监测 4 — [明细](PLUGINS-ALL.md#-技能包21)
 - **🧠 记忆增强**（40）— 可用 21 · 不兼容 6 · 待定 9 · 未测 0 · 监测 4 — [明细](PLUGINS-ALL.md#-记忆增强40)
-- **🎨 主题皮肤**（19）— 可用 11 · 不兼容 3 · 待定 2 · 未测 0 · 监测 3 — [明细](PLUGINS-ALL.md#-主题皮肤19)
+- **🎨 主题皮肤**（18）— 可用 10 · 不兼容 3 · 待定 2 · 未测 0 · 监测 3 — [明细](PLUGINS-ALL.md#-主题皮肤18)
 - **🛒 市场与管理**（256）— 可用 154 · 不兼容 44 · 待定 34 · 未测 1 · 监测 23 — [明细](PLUGINS-ALL.md#-市场与管理256)
-- **🔌 Web UI 增强**（2464）— 可用 1507 · 不兼容 551 · 待定 293 · 未测 4 · 监测 109 — [明细](PLUGINS-ALL.md#-web-ui-增强2464)
-- **💻 编码开发**（1913）— 可用 1064 · 不兼容 495 · 待定 242 · 未测 0 · 监测 112 — [明细](PLUGINS-ALL.md#-编码开发1913)
-- **🤖 Agent 能力**（1856）— 可用 1016 · 不兼容 490 · 待定 242 · 未测 2 · 监测 106 — [明细](PLUGINS-ALL.md#-agent-能力1856)
-- **📡 消息通讯**（614）— 可用 335 · 不兼容 182 · 待定 66 · 未测 1 · 监测 30 — [明细](PLUGINS-ALL.md#-消息通讯614)
-- **🗂 文件数据**（573）— 可用 320 · 不兼容 150 · 待定 76 · 未测 2 · 监测 25 — [明细](PLUGINS-ALL.md#-文件数据573)
-- **🎮 娱乐生活**（369）— 可用 229 · 不兼容 69 · 待定 49 · 未测 0 · 监测 22 — [明细](PLUGINS-ALL.md#-娱乐生活369)
-- **🛠 基建部署**（1133）— 可用 601 · 不兼容 231 · 待定 209 · 未测 1 · 监测 91 — [明细](PLUGINS-ALL.md#-基建部署1133)
-- **📚 学习研究**（128）— 可用 69 · 不兼容 24 · 待定 19 · 未测 0 · 监测 16 — [明细](PLUGINS-ALL.md#-学习研究128)
-- **❓ 其他**（4950）— 可用 2996 · 不兼容 921 · 待定 611 · 未测 7 · 监测 415 — [明细](PLUGINS-ALL.md#-其他4950)
+- **🔌 Web UI 增强**（2468）— 可用 1509 · 不兼容 553 · 待定 293 · 未测 4 · 监测 109 — [明细](PLUGINS-ALL.md#-web-ui-增强2468)
+- **💻 编码开发**（1912）— 可用 1065 · 不兼容 493 · 待定 242 · 未测 0 · 监测 112 — [明细](PLUGINS-ALL.md#-编码开发1912)
+- **🤖 Agent 能力**（1854）— 可用 1013 · 不兼容 490 · 待定 243 · 未测 2 · 监测 106 — [明细](PLUGINS-ALL.md#-agent-能力1854)
+- **📡 消息通讯**（613）— 可用 334 · 不兼容 181 · 待定 67 · 未测 1 · 监测 30 — [明细](PLUGINS-ALL.md#-消息通讯613)
+- **🗂 文件数据**（574）— 可用 321 · 不兼容 150 · 待定 76 · 未测 2 · 监测 25 — [明细](PLUGINS-ALL.md#-文件数据574)
+- **🎮 娱乐生活**（368）— 可用 228 · 不兼容 70 · 待定 48 · 未测 0 · 监测 22 — [明细](PLUGINS-ALL.md#-娱乐生活368)
+- **🛠 基建部署**（1135）— 可用 603 · 不兼容 231 · 待定 209 · 未测 1 · 监测 91 — [明细](PLUGINS-ALL.md#-基建部署1135)
+- **📚 学习研究**（129）— 可用 70 · 不兼容 24 · 待定 19 · 未测 0 · 监测 16 — [明细](PLUGINS-ALL.md#-学习研究129)
+- **❓ 其他**（4948）— 可用 2994 · 不兼容 921 · 待定 611 · 未测 7 · 监测 415 — [明细](PLUGINS-ALL.md#-其他4948)
 
 <!-- AUTO:catalog:END -->
 
@@ -430,7 +430,7 @@ docs/radar/        管线文档 / pipeline docs
 *Ecosystem Snapshot*
 
 <!-- AUTO:ecosystem:START -->
-> 渲染于快照 20261007T043001Z（2026-10-07 12:30 UTC+8）· 数据源 data/snapshots/（渲染即对齐）
+> 渲染于快照 20261007T210001Z（2026-10-08 05:00 UTC+8）· 数据源 data/snapshots/（渲染即对齐）
 
 
 
